@@ -1,24 +1,38 @@
+'use client';
+
 import { Link } from '@nextui-org/link';
 import { Snippet } from '@nextui-org/snippet';
 import { Code } from '@nextui-org/code';
 import { button as buttonStyles } from '@nextui-org/theme';
+import Image from 'next/legacy/image';
+import { useEffect } from 'react';
+import Lenis from 'lenis';
+
+import landing from '../../public/images/landing.jpg';
 
 import { siteConfig } from '@/config/site';
 import { title, subtitle } from '@/components/primitives';
 import { GithubIcon } from '@/components/icons';
 import { lusitana, roboto } from '@/config/fonts';
-import Image from 'next/legacy/image';
 import Meteors from '@/components/magicui/meteors';
-import landing from '../../public/images/landing.jpg';
 
 export default function Home() {
+  useEffect(() => {
+    const lenis = new Lenis();
+
+    function raf(time: any) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+  }, []);
+
   return (
     // <div className=" flex h-[100%] flex-col content-center justify-end bg-black">
-    <section
-      className={` gap-4py-8 flex   flex-col items-center justify-center md:py-10   ${roboto.className} `}
-    >
+    <section className={`   ${roboto.className} `}>
       {/* Hero Section */}
-      <div className="h-[100vh]">
+      <div className="sticky top-16 h-[100vh] w-full">
         <Image
           alt="Background Image"
           className="relative"
@@ -26,14 +40,13 @@ export default function Home() {
           objectFit="cover"
           src={landing}
         />
-        <div className="relative flex  h-[50hv] w-full flex-col items-center justify-center  overflow-hidden  bg-transparent  ">
+        <div className="relative flex h-[50hv]  w-full flex-col items-center justify-center overflow-hidden  bg-transparent  pt-36  ">
           <Meteors number={40} />
 
           <div className="inline-block justify-center text-center">
             <h1 className={title()}>Level&nbsp;</h1>
             <h1 className={title({})}>Up&nbsp;</h1>
             <h1 className={title()}>Your </h1>
-            {/* <h1 className={title()}>Your Website</h1> */}
             <br className="mb-4" />
             <h1 className={title()}>Online</h1>
             <h1 className={title({ color: 'blue' })}>&nbsp;Presence</h1>
@@ -47,9 +60,9 @@ export default function Home() {
         </div>
       </div>
 
-      {/* <div className="h-[500px] w-full bg-black">a</div> */}
+      {/* <div className="h-[5000px] w-full bg-black">a</div> */}
 
-      <div className=" relative flex  h-[100vh] flex-col items-center justify-center overflow-hidden text-center   ">
+      <div className=" relative flex h-[100vh] w-full  flex-col items-center justify-center overflow-hidden bg-black text-center   ">
         <div className=" w-48  sm:w-full">
           <h1 className={title({ size: 'sm' })}>
             Why{' '}

@@ -53,17 +53,14 @@ export const Navbar = () => {
   );
 
   return (
-    <NextUINavbar isBlurred={false} maxWidth="xl" position="sticky">
-      <NavbarBrand as="li" className="max-w-fit gap-3">
+    <NextUINavbar isBlurred={true} maxWidth="xl" position="sticky">
+      <NavbarBrand as="li">
         <NextLink className="flex items-center justify-start gap-2" href="/">
           <Logo />
           <p className="pt-1 text-xl font-extrabold">Total Tech</p>
         </NextLink>
       </NavbarBrand>
-      <NavbarContent
-        className="width-5 basis-1/5 sm:basis-full"
-        justify="center"
-      >
+      <NavbarContent className="hidden gap-4 sm:flex" justify="center">
         <ul className=" hidden justify-start gap-6 lg:flex">
           {siteConfig.navItems.map((item) => (
             <NavbarItem key={item.href}>

@@ -45,19 +45,17 @@ export default function RootLayout({
         )}
       >
         <Providers themeProps={{ attribute: 'class', defaultTheme: 'dark' }}>
-          <div
-            className={`  ${roboto.className} relative flex h-screen flex-col`}
-          >
+          <div className={`  ${roboto.className}`}>
             <Navbar />
-            <main className="container z-10 mx-auto max-w-7xl flex-grow bg-transparent px-6 pt-32">
-              {children}
-            </main>
             {/* <Image
               alt="Background Image"
               layout="fill"
               objectFit="cover"
               src={landing}
             /> */}
+            {/* container z-10 mx-auto max-w-7xl flex-grow bg-transparent px-6 */}
+            <main className="">{children}</main>
+
             {/* <footer className="flex w-full items-center justify-center py-3">
               <Link
                 isExternal
