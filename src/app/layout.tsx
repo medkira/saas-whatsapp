@@ -2,12 +2,15 @@ import '@/styles/globals.css';
 import { Metadata, Viewport } from 'next';
 import { Link } from '@nextui-org/link';
 import clsx from 'clsx';
+import Image from 'next/legacy/image';
 
-import { Providers } from '../providers';
+import landing from '../../public/images/landing.jpg';
+import { Navbar } from '../components/navbar';
+
+import { Providers } from './providers';
 
 import { siteConfig } from '@/config/site';
-import { fontSans } from '@/config/fonts';
-import { Navbar } from '@/components/navbar';
+import { roboto } from '@/config/fonts';
 
 export const metadata: Metadata = {
   title: {
@@ -37,17 +40,25 @@ export default function RootLayout({
       <head />
       <body
         className={clsx(
-          'min-h-screen bg-background font-sans antialiased',
-          fontSans.variable,
+          'whitefont-sans  min-h-screen antialiased',
+          // fontSans.variable,
         )}
       >
         <Providers themeProps={{ attribute: 'class', defaultTheme: 'dark' }}>
-          <div className="relative flex h-screen flex-col">
+          <div
+            className={`  ${roboto.className} relative flex h-screen flex-col`}
+          >
             <Navbar />
-            <main className="container mx-auto max-w-7xl flex-grow px-6 pt-16">
+            <main className="container z-10 mx-auto max-w-7xl flex-grow bg-transparent px-6 pt-32">
               {children}
             </main>
-            <footer className="flex w-full items-center justify-center py-3">
+            <Image
+              alt="Background Image"
+              layout="fill"
+              objectFit="cover"
+              src={landing}
+            />
+            {/* <footer className="flex w-full items-center justify-center py-3">
               <Link
                 isExternal
                 className="flex items-center gap-1 text-current"
@@ -57,7 +68,7 @@ export default function RootLayout({
                 <span className="text-default-600">Powered by</span>
                 <p className="text-primary">NextUI</p>
               </Link>
-            </footer>
+            </footer> */}
           </div>
         </Providers>
       </body>
