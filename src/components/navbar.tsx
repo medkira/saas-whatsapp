@@ -53,11 +53,11 @@ export const Navbar = () => {
   );
 
   return (
-    <NextUINavbar maxWidth="xl" position="sticky">
+    <NextUINavbar isBlurred={false} maxWidth="xl" position="sticky">
       <NavbarBrand as="li" className="max-w-fit gap-3">
-        <NextLink className="flex items-center justify-start gap-1" href="/">
+        <NextLink className="flex items-center justify-start gap-2" href="/">
           <Logo />
-          <p className="font-bold text-inherit">Total Tech</p>
+          <p className="pt-1 text-xl font-extrabold">Total Tech</p>
         </NextLink>
       </NavbarBrand>
       <NavbarContent
