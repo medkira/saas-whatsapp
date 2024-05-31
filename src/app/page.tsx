@@ -7,37 +7,49 @@ import { siteConfig } from '@/config/site';
 import { title, subtitle } from '@/components/primitives';
 import { GithubIcon } from '@/components/icons';
 import { lusitana, roboto } from '@/config/fonts';
-
+import Image from 'next/legacy/image';
 import Meteors from '@/components/magicui/meteors';
+import landing from '../../public/images/landing.jpg';
+
 export default function Home() {
   return (
     // <div className=" flex h-[100%] flex-col content-center justify-end bg-black">
     <section
-      className={`gap-4py-8 flex flex-col items-center justify-center md:py-10   ${roboto.className} `}
+      className={` gap-4py-8 flex   flex-col items-center justify-center md:py-10   ${roboto.className} `}
     >
       {/* Hero Section */}
-      <div className="relative flex h-full w-full flex-col  items-center justify-center overflow-hidden bg-transparent  ">
-        <Meteors number={40} />
-        <div className="inline-block justify-center text-center">
-          <h1 className={title()}>Level&nbsp;</h1>
-          <h1 className={title({})}>Up&nbsp;</h1>
-          <h1 className={title()}>Your </h1>
-          {/* <h1 className={title()}>Your Website</h1> */}
-          <br className="mb-4" />
-          <h1 className={title()}>Online</h1>
-          <h1 className={title({ color: 'blue' })}>&nbsp;Presence</h1>
-        </div>
-        <div className=" mt-4 w-full text-center font-medium text-cyan-50 sm:text-2xl">
-          <h2>
-            Watch Your Business Shine with Fast and Beautiful Websites with
-            Total Tech
-          </h2>
+      <div className="h-[100vh]">
+        <Image
+          alt="Background Image"
+          className="relative"
+          layout="fill"
+          objectFit="cover"
+          src={landing}
+        />
+        <div className="relative flex  h-[50hv] w-full flex-col items-center justify-center  overflow-hidden  bg-transparent  ">
+          <Meteors number={40} />
+
+          <div className="inline-block justify-center text-center">
+            <h1 className={title()}>Level&nbsp;</h1>
+            <h1 className={title({})}>Up&nbsp;</h1>
+            <h1 className={title()}>Your </h1>
+            {/* <h1 className={title()}>Your Website</h1> */}
+            <br className="mb-4" />
+            <h1 className={title()}>Online</h1>
+            <h1 className={title({ color: 'blue' })}>&nbsp;Presence</h1>
+          </div>
+          <div className=" mt-4 w-full text-center font-medium text-cyan-50 sm:text-2xl">
+            <h2>
+              Watch Your Business Shine with Fast and Beautiful Websites with
+              Total Tech
+            </h2>
+          </div>
         </div>
       </div>
 
-      <div className="h-[500px]"></div>
+      {/* <div className="h-[500px] w-full bg-black">a</div> */}
 
-      <div className=" w-f* relative flex h-full flex-col items-center justify-center overflow-hidden text-center   ">
+      <div className=" relative flex  h-[100vh] flex-col items-center justify-center overflow-hidden text-center   ">
         <div className=" w-48  sm:w-full">
           <h1 className={title({ size: 'sm' })}>
             Why{' '}

@@ -52,12 +52,12 @@ export default function RootLayout({
             <main className="container z-10 mx-auto max-w-7xl flex-grow bg-transparent px-6 pt-32">
               {children}
             </main>
-            <Image
+            {/* <Image
               alt="Background Image"
               layout="fill"
               objectFit="cover"
               src={landing}
-            />
+            /> */}
             {/* <footer className="flex w-full items-center justify-center py-3">
               <Link
                 isExternal
