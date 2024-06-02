@@ -53,7 +53,12 @@ export const Navbar = () => {
   );
 
   return (
-    <NextUINavbar isBlurred={true} maxWidth="xl" position="sticky">
+    <NextUINavbar
+      className="bg-transparent"
+      isBlurred={true}
+      maxWidth="xl"
+      position="sticky"
+    >
       <NavbarBrand as="li">
         <NextLink className="flex items-center justify-start gap-2" href="/">
           <Logo />

@@ -40,13 +40,15 @@ export default function RootLayout({
       <head />
       <body
         className={clsx(
-          'whitefont-sans  min-h-screen antialiased',
+          'white min-h-screen  font-sans antialiased',
           // fontSans.variable,
         )}
       >
         <Providers themeProps={{ attribute: 'class', defaultTheme: 'dark' }}>
-          <div className={`  ${roboto.className}`}>
+          <div className={`${roboto.className}`}>
+            {/* <div className="sticky top-0"> */}
             <Navbar />
+            {/* </div> */}
             {/* <Image
               alt="Background Image"
               layout="fill"
@@ -55,18 +57,6 @@ export default function RootLayout({
             /> */}
             {/* container z-10 mx-auto max-w-7xl flex-grow bg-transparent px-6 */}
             <main className="">{children}</main>
-
-            {/* <footer className="flex w-full items-center justify-center py-3">
-              <Link
-                isExternal
-                className="flex items-center gap-1 text-current"
-                href="https://nextui-docs-v2.vercel.app?utm_source=next-app-template"
-                title="nextui.org homepage"
-              >
-                <span className="text-default-600">Powered by</span>
-                <p className="text-primary">NextUI</p>
-              </Link>
-            </footer> */}
           </div>
         </Providers>
       </body>
