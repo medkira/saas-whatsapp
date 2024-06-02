@@ -49,7 +49,7 @@ export const subtitle = tv({
       true: '!w-full',
     },
     size: {
-      sm: ' !w-full !md:w-9/12  font-semibold',
+      sm: '  font-semibold',
       md: 'text-[2.3rem] lg:text-5xl leading-9',
       lg: 'text-5xl md:text-8xl',
     },

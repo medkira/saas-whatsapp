@@ -3,8 +3,15 @@
 import Image from 'next/legacy/image';
 import { useEffect, useRef } from 'react';
 import Lenis from 'lenis';
-
-import { Card, CardFooter, Button, Link } from '@nextui-org/react';
+import {
+  Card,
+  CardFooter,
+  Button,
+  Link,
+  CardBody,
+  Input,
+  Textarea,
+} from '@nextui-org/react';
 
 import landing from '../../public/images/landing.jpg';
 import phoneOptimization from '../../public/images/app.png';
@@ -14,9 +21,9 @@ import responsiveDesign from '../../public/images/responsive-design.png';
 import { title, subtitle } from '@/components/primitives';
 import { roboto } from '@/config/fonts';
 import Meteors from '@/components/magicui/meteors';
-
 import { StarsBackground } from '@/components/landing/background/test';
 import { Navbar } from '@/components/navbar';
+import { motion } from 'framer-motion';
 
 export default function Home() {
   useEffect(() => {
@@ -44,7 +51,7 @@ export default function Home() {
       <HeroSection />
       <Section1 />
       <Section2 />
-      {/* <Section3 /> */}
+      <Section3 />
     </section>
   );
 }
@@ -53,7 +60,7 @@ const HeroSection = () => {
   // const rotate = useTransform(scrollYProgress, [0, 1], [0, -5]);
 
   return (
-    <div className="sticky top-0 h-[100vh] w-full">
+    <div className="- sticky top-0 h-[100vh] w-full ">
       <Image
         alt="Background Image"
         layout="fill"
@@ -89,18 +96,18 @@ const Section1 = () => {
   // const rotate = useTransform(scrollYProgress, [0, 1], [5, 0]);
 
   return (
-    <div className="sticky  flex w-full flex-col  items-center justify-start  gap-10 overflow-hidden bg-black  pt-36 text-center lg:top-0 lg:h-[160vh]  ">
+    <div className="sticky flex  w-full flex-col items-center  justify-start gap-9  overflow-hidden bg-black pt-20  text-center md:pt-36 lg:top-0 lg:h-[160vh]  ">
       <section className="flex flex-col items-center justify-start">
-        <div className=" w-48  sm:w-full">
-          <h1 className={title({ size: 'sm' })}>
-            Why{' '}
-            <span className={title({ color: 'blue', size: 'sm' })}>
-              Should You Care?
-            </span>
+        <div className=" flex  w-48 flex-wrap justify-center sm:w-full">
+          <h1 className={title({ size: 'md', class: 'mb-3  sm:mr-2' })}>
+            Why Should{' '}
           </h1>
+          <span className={title({ color: 'blue', size: 'md' })}>
+            You Care?
+          </span>
         </div>
 
-        <h2 className={subtitle({ class: 'mt-8 w-80 md:w-1/2' })}>
+        <h2 className={subtitle({ class: 'mt-8 w-10/12 md:w-1/2' })}>
           We specialize in web design and development for clients anywhere.
           Every line of code is written by hand to ensure the best performance,
           which helps bring in more customers to your site and bring more
@@ -108,7 +115,7 @@ const Section1 = () => {
         </h2>
       </section>
 
-      <section className="flex  flex-wrap items-center justify-center gap-12  p-20 md:max-w-[80vw] lg:flex-nowrap">
+      <section className="flex  flex-wrap items-center justify-center gap-20  p-20 md:max-w-[80vw] lg:flex-nowrap">
         <div className="flex  flex-col items-center justify-center gap-8">
           <Image
             alt="Background Image"
@@ -175,26 +182,17 @@ const Section2 = () => {
   // const rotate = useTransform(scrollYProgress, [0, 1], [5, 0]);
 
   return (
-    <div className="  relative flex  w-full flex-col  items-center justify-start gap-10 overflow-hidden bg-gray-900 pt-36 text-center lg:h-[100vh]  ">
+    <div className="sticky flex  w-full flex-col  items-center justify-start gap-10 overflow-hidden  bg-gray-900  pt-20 text-center md:pt-36 lg:top-0 lg:h-[160vh]  ">
       <section className="flex flex-col items-center justify-start">
-        <div className=" w-48  sm:w-full">
-          <h1 className={title({ size: 'sm' })}>
-            Laetest Work{' '}
-            <span className={title({ color: 'blue', size: 'sm' })}>
-              Created
-            </span>
-          </h1>
+        <div className=" flex  w-48 flex-wrap justify-center sm:w-full">
+          <h1 className={title({ size: 'md', class: 'mb-3 sm:mr-2' })}>
+            Latest Work{' '}
+          </h1>{' '}
+          <span className={title({ color: 'blue', size: 'md' })}>Created</span>
         </div>
-
-        {/* <h2 className={subtitle({ class: 'mt-8 w-80' })}>
-          We specialize in web design and development for clients anywhere.
-          Every line of code is written by hand to ensure the best performance,
-          which helps bring in more customers to your site and bring more
-          revenue to your business
-        </h2> */}
       </section>
 
-      <section className="flex  flex-wrap items-center justify-center gap-12  p-20 md:max-w-[80vw] lg:flex-nowrap">
+      <section className="flex  flex-wrap items-center justify-center gap-12  p-20 pt-0 md:max-w-[80vw] md:pt-14 lg:flex-nowrap">
         <div className="flex flex-col items-center justify-start">
           <Card isFooterBlurred className="flex border-none" radius="lg">
             <Image
@@ -278,20 +276,41 @@ const Section2 = () => {
 };
 
 const Section3 = () => {
-  // const rotate = useTransform(scrollYProgress, [0, 1], [5, 0]);
-
   return (
-    <div className="  relative flex  w-full flex-col  items-center justify-start gap-10 overflow-hidden bg-gray-900 pt-36 text-center lg:h-[100vh]  ">
-      <footer className=" relative flex w-full items-center justify-center bg-black py-10">
-        <Link
-          isExternal
-          className="flex items-center gap-1 text-current"
-          href="https://nextui-docs-v2.vercel.app?utm_source=next-app-template"
-          title="nextui.org homepage"
-        >
-          <span className="text-default-600">Powered by</span>
-          <p className="text-primary">NextUI</p>
-        </Link>
+    <div className="relative flex h-[100vh]  w-full flex-col items-center   justify-start  gap-16 overflow-hidden bg-black  pt-20  sm:gap-20   md:pt-36 ">
+      <section className="flex flex-col items-center justify-start">
+        <div className=" flex  w-48 flex-wrap justify-center sm:w-full">
+          <h1 className={title({ size: 'md', class: 'mb-3 sm:mr-2' })}>
+            Contact{'  '}
+          </h1>
+          <span className={title({ color: 'blue', size: 'md' })}>&nbsp;Us</span>
+        </div>
+      </section>
+
+      <footer className=" flex w-full flex-wrap items-center justify-center gap-10 ">
+        <Card className=" sm:w-3xl flex  w-10/12 max-w-2xl ">
+          <CardBody>
+            <form className="flex w-full flex-col flex-wrap gap-4 md:flex-nowrap ">
+              <Input label="Name" type="name" />
+              <Input label="Business" type="business" />
+              <Input label="Email" type="email" />
+              <Input label="Phone number" type="phone umber" />
+              <Textarea
+                label="Description"
+                placeholder="Type your Message Here"
+                className=""
+              />
+            </form>
+            <div className="flex justify-end pr-2 pt-6">
+              <Button className="p-6" color="primary" size="lg">
+                Submit
+              </Button>
+            </div>
+          </CardBody>
+        </Card>
+        {/* <Card className="sm:w-3xl perspective flex h-full w-10/12 max-w-2xl">
+          <CardBody></CardBody>
+        </Card> */}
       </footer>
     </div>
   );
