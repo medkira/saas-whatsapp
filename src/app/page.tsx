@@ -16,6 +16,7 @@ import { roboto } from '@/config/fonts';
 import Meteors from '@/components/magicui/meteors';
 
 import { StarsBackground } from '@/components/landing/background/test';
+import { Navbar } from '@/components/navbar';
 
 export default function Home() {
   useEffect(() => {
@@ -40,7 +41,6 @@ export default function Home() {
   return (
     // <div className=" flex h-[100%] flex-col content-center justify-end bg-black">
     <section className={`${roboto.className}  `}>
-      {/* Hero Section */}
       <HeroSection />
       <Section1 />
       <Section2 />
@@ -53,12 +53,12 @@ const HeroSection = () => {
   // const rotate = useTransform(scrollYProgress, [0, 1], [0, -5]);
 
   return (
-    <div className="sticky top-16 h-[100vh] w-full">
+    <div className="sticky top-0 h-[100vh] w-full">
       <Image
         alt="Background Image"
-        className="sticky top-0"
         layout="fill"
         objectFit="cover"
+        quality={100}
         src={landing}
       />
       <div className="relative flex h-[50hv]  w-full flex-col items-center justify-center gap-5 overflow-hidden bg-transparent px-10  pt-48  md:pt-36  ">
@@ -100,7 +100,7 @@ const Section1 = () => {
           </h1>
         </div>
 
-        <h2 className={subtitle({ class: 'mt-8 w-80' })}>
+        <h2 className={subtitle({ class: 'mt-8 w-80 md:w-1/2' })}>
           We specialize in web design and development for clients anywhere.
           Every line of code is written by hand to ensure the best performance,
           which helps bring in more customers to your site and bring more
@@ -117,12 +117,12 @@ const Section1 = () => {
             src={phone}
             width={150}
           />
-          <h1 className={title({ class: '!text-[2.5rem]', color: 'blue' })}>
+          <h1 className={title({ size: 'sm', color: 'blue' })}>
             Mobile-First Design
           </h1>
 
           <h2 className={subtitle({ size: 'sm' })}>
-            We start building your site for mobile devices first, then we add on
+            We start building your site for mobile devices first then we add on
             to it to make tablet and desktop.
           </h2>
         </div>
@@ -135,12 +135,17 @@ const Section1 = () => {
             src={responsiveDesign}
             width={150}
           />
-          <h1 className={title({ class: '!text-[2.5rem]', color: 'blue' })}>
+          <h1 className={title({ size: 'sm', color: 'blue' })}>
             Fully Responsive
           </h1>
 
-          <h2 className={subtitle({ size: 'sm' })}>
-            Your website will fit all mobile screens sizes, tablets, and desktop
+          <h2
+            className={subtitle({
+              size: 'sm',
+              class: ' ',
+            })}
+          >
+            Your website will fit all mobile screens sizes tablets, and desktop
             sizes so new clients can access your site from anywhere.
           </h2>
         </div>
@@ -152,9 +157,7 @@ const Section1 = () => {
             src={phoneOptimization}
             width={150}
           />
-          <h1 className={title({ class: '!text-[2.5rem]', color: 'blue' })}>
-            Optimization
-          </h1>
+          <h1 className={title({ size: 'sm', color: 'blue' })}>Optimization</h1>
 
           <h2 className={subtitle({ size: 'sm' })}>
             60% of all internet traffic is on mobile devices, so we optimize
