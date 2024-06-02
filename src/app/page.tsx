@@ -61,18 +61,20 @@ const HeroSection = () => {
         objectFit="cover"
         src={landing}
       />
-      <div className="relative flex h-[50hv]  w-full flex-col items-center justify-center overflow-hidden  bg-transparent  pt-36  ">
-        <Meteors number={40} />
-
-        <div className="inline-block justify-center text-center">
-          <h1 className={title()}>Level&nbsp;</h1>
-          <h1 className={title({})}>Up&nbsp;</h1>
-          <h1 className={title()}>Your </h1>
-          <br className="mb-4" />
-          <h1 className={title()}>Online</h1>
-          <h1 className={title({ color: 'blue' })}>&nbsp;Presence</h1>
+      <div className="relative flex h-[50hv]  w-full flex-col items-center justify-center gap-5 overflow-hidden bg-transparent px-10  pt-48  md:pt-36  ">
+        <Meteors number={30} />
+        <div className=" flex w-full flex-col justify-center text-center">
+          <div className="-mb-4 md:mb-2">
+            <h1 className={title()}>Level&nbsp;</h1>
+            <h1 className={title({})}>Up&nbsp;</h1>
+            <h1 className={title()}>Your </h1>
+          </div>
+          <div>
+            <h1 className={title()}>Online</h1>
+            <h1 className={title({ color: 'blue' })}>&nbsp;Presence</h1>
+          </div>
         </div>
-        <div className=" mt-4 w-full text-center font-medium text-cyan-50 sm:text-2xl">
+        <div className="w-fullfont-medium text-center text-cyan-50 sm:text-2xl">
           <h2>
             Watch Your Business Shine with Fast and Beautiful Websites with
             Total Tech

@@ -11,11 +11,12 @@ export const title = tv({
       green: 'from-[#6FEE8D] to-[#17c964]',
       pink: 'from-[#FF72E1] to-[#F54C7A]',
       foreground: 'dark:from-[#FFFFFF] dark:to-[#4B4B4B]',
+      white: 'text-[#f2f2f2]', // Use text-white instead of a hex color
     },
     size: {
       sm: 'text-4xl md:text-7xl',
       md: 'text-[2.3rem] lg:text-5xl leading-9',
-      lg: 'text-5xl md:text-8xl',
+      lg: 'text-[2.8rem] md:text-8xl',
     },
     fullWidth: {
       true: 'w-full block',
@@ -23,6 +24,7 @@ export const title = tv({
   },
   defaultVariants: {
     size: 'lg',
+    color: 'white'
   },
   compoundVariants: [
     {
@@ -33,7 +35,7 @@ export const title = tv({
         'cyan',
         'green',
         'pink',
-        'foreground',
+        'foreground'
       ],
       class: 'bg-clip-text text-transparent bg-gradient-to-b',
     },
