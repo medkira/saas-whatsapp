@@ -61,19 +61,19 @@ const HeroSection = () => {
 
   return (
     <div className="sticky top-0 h-[100vh] w-full  ">
-      {/* <Image
+      <Image
+        priority
         alt="Background Image"
         layout="fill"
-        objectFit="cover"
-        quality={100}
         src={landing}
-      /> */}
+        placeholder="blur"
+      />
       {/* bg-[url('/images/landing.jpg')] object-fill */}
-
+      {/* 
       <img
         alt="Responsive design"
         // height={90}
-        src="/images/landing.jpg" // Adjust the path accordingly
+        src="/images/landing.jpg"
         // width={90}
         style={{
           objectFit: 'cover',
@@ -81,11 +81,11 @@ const HeroSection = () => {
           height: '100vh',
           width: '100vw',
         }}
-      />
+      /> */}
       <div className="relative flex h-[50hv]  w-full flex-col items-center justify-center gap-5 overflow-hidden bg-transparent px-10  pt-48  md:pt-32  ">
         <Meteors number={30} />
         <div className=" flex w-full flex-col justify-center text-center">
-          <div className="mb-4 ">
+          <div className="-mb-1 md:mb-4 ">
             <h1 className={title()}>Level&nbsp;</h1>
             <h1 className={title({})}>Up&nbsp;</h1>
             <h1 className={title()}>Your </h1>
@@ -134,9 +134,13 @@ const Section1 = () => {
           <Image
             alt="Background Image"
             height={90}
-            objectFit="fill"
             src={phone}
             width={90}
+            layout="fixed"
+            priority
+            sizes="(max-width: 90px) 100vw,
+            (max-width: 70px) 50vw,
+            33vw"
           />
           <h1
             className={title({ size: 'md', color: 'blue', className: 'mb-1' })}
@@ -153,9 +157,13 @@ const Section1 = () => {
           <Image
             alt="Background Image"
             height={90}
-            objectFit="fill"
             src={responsiveDesign}
             width={90}
+            layout="fixed"
+            priority
+            sizes="(max-width: 90px) 100vw,
+            (max-width: 90px) 50vw,
+            33vw"
           />
           <h1
             className={title({ size: 'md', color: 'blue', className: 'mb-1' })}
@@ -171,9 +179,13 @@ const Section1 = () => {
           <Image
             alt="Background Image"
             height={90}
-            objectFit="fill"
             src={phoneOptimization}
             width={90}
+            layout="fixed"
+            priority
+            sizes="(max-width: 90px) 100vw,
+            (max-width: 90px) 50vw,
+            33vw"
           />
           <h1
             className={title({ size: 'md', color: 'blue', className: 'mb-1' })}
