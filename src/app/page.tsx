@@ -68,10 +68,10 @@ const HeroSection = () => {
         quality={100}
         src={landing}
       />
-      <div className="relative flex h-[50hv]  w-full flex-col items-center justify-center gap-5 overflow-hidden bg-transparent px-10  pt-48  md:pt-36  ">
+      <div className="relative flex h-[50hv]  w-full flex-col items-center justify-center gap-5 overflow-hidden bg-transparent px-10  pt-48  md:pt-32  ">
         <Meteors number={30} />
         <div className=" flex w-full flex-col justify-center text-center">
-          <div className="-mb-4 md:mb-2">
+          <div className="mb-4 ">
             <h1 className={title()}>Level&nbsp;</h1>
             <h1 className={title({})}>Up&nbsp;</h1>
             <h1 className={title()}>Your </h1>
@@ -81,7 +81,7 @@ const HeroSection = () => {
             <h1 className={title({ color: 'blue' })}>&nbsp;Presence</h1>
           </div>
         </div>
-        <div className="w-fullfont-medium text-center text-cyan-50 sm:text-2xl">
+        <div className="w-fullfont-medium text-center text-cyan-50 sm:text-xl">
           <h2>
             Watch Your Business Shine with Fast and Beautiful Websites with
             Total Tech
@@ -96,7 +96,7 @@ const Section1 = () => {
   // const rotate = useTransform(scrollYProgress, [0, 1], [5, 0]);
 
   return (
-    <div className="sticky flex  w-full flex-col items-center  justify-start gap-9  overflow-hidden bg-black pt-20  text-center md:pt-36 lg:top-0 lg:h-[160vh]  ">
+    <div className="md:pt-26 sticky  flex w-full flex-col  items-center justify-start  gap-9 overflow-hidden bg-black  pt-20 text-center lg:top-0 lg:h-[160vh]  ">
       <section className="flex flex-col items-center justify-start">
         <div className=" flex  w-48 flex-wrap justify-center sm:w-full">
           <h1 className={title({ size: 'md', class: 'mb-3  sm:mr-2' })}>
@@ -107,7 +107,7 @@ const Section1 = () => {
           </span>
         </div>
 
-        <h2 className={subtitle({ class: 'mt-8 w-10/12 md:w-1/2' })}>
+        <h2 className={subtitle({ class: ' w-10/12 md:w-1/2', size: 'md' })}>
           We specialize in web design and development for clients anywhere.
           Every line of code is written by hand to ensure the best performance,
           which helps bring in more customers to your site and bring more
@@ -115,16 +115,18 @@ const Section1 = () => {
         </h2>
       </section>
 
-      <section className="flex  flex-wrap items-center justify-center gap-20  p-20 md:max-w-[80vw] lg:flex-nowrap">
-        <div className="flex  flex-col items-center justify-center gap-8">
+      <section className="flex  flex-wrap items-center justify-center gap-20  p-6 md:max-w-[80vw] lg:flex-nowrap">
+        <div className="flex  flex-col items-center justify-center gap-3">
           <Image
             alt="Background Image"
-            height={150}
+            height={110}
             objectFit="fill"
             src={phone}
-            width={150}
+            width={110}
           />
-          <h1 className={title({ size: 'sm', color: 'blue' })}>
+          <h1
+            className={title({ size: 'md', color: 'blue', className: 'mb-1' })}
+          >
             Mobile-First Design
           </h1>
 
@@ -134,15 +136,17 @@ const Section1 = () => {
           </h2>
         </div>
 
-        <div className="flex flex-col items-center justify-center gap-8 ">
+        <div className="flex flex-col items-center justify-center gap-3 ">
           <Image
             alt="Background Image"
-            height={150}
+            height={110}
             objectFit="fill"
             src={responsiveDesign}
-            width={150}
+            width={110}
           />
-          <h1 className={title({ size: 'sm', color: 'blue' })}>
+          <h1
+            className={title({ size: 'md', color: 'blue', className: 'mb-1' })}
+          >
             Fully Responsive
           </h1>
 
@@ -156,15 +160,19 @@ const Section1 = () => {
             sizes so new clients can access your site from anywhere.
           </h2>
         </div>
-        <div className="flex  flex-col items-center justify-center gap-8 ">
+        <div className="flex  flex-col items-center justify-center gap-3 ">
           <Image
             alt="Background Image"
-            height={150}
+            height={110}
             objectFit="fill"
             src={phoneOptimization}
-            width={150}
+            width={110}
           />
-          <h1 className={title({ size: 'sm', color: 'blue' })}>Optimization</h1>
+          <h1
+            className={title({ size: 'md', color: 'blue', className: 'mb-1' })}
+          >
+            Optimization
+          </h1>
 
           <h2 className={subtitle({ size: 'sm' })}>
             60% of all internet traffic is on mobile devices, so we optimize
@@ -277,18 +285,18 @@ const Section2 = () => {
 
 const Section3 = () => {
   return (
-    <div className="relative flex h-[100vh]  w-full flex-col items-center   justify-start  gap-16 overflow-hidden bg-black  pt-20  sm:gap-20   md:pt-36 ">
+    <div className="md:pt-22 relative flex  h-[100vh] w-full flex-col   items-center  justify-start gap-16 overflow-hidden  bg-black  pt-20  sm:gap-6">
       <section className="flex flex-col items-center justify-start">
         <div className=" flex  w-48 flex-wrap justify-center sm:w-full">
-          <h1 className={title({ size: 'md', class: 'mb-3 sm:mr-2' })}>
+          <h1 className={title({ size: 'sm', class: 'mb-3 sm:mr-2' })}>
             Contact{'  '}
           </h1>
-          <span className={title({ color: 'blue', size: 'md' })}>&nbsp;Us</span>
+          <span className={title({ color: 'blue', size: 'sm' })}>&nbsp;Us</span>
         </div>
       </section>
 
       <footer className=" flex w-full flex-wrap items-center justify-center gap-10 ">
-        <Card className=" sm:w-3xl flex  w-10/12 max-w-2xl ">
+        <Card className=" sm:w-3xl flex  w-9/12 max-w-2xl ">
           <CardBody>
             <form className="flex w-full flex-col flex-wrap gap-4 md:flex-nowrap ">
               <Input label="Name" type="name" />
@@ -302,7 +310,7 @@ const Section3 = () => {
               />
             </form>
             <div className="flex justify-end pr-2 pt-6">
-              <Button className="p-6" color="primary" size="lg">
+              <Button className="p-4" color="primary" size="md">
                 Submit
               </Button>
             </div>

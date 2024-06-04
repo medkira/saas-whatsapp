@@ -62,7 +62,7 @@ export const Navbar = () => {
       <NavbarBrand as="li">
         <NextLink className="flex items-center justify-start gap-2" href="/">
           <Logo />
-          <p className="pt-1 text-xl font-extrabold">Total Tech</p>
+          <p className="pt-1 text-sm font-extrabold md:text-xl">Total Tech</p>
         </NextLink>
       </NavbarBrand>
       <NavbarContent className="hidden gap-4 sm:flex" justify="center">
@@ -74,8 +74,8 @@ export const Navbar = () => {
                   // linkStyles({ color: 'foreground' }),
                   '',
                   {
-                    'text-[1.2rem] font-thin': pathname !== item.href,
-                    'text-[1.2rem] font-bold  text-blue-600':
+                    'text-[1rem] font-thin': pathname !== item.href,
+                    'text-[1rem] font-bold  text-blue-600':
                       pathname === item.href,
                   },
                 )}
