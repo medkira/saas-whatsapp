@@ -119,11 +119,12 @@ const Section1 = () => {
         <div className="flex  flex-col items-center justify-center gap-3">
           <Image
             alt="Background Image"
-            height={110}
+            height={90}
             objectFit="fill"
             src={phone}
-            width={110}
+            width={90}
           />
+
           <h1
             className={title({ size: 'md', color: 'blue', className: 'mb-1' })}
           >
@@ -139,10 +140,10 @@ const Section1 = () => {
         <div className="flex flex-col items-center justify-center gap-3 ">
           <Image
             alt="Background Image"
-            height={110}
+            height={90}
             objectFit="fill"
             src={responsiveDesign}
-            width={110}
+            width={90}
           />
           <h1
             className={title({ size: 'md', color: 'blue', className: 'mb-1' })}
@@ -163,10 +164,10 @@ const Section1 = () => {
         <div className="flex  flex-col items-center justify-center gap-3 ">
           <Image
             alt="Background Image"
-            height={110}
+            height={90}
             objectFit="fill"
             src={phoneOptimization}
-            width={110}
+            width={90}
           />
           <h1
             className={title({ size: 'md', color: 'blue', className: 'mb-1' })}
@@ -306,7 +307,6 @@ const Section3 = () => {
               <Textarea
                 label="Description"
                 placeholder="Type your Message Here"
-                className=""
               />
             </form>
             <div className="flex justify-end pr-2 pt-6">
