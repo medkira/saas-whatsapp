@@ -124,15 +124,15 @@ export const Navbar = () => {
 
       <NavbarContent className="basis-1 pl-4 sm:hidden" justify="end">
         <Link isExternal aria-label="Github" href={siteConfig.links.github}>
-          <GithubIcon className="text-default-500" />
+          <TwitterIcon className="text-default-500" />
         </Link>
-        <ThemeSwitch />
+        {/* <ThemeSwitch /> */}
         <NavbarMenuToggle />
       </NavbarContent>
 
-      <NavbarMenu>
+      <NavbarMenu className="bg-black/50 backdrop-blur-sm">
         {searchInput}
-        <div className="mx-4 mt-2 flex flex-col gap-2 ">
+        <div className="mx-4 mt-2 flex flex-col gap-2">
           {siteConfig.navMenuItems.map((item, index) => (
             <NavbarMenuItem key={`${item}-${index}`}>
               <Link

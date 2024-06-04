@@ -14,8 +14,8 @@ export const title = tv({
       white: 'text-[#f2f2f2]', // Use text-white instead of a hex color
     },
     size: {
-      sm: 'text-[2.3rem] lg:text-4xl leading-9 ',
-      md: 'text-xl md:text-3xl',
+      sm: 'text-2xl md:text-2xl leading-9 ',
+      md: 'text-3xl sm:text-4xl',
       lg: 'text-[2.7rem]  sm:text-6xl md:text-5xl lg:text-6xl',
     },
     fullWidth: {
@@ -49,7 +49,7 @@ export const subtitle = tv({
       true: '!w-full',
     },
     size: {
-      sm: 'text-xl lg:text-[1.1rem]',
+      sm: 'text-md lg:text-[1.1rem]',
       md: 'text-xl lg:text-xl leading-9',
       lg: 'text-5xl md:text-8xl',
     },

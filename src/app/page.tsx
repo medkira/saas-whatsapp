@@ -69,24 +69,11 @@ const HeroSection = () => {
         placeholder="blur"
         src={landing}
       />
-      {/* bg-[url('/images/landing.jpg')] object-fill */}
-      {/* 
-      <img
-        alt="Responsive design"
-        // height={90}
-        src="/images/landing.jpg"
-        // width={90}
-        style={{
-          objectFit: 'cover',
-          position: 'absolute',
-          height: '100vh',
-          width: '100vw',
-        }}
-      /> */}
-      <div className="relative flex h-[50hv]  w-full flex-col items-center justify-center gap-5 overflow-hidden bg-transparent px-10  pt-48  md:pt-32  ">
+
+      <div className="relative flex h-[50hv]  w-full flex-col items-center justify-center gap-5 overflow-hidden bg-transparent px-10  pt-[20vh]  md:pt-32  ">
         <Meteors number={30} />
         <div className=" flex w-full flex-col justify-center text-center">
-          <div className="-mb-1 md:mb-4 ">
+          <div className="-mb-4 md:mb-1 ">
             <h1 className={title()}>Level&nbsp;</h1>
             <h1 className={title({})}>Up&nbsp;</h1>
             <h1 className={title()}>Your </h1>
@@ -111,18 +98,24 @@ const Section1 = () => {
   // const rotate = useTransform(scrollYProgress, [0, 1], [5, 0]);
 
   return (
-    <div className="md:pt-26 sticky  flex w-full flex-col  items-center justify-start  gap-9 overflow-hidden bg-black  pt-20 text-center lg:top-0 lg:h-[160vh]  ">
+    <div className="sticky flex  w-full flex-col items-center  justify-start gap-9  overflow-hidden bg-black pt-20  text-center md:pt-28 lg:top-0 lg:h-[160vh]  ">
       <section className="flex flex-col items-center justify-start">
-        <div className=" flex  w-48 flex-wrap justify-center sm:w-full">
-          <h1 className={title({ size: 'md', class: 'mb-3  sm:mr-2' })}>
-            Why Should{' '}
+        <div className="   pb-2 sm:w-full">
+          <h1 className={title({ size: 'md', class: 'mb-3  mr-2' })}>
+            Why Should
           </h1>
-          <span className={title({ color: 'blue', size: 'md' })}>
+          <span
+            className={title({
+              color: 'blue',
+              size: 'md',
+              className: 'bg-white',
+            })}
+          >
             You Care?
           </span>
         </div>
 
-        <h2 className={subtitle({ class: ' w-10/12 md:w-1/2', size: 'md' })}>
+        <h2 className={subtitle({ class: 'w-10/12 md:w-1/2', size: 'md' })}>
           We specialize in web design and development for clients anywhere.
           Every line of code is written by hand to ensure the best performance,
           which helps bring in more customers to your site and bring more
@@ -133,18 +126,18 @@ const Section1 = () => {
       <section className="flex  flex-wrap items-center justify-center gap-20  p-6 md:max-w-[80vw] lg:flex-nowrap">
         <div className="flex  flex-col items-center justify-center gap-3">
           <Image
+            priority
             alt="Background Image"
             height={90}
-            src={phone}
-            width={90}
             layout="fixed"
-            priority
             sizes="(max-width: 90px) 100vw,
             (max-width: 70px) 50vw,
             33vw"
+            src={phone}
+            width={90}
           />
           <h1
-            className={title({ size: 'md', color: 'blue', className: 'mb-1' })}
+            className={title({ size: 'sm', color: 'blue', className: 'mb-1' })}
           >
             Mobile-First Design
           </h1>
@@ -156,18 +149,18 @@ const Section1 = () => {
 
         <div className="flex flex-col items-center justify-center gap-3 ">
           <Image
+            priority
             alt="Background Image"
             height={90}
-            src={responsiveDesign}
-            width={90}
             layout="fixed"
-            priority
             sizes="(max-width: 90px) 100vw,
             (max-width: 90px) 50vw,
             33vw"
+            src={responsiveDesign}
+            width={90}
           />
           <h1
-            className={title({ size: 'md', color: 'blue', className: 'mb-1' })}
+            className={title({ size: 'sm', color: 'blue', className: 'mb-1' })}
           >
             Fully Responsive
           </h1>
@@ -178,18 +171,18 @@ const Section1 = () => {
         </div>
         <div className="flex  flex-col items-center justify-center gap-3 ">
           <Image
+            priority
             alt="Background Image"
             height={90}
-            src={phoneOptimization}
-            width={90}
             layout="fixed"
-            priority
             sizes="(max-width: 90px) 100vw,
             (max-width: 90px) 50vw,
             33vw"
+            src={phoneOptimization}
+            width={90}
           />
           <h1
-            className={title({ size: 'md', color: 'blue', className: 'mb-1' })}
+            className={title({ size: 'sm', color: 'blue', className: 'mb-1' })}
           >
             Optimization
           </h1>
@@ -209,12 +202,12 @@ const Section2 = () => {
   // const rotate = useTransform(scrollYProgress, [0, 1], [5, 0]);
 
   return (
-    <div className="sticky flex  w-full flex-col  items-center justify-start gap-10 overflow-hidden  bg-gray-900  pt-20 text-center md:pt-36 lg:top-0 lg:h-[160vh]  ">
+    <div className="sticky flex  w-full flex-col  items-center justify-start gap-10 overflow-hidden  bg-gray-900  pt-20 text-center md:pt-28 lg:top-0 lg:h-[160vh]  ">
       <section className="flex flex-col items-center justify-start">
         <div className=" flex  w-48 flex-wrap justify-center sm:w-full">
-          <h1 className={title({ size: 'md', class: 'mb-3 sm:mr-2' })}>
-            Latest Work{' '}
-          </h1>{' '}
+          <h1 className={title({ size: 'md', class: ' sm:mr-2' })}>
+            Latest Work
+          </h1>
           <span className={title({ color: 'blue', size: 'md' })}>Created</span>
         </div>
       </section>
@@ -304,13 +297,11 @@ const Section2 = () => {
 
 const Section3 = () => {
   return (
-    <div className="md:pt-22 relative flex  h-[100vh] w-full flex-col   items-center  justify-start gap-16 overflow-hidden  bg-black  pt-20  sm:gap-6">
+    <div className="md:pt-22 relative flex  h-[100vh] w-full flex-col   items-center  justify-items-start gap-16 overflow-hidden  bg-black  pt-24 sm:gap-6">
       <section className="flex flex-col items-center justify-start">
         <div className=" flex  w-48 flex-wrap justify-center sm:w-full">
-          <h1 className={title({ size: 'sm', class: 'mb-3 sm:mr-2' })}>
-            Contact{'  '}
-          </h1>
-          <span className={title({ color: 'blue', size: 'sm' })}>&nbsp;Us</span>
+          <h1 className={title({ size: 'md', class: 'mb-3 ' })}>Contact</h1>
+          <span className={title({ color: 'blue', size: 'md' })}>&nbsp;Us</span>
         </div>
       </section>
 
