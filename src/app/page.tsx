@@ -65,8 +65,9 @@ const HeroSection = () => {
         priority
         alt="Background Image"
         layout="fill"
-        src={landing}
+        objectFit="cover"
         placeholder="blur"
+        src={landing}
       />
       {/* bg-[url('/images/landing.jpg')] object-fill */}
       {/* 
@@ -314,9 +315,9 @@ const Section3 = () => {
       </section>
 
       <footer className=" flex w-full flex-wrap items-center justify-center gap-10 ">
-        <Card className=" sm:w-3xl flex  w-9/12 max-w-2xl ">
+        <Card className=" sm:w-3xl flex w-9/12 max-w-2xl">
           <CardBody>
-            <form className="flex w-full flex-col flex-wrap gap-4 md:flex-nowrap ">
+            <form className="flex max-h-[70vh] w-full flex-col flex-wrap gap-4 md:flex-nowrap ">
               <Input label="Name" type="name" />
               <Input label="Business" type="business" />
               <Input label="Email" type="email" />
@@ -324,7 +325,6 @@ const Section3 = () => {
               <Textarea
                 label="Description"
                 placeholder="Type your Message Here"
-                className=""
               />
             </form>
             <div className="flex justify-end pr-2 pt-6">
