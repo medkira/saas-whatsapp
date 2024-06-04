@@ -60,13 +60,27 @@ const HeroSection = () => {
   // const rotate = useTransform(scrollYProgress, [0, 1], [0, -5]);
 
   return (
-    <div className="- sticky top-0 h-[100vh] w-full ">
-      <Image
+    <div className="sticky top-0 h-[100vh] w-full  ">
+      {/* <Image
         alt="Background Image"
         layout="fill"
         objectFit="cover"
         quality={100}
         src={landing}
+      /> */}
+      {/* bg-[url('/images/landing.jpg')] object-fill */}
+
+      <img
+        alt="Responsive design"
+        // height={90}
+        src="/images/landing.jpg" // Adjust the path accordingly
+        // width={90}
+        style={{
+          objectFit: 'cover',
+          position: 'absolute',
+          height: '100vh',
+          width: '100vw',
+        }}
       />
       <div className="relative flex h-[50hv]  w-full flex-col items-center justify-center gap-5 overflow-hidden bg-transparent px-10  pt-48  md:pt-32  ">
         <Meteors number={30} />
@@ -115,66 +129,58 @@ const Section1 = () => {
         </h2>
       </section>
 
-      <section className="flex  flex-wrap items-center justify-center gap-20  p-6 md:max-w-[80vw] lg:flex-nowrap">
-        <div className="flex  flex-col items-center justify-center gap-3">
-          <Image
-            alt="Background Image"
+      <section className="flex flex-wrap items-center justify-center gap-20 p-6 md:max-w-[80vw] lg:flex-nowrap">
+        <div className="flex flex-col items-center justify-center gap-3">
+          <img
+            alt="Mobile phone"
             height={90}
-            objectFit="fill"
-            src={phone}
+            src="/images/phone.png" // Adjust the path accordingly
             width={90}
+            style={{ objectFit: 'fill' }}
           />
-
           <h1
             className={title({ size: 'md', color: 'blue', className: 'mb-1' })}
           >
             Mobile-First Design
           </h1>
-
           <h2 className={subtitle({ size: 'sm' })}>
             We start building your site for mobile devices first then we add on
             to it to make tablet and desktop.
           </h2>
         </div>
 
-        <div className="flex flex-col items-center justify-center gap-3 ">
-          <Image
-            alt="Background Image"
+        <div className="flex flex-col items-center justify-center gap-3">
+          <img
+            alt="Responsive design"
             height={90}
-            objectFit="fill"
-            src={responsiveDesign}
+            src="/images/responsive-design.png" // Adjust the path accordingly
             width={90}
+            style={{ objectFit: 'fill' }}
           />
           <h1
             className={title({ size: 'md', color: 'blue', className: 'mb-1' })}
           >
             Fully Responsive
           </h1>
-
-          <h2
-            className={subtitle({
-              size: 'sm',
-              class: ' ',
-            })}
-          >
+          <h2 className={subtitle({ size: 'sm' })}>
             Your website will fit all mobile screens sizes tablets, and desktop
             sizes so new clients can access your site from anywhere.
           </h2>
         </div>
-        <div className="flex  flex-col items-center justify-center gap-3 ">
-          <Image
-            alt="Background Image"
+
+        <div className="flex flex-col items-center justify-center gap-3">
+          <img
+            alt="Phone optimization"
             height={90}
-            objectFit="fill"
-            src={phoneOptimization}
+            src="/images/phone.png" // Adjust the path accordingly
             width={90}
+            style={{ objectFit: 'fill' }}
           />
           <h1
             className={title({ size: 'md', color: 'blue', className: 'mb-1' })}
           >
             Optimization
           </h1>
-
           <h2 className={subtitle({ size: 'sm' })}>
             60% of all internet traffic is on mobile devices, so we optimize
             your mobile to perform their best in search engines.
