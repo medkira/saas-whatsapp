@@ -129,14 +129,14 @@ const Section1 = () => {
         </h2>
       </section>
 
-      <section className="flex flex-wrap items-center justify-center gap-20 p-6 md:max-w-[80vw] lg:flex-nowrap">
-        <div className="flex flex-col items-center justify-center gap-3">
-          <img
-            alt="Mobile phone"
+      <section className="flex  flex-wrap items-center justify-center gap-20  p-6 md:max-w-[80vw] lg:flex-nowrap">
+        <div className="flex  flex-col items-center justify-center gap-3">
+          <Image
+            alt="Background Image"
             height={90}
-            src="/images/phone.png" // Adjust the path accordingly
+            objectFit="fill"
+            src={phone}
             width={90}
-            style={{ objectFit: 'fill' }}
           />
           <h1
             className={title({ size: 'md', color: 'blue', className: 'mb-1' })}
@@ -149,13 +149,13 @@ const Section1 = () => {
           </h2>
         </div>
 
-        <div className="flex flex-col items-center justify-center gap-3">
-          <img
-            alt="Responsive design"
+        <div className="flex flex-col items-center justify-center gap-3 ">
+          <Image
+            alt="Background Image"
             height={90}
-            src="/images/responsive-design.png" // Adjust the path accordingly
+            objectFit="fill"
+            src={responsiveDesign}
             width={90}
-            style={{ objectFit: 'fill' }}
           />
           <h1
             className={title({ size: 'md', color: 'blue', className: 'mb-1' })}
@@ -167,14 +167,13 @@ const Section1 = () => {
             sizes so new clients can access your site from anywhere.
           </h2>
         </div>
-
-        <div className="flex flex-col items-center justify-center gap-3">
-          <img
-            alt="Phone optimization"
+        <div className="flex  flex-col items-center justify-center gap-3 ">
+          <Image
+            alt="Background Image"
             height={90}
-            src="/images/phone.png" // Adjust the path accordingly
+            objectFit="fill"
+            src={phoneOptimization}
             width={90}
-            style={{ objectFit: 'fill' }}
           />
           <h1
             className={title({ size: 'md', color: 'blue', className: 'mb-1' })}
@@ -313,6 +312,7 @@ const Section3 = () => {
               <Textarea
                 label="Description"
                 placeholder="Type your Message Here"
+                className=""
               />
             </form>
             <div className="flex justify-end pr-2 pt-6">
