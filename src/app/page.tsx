@@ -73,7 +73,7 @@ const HeroSection = () => {
       <div className="relative flex h-[50hv]  w-full flex-col items-center justify-center gap-5 overflow-hidden bg-transparent px-10  pt-[20vh]  md:pt-32  ">
         <Meteors number={30} />
         <div className=" flex w-full flex-col justify-center text-center">
-          <div className="-mb-4 md:mb-1 ">
+          <div className="-mb-4 sm:mb-1 ">
             <h1 className={title()}>Level&nbsp;</h1>
             <h1 className={title({})}>Up&nbsp;</h1>
             <h1 className={title()}>Your </h1>
@@ -308,7 +308,7 @@ const Section3 = () => {
       <footer className=" flex w-full flex-wrap items-center justify-center gap-10 ">
         <Card className=" sm:w-3xl flex w-9/12 max-w-2xl">
           <CardBody>
-            <form className="flex max-h-[70vh] w-full flex-col flex-wrap gap-4 md:flex-nowrap ">
+            <form className="flex max-h-[50vh] w-full flex-col flex-wrap gap-4 md:flex-nowrap ">
               <Input label="Name" type="name" />
               <Input label="Business" type="business" />
               <Input label="Email" type="email" />
