@@ -70,7 +70,7 @@ const HeroSection = () => {
         src={landing}
       />
 
-      <div className="relative flex h-[50hv]  w-full flex-col items-center justify-center gap-3 overflow-hidden bg-transparent px-10  pt-[20vh]  md:pt-32  ">
+      <div className="relative flex h-[50hv]  w-full flex-col items-center justify-center gap-1 overflow-hidden bg-transparent px-10 pt-[20vh]  sm:gap-6  md:pt-32  ">
         <Meteors number={30} />
         <div className=" flex w-full flex-col justify-center text-center">
           <div className="-mb-4 sm:mb-1 ">
