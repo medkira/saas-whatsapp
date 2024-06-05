@@ -23,7 +23,7 @@ import { roboto } from '@/config/fonts';
 import Meteors from '@/components/magicui/meteors';
 import { StarsBackground } from '@/components/landing/background/test';
 import { Navbar } from '@/components/navbar';
-import { motion } from 'framer-motion';
+import { motion, px } from 'framer-motion';
 
 export default function Home() {
   useEffect(() => {
@@ -297,34 +297,52 @@ const Section2 = () => {
 
 const Section3 = () => {
   return (
-    <div className="md:pt-22 relative flex  h-[100vh] w-full flex-col   items-center  justify-items-start gap-16 overflow-hidden  bg-black  pt-24 sm:gap-6">
+    <div className="relative flex h-[100vh]  w-full flex-col items-center   justify-items-start  gap-8 overflow-hidden bg-black pt-24  sm:gap-6  md:gap-9 md:pt-[10vh]">
       <section className="flex flex-col items-center justify-start">
         <div className=" flex  w-48 flex-wrap justify-center sm:w-full">
-          <h1 className={title({ size: 'md', class: 'mb-3 ' })}>Contact</h1>
+          <h1 className={title({ size: 'md', class: '' })}>Contact</h1>
           <span className={title({ color: 'blue', size: 'md' })}>&nbsp;Us</span>
         </div>
       </section>
 
       <footer className=" flex w-full flex-wrap items-center justify-center gap-10 ">
-        <Card className=" sm:w-3xl flex w-9/12 max-w-2xl">
+        <Card className="sm:w-3xl flex w-9/12 max-w-2xl">
           <CardBody>
-            <form className="flex max-h-[50vh] w-full flex-col flex-wrap gap-4 md:flex-nowrap ">
-              <Input label="Name" type="name" />
-              <Input label="Business" type="business" />
-              <Input label="Email" type="email" />
-              <Input label="Phone number" type="phone umber" />
+            <form className="md:max-h-auto flex w-full flex-col flex-wrap gap-4 md:flex-nowrap">
+              <Input
+                label="Name"
+                type="name"
+                className="h-12 md:h-auto md:max-h-12"
+              />
+              <Input
+                label="Business"
+                type="business"
+                className="h-12 md:h-auto md:max-h-12"
+              />
+              <Input
+                label="Email"
+                type="email"
+                className="h-12 md:h-auto md:max-h-12"
+              />
+              <Input
+                label="Phone number"
+                type="phone number"
+                className="h-12 md:h-auto md:max-h-12"
+              />
               <Textarea
                 label="Description"
                 placeholder="Type your Message Here"
+                className="h-24 md:h-auto md:max-h-24"
               />
             </form>
             <div className="flex justify-end pr-2 pt-6">
-              <Button className="p-4" color="primary" size="md">
+              <Button className="max-p-4" color="primary" size="md">
                 Submit
               </Button>
             </div>
           </CardBody>
         </Card>
+
         {/* <Card className="sm:w-3xl perspective flex h-full w-10/12 max-w-2xl">
           <CardBody></CardBody>
         </Card> */}
