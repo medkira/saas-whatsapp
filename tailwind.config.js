@@ -34,7 +34,9 @@ module.exports = {
       themes: {
         dark: {
           colors: {
-            background: '#042749',
+            background: 'transparent',
+            // background: '#042749',
+
             foreground: '#ECEDEE',
             primary: {
               //... 50 to 900
