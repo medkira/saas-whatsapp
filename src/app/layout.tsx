@@ -3,7 +3,7 @@ import { Metadata, Viewport } from 'next';
 import { Link } from '@nextui-org/link';
 import clsx from 'clsx';
 import Image from 'next/legacy/image';
-
+import { Toaster } from '@/components/ui/toaster';
 import landing from '../../public/images/landing.jpg';
 import { Navbar } from '../components/navbar';
 
@@ -54,6 +54,7 @@ export default function RootLayout({
             <main className="">{children}</main>
           </div>
         </Providers>
+        <Toaster />
       </body>
     </html>
   );

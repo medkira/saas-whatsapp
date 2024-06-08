@@ -1,10 +1,13 @@
 'use client';
 
 import { Accordion, AccordionItem } from '@nextui-org/react';
+import * as React from 'react';
+import Image from 'next/legacy/image';
+import emailjs from '@emailjs/browser';
 
 import { title } from '@/components/primitives';
 import { DrawerDialogDemo } from '@/components/shadcn/drawerDialog';
-import { Card, CardContent } from '@/components/ui/card';
+import { Card } from '@/components/ui/card';
 import {
   Carousel,
   CarouselContent,
@@ -12,38 +15,32 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel';
-
-import CarouselTest from '@/components/dashboard/preview/carousel';
-
-import * as React from 'react';
-import Image from 'next/legacy/image';
-
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTrigger,
 } from '@/components/ui/dialog';
-import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
 import { Button } from '@/components/ui/button';
 
 import landing from '/public/images/landing.jpg';
+import landingGym from '/public/images/landing-gym.png';
+import landingGym1 from '/public/images/landing-gym1.png';
+import landingGym2 from '/public/images/landing-gym2.png';
+import landingGym3 from '/public/images/landing-gym3.png';
+
+import { useDateStore, useFormStore } from '@/app/lib/store';
+import Lenis from 'lenis';
 // State variables
-const staticImages = [
-  landing,
-  landing,
-  landing,
-  landing,
-  landing,
-  landing,
-  landing,
-  landing,
-  landing,
-];
-const defaultContent =
-  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.';
+const staticImages = [landingGym, landingGym1, landingGym2, landingGym3];
+// const defaultContent =
+//   'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.';
 
 export default function Page() {
+  const { globalDate } = useDateStore();
+  const { formData, setFormData } = useFormStore();
+  // console.log(globalDate);
+
   const [selectedImage, setSelectedImage] = React.useState(staticImages[0]);
   const [selectedImageIndex, setSelectedImageIndex] = React.useState(0);
 
@@ -64,10 +61,38 @@ export default function Page() {
     setSelectedImageIndex(prevIndex);
   };
 
-  return (
-    <div className="flex flex-col items-center justify-center gap-6 ">
-      <h1 className={title({ className: 'p-6', size: 'lg' })}>WebSite</h1>
+  // SCROLL SMOOOOTH xd
+  React.useEffect(() => {
+    const lenis = new Lenis();
 
+    function raf(time: any) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+  }, []);
+
+  return (
+    <div className="flex flex-col items-center justify-center gap-6">
+      {/* Header Section */}
+      <header className="flex flex-col items-center py-6 text-center">
+        <h1
+          className={title({
+            className: 'pt-3 font-bold md:!text-5xl',
+            size: 'lg',
+          })}
+        >
+          Welcome to Your Website Preview
+        </h1>
+        <p className="pt-6 text-lg text-gray-600">
+          We are excited to show you a preview of your new website. Explore the
+          sections below to see the design and functionality we have crafted for
+          your business.
+        </p>
+      </header>
+
+      {/* Web Site Preview */}
       <section className="max-w-s w-[70vw]">
         <Carousel
           className="w-full "
@@ -81,7 +106,7 @@ export default function Page() {
                 key={index}
                 className="flex justify-center  md:basis-1/2 lg:basis-1/3"
               >
-                <Card className=" flex w-[250px] items-center justify-center overflow-hidden ">
+                <Card className=" flex w-[500px] items-center justify-center overflow-hidden ">
                   <Dialog key={index}>
                     <DialogTrigger asChild>
                       {/* Image */}
@@ -141,7 +166,6 @@ export default function Page() {
                             variant="outline"
                             onClick={handlePrev}
                           >
-                            {/* <Icon icon="ooui:previous-ltr" width="14" height="14" /> */}
                             Previous
                           </Button>
 
@@ -152,7 +176,6 @@ export default function Page() {
                             onClick={handleNext}
                           >
                             Next
-                            {/* <Icon icon="ooui:previous-rtl" width="14" height="14" /> */}
                           </Button>
                         </div>
                       </div>
@@ -167,33 +190,62 @@ export default function Page() {
         </Carousel>
       </section>
 
-      <section className="pt-6">
+      {/* Get website */}
+      <section className="pt-8">
         <DrawerDialogDemo />
       </section>
 
+      {/* About Us Accordion */}
       <h1 className={title({ className: 'pt-6', size: 'md' })}>About Us</h1>
-
-      <section className=" w-[95vw]">
+      <section className=" w-[95vw] sm:w-[50vw]">
         <Accordion>
           <AccordionItem key="1" aria-label="Accordion 1" title="Who are we?">
-            {defaultContent}
+            <p>
+              Total Tech is a cutting-edge agency specializing in web and mobile
+              development. Our team of expert developers and designers is
+              dedicated to creating innovative and user-friendly solutions
+              tailored to your business needs.
+            </p>
           </AccordionItem>
           <AccordionItem
             key="2"
             aria-label="Accordion 2"
             title="What services do we offer?"
           >
-            {defaultContent}
+            <ul className="flex flex-col items-center justify-center gap-6">
+              <li className="flex flex-col gap-3">
+                <strong>Web Development</strong> We build responsive and robust
+                websites using the latest technologies and best practices to
+                ensure optimal performance and user experience.
+              </li>
+              <li className="flex flex-col gap-3">
+                <strong>Mobile Development</strong> Our team creates
+                high-quality mobile applications for both iOS and Android
+                platforms, focusing on seamless functionality and engaging user
+                interfaces.
+              </li>
+              <li className="flex flex-col gap-3">
+                <strong>UI/UX Design</strong> Our designers craft intuitive and
+                visually appealing interfaces that enhance user satisfaction and
+                drive engagement.
+              </li>
+              <li className="flex flex-col gap-3">
+                <strong>Custom Solutions</strong> We offer tailored solutions to
+                meet specific business requirements, ensuring scalability and
+                flexibility.
+              </li>
+            </ul>
           </AccordionItem>
           <AccordionItem key="3" aria-label="Accordion 3" title="Contact Us">
-            {defaultContent}
+            <p>
+              You can reach us at any time by making an appointment. Provide
+              your email or phone number, and choose a convenient day and time.
+              We will call you to discuss your website creation needs and
+              pricing.
+            </p>
           </AccordionItem>
         </Accordion>
       </section>
-
-      {/* <section>
-        <CarouselTest />
-      </section> */}
     </div>
   );
 }
