@@ -77,15 +77,26 @@ export default function Page() {
     <div className="flex flex-col items-center justify-center gap-6">
       {/* Header Section */}
       <header className="flex flex-col items-center py-6 text-center">
-        <h1
-          className={title({
-            className: 'pt-3 font-bold md:!text-5xl',
-            size: 'lg',
-          })}
-        >
-          Welcome to Your Website Preview
-        </h1>
-        <p className="pt-6 text-lg text-gray-600">
+        <div className="flex flex-col gap-0">
+          <h1
+            className={title({
+              className: '-mb-10 p-3 pt-3 font-bold md:-mb-5 md:!text-5xl',
+              size: 'lg',
+            })}
+          >
+            Welcome to Your
+          </h1>
+          <h1
+            className={title({
+              className: 'p-3 pt-3 font-bold md:!text-5xl',
+              size: 'lg',
+            })}
+          >
+            Website Preview
+          </h1>
+        </div>
+
+        <p className="px-4 text-lg  text-gray-600 md:px-0">
           We are excited to show you a preview of your new website. Explore the
           sections below to see the design and functionality we have crafted for
           your business.
