@@ -166,7 +166,7 @@ function ProfileForm({ className }: React.ComponentProps<'form'>) {
           required
         />
       </div>
-      <div className="">
+      <div className="w-full">
         <DateTimePicker />
       </div>
 

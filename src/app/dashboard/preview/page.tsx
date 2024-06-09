@@ -3,7 +3,6 @@
 import { Accordion, AccordionItem } from '@nextui-org/react';
 import * as React from 'react';
 import Image from 'next/legacy/image';
-import emailjs from '@emailjs/browser';
 
 import { title } from '@/components/primitives';
 import { DrawerDialogDemo } from '@/components/shadcn/drawerDialog';
