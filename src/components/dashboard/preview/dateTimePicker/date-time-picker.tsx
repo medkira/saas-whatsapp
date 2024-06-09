@@ -18,7 +18,7 @@ import {
 import { useDateStore } from '@/app/lib/store';
 
 export function DateTimePicker() {
-  const { setGlobalDate } = useDateStore();
+  // const { setGlobalDate } = useDateStore();
   const [date, setDate] = React.useState<Date>();
 
   /**
@@ -29,7 +29,7 @@ export function DateTimePicker() {
     if (!newDay) return;
     if (!date) {
       setDate(newDay);
-      setGlobalDate(newDay);
+      // setGlobalDate(newDay);
       // console.log(newDay);
 
       return;
@@ -39,7 +39,7 @@ export function DateTimePicker() {
     const newDateFull = add(date, { days: Math.ceil(diffInDays) });
 
     setDate(newDateFull);
-    setGlobalDate(newDateFull);
+    // setGlobalDate(newDateFull);
   };
 
   // // Optional: if you want to perform some side-effect whenever `date` changes

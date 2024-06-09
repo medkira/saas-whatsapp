@@ -1,8 +1,9 @@
+import { AnyDateTime, startOfWeek, startOfMonth, getLocalTimeZone, today } from "@internationalized/date";
 import { create } from 'zustand';
 
 interface DateState {
-    globalDate: Date | null;
-    setGlobalDate: (date: Date) => void;
+    globalDate: AnyDateTime | null;
+    setGlobalDate: (date: AnyDateTime) => void;
 }
 
 
@@ -19,7 +20,7 @@ interface FormStore {
 }
 export const useDateStore = create<DateState>((set) => ({
     globalDate: null,
-    setGlobalDate: (globalDate: Date) => set({ globalDate }),
+    setGlobalDate: (globalDate: AnyDateTime) => set({ globalDate }),
 }));
 
 

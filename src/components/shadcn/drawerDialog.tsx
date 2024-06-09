@@ -31,7 +31,9 @@ import {
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { useDateStore, useFormStore } from '@/app/lib/store';
+import { DatePicker } from '@nextui-org/react';
 
+import { now, getLocalTimeZone } from '@internationalized/date';
 export function DrawerDialogDemo() {
   const [open, setOpen] = React.useState(false);
   const isDesktop = useMediaQuery('(min-width: 768px)');
@@ -86,7 +88,7 @@ function ProfileForm({ className }: React.ComponentProps<'form'>) {
   const { toast } = useToast();
 
   const { formData, setFormData } = useFormStore();
-  const { globalDate } = useDateStore();
+  const { globalDate, setGlobalDate } = useDateStore();
   // const [formData, setFormData] = useState({
   //   phoneNumber: '',
   //   email: '',
@@ -107,9 +109,9 @@ function ProfileForm({ className }: React.ComponentProps<'form'>) {
       to_name: 'totaltech',
       from_name: formData.username,
       subject: 'Getting website offer',
-      message: `client ${formData.username} want you to call him 
-      from ${formData.phoneNumber} at ${globalDate} or just email him on ${formData.email} `,
-      // Add other fields as needed
+      message: `Client ${formData.username} wants you to call them 
+                at ${formData.phoneNumber} at ${globalDate?.hour}:${globalDate?.minute}/${globalDate?.era} on ${globalDate?.day}/${globalDate?.month}/${globalDate?.year}, 
+                or just email them at ${formData.email}.`,
     };
 
     e.preventDefault();
@@ -119,7 +121,7 @@ function ProfileForm({ className }: React.ComponentProps<'form'>) {
       })
       .then(
         () => {
-          console.log('SUCCESS!');
+          // console.log('SUCCESS!');
           toast({
             description: 'Your message has been sent.',
           });
@@ -138,12 +140,12 @@ function ProfileForm({ className }: React.ComponentProps<'form'>) {
       <div className="grid gap-2">
         <Label htmlFor="email">Phone Number</Label>
         <Input
+          required
           defaultValue=""
           id="phoneNumber"
           name="phoneNumber"
           type="phoneNumber"
           onChange={handleChange}
-          required
         />
       </div>
       <div className="grid gap-2">
@@ -159,15 +161,26 @@ function ProfileForm({ className }: React.ComponentProps<'form'>) {
       <div className="grid gap-2">
         <Label htmlFor="username">Username</Label>
         <Input
+          required
           defaultValue=""
           id="username"
           name="username"
           onChange={handleChange}
-          required
         />
       </div>
-      <div className="w-full">
+      {/* <div className="w-full">
         <DateTimePicker />
+      </div> */}
+      <div className="flex w-full max-w-xl flex-row gap-4">
+        <DatePicker
+          hideTimeZone
+          showMonthAndYearPickers
+          defaultValue={now(getLocalTimeZone())}
+          hourCycle={24}
+          label="Event Date"
+          variant="bordered"
+          onChange={setGlobalDate}
+        />
       </div>
 
       <Button type="submit">Make Appoinment</Button>
