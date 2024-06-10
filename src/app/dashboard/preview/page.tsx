@@ -1,8 +1,9 @@
 'use client';
 
-import { Accordion, AccordionItem } from '@nextui-org/react';
+import { Accordion, AccordionItem, cn, DatePicker } from '@nextui-org/react';
 import * as React from 'react';
 import Image from 'next/legacy/image';
+import emailjs from '@emailjs/browser';
 
 import { title } from '@/components/primitives';
 import { DrawerDialogDemo } from '@/components/shadcn/drawerDialog';
@@ -21,6 +22,7 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
+import { now, getLocalTimeZone } from '@internationalized/date';
 
 import landing from '/public/images/landing.jpg';
 import landingGym from '/public/images/landing-gym.png';
@@ -30,14 +32,18 @@ import landingGym3 from '/public/images/landing-gym3.png';
 
 import { useDateStore, useFormStore } from '@/app/lib/store';
 import Lenis from 'lenis';
+import { Label } from '@radix-ui/react-label';
+import { Input } from '@/components/ui/input';
+import { toast } from '@/components/ui/use-toast';
 // State variables
 const staticImages = [landingGym, landingGym1, landingGym2, landingGym3];
 // const defaultContent =
 //   'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.';
 
 export default function Page() {
-  const { globalDate } = useDateStore();
   const { formData, setFormData } = useFormStore();
+  const { globalDate, setGlobalDate } = useDateStore();
+
   // console.log(globalDate);
 
   const [selectedImage, setSelectedImage] = React.useState(staticImages[0]);
@@ -71,9 +77,56 @@ export default function Page() {
 
     requestAnimationFrame(raf);
   }, []);
+  const handleChange = (event: any) => {
+    const { name, value } = event.target;
+
+    setFormData({ ...formData, [name]: value });
+  };
+
+  // ? this should be in a use case
+  // ? {{email Js send email}}
+  const sendEmail = (e: any) => {
+    const templateParams = {
+      to_name: 'totaltech',
+      from_name: formData.username,
+      subject: 'Getting website offer',
+      message: `Client ${formData.username} wants you to call them 
+                at ${formData.phoneNumber} at ${globalDate?.hour}:${globalDate?.minute}/${globalDate?.era} on ${globalDate?.day}/${globalDate?.month}/${globalDate?.year}, 
+                or just email them at ${formData.email}.`,
+    };
+
+    e.preventDefault();
+    emailjs
+      .send('service_zh25lbr', 'template_tcfc0ub', templateParams, {
+        publicKey: 'zCwC7ca2BSPtKUbpE',
+      })
+      .then(
+        () => {
+          // console.log('SUCCESS!');
+          toast({
+            description: 'Your message has been sent.',
+          });
+        },
+        (error) => {
+          // console.log('FAILED...', error);
+        },
+      );
+  };
 
   return (
     <div className="flex flex-col items-center justify-center gap-6">
+      <div className="z-50 flex w-full max-w-xl flex-row gap-4">
+        {/* <DatePicker
+          hideTimeZone
+          showMonthAndYearPickers
+          defaultValue={now(getLocalTimeZone())}
+          hourCycle={24}
+          label="Event Date"
+          variant="bordered"
+          // onChange={setGlobalDate}
+        /> */}
+      </div>
+
       {/* Header Section */}
       <header className="flex flex-col items-center py-6 text-center">
         <div className="flex flex-col gap-0">
@@ -201,9 +254,62 @@ export default function Page() {
       </section>
 
       {/* Get website */}
-      <section className="pt-8">
-        <DrawerDialogDemo />
-      </section>
+
+      <h1 className={title({ className: 'pt-6', size: 'md' })}>
+        Get Your Website
+      </h1>
+      <div className="w-[60vw] rounded-lg bg-zinc-50/5 p-6 backdrop-blur-[5px] md:w-[35vw] ">
+        <form
+          className={'] flex flex-col items-center justify-start gap-6 pt-3 '}
+          onSubmit={sendEmail}
+        >
+          <div className="flex w-full flex-col items-start justify-center gap-4">
+            <Label htmlFor="email">Phone Number</Label>
+            <Input
+              required
+              defaultValue=""
+              id="phoneNumber"
+              name="phoneNumber"
+              type="phoneNumber"
+              onChange={handleChange}
+            />
+          </div>
+          <div className="flex w-full flex-col items-start justify-center gap-4">
+            <Label htmlFor="email">Email</Label>
+            <Input
+              defaultValue=""
+              id="email"
+              name="email"
+              type="email"
+              onChange={handleChange}
+            />
+          </div>
+          <div className="flex w-full flex-col items-start justify-center gap-4">
+            <Label htmlFor="username">Username</Label>
+            <Input
+              required
+              defaultValue=""
+              id="username"
+              name="username"
+              onChange={handleChange}
+            />
+          </div>
+
+          <div className="  flex w-full max-w-xl flex-row gap-4">
+            <DatePicker
+              hideTimeZone
+              showMonthAndYearPickers
+              defaultValue={now(getLocalTimeZone())}
+              hourCycle={24}
+              label="Appointment Date"
+              variant="bordered"
+              onChange={setGlobalDate}
+            />
+          </div>
+
+          <Button type="submit">Make Appointment</Button>
+        </form>
+      </div>
 
       {/* About Us Accordion */}
       <h1 className={title({ className: 'pt-6', size: 'md' })}>About Us</h1>
@@ -258,4 +364,10 @@ export default function Page() {
       </section>
     </div>
   );
+}
+
+{
+  /* <div className="w-full">
+        <DateTimePicker />
+      </div> */
 }

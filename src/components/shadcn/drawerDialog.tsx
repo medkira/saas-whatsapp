@@ -3,9 +3,8 @@
 import * as React from 'react';
 import { useMediaQuery } from '@react-hook/media-query';
 import emailjs from '@emailjs/browser';
-
-// eslint-disable-next-line import/order
-import { DateTimePicker } from '../dashboard/preview/dateTimePicker/date-time-picker';
+import { DatePicker } from '@nextui-org/react';
+import { now, getLocalTimeZone } from '@internationalized/date';
 
 import { useToast } from '@/components/ui/use-toast';
 import { cn } from '@/lib/utils';
@@ -31,9 +30,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { useDateStore, useFormStore } from '@/app/lib/store';
-import { DatePicker } from '@nextui-org/react';
 
-import { now, getLocalTimeZone } from '@internationalized/date';
 export function DrawerDialogDemo() {
   const [open, setOpen] = React.useState(false);
   const isDesktop = useMediaQuery('(min-width: 768px)');
@@ -171,19 +168,19 @@ function ProfileForm({ className }: React.ComponentProps<'form'>) {
       {/* <div className="w-full">
         <DateTimePicker />
       </div> */}
-      <div className="flex w-full max-w-xl flex-row gap-4">
+      <div className="  flex w-full max-w-xl flex-row gap-4">
         <DatePicker
           hideTimeZone
           showMonthAndYearPickers
           defaultValue={now(getLocalTimeZone())}
           hourCycle={24}
-          label="Event Date"
+          label="Appointment Date"
           variant="bordered"
           onChange={setGlobalDate}
         />
       </div>
 
-      <Button type="submit">Make Appoinment</Button>
+      <Button type="submit">Make Appointment</Button>
     </form>
   );
 }
