@@ -105,6 +105,7 @@ export default function Page() {
           // console.log('SUCCESS!');
           toast({
             description: 'Your message has been sent.',
+            className: 'font-bold top-10 bg-black/60 backdrop-blur-[5px]',
           });
         },
         (error) => {
@@ -258,7 +259,7 @@ export default function Page() {
       <h1 className={title({ className: 'pt-6', size: 'md' })}>
         Get Your Website
       </h1>
-      <div className="w-[60vw] rounded-lg bg-zinc-50/5 p-6 backdrop-blur-[5px] md:w-[35vw] ">
+      <div className="w-[80vw] rounded-lg bg-zinc-50/5 p-6 backdrop-blur-[5px] md:w-[35vw] ">
         <form
           className={'] flex flex-col items-center justify-start gap-6 pt-3 '}
           onSubmit={sendEmail}
@@ -295,7 +296,7 @@ export default function Page() {
             />
           </div>
 
-          <div className="  flex w-full max-w-xl flex-row gap-4">
+          <div className="  flex w-full max-w-xl flex-row gap-4 ">
             <DatePicker
               hideTimeZone
               showMonthAndYearPickers
@@ -306,8 +307,11 @@ export default function Page() {
               onChange={setGlobalDate}
             />
           </div>
-
-          <Button type="submit">Make Appointment</Button>
+          {/* <div className="flex w-full items-end justify-end p-1"> */}
+          <Button className="mt-4" type="submit">
+            Make Appointment
+          </Button>
+          {/* </div> */}
         </form>
       </div>
 
