@@ -24,19 +24,42 @@ export const useDateStore = create<DateState>((set) => ({
 }));
 
 
-// export const useTestStore = create<testState>((set) => ({
-//     name: null,
-//     setName: (name: String) => set(() => ({ name })),
-// }));
-
-
 
 export const useFormStore = create<FormStore>((set) => ({
     formData: {
         phoneNumber: '',
         email: '',
         username: '',
-        // Add other fields as needed (e.g., dateTime from DateTimePicker)
     },
     setFormData: (newFormData) => set((state) => ({ formData: { ...state.formData, ...newFormData } })),
+}));
+
+
+
+
+
+interface ContactUsFormData {
+    name: string;
+    business: string;
+    email: string;
+    phoneNumber: string;
+    description: string;
+}
+
+
+interface ContactUsFormStore {
+    contactUsFormData: ContactUsFormData;
+    setContactsUsForm: (newFormData: Partial<ContactUsFormData>) => void
+}
+
+export const useContactUsFormStore = create<ContactUsFormStore>((set) => ({
+    contactUsFormData: {
+        name: "",
+        business: "",
+        email: "",
+        phoneNumber: "",
+        description: "",
+    },
+
+    setContactsUsForm: (newFormData) => set((state) => ({ contactUsFormData: { ...state.contactUsFormData, ...newFormData } })),
 }));

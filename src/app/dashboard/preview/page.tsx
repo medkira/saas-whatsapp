@@ -1,12 +1,14 @@
 'use client';
 
-import { Accordion, AccordionItem, cn, DatePicker } from '@nextui-org/react';
+import { Accordion, AccordionItem, DatePicker } from '@nextui-org/react';
 import * as React from 'react';
 import Image from 'next/legacy/image';
 import emailjs from '@emailjs/browser';
+import { now, getLocalTimeZone } from '@internationalized/date';
+import Lenis from 'lenis';
+import { Label } from '@radix-ui/react-label';
 
 import { title } from '@/components/primitives';
-import { DrawerDialogDemo } from '@/components/shadcn/drawerDialog';
 import { Card } from '@/components/ui/card';
 import {
   Carousel,
@@ -22,17 +24,13 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
-import { now, getLocalTimeZone } from '@internationalized/date';
 
-import landing from '/public/images/landing.jpg';
 import landingGym from '/public/images/landing-gym.png';
 import landingGym1 from '/public/images/landing-gym1.png';
 import landingGym2 from '/public/images/landing-gym2.png';
 import landingGym3 from '/public/images/landing-gym3.png';
 
 import { useDateStore, useFormStore } from '@/app/lib/store';
-import Lenis from 'lenis';
-import { Label } from '@radix-ui/react-label';
 import { Input } from '@/components/ui/input';
 import { toast } from '@/components/ui/use-toast';
 // State variables
@@ -105,8 +103,10 @@ export default function Page() {
           // console.log('SUCCESS!');
           toast({
             description: 'Your message has been sent.',
-            className: 'font-bold top-10 bg-black/60 backdrop-blur-[5px]',
+            className:
+              'font-bold top-10 sm:top-0 bg-black/60 backdrop-blur-[5px]',
           });
+          e.target.reset();
         },
         (error) => {
           // console.log('FAILED...', error);

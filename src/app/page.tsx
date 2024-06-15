@@ -1,29 +1,29 @@
 'use client';
 
 import Image from 'next/legacy/image';
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import Lenis from 'lenis';
 import {
   Card,
   CardFooter,
   Button,
-  Link,
   CardBody,
   Input,
   Textarea,
 } from '@nextui-org/react';
+import emailjs from '@emailjs/browser';
 
 import landing from '../../public/images/landing.jpg';
 import phoneOptimization from '../../public/images/app.png';
 import phone from '../../public/images/phone.png';
 import responsiveDesign from '../../public/images/responsive-design.png';
 
+import { useContactUsFormStore } from './lib/store';
+
 import { title, subtitle } from '@/components/primitives';
 import { roboto } from '@/config/fonts';
 import Meteors from '@/components/magicui/meteors';
-import { StarsBackground } from '@/components/landing/background/test';
-import { Navbar } from '@/components/navbar';
-import { motion, px } from 'framer-motion';
+import { toast } from '@/components/ui/use-toast';
 
 export default function Home() {
   useEffect(() => {
@@ -296,6 +296,46 @@ const Section2 = () => {
 };
 
 const Section3 = () => {
+  const { contactUsFormData, setContactsUsForm } = useContactUsFormStore();
+  const handleChange = (event: any) => {
+    const { name, value } = event.target;
+
+    setContactsUsForm({ ...contactUsFormData, [name]: value });
+  };
+  // ? this should be in a use case
+  // ? {{email Js send email}}
+  const sendEmail = (e: any) => {
+    const templateParams = {
+      to_name: 'totaltech',
+      from_name: contactUsFormData.name,
+      subject: 'Client Contact Us',
+      message: `Client ${contactUsFormData.name} wants you to call them 
+                or just email them at ${contactUsFormData.email}. \n
+                client business: ${contactUsFormData.business}. \n
+                client description: ${contactUsFormData.description} `,
+    };
+
+    e.preventDefault();
+    emailjs
+      .send('service_zh25lbr', 'template_tcfc0ub', templateParams, {
+        publicKey: 'zCwC7ca2BSPtKUbpE',
+      })
+      .then(
+        () => {
+          // console.log('SUCCESS!');
+          toast({
+            description: 'Your message has been sent.',
+            className:
+              'font-bold top-10 sm:top-0 bg-black/60 backdrop-blur-[5px]',
+          });
+          e.target.reset();
+        },
+        (error) => {
+          // console.log('FAILED...', error);
+        },
+      );
+  };
+
   return (
     <div className="relative flex h-[100vh]  w-full flex-col items-center   justify-items-start  gap-8 overflow-hidden bg-black pt-24  sm:gap-6  md:gap-9 md:pt-[10vh]">
       <section className="flex flex-col items-center justify-start">
@@ -305,41 +345,66 @@ const Section3 = () => {
         </div>
       </section>
 
-      <footer className=" flex w-full flex-wrap items-center justify-center gap-10 ">
+      <footer className="flex w-full flex-wrap items-center justify-center gap-10 ">
         <Card className="sm:w-3xl flex w-9/12 max-w-2xl">
           <CardBody>
-            <form className="md:max-h-auto flex w-full flex-col flex-wrap gap-4 md:flex-nowrap">
+            <form
+              className="md:max-h-auto flex w-full flex-col flex-wrap gap-4 md:flex-nowrap"
+              onSubmit={sendEmail}
+            >
               <Input
-                label="Name"
+                required
+                className="h-12 md:h-auto md:max-h-12"
+                id="name"
+                label="name"
+                name="name"
                 type="name"
-                className="h-12 md:h-auto md:max-h-12"
+                onChange={handleChange}
               />
               <Input
+                className="h-12 md:h-auto md:max-h-12"
+                id="business"
                 label="Business"
+                name="business"
                 type="business"
-                className="h-12 md:h-auto md:max-h-12"
+                onChange={handleChange}
               />
               <Input
+                required
+                className="h-12 md:h-auto md:max-h-12"
+                id="email"
                 label="Email"
+                name="email"
                 type="email"
-                className="h-12 md:h-auto md:max-h-12"
+                onChange={handleChange}
               />
               <Input
-                label="Phone number"
-                type="phone number"
                 className="h-12 md:h-auto md:max-h-12"
+                id="phoneNumber"
+                label="Phone number"
+                name="phoneNumber"
+                type="phone number"
+                onChange={handleChange}
               />
               <Textarea
-                label="Description"
-                placeholder="Type your Message Here"
                 className="h-24 md:h-auto md:max-h-24"
+                id="description"
+                label="Description"
+                name="description"
+                placeholder="Type your Message Here"
+                onChange={handleChange}
               />
+              <div className="flex justify-end pr-2 pt-6">
+                <Button
+                  className="max-p-4"
+                  color="primary"
+                  size="md"
+                  type="submit"
+                >
+                  Submit
+                </Button>
+              </div>
             </form>
-            <div className="flex justify-end pr-2 pt-6">
-              <Button className="max-p-4" color="primary" size="md">
-                Submit
-              </Button>
-            </div>
           </CardBody>
         </Card>
 

@@ -1,14 +1,12 @@
 import '@/styles/globals.css';
 import { Metadata, Viewport } from 'next';
-import { Link } from '@nextui-org/link';
 import clsx from 'clsx';
-import Image from 'next/legacy/image';
-import { Toaster } from '@/components/ui/toaster';
-import landing from '../../public/images/landing.jpg';
+
 import { Navbar } from '../components/navbar';
 
 import { Providers } from './providers';
 
+import { Toaster } from '@/components/ui/toaster';
 import { siteConfig } from '@/config/site';
 import { roboto } from '@/config/fonts';
 
