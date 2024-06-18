@@ -14,6 +14,8 @@ import {
 import emailjs from '@emailjs/browser';
 
 import landing from '../../public/images/landing.jpg';
+import rent from '../../public/images/projects/rent0.png';
+import gym from '../../public/images/projects/gym0.png';
 import phoneOptimization from '../../public/images/app.png';
 import phone from '../../public/images/phone.png';
 import responsiveDesign from '../../public/images/responsive-design.png';
@@ -212,19 +214,24 @@ const Section2 = () => {
         </div>
       </section>
 
-      <section className="flex  flex-wrap items-center justify-center gap-12  p-20 pt-0 md:max-w-[80vw] md:pt-14 lg:flex-nowrap">
-        <div className="flex flex-col items-center justify-start">
+      <section className="flex  flex-wrap items-center justify-center gap-12  p-20 pt-0 md:pt-14 lg:flex-nowrap">
+        <a
+          className="flex flex-col items-center justify-start"
+          href="https://totaltech-gym-0.vercel.app/"
+          rel="noreferrer"
+          target="_blank"
+        >
           <Card isFooterBlurred className="flex border-none" radius="lg">
             <Image
-              alt="Woman listing to music"
+              alt=""
               className="object-cover"
-              height={400}
-              src={landing}
-              width={400}
+              height={500}
+              src={gym}
+              width={750}
             />
             <div className="flex items-center justify-center">
               <CardFooter className="absolute bottom-3 z-10  w-[calc(100%_-_15px)] justify-between overflow-hidden rounded-large border-1 border-white/20 py-1 shadow-small before:rounded-xl before:bg-white/10">
-                <p className="text-tiny text-white/80">Available soon.</p>
+                <p className="text-sm font-bold text-white/80">Gym</p>
                 <Button
                   className="flex bg-black/20 text-tiny text-white"
                   color="default"
@@ -237,19 +244,26 @@ const Section2 = () => {
               </CardFooter>
             </div>
           </Card>
-        </div>
-        <div className="flex flex-col items-center justify-start">
+        </a>
+        <a
+          className="flex flex-col items-center justify-start"
+          href="https://totaltech-design-interior-0.vercel.app/"
+          rel="noreferrer"
+          target="_blank"
+        >
           <Card isFooterBlurred className="flex border-none" radius="lg">
             <Image
-              alt="Woman listing to music"
-              className="object-cover"
-              height={400}
-              src={landing}
-              width={400}
+              alt=""
+              className="object-fill"
+              height={500}
+              src={rent}
+              width={750}
             />
             <div className="flex items-center justify-center">
               <CardFooter className="absolute bottom-3 z-10  w-[calc(100%_-_15px)] justify-between overflow-hidden rounded-large border-1 border-white/20 py-1 shadow-small before:rounded-xl before:bg-white/10">
-                <p className="text-tiny text-white/80">Available soon.</p>
+                <p className="text-sm  font-bold text-white/80">
+                  Interior design
+                </p>
                 <Button
                   className="flex bg-black/20 text-tiny text-white"
                   color="default"
@@ -262,15 +276,15 @@ const Section2 = () => {
               </CardFooter>
             </div>
           </Card>
-        </div>
+        </a>
         <div className="flex flex-col items-center justify-start">
           <Card isFooterBlurred className="flex border-none" radius="lg">
             <Image
-              alt="Woman listing to music"
+              alt=""
               className="object-cover"
-              height={400}
+              height={500}
               src={landing}
-              width={400}
+              width={750}
             />
             <div className="flex items-center justify-center">
               <CardFooter className="absolute bottom-3 z-10  w-[calc(100%_-_15px)] justify-between overflow-hidden rounded-large border-1 border-white/20 py-1 shadow-small before:rounded-xl before:bg-white/10">
