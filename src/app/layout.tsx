@@ -11,6 +11,7 @@ import { siteConfig } from '@/config/site';
 import { roboto } from '@/config/fonts';
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://totaltechtn.com/'),
   title: {
     default: siteConfig.name,
     template: `%s - ${siteConfig.name}`,
@@ -19,6 +20,23 @@ export const metadata: Metadata = {
   icons: {
     icon: '/images/logo.png',
   },
+  // openGraph: {
+  //   description: siteConfig.description,
+  // images: {
+  //   type: 'image/png',
+  //   url: 'https://totaltechtn.com/images/opengraph.png',
+  //   width: 800,
+  //   height: 700,
+  // },
+  // images: [
+  //   {
+  //     type: 'image/png',
+  //     url: '/images/opengraph.png',
+  //     width: 800,
+  //     height: 700,
+  //   },
+  // ],
+  // },
 };
 
 export const viewport: Viewport = {
@@ -35,7 +53,13 @@ export default function RootLayout({
 }) {
   return (
     <html suppressHydrationWarning lang="en">
-      <head />
+      {/* <head>
+        <meta
+          content={metadata.openGraph!.description}
+          property="og:description"
+        />
+   
+      </head> */}
       <body
         className={clsx(
           'white min-h-screen  font-sans antialiased',
