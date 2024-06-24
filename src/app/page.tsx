@@ -18,6 +18,7 @@ import rent from '../../public/images/projects/rent0.png';
 import gym from '../../public/images/projects/gym0.png';
 import phoneOptimization from '../../public/images/app.png';
 import phone from '../../public/images/phone.png';
+import learn from '../../public/images/projects/learn.png';
 import responsiveDesign from '../../public/images/responsive-design.png';
 
 import { useContactUsFormStore } from './lib/store';
@@ -277,31 +278,41 @@ const Section2 = () => {
             </div>
           </Card>
         </a>
-        <div className="flex flex-col items-center justify-start">
-          <Card isFooterBlurred className="flex border-none" radius="lg">
-            <Image
-              alt=""
-              className="object-cover"
-              height={500}
-              src={landing}
-              width={750}
-            />
-            <div className="flex items-center justify-center">
-              <CardFooter className="absolute bottom-3 z-10  w-[calc(100%_-_15px)] justify-between overflow-hidden rounded-large border-1 border-white/20 py-1 shadow-small before:rounded-xl before:bg-white/10">
-                <p className="text-tiny text-white/80">Available soon.</p>
-                <Button
-                  className="flex bg-black/20 text-tiny text-white"
-                  color="default"
-                  radius="lg"
-                  size="sm"
-                  variant="flat"
-                >
-                  Website
-                </Button>
-              </CardFooter>
-            </div>
-          </Card>
-        </div>
+        <a
+          className="flex flex-col items-center justify-start"
+          href="https://totaltech-ai-mock-interview.vercel.app/"
+          rel="noreferrer"
+          target="_blank"
+        >
+          {' '}
+          <div className="flex flex-col items-center justify-start">
+            <Card isFooterBlurred className="flex border-none" radius="lg">
+              <Image
+                alt="learn moch up "
+                className="object-cover"
+                height={500}
+                src={learn}
+                width={750}
+              />
+              <div className="flex items-center justify-center">
+                <CardFooter className="absolute bottom-3 z-10  w-[calc(100%_-_15px)] justify-between overflow-hidden rounded-large border-1 border-white/20 py-1 shadow-small before:rounded-xl before:bg-white/10">
+                  <p className="text-sm  font-bold text-white/80">
+                    Ai Mock Interview
+                  </p>
+                  <Button
+                    className="flex bg-black/20 text-tiny text-white"
+                    color="default"
+                    radius="lg"
+                    size="sm"
+                    variant="flat"
+                  >
+                    SaaS
+                  </Button>
+                </CardFooter>
+              </div>
+            </Card>
+          </div>
+        </a>
       </section>
 
       {/* <h1 className={title({ color: 'blue' })}>&nbsp;Should You Care?</h1> */}
