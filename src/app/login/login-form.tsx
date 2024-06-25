@@ -1,16 +1,23 @@
 import { ChevronRight } from 'lucide-react';
 
+import { signup } from './actions';
+
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 
 export default function LoginForm() {
   return (
-    <form className="space-y-5" onSubmit={(e) => e.preventDefault()}>
+    <form
+      action={signup}
+      className="space-y-5"
+      // onSubmit={(e) => e.preventDefault()}
+    >
       <div>
         <Label className="font-geist font-medium text-gray-100/50">Email</Label>
         <Input
           required
           className="mt-2 w-full rounded-lg border bg-transparent px-3 py-6 text-gray-500 shadow-sm outline-none focus:border-purple-600"
+          name="email"
           type="email"
         />
       </div>
@@ -21,6 +28,7 @@ export default function LoginForm() {
         <Input
           required
           className="mt-2 w-full rounded-lg border bg-transparent px-3 py-6 text-gray-500 shadow-sm outline-none focus:border-blue-600"
+          name="password"
           type="password"
         />
       </div>
