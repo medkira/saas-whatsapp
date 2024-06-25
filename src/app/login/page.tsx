@@ -11,29 +11,42 @@ export default function LoginPage() {
   const [reset, setReset] = useState(false);
 
   return (
-    <main className="relative flex min-h-screen w-full flex-col items-center justify-center sm:px-4">
-      <div className="absolute top-0 z-[0] h-screen w-screen bg-purple-950/10 bg-[radial-gradient(ellipse_20%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]" />
-      <div className="w-full  transform-gpu space-y-6 rounded-2xl px-5 py-10 text-gray-600 dark:[border:1px_solid_rgba(255,255,255,.1)]  dark:[box-shadow:0_-20px_80px_-20px_#8686f01f_inset]  sm:max-w-md md:max-w-xl lg:max-w-xl">
+    <main
+      className=" relative flex 
+                  min-h-screen w-full flex-col items-center 
+                  justify-center sm:px-4"
+    >
+      <div className="absolute top-0 z-[0] h-screen w-screen bg-[radial-gradient(ellipse_20%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]" />
+      <div
+        className=" flex w-[95vw] transform-gpu flex-col  gap-6
+        rounded-2xl  px-5 py-5
+       text-gray-600 dark:[border:1px_solid_rgba(255,255,255,.1)]
+       dark:[box-shadow:0_-20px_80px_-20px_#8686f01f_inset]
+      sm:h-[90vh] sm:w-[60vw]
+      sm:max-w-md 
+         sm:scale-85 
+          sm:gap-0 md:max-w-xl lg:max-w-xl"
+      >
         <div className="flex flex-col items-center justify-center text-center align-text-top">
-          <div className=" flex items-center justify-center rounded-full p-5">
+          <div className=" sm:scale-750 flex items-center justify-center rounded-full p-5">
             <Logo size={55} />
           </div>
-          <div className="mt-5 space-y-2">
+          <div className="mt-5 space-y-2 sm:mt-0">
             <h3 className="font-geist text-2xl font-normal tracking-tighter text-gray-200 sm:text-3xl">
               Log in to your account
             </h3>
-            {/* <p className="text-gray-400">
-              Don't have an account?{' '}
+            <p className="text-gray-400">
+              Don&apos;t have an account?{' '}
               <a
-                className="font-medium text-purple-600 hover:text-purple-500"
-                href="javascript:void(0)"
+                className="font-medium text-blue-800 hover:text-blue-500"
+                href="httt"
               >
                 Sign up
               </a>
-            </p> */}
+            </p>
           </div>
         </div>
-        <div className="space-y-8  bg-transparent p-4 py-6 shadow sm:rounded-lg  sm:p-6">
+        <div className="flex flex-col gap-6  bg-transparent shadow  sm:scale-y-95 sm:gap-6  sm:rounded-lg sm:p-6">
           <div className="grid grid-cols-3 gap-x-3">
             <button
               className="group flex transform-gpu items-center justify-center  rounded-lg  border border-white/10 py-5 duration-150 hover:bg-transparent/50 active:bg-transparent/50 dark:[border:1px_solid_rgba(255,255,255,.1)] dark:[box-shadow:0_-20px_80px_-20px_#8686f01f_inset]"
@@ -153,7 +166,7 @@ export default function LoginPage() {
             </button>{' '}
           </div>
           <div className="relative">
-            <span className="block h-px w-full bg-transparent" />
+            <span className="block w-full bg-transparent" />
             <p className="absolute inset-x-0 -top-2 mx-auto inline-block w-fit px-2 text-sm text-gray-200">
               Or continue with
             </p>
