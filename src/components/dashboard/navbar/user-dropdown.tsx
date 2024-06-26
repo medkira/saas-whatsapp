@@ -4,12 +4,13 @@ import {
   DropdownItem,
   DropdownMenu,
   DropdownTrigger,
-  Navbar,
   NavbarItem,
 } from '@nextui-org/react';
 import React, { useCallback } from 'react';
-import { DarkModeSwitch } from './darkmodeswitch';
 import { useRouter } from 'next/navigation';
+
+import { DarkModeSwitch } from './darkmodeswitch';
+import { signOut } from '@/app/login/actions';
 // import { deleteAuthCookie } from "@/actions/auth.action";
 
 export const UserDropdown = () => {
@@ -17,6 +18,7 @@ export const UserDropdown = () => {
 
   const handleLogout = useCallback(async () => {
     // await deleteAuthCookie();
+    await signOut();
     router.replace('/login');
   }, [router]);
 
@@ -51,8 +53,8 @@ export const UserDropdown = () => {
         <DropdownItem key="help_and_feedback">Help & Feedback</DropdownItem>
         <DropdownItem
           key="logout"
-          color="danger"
           className="text-danger"
+          color="danger"
           onPress={handleLogout}
         >
           Log Out
