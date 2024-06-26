@@ -27,6 +27,7 @@ import { title, subtitle } from '@/components/primitives';
 import { roboto } from '@/config/fonts';
 import Meteors from '@/components/magicui/meteors';
 import { toast } from '@/components/ui/use-toast';
+import { Navbar } from '@/components/navbar';
 
 export default function Home() {
   useEffect(() => {
@@ -51,6 +52,9 @@ export default function Home() {
   return (
     // <div className=" flex h-[100%] flex-col content-center justify-end bg-black">
     <section className={`${roboto.className}  `}>
+      <div className="fixed left-0 right-0 top-0 z-20 backdrop-blur-[1.9px] sm:backdrop-blur-none">
+        <Navbar />
+      </div>
       <HeroSection />
       <Section1 />
       <Section2 />
