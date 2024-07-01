@@ -1,6 +1,6 @@
 import { ChevronRight } from 'lucide-react';
 
-import { signup, login } from './actions';
+// import { signup, login } from './actions';
 
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -8,7 +8,7 @@ import { Label } from '@/components/ui/label';
 export default function LoginForm() {
   return (
     <form
-      action={login}
+      // action={login}
       className="space-y-5"
       // onSubmit={(e) => e.preventDefault()}
     >
