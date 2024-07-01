@@ -131,7 +131,7 @@ const Section1 = () => {
       </section>
 
       <section className="flex  flex-wrap items-center justify-center gap-20  p-6 md:max-w-[80vw] lg:flex-nowrap">
-        <div className="flex  flex-col items-center justify-center gap-3">
+        <div className="flex  flex-col items-center justify-center gap-1">
           <Image
             priority
             alt="Background Image"
@@ -154,7 +154,7 @@ const Section1 = () => {
           </h2>
         </div>
 
-        <div className="flex flex-col items-center justify-center gap-3 ">
+        <div className="flex flex-col items-center justify-center gap-1 ">
           <Image
             priority
             alt="Background Image"
@@ -176,7 +176,7 @@ const Section1 = () => {
             sizes so new clients can access your site from anywhere.
           </h2>
         </div>
-        <div className="flex  flex-col items-center justify-center gap-3 ">
+        <div className="flex  flex-col items-center justify-center gap-1 ">
           <Image
             priority
             alt="Background Image"

@@ -95,7 +95,7 @@ const HeroSection = () => {
             <span className="bg-gradient-to-b from-[#5EA2EF] to-[#0072F5] bg-clip-text font-extrabold text-transparent">
               Sites Web{' '}
             </span>{' '}
-            rapides et magnifiques avec Total Tech
+            rapides et magnifiques avec TotalTech
           </h2>
         </div>
       </div>
@@ -134,7 +134,7 @@ const Section1 = () => {
       </section>
 
       <section className="flex  flex-wrap items-center justify-center gap-20  p-6 md:max-w-[80vw] lg:flex-nowrap">
-        <div className="flex  flex-col items-center justify-center gap-3">
+        <div className="flex  flex-col items-center justify-center gap-1">
           <Image
             priority
             alt="Image de fond"
@@ -158,7 +158,7 @@ const Section1 = () => {
           </h2>
         </div>
 
-        <div className="flex flex-col items-center justify-center gap-3 ">
+        <div className="flex flex-col items-center justify-center gap-1 ">
           <Image
             priority
             alt="Image de fond"
@@ -181,7 +181,7 @@ const Section1 = () => {
             clients puissent accéder à votre site depuis n&apos;importe où.
           </h2>
         </div>
-        <div className="flex  flex-col items-center justify-center gap-3 ">
+        <div className="flex  flex-col items-center justify-center gap-1">
           <Image
             priority
             alt="Image de fond"
@@ -363,7 +363,7 @@ const Section3 = () => {
           });
           e.target.reset();
         },
-        () => {
+        (error: any) => {
           // console.log('FAILED...', error);
         },
       );
