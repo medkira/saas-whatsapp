@@ -1,8 +1,8 @@
-import NextLink from 'next/link';
 import React from 'react';
 import clsx from 'clsx';
 
 import { useSidebarContext } from '../layout/layout-context';
+import Link from 'next/link';
 
 interface Props {
   title: string;
@@ -21,11 +21,8 @@ export const SidebarItem = ({ icon, title, isActive, href = '' }: Props) => {
   };
 
   return (
-    <NextLink
-      className="max-w-full text-default-900 active:bg-none"
-      href={href}
-    >
-      <div
+    <Link className="max-w-full text-default-900 active:bg-none" href={href}>
+      <button
         className={clsx(
           isActive
             ? 'bg-primary-100 [&_svg_path]:fill-primary-500'
@@ -36,7 +33,7 @@ export const SidebarItem = ({ icon, title, isActive, href = '' }: Props) => {
       >
         {icon}
         <span className="text-default-900">{title}</span>
-      </div>
-    </NextLink>
+      </button>
+    </Link>
   );
 };

@@ -10,6 +10,7 @@ import React, { useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 
 import { DarkModeSwitch } from './darkmodeswitch';
+
 import { signOut } from '@/app/login/actions';
 // import { deleteAuthCookie } from "@/actions/auth.action";
 
@@ -43,7 +44,7 @@ export const UserDropdown = () => {
           className="flex w-full flex-col items-start justify-start"
         >
           <p>Signed in as</p>
-          <p>zoey@example.com</p>
+          <p>admin</p>
         </DropdownItem>
         <DropdownItem key="settings">My Settings</DropdownItem>
         <DropdownItem key="team_settings">Team Settings</DropdownItem>

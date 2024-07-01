@@ -21,7 +21,7 @@ import phone from '/public/images/phone.png';
 import learn from '/public/images/projects/learn.png';
 import responsiveDesign from '/public/images/responsive-design.png';
 
-import { useContactUsFormStore } from './lib/store';
+import { useContactUsFormStore } from '../lib/store';
 
 import { title, subtitle } from '@/components/primitives';
 import { roboto } from '@/config/fonts';
@@ -77,23 +77,25 @@ const HeroSection = () => {
         src={landing}
       />
 
-      <div className="relative flex h-[50hv]  w-full flex-col items-center justify-center gap-1 overflow-hidden bg-transparent px-10 pt-[20vh]  sm:gap-6  md:pt-32  ">
+      <div className="relative flex h-[50vh]  w-full flex-col items-center justify-center gap-1 overflow-hidden bg-transparent px-10 pt-[20vh]  sm:gap-6  md:pt-32  ">
         <Meteors number={30} />
-        <div className=" flex w-full flex-col justify-center text-center">
-          <div className="-mb-4 sm:mb-1 ">
-            <h1 className={title()}>Level&nbsp;</h1>
-            <h1 className={title()}>Up&nbsp;</h1>
-            <h1 className={title()}>Your</h1>
+        <div className=" flex w-full flex-col justify-center text-center sm:flex-row">
+          <div className="-mb-5 sm:mb-0">
+            <h1 className={title()}>Atteignez&nbsp;</h1>
+            <h1 className={title()}>plus&nbsp;</h1>
           </div>
           <div>
-            <h1 className={title()}>Online</h1>
-            <h1 className={title({ color: 'blue' })}>&nbsp;Presence</h1>
+            <h1 className={title()}>de</h1>
+            <h1 className={title({ color: 'blue' })}>&nbsp;clients.</h1>
           </div>
         </div>
-        <div className="w-fullfont-medium text-center text-cyan-50 sm:text-xl">
+        <div className="w-full text-center font-medium text-cyan-50 sm:text-3xl">
           <h2>
-            Watch Your Business Shine with Fast and Beautiful Websites with
-            Total Tech
+            Regardez votre entreprise briller avec des{' '}
+            <span className="bg-gradient-to-b from-[#5EA2EF] to-[#0072F5] bg-clip-text font-extrabold text-transparent">
+              Sites Web{' '}
+            </span>{' '}
+            rapides et magnifiques avec Total Tech
           </h2>
         </div>
       </div>
@@ -105,11 +107,11 @@ const Section1 = () => {
   // const rotate = useTransform(scrollYProgress, [0, 1], [5, 0]);
 
   return (
-    <div className="sticky flex  w-full flex-col items-center  justify-start gap-9  overflow-hidden bg-black pt-20  text-center md:pt-28 lg:top-0 lg:h-[160vh]  ">
+    <div className="sticky flex  w-full flex-col items-center  justify-start gap-9  overflow-hidden bg-black pt-20  text-center md:pt-14 lg:top-0 lg:h-[160vh]  ">
       <section className="flex flex-col items-center justify-start">
         <div className="   pb-2 sm:w-full">
           <h1 className={title({ size: 'md', class: 'mb-3  mr-2' })}>
-            Why Should
+            Pourquoi devriez-vous
           </h1>
           <span
             className={title({
@@ -118,15 +120,16 @@ const Section1 = () => {
               className: 'bg-white',
             })}
           >
-            You Care?
+            vous en soucier ?
           </span>
         </div>
 
         <h2 className={subtitle({ class: 'w-10/12 md:w-1/2', size: 'md' })}>
-          We specialize in web design and development for clients anywhere.
-          Every line of code is written by hand to ensure the best performance,
-          which helps bring in more customers to your site and bring more
-          revenue to your business
+          Nous sommes spécialisés dans la conception et le développement Web
+          pour des clients du monde entier. Chaque ligne de code est écrite à la
+          main pour garantir les meilleures performances, ce qui permet
+          d&apos;attirer plus de clients sur votre site et d&apos;augmenter les
+          revenus de votre entreprise.
         </h2>
       </section>
 
@@ -134,73 +137,76 @@ const Section1 = () => {
         <div className="flex  flex-col items-center justify-center gap-3">
           <Image
             priority
-            alt="Background Image"
+            alt="Image de fond"
             height={90}
             layout="fixed"
             sizes="(max-width: 90px) 100vw,
-            (max-width: 70px) 50vw,
-            33vw"
+          (max-width: 70px) 50vw,
+          33vw"
             src={phone}
             width={90}
           />
           <h1
             className={title({ size: 'sm', color: 'blue', className: 'mb-1' })}
           >
-            Mobile-First Design
+            Conception mobile
           </h1>
           <h2 className={subtitle({ size: 'sm' })}>
-            We start building your site for mobile devices first then we add on
-            to it to make tablet and desktop.
+            Nous commençons par construire votre site pour les appareils
+            mobiles, puis nous l&apos;ajoutons pour les tablettes et les
+            ordinateurs de bureau.
           </h2>
         </div>
 
         <div className="flex flex-col items-center justify-center gap-3 ">
           <Image
             priority
-            alt="Background Image"
+            alt="Image de fond"
             height={90}
             layout="fixed"
             sizes="(max-width: 90px) 100vw,
-            (max-width: 90px) 50vw,
-            33vw"
+          (max-width: 90px) 50vw,
+          33vw"
             src={responsiveDesign}
             width={90}
           />
           <h1
             className={title({ size: 'sm', color: 'blue', className: 'mb-1' })}
           >
-            Fully Responsive
+            Entièrement réactif
           </h1>
           <h2 className={subtitle({ size: 'sm' })}>
-            Your website will fit all mobile screens sizes tablets, and desktop
-            sizes so new clients can access your site from anywhere.
+            Votre site Web s&apos;adaptera à toutes les tailles d&apos;écrans
+            mobiles, tablettes et ordinateurs de bureau afin que les nouveaux
+            clients puissent accéder à votre site depuis n&apos;importe où.
           </h2>
         </div>
         <div className="flex  flex-col items-center justify-center gap-3 ">
           <Image
             priority
-            alt="Background Image"
+            alt="Image de fond"
             height={90}
             layout="fixed"
             sizes="(max-width: 90px) 100vw,
-            (max-width: 90px) 50vw,
-            33vw"
+          (max-width: 90px) 50vw,
+          33vw"
             src={phoneOptimization}
             width={90}
           />
           <h1
             className={title({ size: 'sm', color: 'blue', className: 'mb-1' })}
           >
-            Optimization
+            Optimisation
           </h1>
           <h2 className={subtitle({ size: 'sm' })}>
-            60% of all internet traffic is on mobile devices, so we optimize
-            your mobile to perform their best in search engines.
+            60% de tout le trafic Internet provient des appareils mobiles. Nous
+            optimisons donc votre mobile pour qu&apos;il performe au mieux dans
+            les moteurs de recherche.
           </h2>
         </div>
       </section>
 
-      {/* <h1 className={title({ color: 'blue' })}>&nbsp;Should You Care?</h1> */}
+      {/* <h1 className={title({ color: 'blue' })}>&nbsp;Devriez-vous vous en soucier?</h1> */}
     </div>
   );
 };
@@ -212,10 +218,8 @@ const Section2 = () => {
     <div className="sticky flex  w-full flex-col  items-center justify-start gap-10 overflow-hidden  bg-gray-900  pt-20 text-center md:pt-28 lg:top-0 lg:h-[160vh]  ">
       <section className="flex flex-col items-center justify-start">
         <div className=" flex  w-48 flex-wrap justify-center sm:w-full">
-          <h1 className={title({ size: 'md', class: ' sm:mr-2' })}>
-            Latest Work
-          </h1>
-          <span className={title({ color: 'blue', size: 'md' })}>Created</span>
+          <h1 className={title({ size: 'md', class: ' sm:mr-2' })}>Derniers</h1>
+          <span className={title({ color: 'blue', size: 'md' })}>Projets</span>
         </div>
       </section>
 
@@ -369,8 +373,10 @@ const Section3 = () => {
     <div className="relative flex h-[100vh]  w-full flex-col items-center   justify-items-start  gap-8 overflow-hidden bg-black pt-24  sm:gap-6  md:gap-9 md:pt-[10vh]">
       <section className="flex flex-col items-center justify-start">
         <div className=" flex  w-48 flex-wrap justify-center sm:w-full">
-          <h1 className={title({ size: 'md', class: '' })}>Contact</h1>
-          <span className={title({ color: 'blue', size: 'md' })}>&nbsp;Us</span>
+          <h1 className={title({ size: 'md', class: '' })}>Contactez</h1>
+          <span className={title({ color: 'blue', size: 'md' })}>
+            &nbsp;nous
+          </span>
         </div>
       </section>
 
@@ -385,7 +391,7 @@ const Section3 = () => {
                 required
                 className="h-12 md:h-auto md:max-h-12"
                 id="name"
-                label="name"
+                label="Nom"
                 name="name"
                 type="name"
                 onChange={handleChange}
@@ -393,7 +399,7 @@ const Section3 = () => {
               <Input
                 className="h-12 md:h-auto md:max-h-12"
                 id="business"
-                label="Business"
+                label="Entreprise"
                 name="business"
                 type="business"
                 onChange={handleChange}
@@ -410,7 +416,7 @@ const Section3 = () => {
               <Input
                 className="h-12 md:h-auto md:max-h-12"
                 id="phoneNumber"
-                label="Phone number"
+                label="Numéro de téléphone"
                 name="phoneNumber"
                 type="phone number"
                 onChange={handleChange}
@@ -420,7 +426,7 @@ const Section3 = () => {
                 id="description"
                 label="Description"
                 name="description"
-                placeholder="Type your Message Here"
+                placeholder="Tapez votre message ici"
                 onChange={handleChange}
               />
               <div className="flex justify-end pr-2 pt-6">
@@ -430,7 +436,7 @@ const Section3 = () => {
                   size="md"
                   type="submit"
                 >
-                  Submit
+                  Envoyer
                 </Button>
               </div>
             </form>
