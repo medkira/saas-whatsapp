@@ -1,4 +1,4 @@
-// 'use client';
+'use client';
 import { Button } from '@nextui-org/button';
 import Image from 'next/legacy/image';
 
@@ -8,18 +8,18 @@ import { Input } from '@nextui-org/input';
 
 import IconTelephoneFill from '@/components/icons';
 import { subtitle, title } from '@/components/primitives';
-// import { useContactUsFormStore } from '@/app/lib/store';
+import { useContactUsFormStore } from '@/app/lib/store';
 
 export default function PricingPage() {
-  // const { contactUsFormData, setContactsUsForm } = useContactUsFormStore();
-  // const handleChange = (event: any) => {
-  //   const { name, value } = event.target;
+  const { contactUsFormData, setContactsUsForm } = useContactUsFormStore();
+  const handleChange = (event: any) => {
+    const { name, value } = event.target;
 
-  //   setContactsUsForm({ ...contactUsFormData, [name]: value });
-  // };
+    setContactsUsForm({ ...contactUsFormData, [name]: value });
+  };
 
   const imgUrl =
-    ' https://pmo19b450-pic37.websiteonline.cn/upload/JR1903B-4_50om.jpg';
+    'https://res.cloudinary.com/dpbb1gfnc/image/upload/v1716108851/axontt9ml5l9xdgegqfo.jpg';
 
   return (
     <div className="h-[100vh] p-5">
@@ -59,9 +59,9 @@ export default function PricingPage() {
           </h2>
           <div className="w-[50vw] overflow-hidden sm:h-[60vh]">
             <Image
-              priority
               alt="Background Image"
               height={400}
+              priority={true}
               //   layout="fixed"
               //   sizes="(max-width: 900px) 100vw,
               // (max-width: 70px) 500vw,
@@ -77,7 +77,7 @@ export default function PricingPage() {
             <h1 className="text-2xl font-bold text-green-500">
               Ou commande online
             </h1>
-            {/* <form
+            <form
               className="md:max-h-auto flex w-full flex-col flex-wrap gap-4 md:flex-nowrap"
               // onSubmit={sendEmail}
             >
@@ -118,16 +118,7 @@ export default function PricingPage() {
                   Commander
                 </Button>
               </div>
-            </form> */}
-
-            <Button
-              className="w-full rounded-2xl p-3 px-5 text-xl font-semibold"
-              color="primary"
-              size="lg"
-              type="submit"
-            >
-              Commander
-            </Button>
+            </form>
           </div>
         </section>
       </div>
