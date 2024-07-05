@@ -12,8 +12,8 @@ import {
   Textarea,
 } from '@nextui-org/react';
 import emailjs from '@emailjs/browser';
+import Autoplay from 'embla-carousel-autoplay';
 
-import landing from '/public/images/landing.jpg';
 import rent from '/public/images/projects/rent0.png';
 import gym from '/public/images/projects/gym0.png';
 import phoneOptimization from '/public/images/app.png';
@@ -21,13 +21,33 @@ import phone from '/public/images/phone.png';
 import learn from '/public/images/projects/learn.png';
 import responsiveDesign from '/public/images/responsive-design.png';
 
+import React from 'react';
+
 import { useContactUsFormStore } from './lib/store';
 
 import { title, subtitle } from '@/components/primitives';
 import { roboto } from '@/config/fonts';
-import Meteors from '@/components/magicui/meteors';
 import { toast } from '@/components/ui/use-toast';
-import { Navbar } from '@/components/navbar';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from '@/components/ui/carousel';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTrigger,
+} from '@/components/ui/dialog';
+
+import landingGym from '/public/images/landing-gym.png';
+import landingGym1 from '/public/images/landing-gym1.png';
+import landingGym2 from '/public/images/landing-gym2.png';
+import landingGym3 from '/public/images/landing-gym3.png';
+import machine1 from '/public/images/machines/A50.png';
+import IconTelephoneFill from '@/components/icons';
 
 export default function Home() {
   useEffect(() => {
@@ -52,12 +72,9 @@ export default function Home() {
   return (
     // <div className=" flex h-[100%] flex-col content-center justify-end bg-black">
     <section className={`${roboto.className}  `}>
-      <div className="fixed left-0 right-0 top-0 z-20 backdrop-blur-[1.9px] sm:backdrop-blur-none">
-        <Navbar />
-      </div>
       <HeroSection />
       <Section1 />
-      <Section2 />
+      {/* <Section2 /> */}
       <Section3 />
     </section>
   );
@@ -65,51 +82,157 @@ export default function Home() {
 
 const HeroSection = () => {
   // const rotate = useTransform(scrollYProgress, [0, 1], [0, -5]);
+  const staticImages = [
+    machine1,
+    machine1,
+    machine1,
+    machine1,
+    machine1,
+    machine1,
+    machine1,
+  ];
+
+  const [selectedImage, setSelectedImage] = React.useState(staticImages[0]);
+  const [selectedImageIndex, setSelectedImageIndex] = React.useState(0);
+  // Function to handle next image
+  const handleNext = () => {
+    const nextIndex = (selectedImageIndex + 1) % staticImages.length;
+
+    setSelectedImage(staticImages[nextIndex]);
+    setSelectedImageIndex(nextIndex);
+  };
+
+  // Function to handle previous image
+  const handlePrev = () => {
+    const prevIndex =
+      (selectedImageIndex - 1 + staticImages.length) % staticImages.length;
+
+    setSelectedImage(staticImages[prevIndex]);
+    setSelectedImageIndex(prevIndex);
+  };
+
+  const plugin = React.useRef(
+    Autoplay({ delay: 2000, stopOnInteraction: true }),
+  );
 
   return (
-    <div className="sticky top-0 h-[100vh] w-full  ">
-      <Image
-        priority
-        alt="Background Image"
-        layout="fill"
-        objectFit="cover"
-        placeholder="blur"
-        src={landing}
-      />
-
-      <div className="relative flex h-[50hv]  w-full flex-col items-center justify-center gap-1 overflow-hidden bg-transparent px-10 pt-[20vh]  sm:gap-6  md:pt-32  ">
-        <Meteors number={30} />
+    <div className=" top-0 h-full min-h-[85vh] w-full sm:min-h-[100vh]  ">
+      <div
+        className="relative flex h-[50hv]
+        w-full flex-col items-center justify-center
+         gap-1 overflow-hidden bg-transparent  pt-[13vh] 
+          sm:gap-6  md:pt-24"
+      >
         <div className=" flex w-full flex-col justify-center text-center">
-          <div className="-mb-4 sm:mb-1 ">
-            <h1 className={title()}>Level&nbsp;</h1>
-            <h1 className={title()}>Up&nbsp;</h1>
-            <h1 className={title()}>Your</h1>
+          <div className="-mb-3 sm:mb-1 ">
+            <h1 className={title()}>La&nbsp;</h1>
+            <h1 className={title()}>Page&nbsp;</h1>
+            <h1 className={title()}>officielle&nbsp;</h1>
+            <h1 className={title()}>pour&nbsp;</h1>
+            {/* <h1 className={title()}>achete&nbsp;</h1> */}
+
+            {/* <h1 className={title()}>Livraison&nbsp;</h1> */}
           </div>
           <div>
-            <h1 className={title()}>Online</h1>
-            <h1 className={title({ color: 'blue' })}>&nbsp;Presence</h1>
+            <h1 className={title()}>achete&nbsp;</h1>
+            <h1 className={title({ color: 'blue' })}>machines à coudre</h1>
           </div>
         </div>
-        <div className="w-fullfont-medium text-center text-cyan-50 sm:text-xl">
+        <div className="flex  items-center justify-center ">
+          <div className="m-3 max-w-6xl rounded-md bg-white p-3 text-center ">
+            <h1
+              className={title({
+                size: 'md',
+                class: '  text-gray-600',
+              })}
+            >
+              Livraison Partout{' '}
+              <strong className="text-red-600">Tunisie</strong>
+            </h1>
+          </div>
+        </div>
+        <div className="w-full text-center font-bold  text-gray-950 sm:text-xl">
           <h2>
-            Watch Your Business Shine with Fast and Beautiful Websites with
-            Total Tech
+            Découvrez notre collection et trouvez la machine à coudre parfaite
+            pour vos besoins. Contactez-nous !
           </h2>
         </div>
       </div>
+
+      <section className=" px-16 pt-14 sm:pt-6">
+        <Carousel
+          className="w-full"
+          opts={{
+            align: 'center',
+          }}
+          plugins={[plugin.current as any]}
+        >
+          <CarouselContent>
+            {staticImages.map((image, index) => (
+              <CarouselItem
+                key={index}
+                className="flex   justify-center sm:basis-1/3  md:basis-1/4 lg:basis-1/5"
+              >
+                <div
+                  key={index}
+                  className="flex cursor-pointer flex-col items-center justify-center gap-1 rounded-md bg-white p-5 "
+                >
+                  <Image
+                    priority
+                    alt="Background Image"
+                    //   height={110}
+                    //   layout="fixed"
+                    //   sizes="(max-width: 900px) 100vw,
+                    // (max-width: 70px) 500vw,
+                    // 330vw"
+                    src={image}
+                    //   width={110}
+                  />
+                  <h1
+                    className={title({
+                      size: 'sm',
+                      color: 'blue',
+                      className: 'mb-1',
+                    })}
+                  >
+                    Sewing
+                  </h1>
+                  <h2
+                    className={subtitle({
+                      size: 'sm',
+                      class: 'text-center',
+                    })}
+                  >
+                    Ref:AT1002-190B
+                  </h2>
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious />
+          <CarouselNext />
+        </Carousel>
+      </section>
     </div>
   );
 };
 
 const Section1 = () => {
-  // const rotate = useTransform(scrollYProgress, [0, 1], [5, 0]);
+  const staticImages = [
+    machine1,
+    machine1,
+    machine1,
+    machine1,
+    machine1,
+    machine1,
+  ];
 
   return (
-    <div className="sticky flex  w-full flex-col items-center  justify-start gap-9  overflow-hidden bg-black pt-20  text-center md:pt-28 lg:top-0 lg:h-[160vh]  ">
+    <div className=" flex w-full   flex-col items-center justify-start  gap-1 overflow-hidden pt-[5rem]  text-center   sm:gap-9   ">
       <section className="flex flex-col items-center justify-start">
         <div className="   pb-2 sm:w-full">
           <h1 className={title({ size: 'md', class: 'mb-3  mr-2' })}>
-            Why Should
+            Découvrez Nos Machines à
           </h1>
           <span
             className={title({
@@ -118,86 +241,65 @@ const Section1 = () => {
               className: 'bg-white',
             })}
           >
-            You Care?
+            Coudre et à Broder
           </span>
         </div>
-
-        <h2 className={subtitle({ class: 'w-10/12 md:w-1/2', size: 'md' })}>
-          We specialize in web design and development for clients anywhere.
-          Every line of code is written by hand to ensure the best performance,
-          which helps bring in more customers to your site and bring more
-          revenue to your business
-        </h2>
       </section>
 
-      <section className="flex  flex-wrap items-center justify-center gap-20  p-6 md:max-w-[80vw] lg:flex-nowrap">
-        <div className="flex  flex-col items-center justify-center gap-1">
-          <Image
-            priority
-            alt="Background Image"
-            height={90}
-            layout="fixed"
-            sizes="(max-width: 90px) 100vw,
-            (max-width: 70px) 50vw,
-            33vw"
-            src={phone}
-            width={90}
-          />
-          <h1
-            className={title({ size: 'sm', color: 'blue', className: 'mb-1' })}
+      <section className="flex flex-wrap items-center justify-center gap-x-16 gap-y-14 p-6 ">
+        {staticImages.map((image, index) => (
+          <div
+            key={index}
+            className="flex cursor-pointer flex-col items-center justify-center gap-1 rounded-md bg-white p-5 sm:w-1/3 lg:w-1/4"
           >
-            Mobile-First Design
-          </h1>
-          <h2 className={subtitle({ size: 'sm' })}>
-            We start building your site for mobile devices first then we add on
-            to it to make tablet and desktop.
-          </h2>
-        </div>
+            <Image
+              priority
+              alt="Background Image"
+              //   height={110}
+              //   layout="fixed"
+              //   sizes="(max-width: 900px) 100vw,
+              // (max-width: 70px) 500vw,
+              // 330vw"
+              src={image}
+              //   width={110}
+            />
+            <h1
+              className={title({
+                size: 'sm',
+                color: 'blue',
+                className: 'mb-1',
+              })}
+            >
+              Sewing
+            </h1>
+            <h2 className={subtitle({ size: 'sm' })}>Ref:AT1002-190B</h2>
+            <div className="flex gap-3 p-5 sm:flex-col md:flex-row">
+              <Button
+                className="rounded-3xl p-3 px-5 text-xl font-semibold"
+                color="primary"
+                size="lg"
+              >
+                Commander
+              </Button>
+              <Button
+                className="rounded-3xl p-3 px-5 text-xl font-semibold"
+                color="primary"
+                size="lg"
+                variant="bordered"
+              >
+                Détails
+              </Button>
+            </div>
+          </div>
+        ))}
 
-        <div className="flex flex-col items-center justify-center gap-1 ">
-          <Image
-            priority
-            alt="Background Image"
-            height={90}
-            layout="fixed"
-            sizes="(max-width: 90px) 100vw,
-            (max-width: 90px) 50vw,
-            33vw"
-            src={responsiveDesign}
-            width={90}
-          />
-          <h1
-            className={title({ size: 'sm', color: 'blue', className: 'mb-1' })}
-          >
-            Fully Responsive
-          </h1>
-          <h2 className={subtitle({ size: 'sm' })}>
-            Your website will fit all mobile screens sizes tablets, and desktop
-            sizes so new clients can access your site from anywhere.
-          </h2>
-        </div>
-        <div className="flex  flex-col items-center justify-center gap-1 ">
-          <Image
-            priority
-            alt="Background Image"
-            height={90}
-            layout="fixed"
-            sizes="(max-width: 90px) 100vw,
-            (max-width: 90px) 50vw,
-            33vw"
-            src={phoneOptimization}
-            width={90}
-          />
-          <h1
-            className={title({ size: 'sm', color: 'blue', className: 'mb-1' })}
-          >
-            Optimization
-          </h1>
-          <h2 className={subtitle({ size: 'sm' })}>
-            60% of all internet traffic is on mobile devices, so we optimize
-            your mobile to perform their best in search engines.
-          </h2>
-        </div>
+        <Button
+          className="rounded-3xl p-3 px-5 text-xl font-semibold"
+          color="primary"
+          size="lg"
+        >
+          Explorer toutes les machines
+        </Button>
       </section>
 
       {/* <h1 className={title({ color: 'blue' })}>&nbsp;Should You Care?</h1> */}
@@ -366,17 +468,27 @@ const Section3 = () => {
   };
 
   return (
-    <div className="relative flex h-[100vh]  w-full flex-col items-center   justify-items-start  gap-8 overflow-hidden bg-black pt-24  sm:gap-6  md:gap-9 md:pt-[10vh]">
+    <div className="relative flex h-[100vh]  w-full flex-col items-center   justify-items-start  gap-5 overflow-hidden pt-[5rem]  sm:gap-6  md:gap-9 md:pt-[10vh]">
       <section className="flex flex-col items-center justify-start">
-        <div className=" flex  w-48 flex-wrap justify-center sm:w-full">
-          <h1 className={title({ size: 'md', class: '' })}>Contact</h1>
-          <span className={title({ color: 'blue', size: 'md' })}>&nbsp;Us</span>
+        <div className=" flex  w-48  justify-center sm:w-full">
+          <h1 className={title({ size: 'md', class: '' })}>Contactez</h1>
+          <span className={title({ color: 'blue', size: 'md' })}>
+            &nbsp;nous
+          </span>
         </div>
       </section>
 
       <footer className="flex w-full flex-wrap items-center justify-center gap-10 ">
         <Card className="sm:w-3xl flex w-9/12 max-w-2xl">
           <CardBody>
+            <Button
+              className="my-4 flex items-center justify-center gap-2"
+              color="primary"
+              variant="bordered"
+            >
+              <IconTelephoneFill />
+              <h1 className="font-bold"> 98 403 153</h1>
+            </Button>
             <form
               className="md:max-h-auto flex w-full flex-col flex-wrap gap-4 md:flex-nowrap"
               onSubmit={sendEmail}
@@ -385,7 +497,7 @@ const Section3 = () => {
                 required
                 className="h-12 md:h-auto md:max-h-12"
                 id="name"
-                label="name"
+                label="Nom"
                 name="name"
                 type="name"
                 onChange={handleChange}
@@ -393,7 +505,7 @@ const Section3 = () => {
               <Input
                 className="h-12 md:h-auto md:max-h-12"
                 id="business"
-                label="Business"
+                label="Entreprise"
                 name="business"
                 type="business"
                 onChange={handleChange}
@@ -410,7 +522,7 @@ const Section3 = () => {
               <Input
                 className="h-12 md:h-auto md:max-h-12"
                 id="phoneNumber"
-                label="Phone number"
+                label="Numéro de téléphone"
                 name="phoneNumber"
                 type="phone number"
                 onChange={handleChange}
@@ -420,7 +532,7 @@ const Section3 = () => {
                 id="description"
                 label="Description"
                 name="description"
-                placeholder="Type your Message Here"
+                placeholder="Tapez votre message ici"
                 onChange={handleChange}
               />
               <div className="flex justify-end pr-2 pt-6">
@@ -430,7 +542,7 @@ const Section3 = () => {
                   size="md"
                   type="submit"
                 >
-                  Submit
+                  Envoyer
                 </Button>
               </div>
             </form>

@@ -1,8 +1,8 @@
 export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
-  name: 'TotalTech',
-  description: 'Level Up Your Online Presence!, Watch Your Business Shine with Fast and Beautiful Websites with Total Tech',
+  name: 'JAKI machines à coudre',
+  description: 'Agent tunisien des machines à coudre JAKI',
   navItems: [
     {
       label: 'Home',

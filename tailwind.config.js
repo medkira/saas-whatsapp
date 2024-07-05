@@ -28,16 +28,16 @@ module.exports = {
       },
     },
   },
-  darkMode: 'class',
+
   plugins: [
     nextui({
       themes: {
-        dark: {
+        light: {
           colors: {
-            background: 'transparent',
-            // background: '#042749',
+            // background: 'transparent',545454
+            background: '#f2f2f2',
 
-            foreground: '#ECEDEE',
+            foreground: '#545454',
             primary: {
               //... 50 to 900
               foreground: '#FFFFFF',
@@ -46,6 +46,20 @@ module.exports = {
           },
           // ... rest of the colors
         },
+        // dark: {
+        //   colors: {
+        //     background: 'transparent',
+        //     // background: '#042749',
+
+        //     foreground: '#ECEDEE',
+        //     primary: {
+        //       //... 50 to 900
+        //       foreground: '#FFFFFF',
+        //       DEFAULT: '#006FEE',
+        //     },
+        //   },
+        //   // ... rest of the colors
+        // },
       },
     }),
   ],

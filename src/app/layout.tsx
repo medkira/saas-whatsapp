@@ -66,11 +66,11 @@ export default function RootLayout({
           // fontSans.variable,
         )}
       >
-        <Providers themeProps={{ attribute: 'class', defaultTheme: 'dark' }}>
+        <Providers themeProps={{ attribute: 'class', defaultTheme: 'light' }}>
           <div className={`${roboto.className}`}>
-            {/* <div className="fixed left-0 right-0 top-0 z-20 backdrop-blur-[1.9px] sm:backdrop-blur-none">
+            <div className="fixed left-0 right-0 top-0 z-20  sm:backdrop-blur-none">
               <Navbar />
-            </div> */}
+            </div>
 
             {/* container z-10 mx-auto max-w-7xl flex-grow bg-transparent px-6 */}
             <main className="">{children}</main>
