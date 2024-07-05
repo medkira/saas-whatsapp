@@ -19,7 +19,9 @@ export default function PricingPage() {
   };
 
   const imgUrl =
-    'https://res.cloudinary.com/dpbb1gfnc/image/upload/v1716108851/axontt9ml5l9xdgegqfo.jpg';
+    'https://fouoflrwnuelvlfgsats.supabase.co/storage/v1/object/public/MMC%20machines/machines/JR1903B_4_50om.webp';
+  // const imgUrl =
+  // 'https://res.cloudinary.com/dpbb1gfnc/image/upload/v1716108851/axontt9ml5l9xdgegqfo.jpg';
 
   return (
     <div className="h-[100vh] p-5">
