@@ -69,7 +69,7 @@ export default async function PricingPage({
           >
             Ref:{machine.reference}
           </h2>
-          <div className="w-[50vw] overflow-hidden sm:h-[60vh]">
+          <div className="w-[85vw] overflow-hidden sm:h-[60vh] sm:w-[45vw]">
             <Image
               alt="Background Image"
               height={400}
