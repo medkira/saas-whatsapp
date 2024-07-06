@@ -1,25 +1,35 @@
-'use client';
 import { Button } from '@nextui-org/button';
 import Image from 'next/legacy/image';
+import { notFound } from 'next/navigation';
 
-import machine1 from '/public/images/machines/A50.png';
-
-import { Input } from '@nextui-org/input';
-
+import { createClient } from '@/utils/supabase/server';
 import IconTelephoneFill from '@/components/icons';
 import { subtitle, title } from '@/components/primitives';
-import { useContactUsFormStore } from '@/app/lib/store';
+import CommandeForm from '@/components/machines/commande-form';
 
-export default function PricingPage() {
-  const { contactUsFormData, setContactsUsForm } = useContactUsFormStore();
-  const handleChange = (event: any) => {
-    const { name, value } = event.target;
+export default async function PricingPage({
+  params,
+}: {
+  params: { id: string };
+}) {
+  // console.log(params.id);
 
-    setContactsUsForm({ ...contactUsFormData, [name]: value });
-  };
+  const supabase = createClient();
+  let { data } = await supabase
+    .from('machines')
+    .select('*')
+    .eq('id', params.id);
+  // console.log(error);
 
-  const imgUrl =
-    'https://fouoflrwnuelvlfgsats.supabase.co/storage/v1/object/public/MMC%20machines/machines/JR1903B_4_50om.webp';
+  if (!data || data.length === 0) {
+    notFound();
+  }
+
+  // ? need type(entitie) for the machine
+  const machine: any = data[0];
+
+  // const imgUrl =
+  //   'https://fouoflrwnuelvlfgsats.supabase.co/storage/v1/object/public/MMC%20machines/machines/JR1903B_4_50om.webp';
   // const imgUrl =
   // 'https://res.cloudinary.com/dpbb1gfnc/image/upload/v1716108851/axontt9ml5l9xdgegqfo.jpg';
 
@@ -48,7 +58,7 @@ export default function PricingPage() {
               className: 'mb-1 bg-black sm:text-start',
             })}
           >
-            Sewing
+            {machine.category}
           </h1>
 
           <h2
@@ -57,7 +67,7 @@ export default function PricingPage() {
               className: ' font-bold',
             })}
           >
-            Ref:AT1002-190B
+            Ref:{machine.reference}
           </h2>
           <div className="w-[50vw] overflow-hidden sm:h-[60vh]">
             <Image
@@ -69,7 +79,7 @@ export default function PricingPage() {
               // (max-width: 70px) 500vw,
               // 330vw"
               // className="scale-80 "
-              src={imgUrl}
+              src={machine.image_url}
               width={400}
             />
           </div>
@@ -79,48 +89,7 @@ export default function PricingPage() {
             <h1 className="text-2xl font-bold text-green-500">
               Ou commande online
             </h1>
-            <form
-              className="md:max-h-auto flex w-full flex-col flex-wrap gap-4 md:flex-nowrap"
-              // onSubmit={sendEmail}
-            >
-              <Input
-                required
-                className="h-12 md:h-auto md:max-h-12"
-                id="name"
-                label="Nom"
-                name="name"
-                type="name"
-                onChange={handleChange}
-              />
-              <Input
-                className="h-12 md:h-auto md:max-h-12"
-                id="business"
-                label="Entreprise"
-                name="business"
-                type="business"
-                onChange={handleChange}
-              />
-
-              <Input
-                className="h-12 md:h-auto md:max-h-12"
-                id="phoneNumber"
-                label="Numéro de téléphone"
-                name="phoneNumber"
-                type="phone number"
-                onChange={handleChange}
-              />
-
-              <div className="flex justify-end pr-2 pt-3">
-                <Button
-                  className="w-full rounded-2xl p-3 px-5 text-xl font-semibold"
-                  color="primary"
-                  size="lg"
-                  type="submit"
-                >
-                  Commander
-                </Button>
-              </div>
-            </form>
+            <CommandeForm />
           </div>
         </section>
       </div>

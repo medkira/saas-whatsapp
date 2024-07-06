@@ -2,8 +2,11 @@
 const nextConfig = {
   images: {
     // domains: ['https://www.brother.eu'],
-    domains: ['pmo19b450-pic37.websiteonline.cn' ,'res.cloudinary.com',
-      'fouoflrwnuelvlfgsats.supabase.co'
+    
+    remotePatterns: [
+      {
+        hostname: 'fouoflrwnuelvlfgsats.supabase.co',
+      }
     ],
   },
 };

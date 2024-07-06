@@ -1,8 +1,15 @@
-export default function BlogLayout({
+// import { createClient } from '@/utils/supabase/server';
+
+export default async function BlogLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  // const supabase = createClient();
+  // const { data } = await supabase.from('machines').select('*');
+
+  // console.log(data);
+
   return (
     <section
       className="flex 
