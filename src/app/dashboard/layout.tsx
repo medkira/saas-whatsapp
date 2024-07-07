@@ -17,7 +17,7 @@ export default async function DashboardLayout({
   // if (!user) {
   //   redirect('/login');
   // }
-  redirect('/login');
+  // redirect('/login');
 
   return <Layout>{children}</Layout>;
 }

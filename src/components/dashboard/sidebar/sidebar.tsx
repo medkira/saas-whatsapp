@@ -27,7 +27,7 @@ export const SidebarWrapper = () => {
   const { collapsed, setCollapsed } = useSidebarContext();
 
   return (
-    <aside className="sticky top-0 z-[20] h-screen">
+    <aside className="sticky top-0 z-[20] h-screen ">
       {/* {collapsed ? (
         <div className={Sidebar.Overlay()} />
       ) : // onClick={setCollapsed}
@@ -37,9 +37,7 @@ export const SidebarWrapper = () => {
           collapsed: collapsed,
         })}
       >
-        <div className={Sidebar.Header()}>
-          <CompaniesDropdown />
-        </div>
+        <div className={Sidebar.Header()}>{/* <CompaniesDropdown /> */}</div>
         <div className="flex h-full flex-col justify-between">
           <div className={Sidebar.Body()}>
             <SidebarItem
@@ -49,7 +47,7 @@ export const SidebarWrapper = () => {
               title="Home"
             />
             <SidebarMenu title="Main Menu">
-              <SidebarItem
+              {/* <SidebarItem
                 href="/dashboard/accounts"
                 icon={<AccountsIcon />}
                 isActive={pathname === '/dashboard/accounts'}
@@ -69,10 +67,11 @@ export const SidebarWrapper = () => {
                 icon={<CustomersIcon />}
                 isActive={pathname === '/customers'}
                 title="Customers"
-              />
+              /> */}
               <SidebarItem
+                href="/dashboard/machines"
                 icon={<ProductsIcon />}
-                isActive={pathname === '/products'}
+                isActive={pathname === '/dashboard/machines'}
                 title="Products"
               />
               <SidebarItem
@@ -88,25 +87,25 @@ export const SidebarWrapper = () => {
                 isActive={pathname === '/developers'}
                 title="Developers"
               />
-              <SidebarItem
+              {/* <SidebarItem
                 icon={<ViewIcon />}
                 isActive={pathname === '/view'}
                 title="View Test Data"
-              />
-              <SidebarItem
+              /> */}
+              {/* <SidebarItem
                 icon={<SettingsIcon />}
                 isActive={pathname === '/settings'}
                 title="Settings"
-              />
+              /> */}
             </SidebarMenu>
 
-            <SidebarMenu title="Updates">
+            {/* <SidebarMenu title="Updates">
               <SidebarItem
                 icon={<ChangeLogIcon />}
                 isActive={pathname === '/changelog'}
                 title="Changelog"
               />
-            </SidebarMenu>
+            </SidebarMenu> */}
           </div>
           <div className={Sidebar.Footer()}>
             <Tooltip color="primary" content={'Settings'}>

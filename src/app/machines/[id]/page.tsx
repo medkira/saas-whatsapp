@@ -6,6 +6,7 @@ import { createClient } from '@/utils/supabase/server';
 import IconTelephoneFill from '@/components/icons';
 import { subtitle, title } from '@/components/primitives';
 import CommandeForm from '@/components/machines/commande-form';
+import { Machines } from '@/domain/entities/Machines';
 
 export default async function PricingPage({
   params,
@@ -26,7 +27,7 @@ export default async function PricingPage({
   }
 
   // ? need type(entitie) for the machine
-  const machine: any = data[0];
+  const machine: Machines = data[0];
 
   // const imgUrl =
   //   'https://fouoflrwnuelvlfgsats.supabase.co/storage/v1/object/public/MMC%20machines/machines/JR1903B_4_50om.webp';

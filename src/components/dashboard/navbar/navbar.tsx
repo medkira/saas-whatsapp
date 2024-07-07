@@ -47,7 +47,7 @@ export const NavbarWrapper = ({ children }: Props) => {
             <span>Feedback?</span>
           </div>
 
-          <NotificationsDropdown />
+          {/* <NotificationsDropdown /> */}
 
           <div className="max-md:hidden">{/* <SupportIcon /> */}</div>
 
