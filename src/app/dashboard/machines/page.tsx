@@ -44,7 +44,10 @@ export default async function Page() {
   // ];
 
   return (
-    <div className="flex flex-col items-center  justify-center text-white">
+    <div
+      className="flex flex-col 
+ items-center justify-center   text-white"
+    >
       <DashboardMachines machines={machines} />
     </div>
   );
