@@ -5,8 +5,8 @@ import { notFound } from 'next/navigation';
 import { createClient } from '@/utils/supabase/server';
 import { Machines } from '@/domain/entities/Machines';
 import { useState } from 'react';
-import { getMachine } from './action';
-import DashboardMachines from '@/components/machines/dahboard-machines';
+import { getMachine } from '../../../actions/machines';
+import DashboardMachines from '@/app/dashboard/machines/(components)/dahboard-machines';
 
 export default async function Page() {
   // const test = useState();

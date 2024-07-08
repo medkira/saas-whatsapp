@@ -4,6 +4,9 @@ import { Machines } from '@/domain/entities/Machines';
 import { Card } from '@nextui-org/card';
 import { Button, Checkbox, Divider } from '@nextui-org/react';
 import { useState } from 'react';
+import CreateMachineModel from './create-machine-model';
+import UpdateMachineModel from './update-machine-model';
+import DeleteMachineModel from './delete-machine-model';
 
 export default function DashboardMachines({
   machines,
@@ -32,7 +35,8 @@ export default function DashboardMachines({
   return (
     <div className="flex w-full flex-col items-center overflow-y-auto pl-40 sm:pl-0">
       <div className="flex w-[100vw] max-w-4xl  items-center  justify-end gap-5  pt-5  sm:pr-8">
-        <Button color="success">Create</Button>
+        {/* <Button color="success">Create</Button> */}
+        <CreateMachineModel />
         {/* <Button color="warning">update</Button>
         <Button color="danger">Delete</Button> */}
       </div>
@@ -67,18 +71,8 @@ export default function DashboardMachines({
                 <div className="w-1/3 ">{machine.price}</div>
 
                 <div className="w-1/ flex gap-2">
-                  <Button
-                    color="warning"
-                    // onClick={() => handleUpdate(machine.id)}
-                  >
-                    Update
-                  </Button>
-                  <Button
-                    color="danger"
-                    // onClick={() => handleDelete(machine.id)}
-                  >
-                    Delete
-                  </Button>
+                  <UpdateMachineModel machine={machine} />
+                  <DeleteMachineModel machine={machine} />
                 </div>
               </div>
             </div>
