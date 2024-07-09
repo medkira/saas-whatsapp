@@ -3,19 +3,10 @@
 import Image from 'next/legacy/image';
 import { useEffect } from 'react';
 import Lenis from 'lenis';
-import {
-  Card,
-  CardFooter,
-  Button,
-  CardBody,
-  Input,
-  Textarea,
-} from '@nextui-org/react';
+import { Card, Button, CardBody, Input, Textarea } from '@nextui-org/react';
 import emailjs from '@emailjs/browser';
 import Autoplay from 'embla-carousel-autoplay';
 
-import rent from '/public/images/projects/rent0.png';
-import gym from '/public/images/projects/gym0.png';
 import sewingmachine from '/public/images/icons/sewing-machine.png';
 import repairing from '/public/images/icons/repairing.png';
 import fabrication from '/public/images/icons/fabrication.png';
@@ -25,6 +16,7 @@ import React from 'react';
 
 import { useContactUsFormStore } from './lib/store';
 
+import Ripple from '@/components/magicui/ripple';
 import { title, subtitle } from '@/components/primitives';
 import { roboto } from '@/config/fonts';
 import { toast } from '@/components/ui/use-toast';
@@ -202,7 +194,7 @@ const HeroSection = () => {
       </section> */}
 
       <div className="flex flex-col  items-center justify-center gap-6">
-        <h1
+        {/* <h1
           className={title({
             color: 'blue',
             size: 'lg',
@@ -210,8 +202,14 @@ const HeroSection = () => {
           })}
         >
           Nos Service
-        </h1>
-        <div className="flex flex-col gap-10 sm:flex-row">
+        </h1> */}
+        <div className="relative flex h-[400px] w-full flex-col items-center justify-center overflow-hidden rounded-lg  bg-background ">
+          <p className="z-10 whitespace-pre-wrap text-center text-5xl font-bold  tracking-tighter text-sky-800">
+            Nos Service
+          </p>
+          <Ripple />
+        </div>
+        <div className="-mt-28 flex flex-col  items-center justify-center gap-10 sm:flex-row   md:pr-[3.5rem]">
           <div className="flex flex-col items-center justify-center gap-3">
             <Image height={150} src={sewingmachine} width={150} />
             <h1
@@ -235,6 +233,7 @@ const HeroSection = () => {
               Réparation et Assemblage <br /> machines à coudre
             </h1>
           </div>
+
           <div className="flex flex-col  items-center justify-center gap-3">
             <Image height={150} src={fabrication} width={150} />
             <h1
@@ -246,6 +245,8 @@ const HeroSection = () => {
               Fabrication de Guide <br /> machines à coudre
             </h1>
           </div>
+
+          {/* <Ripple /> */}
         </div>
       </div>
     </div>
