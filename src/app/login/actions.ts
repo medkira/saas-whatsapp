@@ -42,7 +42,7 @@ export async function login(prevState:any,formData: FormData) {
     redirect('/dashboard')
 }
 
-export async function signup(formData: FormData) {
+export async function signup(prevState:any,formData: FormData) {
     const supabase = createClient()
 
     // type-casting here for convenience

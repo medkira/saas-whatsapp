@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 
-import LoginForm from './login-form';
+import LoginForm from './(components)/login-form';
 
 import { cn } from '@/lib/utils';
 import { Logo } from '@/components/icons';
