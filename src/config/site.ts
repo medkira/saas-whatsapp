@@ -13,12 +13,12 @@ export const siteConfig = {
     //   href: '/docs',
     // },
     {
-      label: 'Pricing',
-      href: '/pricing',
+      label: 'Machine a coudre',
+      href: '/products',
     },
     {
-      label: 'Blog',
-      href: '/blog',
+      label: 'Nos Service',
+      href: '/service',
     },
     {
       label: 'About',
