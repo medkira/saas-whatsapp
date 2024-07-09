@@ -16,10 +16,10 @@ import Autoplay from 'embla-carousel-autoplay';
 
 import rent from '/public/images/projects/rent0.png';
 import gym from '/public/images/projects/gym0.png';
-import phoneOptimization from '/public/images/app.png';
-import phone from '/public/images/phone.png';
-import learn from '/public/images/projects/learn.png';
-import responsiveDesign from '/public/images/responsive-design.png';
+import sewingmachine from '/public/images/icons/sewing-machine.png';
+import repairing from '/public/images/icons/repairing.png';
+import fabrication from '/public/images/icons/fabrication.png';
+// import learn from '/public/images/projects/learn.png';
 
 import React from 'react';
 
@@ -28,25 +28,9 @@ import { useContactUsFormStore } from './lib/store';
 import { title, subtitle } from '@/components/primitives';
 import { roboto } from '@/config/fonts';
 import { toast } from '@/components/ui/use-toast';
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from '@/components/ui/carousel';
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTrigger,
-} from '@/components/ui/dialog';
 
-import landingGym from '/public/images/landing-gym.png';
-import landingGym1 from '/public/images/landing-gym1.png';
-import landingGym2 from '/public/images/landing-gym2.png';
-import landingGym3 from '/public/images/landing-gym3.png';
 import machine1 from '/public/images/machines/A50.png';
+
 import IconTelephoneFill from '@/components/icons';
 
 export default function Home() {
@@ -125,17 +109,20 @@ const HeroSection = () => {
       >
         <div className=" flex w-full flex-col justify-center text-center">
           <div className="-mb-3 sm:mb-1 ">
-            <h1 className={title()}>La&nbsp;</h1>
-            <h1 className={title()}>Page&nbsp;</h1>
-            <h1 className={title()}>officielle&nbsp;</h1>
-            <h1 className={title()}>pour&nbsp;</h1>
+            <h1 className={title()}>Agent&nbsp;</h1>
+            <h1 className={title()}>tunisien&nbsp;</h1>
+            <h1 className={title()}>de&nbsp;</h1>
+            {/* <h1 className={title()}>pour&nbsp;</h1> */}
             {/* <h1 className={title()}>achete&nbsp;</h1> */}
 
             {/* <h1 className={title()}>Livraison&nbsp;</h1> */}
           </div>
           <div>
-            <h1 className={title()}>achete&nbsp;</h1>
-            <h1 className={title({ color: 'blue' })}>machines à coudre</h1>
+            {/* <h1 className={title()}>achete&nbsp;</h1> */}
+            <h1 className={title({ color: 'blue' })}>
+              {' '}
+              machines à coudre Jaki
+            </h1>
           </div>
         </div>
         <div className="flex  items-center justify-center ">
@@ -151,15 +138,15 @@ const HeroSection = () => {
             </h1>
           </div>
         </div>
-        <div className="w-full text-center font-bold  text-gray-950 sm:text-xl">
+        {/* <div className="w-full text-center font-bold  text-gray-950 sm:text-xl">
           <h2>
             Découvrez notre collection et trouvez la machine à coudre parfaite
             pour vos besoins. Contactez-nous !
           </h2>
-        </div>
+        </div> */}
       </div>
 
-      <section className=" px-16 pt-14 sm:pt-6">
+      {/* <section className=" px-16 pt-14 sm:pt-6">
         <Carousel
           className="w-full"
           opts={{
@@ -212,7 +199,55 @@ const HeroSection = () => {
           <CarouselPrevious />
           <CarouselNext />
         </Carousel>
-      </section>
+      </section> */}
+
+      <div className="flex flex-col  items-center justify-center gap-6">
+        <h1
+          className={title({
+            color: 'blue',
+            size: 'lg',
+            className: 'p-10',
+          })}
+        >
+          Nos Service
+        </h1>
+        <div className="flex flex-col gap-10 sm:flex-row">
+          <div className="flex flex-col items-center justify-center gap-3">
+            <Image height={150} src={sewingmachine} width={150} />
+            <h1
+              className={subtitle({
+                size: 'md',
+                className: 'text-center font-bold leading-6',
+              })}
+            >
+              Vente de machines à coudre <br /> et pièces détachées
+            </h1>
+          </div>
+
+          <div className="flex flex-col  items-center justify-center gap-3">
+            <Image height={150} src={repairing} width={150} />
+            <h1
+              className={subtitle({
+                size: 'md',
+                className: 'text-center font-bold leading-6',
+              })}
+            >
+              Réparation et Assemblage <br /> machines à coudre
+            </h1>
+          </div>
+          <div className="flex flex-col  items-center justify-center gap-3">
+            <Image height={150} src={fabrication} width={150} />
+            <h1
+              className={subtitle({
+                size: 'md',
+                className: 'text-center font-bold leading-6',
+              })}
+            >
+              Fabrication de Guide <br /> machines à coudre
+            </h1>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
@@ -300,125 +335,6 @@ const Section1 = () => {
         >
           Explorer toutes les machines
         </Button>
-      </section>
-
-      {/* <h1 className={title({ color: 'blue' })}>&nbsp;Should You Care?</h1> */}
-    </div>
-  );
-};
-
-const Section2 = () => {
-  // const rotate = useTransform(scrollYProgress, [0, 1], [5, 0]);
-
-  return (
-    <div className="sticky flex  w-full flex-col  items-center justify-start gap-10 overflow-hidden  bg-gray-900  pt-20 text-center md:pt-28 lg:top-0 lg:h-[160vh]  ">
-      <section className="flex flex-col items-center justify-start">
-        <div className=" flex  w-48 flex-wrap justify-center sm:w-full">
-          <h1 className={title({ size: 'md', class: ' sm:mr-2' })}>
-            Latest Work
-          </h1>
-          <span className={title({ color: 'blue', size: 'md' })}>Created</span>
-        </div>
-      </section>
-
-      <section className="flex  flex-wrap items-center justify-center gap-12  p-20 pt-0 md:pt-14 lg:flex-nowrap">
-        <a
-          className="flex flex-col items-center justify-start"
-          href="https://totaltech-gym-0.vercel.app/"
-          rel="noreferrer"
-          target="_blank"
-        >
-          <Card isFooterBlurred className="flex border-none" radius="lg">
-            <Image
-              alt=""
-              className="object-cover"
-              height={500}
-              src={gym}
-              width={750}
-            />
-            <div className="flex items-center justify-center">
-              <CardFooter className="absolute bottom-3 z-10  w-[calc(100%_-_15px)] justify-between overflow-hidden rounded-large border-1 border-white/20 py-1 shadow-small before:rounded-xl before:bg-white/10">
-                <p className="text-sm font-bold text-white/80">Gym</p>
-                <Button
-                  className="flex bg-black/20 text-tiny text-white"
-                  color="default"
-                  radius="lg"
-                  size="sm"
-                  variant="flat"
-                >
-                  Website
-                </Button>
-              </CardFooter>
-            </div>
-          </Card>
-        </a>
-        <a
-          className="flex flex-col items-center justify-start"
-          href="https://totaltech-design-interior-0.vercel.app/"
-          rel="noreferrer"
-          target="_blank"
-        >
-          <Card isFooterBlurred className="flex border-none" radius="lg">
-            <Image
-              alt=""
-              className="object-fill"
-              height={500}
-              src={rent}
-              width={750}
-            />
-            <div className="flex items-center justify-center">
-              <CardFooter className="absolute bottom-3 z-10  w-[calc(100%_-_15px)] justify-between overflow-hidden rounded-large border-1 border-white/20 py-1 shadow-small before:rounded-xl before:bg-white/10">
-                <p className="text-sm  font-bold text-white/80">
-                  Interior design
-                </p>
-                <Button
-                  className="flex bg-black/20 text-tiny text-white"
-                  color="default"
-                  radius="lg"
-                  size="sm"
-                  variant="flat"
-                >
-                  Website
-                </Button>
-              </CardFooter>
-            </div>
-          </Card>
-        </a>
-        <a
-          className="flex flex-col items-center justify-start"
-          href="https://totaltech-ai-mock-interview.vercel.app/"
-          rel="noreferrer"
-          target="_blank"
-        >
-          {' '}
-          <div className="flex flex-col items-center justify-start">
-            <Card isFooterBlurred className="flex border-none" radius="lg">
-              <Image
-                alt="learn moch up "
-                className="object-cover"
-                height={500}
-                src={learn}
-                width={750}
-              />
-              <div className="flex items-center justify-center">
-                <CardFooter className="absolute bottom-3 z-10  w-[calc(100%_-_15px)] justify-between overflow-hidden rounded-large border-1 border-white/20 py-1 shadow-small before:rounded-xl before:bg-white/10">
-                  <p className="text-sm  font-bold text-white/80">
-                    Ai Mock Interview
-                  </p>
-                  <Button
-                    className="flex bg-black/20 text-tiny text-white"
-                    color="default"
-                    radius="lg"
-                    size="sm"
-                    variant="flat"
-                  >
-                    SaaS
-                  </Button>
-                </CardFooter>
-              </div>
-            </Card>
-          </div>
-        </a>
       </section>
 
       {/* <h1 className={title({ color: 'blue' })}>&nbsp;Should You Care?</h1> */}

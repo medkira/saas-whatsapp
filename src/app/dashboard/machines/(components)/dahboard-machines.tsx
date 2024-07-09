@@ -33,19 +33,19 @@ export default function DashboardMachines({
   ];
 
   return (
-    <div className="flex w-full flex-col items-center overflow-y-auto pl-40 sm:pl-0">
-      <div className="flex w-[100vw] max-w-4xl  items-center  justify-end gap-5  pt-5  sm:pr-8">
-        {/* <Button color="success">Create</Button> */}
-        <CreateMachineModel />
-        {/* <Button color="warning">update</Button>
-        <Button color="danger">Delete</Button> */}
-      </div>
+    <div className="flex w-full flex-col items-center   ">
       <div
-        className="w-full min-w-fit max-w-4xl overflow-y-auto 
+        className="w-full min-w-fit max-w-4xl  
   p-5"
       >
+        <div className="flex max-w-4xl  items-end  justify-end gap-5 p-5  pt-5 ">
+          <CreateMachineModel />
+        </div>
         <Card className="p-5">
-          <div className="mb-4 flex flex-row items-center justify-between gap-4 pl-1 md:pl-3">
+          <div
+            className="mb-4 flex flex-row items-center
+           justify-between gap-4  md:pl-3"
+          >
             {columns.map((column) => (
               <div key={column.key} className="w-1/3 font-semibold">
                 {column.label}
@@ -70,7 +70,7 @@ export default function DashboardMachines({
                 <div className="w-1/3 ">{machine.reference}</div>
                 <div className="w-1/3 ">{machine.price}</div>
 
-                <div className="w-1/ flex gap-2">
+                <div className="flex w-1/4 flex-col gap-2 sm:flex-row">
                   <UpdateMachineModel machine={machine} />
                   <DeleteMachineModel machine={machine} />
                 </div>
