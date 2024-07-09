@@ -20,12 +20,12 @@ export default function LoginPage() {
       <div
         className=" flex w-[95vw] transform-gpu flex-col  gap-6
         rounded-2xl  px-5 py-5
-       text-gray-600 dark:[border:1px_solid_rgba(255,255,255,.1)]
-       dark:[box-shadow:0_-20px_80px_-20px_#8686f01f_inset]
-      sm:h-[90vh] sm:w-[60vw]
-      sm:max-w-md 
-         sm:scale-85 
-          sm:gap-0 md:max-w-xl lg:max-w-xl"
+       text-gray-600 sm:h-[90vh]
+       sm:w-[60vw]
+      sm:max-w-md sm:scale-85
+      sm:gap-0 
+         md:max-w-xl 
+          lg:max-w-xl dark:[border:1px_solid_rgba(255,255,255,.1)] dark:[box-shadow:0_-20px_80px_-20px_#8686f01f_inset]"
       >
         <div className="flex flex-col items-center justify-center text-center align-text-top">
           <div className=" sm:scale-750 flex items-center justify-center rounded-full p-5">

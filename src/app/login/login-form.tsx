@@ -1,14 +1,17 @@
 import { ChevronRight } from 'lucide-react';
+import { useFormState } from 'react-dom';
 
-// import { signup, login } from './actions';
+import { login } from './actions';
 
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 
 export default function LoginForm() {
+  const [errorMessage, dispatch] = useFormState(login, undefined);
+
   return (
     <form
-      // action={login}
+      action={dispatch}
       className="space-y-5"
       // onSubmit={(e) => e.preventDefault()}
     >
@@ -32,6 +35,11 @@ export default function LoginForm() {
           type="password"
         />
       </div>
+      {errorMessage && (
+        <>
+          <p className="text-sm text-red-500">{errorMessage}</p>
+        </>
+      )}
       <button className="font-geist group w-full transform-gpu rounded-lg bg-purple-200/10 px-4 py-4 text-xl font-medium tracking-tighter text-white duration-150 hover:bg-transparent/10 active:bg-blue-900 dark:[border:1px_solid_rgba(255,255,255,.1)] dark:[box-shadow:0_-20px_80px_-20px_#8686f01f_inset]">
         Sign in
         <ChevronRight className="ml-2 inline-flex h-4 w-4 items-center justify-center duration-300 group-hover:translate-x-1" />

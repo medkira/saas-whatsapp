@@ -268,7 +268,7 @@ export const FileUploaderContent = forwardRef<
   return (
     <div
       ref={containerRef}
-      aria-description="content file holder"
+      // aria-description="content file holder"
       className={cn('w-full px-1')}
     >
       <div
