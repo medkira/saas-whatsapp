@@ -10,9 +10,17 @@ import {
   Input,
 } from '@nextui-org/react';
 import { useFormState } from 'react-dom';
+import { useEffect, useState } from 'react';
 
+import {
+  FileUploader,
+  FileUploaderContent,
+  FileUploaderItem,
+  FileInput,
+} from '@/components/file-upoad/file-uploader';
 import { Machines } from '@/domain/entities/Machines';
 import { createMachine } from '@/actions/machines';
+import { FileSvgDraw } from '@/components/file-upoad/file-upload-icon';
 
 export default function CreateMachineModel() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
@@ -26,6 +34,20 @@ export default function CreateMachineModel() {
   //     reference: '',
   //     price: 0,
   //   });
+
+  const [files, setFiles] = useState<File[] | null>([]);
+  const dropZoneConfig = {
+    maxFiles: 5,
+    maxSize: 1024 * 1024 * 4,
+    multiple: true,
+  };
+
+  // useEffect(() => {
+  //   console.log(files);
+  // }, [files]);
+
+  // const createMachineWithImage = createMachine.bind(null, files!);
+
   const [state, dispatch] = useFormState(createMachine, initialState);
 
   return (
@@ -65,6 +87,30 @@ export default function CreateMachineModel() {
                     type="number" // Use type="number" for numeric input
                     variant="bordered"
                   />
+                  {/* imae upload  */}
+                  <FileUploader
+                    className="relative rounded-lg bg-background p-2"
+                    dropzoneOptions={dropZoneConfig}
+                    value={files}
+                    onValueChange={setFiles}
+                  >
+                    <FileInput className="outline-dashed outline-1 outline-white">
+                      <div className="flex w-full flex-col items-center justify-center pb-4 pt-3 ">
+                        <FileSvgDraw />
+                      </div>
+                    </FileInput>
+                    <FileUploaderContent>
+                      {files &&
+                        files.length > 0 &&
+                        files.map((file, i) => (
+                          <FileUploaderItem key={i} index={i}>
+                            {/* <Paperclip className="h-4 w-4 stroke-current" /> */}
+                            <span>{file.name}</span>
+                          </FileUploaderItem>
+                        ))}
+                    </FileUploaderContent>
+                  </FileUploader>
+                  {/* imae upload  */}
                 </ModalBody>
                 <ModalFooter>
                   <Button color="danger" variant="light" onPress={onClose}>
