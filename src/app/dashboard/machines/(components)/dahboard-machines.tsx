@@ -1,12 +1,14 @@
 'use client';
-import { Machines } from '@/domain/entities/Machines';
 
 import { Card } from '@nextui-org/card';
-import { Button, Checkbox, Divider } from '@nextui-org/react';
-import { useState } from 'react';
+import { Button, Divider } from '@nextui-org/react';
+import Link from 'next/link';
+
 import CreateMachineModel from './create-machine-model';
 import UpdateMachineModel from './update-machine-model';
 import DeleteMachineModel from './delete-machine-model';
+
+import { Machines } from '@/domain/entities/Machines';
 
 export default function DashboardMachines({
   machines,
@@ -47,7 +49,7 @@ export default function DashboardMachines({
            justify-between gap-4  md:pl-3"
           >
             {columns.map((column) => (
-              <div key={column.key} className="w-1/3 font-semibold">
+              <div key={column.key} className="w-1/5 font-semibold">
                 {column.label}
               </div>
             ))}
@@ -66,13 +68,20 @@ export default function DashboardMachines({
                 items-center justify-between gap-4 border-b
                  border-gray-700 py-3 pl-1 md:pl-3"
               >
-                <div className="w-1/3 ">{machine.category}</div>
-                <div className="w-1/3 ">{machine.reference}</div>
-                <div className="w-1/3 ">{machine.price}</div>
+                <div className="w-1/4 ">{machine.category}</div>
+                <div className="w-1/4 ">{machine.reference}</div>
+                <div className="w-1/4 ">{machine.price}</div>
 
-                <div className="flex w-1/4 flex-col gap-2 sm:flex-row">
+                <div className="flex w-1/3 flex-col gap-2 sm:flex-row">
                   <UpdateMachineModel machine={machine} />
                   <DeleteMachineModel machine={machine} />
+                  <Link
+                    href={machine.image_url}
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    <Button>Image</Button>
+                  </Link>
                 </div>
               </div>
             </div>

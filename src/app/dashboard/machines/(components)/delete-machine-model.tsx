@@ -9,7 +9,7 @@ import {
   useDisclosure,
   Input,
 } from '@nextui-org/react';
-import { useFormState } from 'react-dom';
+import { useFormState, useFormStatus } from 'react-dom';
 
 import { Machines } from '@/domain/entities/Machines';
 import { createMachine, deleteMachine } from '@/actions/machines';
@@ -34,6 +34,7 @@ export default function DeleteMachineModel({
   const deleteMachineWithId = deleteMachine.bind(null, machine.id);
 
   const [state, dispatch] = useFormState(deleteMachineWithId, initialState);
+  const status = useFormStatus();
 
   return (
     <div className="flex flex-col gap-2">
@@ -64,7 +65,12 @@ export default function DeleteMachineModel({
                   <Button color="danger" variant="light" onPress={onClose}>
                     Close
                   </Button>
-                  <Button color="danger" type="submit" onPress={onClose}>
+                  <Button
+                    color="danger"
+                    isLoading={status.pending}
+                    type="submit"
+                    // onPress={onClose}
+                  >
                     Delete
                   </Button>
                 </ModalFooter>

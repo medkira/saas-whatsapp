@@ -9,7 +9,7 @@ import {
   useDisclosure,
   Input,
 } from '@nextui-org/react';
-import { useFormState } from 'react-dom';
+import { useFormState, useFormStatus } from 'react-dom';
 import { useEffect, useState } from 'react';
 
 import {
@@ -47,8 +47,8 @@ export default function CreateMachineModel() {
   // }, [files]);
 
   // const createMachineWithImage = createMachine.bind(null, files!);
-
-  const [state, dispatch] = useFormState(createMachine, initialState);
+  const [errorMessage, dispatch] = useFormState(createMachine, initialState);
+  const status = useFormStatus();
 
   return (
     <div className="flex flex-col gap-2">
@@ -116,7 +116,12 @@ export default function CreateMachineModel() {
                   <Button color="danger" variant="light" onPress={onClose}>
                     Close
                   </Button>
-                  <Button color="primary" type="submit" onPress={onClose}>
+                  <Button
+                    color="primary"
+                    isLoading={status.pending}
+                    type="submit"
+                    onPress={onClose}
+                  >
                     Create
                   </Button>
                 </ModalFooter>

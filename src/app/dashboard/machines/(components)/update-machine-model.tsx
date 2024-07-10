@@ -9,7 +9,7 @@ import {
   useDisclosure,
   Input,
 } from '@nextui-org/react';
-import { useFormState } from 'react-dom';
+import { useFormState, useFormStatus } from 'react-dom';
 
 import { Machines } from '@/domain/entities/Machines';
 import { updateMachine } from '@/actions/machines';
@@ -27,6 +27,7 @@ export default function UpdateMachineModel({
   };
   const updateMachineWithId = updateMachine.bind(null, machine.id);
   const [state, dispatch] = useFormState(updateMachineWithId, initialState);
+  const status = useFormStatus();
 
   return (
     <div className="flex flex-col gap-2">
@@ -73,7 +74,12 @@ export default function UpdateMachineModel({
                   <Button color="danger" variant="light" onPress={onClose}>
                     Close
                   </Button>
-                  <Button color="primary" type="submit" onPress={onClose}>
+                  <Button
+                    color="primary"
+                    isLoading={status.pending}
+                    type="submit"
+                    onPress={onClose}
+                  >
                     Update
                   </Button>
                 </ModalFooter>
