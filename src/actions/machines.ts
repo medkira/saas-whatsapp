@@ -49,10 +49,27 @@ export async function deleteMachine(id: number,prevState: any, formData:FormData
 export async function updateMachine(id:number,prevState: any, formData:FormData) {
    const supabase = createClient();
 
+   
+   const image  = formData.get("file") as File;
+   let imageUrl;
 
-   const image:any = formData.get("file");
+   if(image.size != 0){
+      // ? this should be another useCase
+      const { data } = await supabase.from('machines').select('*').eq('id',id);
 
-   const imageUrl = await uploadFile(image)
+      const machine:Machines = data![0] //! data could be null
+
+      const url = machine.image_url 
+
+      // extract the path of imaage from the image url
+      const secondLastSlashIndex = url.lastIndexOf("/", url.lastIndexOf("/") - 1);
+      const imageBacketPath = url.slice(secondLastSlashIndex + 1);
+
+      await deleteFile(imageBacketPath);
+
+       imageUrl = await uploadFile(image);
+   }
+
 
 
    const machine:Omit<Machines, 'id' | 'image_url'>  = {
@@ -60,12 +77,12 @@ export async function updateMachine(id:number,prevState: any, formData:FormData)
       price: formData.get("price") as any,
       reference: formData.get("reference") as any
    }
-
    // this need to be changed supabse 
    //update need to know the entitie
    const { error } = await supabase
   .from('machines')
-  .update({...machine,image_url:imageUrl})
+  .update({...machine,...(imageUrl ? {image_url:imageUrl} : {}),
+  })
   .eq('id', id)
 
   revalidatePath('/dashboard/machines');
@@ -78,7 +95,7 @@ export async function createMachine(prevState: any,formData:FormData){
 
    const image:any = formData.get("file");
 
-   const imageUrl = await uploadFile(image)
+   const imageUrl = await uploadFile(image);
 
    // console.log(formData.get("category"));
    const machine:Omit<Machines, 'id' | 'image_url'>  = {
