@@ -57,7 +57,7 @@ export default function DashboardMachines({
             {columns.map((column) => (
               <div
                 key={column.key}
-                className="flex w-1/3 justify-center font-semibold "
+                className="flex w-1/3 justify-start font-semibold "
               >
                 {column.label}
               </div>
@@ -83,14 +83,14 @@ export default function DashboardMachines({
                 items-center justify-between gap-4 border-b
                  border-gray-700 py-3 "
               >
-                <div className="flex w-1/3 justify-center">
+                <div className="flex w-1/3 justify-start">
                   {machine.category}
                 </div>
-                <div className="flex w-1/3 justify-center ">
+                <div className="flex w-1/3 justify-start ">
                   {machine.reference}
                 </div>
 
-                <div className="flex w-1/3 justify-center">{machine.price}</div>
+                <div className="flex w-1/3 justify-start">{machine.price}</div>
                 <div className="invisible flex  w-0 justify-center  sm:visible sm:w-1/3 ">
                   <Link
                     href={machine.image_url}
