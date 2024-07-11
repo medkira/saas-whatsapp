@@ -4,5 +4,11 @@ export type Machines = {
     image_url: string;
     price: number;
     category: string;
+
+    name?:string;
+    description?: string;
+    mark?: string;
+    applicable?: string;
+    available?: boolean;
   };
   

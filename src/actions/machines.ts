@@ -3,6 +3,7 @@ import { revalidatePath } from 'next/cache';
 
 import { Machines } from '@/domain/entities/Machines';
 import { createClient } from '@/utils/supabase/server';
+import { error } from 'console';
 
  export  async function  getMachine ()  {
     const supabase = createClient();
@@ -75,7 +76,12 @@ export async function updateMachine(id:number,prevState: any, formData:FormData)
    const machine:Omit<Machines, 'id' | 'image_url'>  = {
       category: formData.get("category") as any,
       price: formData.get("price") as any,
-      reference: formData.get("reference") as any
+      reference: formData.get("reference") as any,
+      applicable: formData.get("applicable") as any,
+      available: formData.get("available") as any,
+      description: formData.get("description") as any,
+      mark: formData.get("mark") as any,
+      name: formData.get("name") as any
    }
    // this need to be changed supabse 
    //update need to know the entitie
@@ -97,21 +103,30 @@ export async function createMachine(prevState: any,formData:FormData){
 
    const imageUrl = await uploadFile(image);
 
-   // console.log(formData.get("category"));
+   console.log(formData.get("category"));
    const machine:Omit<Machines, 'id' | 'image_url'>  = {
       category: formData.get("category") as any,
       price: formData.get("price") as any,
-      reference: formData.get("reference") as any
+      reference: formData.get("reference") as any,
+      applicable: formData.get("applicable") as any,
+      available: formData.get("available") as any == "on",
+      description: formData.get("description") as any,
+      mark: formData.get("mark") as any,
+      name: formData.get("name") as any
    }
    const supabase = createClient();
 
    // this need to be changed supabse 
-   //create need to know the entitie
+   // create need to know the entitie
 
+   // console.log(machine)
    const { error } = await supabase
   .from('machines')
   .insert({...machine,image_url:imageUrl });
 
+// if(error){
+//    console.log(error)
+// }
   revalidatePath('/dashboard/machines');
 }
 

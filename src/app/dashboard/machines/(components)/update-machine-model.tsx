@@ -8,6 +8,7 @@ import {
   Button,
   useDisclosure,
   Input,
+  Checkbox,
 } from '@nextui-org/react';
 import { useFormState, useFormStatus } from 'react-dom';
 
@@ -21,6 +22,7 @@ import {
   FileUploaderItem,
 } from '@/components/file-upoad/file-uploader';
 import { FileSvgDraw } from '@/components/file-upoad/file-upload-icon';
+import { Label } from '@radix-ui/react-label';
 
 export default function UpdateMachineModel({
   machine,
@@ -36,7 +38,6 @@ export default function UpdateMachineModel({
   const updateMachineWithId = updateMachine.bind(null, machine.id);
   const [state, dispatch] = useFormState(updateMachineWithId, initialState);
   const status = useFormStatus();
-
   // for file upload
   const [files, setFiles] = useState<File[] | null>([]);
   const dropZoneConfig = {
@@ -58,7 +59,10 @@ export default function UpdateMachineModel({
               <ModalHeader className="flex flex-col gap-1">
                 Update Machine
               </ModalHeader>
-              <form action={dispatch} className="flex flex-col gap-6">
+              <form
+                action={dispatch}
+                className="flex max-h-[90vh] flex-col gap-6 overflow-y-auto"
+              >
                 <ModalBody>
                   <Input
                     defaultValue={machine.category}
@@ -84,7 +88,63 @@ export default function UpdateMachineModel({
                     placeholder="Enter Price"
                     type="number"
                     variant="bordered"
+                    onInput={(e: any) => {
+                      // Remove any non-numeric characters
+                      e.target.value = e.target.value.replace(/[^0-9]/g, '');
+                    }}
                   />
+
+                  <Input
+                    defaultValue={machine.name}
+                    label="Name"
+                    name="name"
+                    placeholder="Enter Name"
+                    type="text"
+                    variant="bordered"
+                  />
+
+                  <Input
+                    defaultValue={machine.description}
+                    label="Description"
+                    name="description"
+                    placeholder="Enter Description"
+                    type="text"
+                    variant="bordered"
+                  />
+
+                  <Input
+                    defaultValue={machine.mark}
+                    label="Mark"
+                    name="mark"
+                    placeholder="Enter Mark"
+                    type="text"
+                    variant="bordered"
+                  />
+
+                  <Input
+                    defaultValue={machine.applicable}
+                    label="Applicable"
+                    name="applicable"
+                    placeholder="Enter Applicable Information"
+                    type="text"
+                    variant="bordered"
+                  />
+
+                  {/* custom checkbox */}
+                  <label className="flex cursor-pointer items-center justify-between p-1 text-slate-400">
+                    Available:{' '}
+                    <div className="relative inline-block">
+                      <input
+                        className="bg-gary-400 peer h-6 w-12 cursor-pointer appearance-none rounded-full border border-gray-300 checked:border-green-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2"
+                        defaultChecked={machine.available}
+                        name="available"
+                        type="checkbox"
+                      />
+                      <span className="pointer-events-none absolute left-1 top-1 block h-4 w-4 rounded-full bg-slate-600 transition-all duration-200 peer-checked:left-7 peer-checked:bg-green-300" />
+                    </div>
+                  </label>
+                  {/* custom checkbox */}
+
                   {/* imae upload  */}
                   <FileUploader
                     className="relative rounded-lg bg-background p-2"
