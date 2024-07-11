@@ -31,7 +31,7 @@ export const Overlay = tv({
 });
 
 export const Header = tv({
-  base: "flex gap-8 items-center px-6 pt-14 md:pt-0",
+  base: "flex gap-8 items-center px-6 pt-14 md:pt-8",
 });
 
 export const Body = tv({
