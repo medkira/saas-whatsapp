@@ -9,6 +9,7 @@ import UpdateMachineModel from './update-machine-model';
 import DeleteMachineModel from './delete-machine-model';
 
 import { Machines } from '@/domain/entities/Machines';
+import { EyeIcon } from '@/components/dashboard/icons/table/eye-icon';
 
 export default function DashboardMachines({
   machines,
@@ -32,28 +33,42 @@ export default function DashboardMachines({
       key: 'prix',
       label: 'PRIX',
     },
+
+    // {
+    //   key: 'image',
+    //   label: 'IMAGE',
+    // },
   ];
 
   return (
     <div className="flex w-full flex-col items-center   ">
       <div
-        className="w-full min-w-fit max-w-4xl  
+        className="max-w-6xlxl w-full min-w-fit  
   p-5"
       >
-        <div className="flex max-w-4xl  items-end  justify-end gap-5 p-5  pt-5 ">
+        <div className="flex   items-end  justify-end gap-5 p-5  pt-5 ">
           <CreateMachineModel />
         </div>
         <Card className="p-5">
           <div
             className="mb-4 flex flex-row items-center
-           justify-between gap-4  md:pl-3"
+           justify-between gap-4 "
           >
             {columns.map((column) => (
-              <div key={column.key} className="w-1/5 font-semibold">
+              <div
+                key={column.key}
+                className="flex w-1/3 justify-center font-semibold "
+              >
                 {column.label}
               </div>
             ))}
-            <div className="flex w-1/3 justify-end pr-3">Actions</div>
+
+            <div className="invisible flex w-0 justify-center font-semibold sm:visible sm:w-1/3 ">
+              IMAGE
+            </div>
+            <div className="flex w-1/2 justify-end pr-3 font-semibold">
+              Actions
+            </div>
           </div>
           <Divider />
 
@@ -66,22 +81,41 @@ export default function DashboardMachines({
               <div
                 className="flex cursor-pointer flex-row
                 items-center justify-between gap-4 border-b
-                 border-gray-700 py-3 pl-1 md:pl-3"
+                 border-gray-700 py-3 "
               >
-                <div className="w-1/4 ">{machine.category}</div>
-                <div className="w-1/4 ">{machine.reference}</div>
-                <div className="w-1/4 ">{machine.price}</div>
+                <div className="flex w-1/3 justify-center">
+                  {machine.category}
+                </div>
+                <div className="flex w-1/3 justify-center ">
+                  {machine.reference}
+                </div>
 
-                <div className="flex w-1/3 flex-col gap-2 sm:flex-row">
-                  <UpdateMachineModel machine={machine} />
-                  <DeleteMachineModel machine={machine} />
+                <div className="flex w-1/3 justify-center">{machine.price}</div>
+                <div className="invisible flex  w-0 justify-center  sm:visible sm:w-1/3 ">
                   <Link
                     href={machine.image_url}
                     rel="noreferrer"
                     target="_blank"
                   >
-                    <Button>Image</Button>
+                    <Button>
+                      Image <EyeIcon fill="white" />{' '}
+                    </Button>
                   </Link>
+                </div>
+                <div className="  flex w-3/6 flex-col items-end  justify-end gap-2 lg:flex-row  ">
+                  <UpdateMachineModel machine={machine} />
+                  <DeleteMachineModel machine={machine} />
+                  <div className="  sm:invisible sm:h-0 sm:w-0 ">
+                    <Link
+                      href={machine.image_url}
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      <Button>
+                        Image <EyeIcon fill="white" />{' '}
+                      </Button>
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>

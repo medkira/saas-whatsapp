@@ -14,6 +14,7 @@ import { useFormState, useFormStatus } from 'react-dom';
 import { Machines } from '@/domain/entities/Machines';
 import { createMachine, deleteMachine } from '@/actions/machines';
 import { title } from '@/components/primitives';
+import { DeleteIcon } from '@/components/dashboard/icons/table/delete-icon';
 
 export default function DeleteMachineModel({
   machine,
@@ -40,8 +41,8 @@ export default function DeleteMachineModel({
     <div className="flex flex-col gap-2">
       <Button className="max-w-fit" color="danger" onPress={onOpen}>
         Delete
+        <DeleteIcon fill="white" />
       </Button>
-
       <Modal isOpen={isOpen} placement={'auto'} onOpenChange={onOpenChange}>
         <ModalContent>
           {(onClose) => (

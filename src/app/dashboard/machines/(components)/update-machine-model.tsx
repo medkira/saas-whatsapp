@@ -23,6 +23,7 @@ import {
 } from '@/components/file-upoad/file-uploader';
 import { FileSvgDraw } from '@/components/file-upoad/file-upload-icon';
 import { Label } from '@radix-ui/react-label';
+import { EditIcon } from '@/components/dashboard/icons/table/edit-icon';
 
 export default function UpdateMachineModel({
   machine,
@@ -50,6 +51,7 @@ export default function UpdateMachineModel({
     <div className="flex flex-col gap-2">
       <Button className="max-w-fit" color="warning" onPress={onOpen}>
         Update
+        <EditIcon fill="white" />
       </Button>
 
       <Modal isOpen={isOpen} placement={'auto'} onOpenChange={onOpenChange}>
