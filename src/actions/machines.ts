@@ -125,15 +125,15 @@ export async function createMachine(prevState: any,formData:FormData){
    // this need to be changed supabse 
    // create need to know the entitie
 
-   console.log("imageUrl",imageUrl ? {image_url:imageUrl} : {})
+   // console.log("imageUrl",imageUrl ? {image_url:imageUrl} : {})
 
    const { error } = await supabase
   .from('machines')
   .insert({...machine,...(imageUrl ? {image_url:imageUrl} : '') });
 
-// if(error){
-//    console.log(error)
-// }
+if(error){
+   console.log(error)
+}
   revalidatePath('/dashboard/machines');
 }
 

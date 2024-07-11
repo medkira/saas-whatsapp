@@ -86,6 +86,7 @@ export default function CreateMachineModel() {
                     variant="bordered"
                   />
                   <Input
+                    defaultValue="0"
                     label="Price"
                     name="price"
                     placeholder="Enter Price"

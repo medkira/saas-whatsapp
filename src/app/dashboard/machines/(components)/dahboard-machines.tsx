@@ -41,15 +41,12 @@ export default function DashboardMachines({
   ];
 
   return (
-    <div className="flex w-full flex-col items-center   ">
-      <div
-        className="max-w-6xlxl w-full min-w-fit  
-  p-5"
-      >
+    <div className=" flex w-full flex-col  items-center ">
+      <div className="max-w-6xlxl mt-10 h-[90vh]  w-full min-w-fit p-5">
         <div className="flex   items-end  justify-end gap-5 p-5  pt-5 ">
           <CreateMachineModel />
         </div>
-        <Card className="p-5">
+        <Card className="h-[82vh] overflow-y-auto p-5  sm:h-[80vh]">
           <div
             className="mb-4 flex flex-row items-center
            justify-between gap-4 "
