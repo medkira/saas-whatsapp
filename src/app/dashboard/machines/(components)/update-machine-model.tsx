@@ -186,14 +186,6 @@ export default function UpdateMachineModel({
                   </Button>
                 </ModalFooter>
               </form>
-              {/* <ModalFooter>
-                <Button color="danger" variant="light" onPress={onClose}>
-                  Close
-                </Button>
-                <Button color="primary" onPress={onClose}>
-                  Create
-                </Button>
-              </ModalFooter> */}
             </>
           )}
         </ModalContent>

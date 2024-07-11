@@ -42,7 +42,8 @@ export async function deleteMachine(id: number,prevState: any, formData:FormData
    .eq('id', id)
    
    await deleteFile(imageBacketPath);
-
+   // await new Promise((resolve)=> setTimeout(resolve,2000));
+  
    revalidatePath('/dashboard/machines');
 }
 
@@ -83,6 +84,9 @@ export async function updateMachine(id:number,prevState: any, formData:FormData)
       mark: formData.get("mark") as any,
       name: formData.get("name") as any
    }
+
+   console.log("imageUrl",imageUrl ? {image_url:imageUrl} : {})
+
    // this need to be changed supabse 
    //update need to know the entitie
    const { error } = await supabase
@@ -100,10 +104,12 @@ export async function createMachine(prevState: any,formData:FormData){
    // console.log("formData",formData.get("file"));
 
    const image:any = formData.get("file");
+   let imageUrl = " ";
 
-   const imageUrl = await uploadFile(image);
+   if(image.size != 0){
+    imageUrl = await uploadFile(image);
+   }
 
-   console.log(formData.get("category"));
    const machine:Omit<Machines, 'id' | 'image_url'>  = {
       category: formData.get("category") as any,
       price: formData.get("price") as any,
@@ -119,10 +125,11 @@ export async function createMachine(prevState: any,formData:FormData){
    // this need to be changed supabse 
    // create need to know the entitie
 
-   // console.log(machine)
+   console.log("imageUrl",imageUrl ? {image_url:imageUrl} : {})
+
    const { error } = await supabase
   .from('machines')
-  .insert({...machine,image_url:imageUrl });
+  .insert({...machine,...(imageUrl ? {image_url:imageUrl} : '') });
 
 // if(error){
 //    console.log(error)
@@ -150,7 +157,7 @@ async function uploadFile(file:File):Promise<string>{
       .from('MMC machines')
       .getPublicUrl(`machines/${file.name}`);
 
-      console.log(data.publicUrl)
+      // console.log(data.publicUrl)
       return data.publicUrl
       // console.log(data)
    }

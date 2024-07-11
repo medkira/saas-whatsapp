@@ -11,7 +11,7 @@ import {
   Checkbox,
 } from '@nextui-org/react';
 import { useFormState, useFormStatus } from 'react-dom';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import {
   FileUploader,
@@ -172,14 +172,7 @@ export default function CreateMachineModel() {
                   <Button color="danger" variant="light" onPress={onClose}>
                     Close
                   </Button>
-                  <Button
-                    color="primary"
-                    isLoading={status.pending}
-                    type="submit"
-                    onPress={onClose}
-                  >
-                    Create
-                  </Button>
+                  <CreateButton close={onClose} />
                 </ModalFooter>
               </form>
             </>
@@ -187,5 +180,20 @@ export default function CreateMachineModel() {
         </ModalContent>
       </Modal>
     </div>
+  );
+}
+
+function CreateButton({ close }: { close: any }) {
+  const status = useFormStatus();
+
+  return (
+    <Button
+      color="primary"
+      isLoading={status.pending}
+      type="submit"
+      onPress={() => setTimeout(close, 5000)}
+    >
+      Create
+    </Button>
   );
 }

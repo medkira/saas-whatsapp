@@ -15,6 +15,7 @@ import { Machines } from '@/domain/entities/Machines';
 import { createMachine, deleteMachine } from '@/actions/machines';
 import { title } from '@/components/primitives';
 import { DeleteIcon } from '@/components/dashboard/icons/table/delete-icon';
+// import DeleteButton from './delete-button';
 
 export default function DeleteMachineModel({
   machine,
@@ -35,7 +36,6 @@ export default function DeleteMachineModel({
   const deleteMachineWithId = deleteMachine.bind(null, machine.id);
 
   const [state, dispatch] = useFormState(deleteMachineWithId, initialState);
-  const status = useFormStatus();
 
   return (
     <div className="flex flex-col gap-2">
@@ -66,14 +66,7 @@ export default function DeleteMachineModel({
                   <Button color="danger" variant="light" onPress={onClose}>
                     Close
                   </Button>
-                  <Button
-                    color="danger"
-                    isLoading={status.pending}
-                    type="submit"
-                    // onPress={onClose}
-                  >
-                    Delete
-                  </Button>
+                  <DeleteButton close={onClose} />
                 </ModalFooter>
               </form>
             </>
@@ -81,5 +74,20 @@ export default function DeleteMachineModel({
         </ModalContent>
       </Modal>
     </div>
+  );
+}
+
+function DeleteButton({ close }: { close: any }) {
+  const status = useFormStatus();
+
+  return (
+    <Button
+      color="danger"
+      isLoading={status.pending}
+      type="submit"
+      onPress={() => setTimeout(close, 4000)}
+    >
+      Delete
+    </Button>
   );
 }
