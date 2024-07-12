@@ -10,24 +10,17 @@ import {
 } from '@nextui-org/navbar';
 import { usePathname } from 'next/navigation';
 import { Button } from '@nextui-org/button';
-import { Kbd } from '@nextui-org/kbd';
 import { Link } from '@nextui-org/link';
 import { Input } from '@nextui-org/input';
-import { link as linkStyles } from '@nextui-org/theme';
 import NextLink from 'next/link';
 import clsx from 'clsx';
 import { motion } from 'framer-motion';
+import { useEffect, useRef, useState } from 'react';
+
 import { siteConfig } from '@/config/site';
 import { ThemeSwitch } from '@/components/theme-switch';
-import {
-  TwitterIcon,
-  GithubIcon,
-  DiscordIcon,
-  HeartFilledIcon,
-  SearchIcon,
-  Logo,
-} from '@/components/icons';
-import { useEffect, useRef, useState } from 'react';
+import { SearchIcon, Logo } from '@/components/icons';
+import { roboto } from '@/config/fonts';
 
 export const Navbar = () => {
   const pathname = usePathname();
@@ -64,8 +57,8 @@ export const Navbar = () => {
 
   const searchInput = (
     <div
-      ref={searchContainerRef as any}
-      className=" w-[90vw] rounded-xl shadow-lg sm:w-[60vw] "
+      // ref={searchContainerRef as any}
+      className={` shadow-lgsm:w-[60vw] w-[90vw] rounded-xl `}
     >
       <Input
         ref={searchButtonRef as any}
@@ -200,23 +193,26 @@ export const Navbar = () => {
       <NavbarMenu className="bg-black/50 backdrop-blur-sm">
         {/* <div>{searchInput}</div> */}
         <div className="mx-4 mt-2 flex flex-col gap-2">
-          {/* {siteConfig.navMenuItems.map((item, index) => (
+          {siteConfig.navItems.map((item, index) => (
             <NavbarMenuItem key={`${item}-${index}`}>
-              <Link
-                color={
-                  index === 2
-                    ? 'primary'
-                    : index === siteConfig.navMenuItems.length - 1
-                      ? 'danger'
-                      : 'foreground'
-                }
-                href="#"
-                size="lg"
+              <NextLink
+                className={clsx(
+                  // NextLinkStyles({ color: 'foreground' }),
+                  `bg-transparent ${roboto.className} flex items-center justify-center pt-10 text-4xl leading-10`,
+                  {
+                    'text-[1rem] font-medium text-white':
+                      pathname !== item.href,
+                    'text-[1rem] font-extrabold text-blue-600 ':
+                      pathname === item.href,
+                  },
+                )}
+                href={item.href}
+                // size="lg"
               >
                 {item.label}
-              </Link>
+              </NextLink>
             </NavbarMenuItem>
-          ))} */}
+          ))}
         </div>
       </NavbarMenu>
     </NextUINavbar>

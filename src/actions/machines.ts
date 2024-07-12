@@ -106,9 +106,9 @@ export async function createMachine(prevState: any,formData:FormData){
    const image:any = formData.get("file");
    let imageUrl = " ";
 
-   if(image.size != 0){
-    imageUrl = await uploadFile(image);
-   }
+   // if(image.size != 0){
+   //  imageUrl = await uploadFile(image);
+   // }
 
    const machine:Omit<Machines, 'id' | 'image_url'>  = {
       category: formData.get("category") as any,
@@ -130,6 +130,8 @@ export async function createMachine(prevState: any,formData:FormData){
    const { error } = await supabase
   .from('machines')
   .insert({...machine,...(imageUrl ? {image_url:imageUrl} : '') });
+
+//   console.log(formData)
 
 if(error){
    console.log(error)

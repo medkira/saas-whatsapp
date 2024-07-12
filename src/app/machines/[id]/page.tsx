@@ -7,6 +7,7 @@ import IconTelephoneFill from '@/components/icons';
 import { subtitle, title } from '@/components/primitives';
 import CommandeForm from '@/components/machines/commande-form';
 import { Machines } from '@/domain/entities/Machines';
+import { Checkbox } from '@nextui-org/react';
 
 export default async function PricingPage({
   params,
@@ -35,7 +36,7 @@ export default async function PricingPage({
   // 'https://res.cloudinary.com/dpbb1gfnc/image/upload/v1716108851/axontt9ml5l9xdgegqfo.jpg';
 
   return (
-    <div className="h-[100vh] p-5">
+    <div className="h-[100vh]">
       <div className="flex flex-col items-center justify-center pt-6">
         <h1 className="-mb-2 text-xl font-bold text-green-500">
           commande par téléphone
@@ -50,7 +51,7 @@ export default async function PricingPage({
         </Button>
       </div>
 
-      <div className="flex  cursor-pointer flex-col items-center justify-center gap-1 rounded-md bg-white p-5 sm:flex-row">
+      <div className="flex  cursor-pointer flex-col items-center  justify-center gap-1 rounded-md bg-white p-5 sm:flex-row">
         <div className="flex flex-col  items-center justify-center   ">
           <h1
             className={title({
@@ -85,14 +86,61 @@ export default async function PricingPage({
             />
           </div>
         </div>
-        <section className="min-w-[40vw] ">
-          <div className="flex flex-col gap-5  p-5">
-            <h1 className="text-2xl font-bold text-green-500">
-              Ou commande online
+
+        <div>
+          <section className="min-w-[40vw]">
+            <div className="flex flex-col gap-5  p-5">
+              <h1 className="text-2xl font-bold text-green-500">
+                Ou commande online
+              </h1>
+              <CommandeForm />
+            </div>
+          </section>
+          <section className="min-w-[40vw] rounded-md bg-gray-50 p-4 shadow-md">
+            <h1 className="mb-4 text-3xl font-bold text-gray-700">
+              D É T A I L S
             </h1>
-            <CommandeForm />
-          </div>
-        </section>
+            <div className="text-start text-lg leading-10">
+              {machine.name && (
+                <p>
+                  <strong>Nom :</strong> {machine.name}
+                </p>
+              )}
+              {machine.description && (
+                <p>
+                  <strong>Description :</strong> {machine.description}
+                </p>
+              )}
+              {machine.mark && (
+                <p>
+                  <strong>Marque :</strong> {machine.mark}
+                </p>
+              )}
+              {machine.applicable && (
+                <p>
+                  <strong>Applicable :</strong> {machine.applicable}
+                </p>
+              )}
+              {typeof machine.available !== 'undefined' && (
+                <div className="flex">
+                  <p className="pr-5">
+                    <strong>Disponible :</strong>{' '}
+                    {machine.available ? 'Oui' : 'Non'}
+                  </p>
+
+                  <Checkbox
+                    color="success"
+                    isSelected={machine.available}
+                    // defaultSelected={machine.available}
+                  />
+                </div>
+              )}
+              <p>
+                <strong>Prix :</strong> {machine.price} DNT
+              </p>
+            </div>
+          </section>
+        </div>
       </div>
     </div>
   );

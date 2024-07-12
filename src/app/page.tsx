@@ -291,13 +291,8 @@ const Section1 = () => {
             <Image
               priority
               alt="Background Image"
-              //   height={110}
-              //   layout="fixed"
-              //   sizes="(max-width: 900px) 100vw,
-              // (max-width: 70px) 500vw,
-              // 330vw"
+              className="transform transition-transform duration-300 hover:scale-125"
               src={image}
-              //   width={110}
             />
             <h1
               className={title({
