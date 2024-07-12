@@ -153,6 +153,8 @@ async function uploadFile(file:File):Promise<string>{
    if (error) {
      // Handle error
      console.log(error)
+
+     return error.message
    } else {
       const  {data} = supabase
       .storage
