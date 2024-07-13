@@ -106,9 +106,9 @@ export async function createMachine(prevState: any,formData:FormData){
    const image:any = formData.get("file");
    let imageUrl = " ";
 
-   // if(image.size != 0){
-   //  imageUrl = await uploadFile(image);
-   // }
+   if(image.size != 0){
+    imageUrl = await uploadFile(image);
+   }
 
    const machine:Omit<Machines, 'id' | 'image_url'>  = {
       category: formData.get("category") as any,
@@ -146,7 +146,7 @@ async function uploadFile(file:File):Promise<string>{
    const { data, error } = await supabase.
    storage.from('MMC machines').upload(`machines/${file.name}`, file, {
       cacheControl: '3600',
-      upsert: false
+      upsert: true
     })
 
   
@@ -156,7 +156,7 @@ async function uploadFile(file:File):Promise<string>{
 
      return error.message
    } else {
-      const  {data} = supabase
+      const  {data} =  supabase
       .storage
       .from('MMC machines')
       .getPublicUrl(`machines/${file.name}`);
