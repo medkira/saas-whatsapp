@@ -24,7 +24,7 @@ export default async function Page() {
 
   // console.log(machines);
 
-  // const columns = [
+  // const columnh-screen s = [
   //   {
   //     key: 'category',
   //     label: 'CATEGORY',
