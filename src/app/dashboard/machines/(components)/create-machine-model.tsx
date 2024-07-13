@@ -8,21 +8,19 @@ import {
   Button,
   useDisclosure,
   Input,
-  Checkbox,
 } from '@nextui-org/react';
 import { useFormState, useFormStatus } from 'react-dom';
 import { useState } from 'react';
 
+import { Machines } from '@/domain/entities/Machines';
+import { createMachine } from '@/actions/machines';
 import {
+  FileInput,
   FileUploader,
   FileUploaderContent,
   FileUploaderItem,
-  FileInput,
 } from '@/components/file-upoad/file-uploader';
-import { Machines } from '@/domain/entities/Machines';
-import { createMachine } from '@/actions/machines';
 import { FileSvgDraw } from '@/components/file-upoad/file-upload-icon';
-import { Label } from '@radix-ui/react-label';
 
 export default function CreateMachineModel() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
@@ -145,7 +143,7 @@ export default function CreateMachineModel() {
                   {/* custom checkbox */}
 
                   {/* imae upload  */}
-                  {/* <FileUploader
+                  <FileUploader
                     className="relative rounded-lg bg-background p-2"
                     dropzoneOptions={dropZoneConfig}
                     value={files}
@@ -165,8 +163,31 @@ export default function CreateMachineModel() {
                           </FileUploaderItem>
                         ))}
                     </FileUploaderContent>
-                  </FileUploader> */}
-                  <input type="file" id="file" name="file" />
+                  </FileUploader>
+                  {/* <div className="flex items-center justify-center p-5">
+                    <label
+                      className="flex cursor-pointer flex-col items-center rounded-lg border border-blue-500 bg-white px-4 py-6 uppercase tracking-wide text-blue-500 shadow-lg hover:bg-blue-500 hover:text-white"
+                      htmlFor="file"
+                    >
+                      <svg
+                        className="h-8 w-8"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path d="M16.88 3.55L12.8 7.63V4a2 2 0 0 0-2-2h-1.72A1.98 1.98 0 0 0 8.44 1c-.52.53-.85 1.23-.85 2v3.63l-4.08-4.08A2 2 0 0 0 2 5.43V16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6.57a2 2 0 0 0-.12-.92zM10 16a1.93 1.93 0 0 1-2-2 2 2 0 1 1 4 0 1.93 1.93 0 0 1-2 2zm1-4V8h2.63l-3-3-3 3H9v4H8v-5h1V7.37L10.37 9H10v3h1v-1h2v2h-2z" />
+                      </svg>
+                      <span className="mt-2 text-base leading-normal">
+                        Select a file
+                      </span>
+                      <input
+                        className="hidden"
+                        id="file"
+                        name="file"
+                        type="file"
+                      />
+                    </label>
+                  </div> */}
                   {/* imae upload  */}
                 </ModalBody>
                 <ModalFooter>

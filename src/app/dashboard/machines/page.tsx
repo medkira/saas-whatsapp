@@ -12,8 +12,8 @@ export default async function Page() {
   // const test = useState();
 
   const supabase = createClient();
-  const { data } = await supabase.from('machines').select('*');
-  // const data: any = getMachine();
+  // const { data } = await supabase.from('machines').select('*');
+  const data = await getMachine();
   // console.log(data);
 
   if (!data || data.length === 0) {

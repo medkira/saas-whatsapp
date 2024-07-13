@@ -7,7 +7,9 @@ import { error } from 'console';
 
  export  async function  getMachine ()  {
     const supabase = createClient();
-    const { data } = await supabase.from('machines').select('*');
+    const { data } = await supabase.from('machines')
+    .select('*')
+    .order('created_at', { ascending: false });
 
    //  if (!data || data.length === 0) {
    //     return data
@@ -109,6 +111,8 @@ export async function createMachine(prevState: any,formData:FormData){
    if(image.size != 0){
     imageUrl = await uploadFile(image);
    }
+
+   // console.log("from server action", image)
 
    const machine:Omit<Machines, 'id' | 'image_url'>  = {
       category: formData.get("category") as any,

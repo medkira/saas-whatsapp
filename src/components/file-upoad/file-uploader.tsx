@@ -216,6 +216,8 @@ export const FileUploader = forwardRef<
 
     const dropzoneState = useDropzone({
       ...opts,
+      useFsAccessApi: false,
+
       onDrop,
       onDropRejected: () => setIsFileTooBig(true),
       onDropAccepted: () => setIsFileTooBig(false),
@@ -358,7 +360,7 @@ export const FileInput = forwardRef<
         {children}
       </div>
       <Input
-        ref={dropzoneState.inputRef}
+        // ref={dropzoneState.inputRef}
         disabled={isLOF}
         {...dropzoneState.getInputProps()}
         className={`${isLOF ? 'cursor-not-allowed' : ''}`}
