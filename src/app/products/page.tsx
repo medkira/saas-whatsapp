@@ -55,6 +55,7 @@ export default async function PricingPage() {
                   //   sizes="(max-width: 900px) 100vw,
                   // (max-width: 70px) 500vw,
                   // 330vw"
+                  quality={100}
                   src={machine.image_url}
                   width={250}
                 />

@@ -107,15 +107,9 @@ export default function DashboardMachines({
                   <UpdateMachineModel machine={machine} />
                   <DeleteMachineModel machine={machine} />
                   <div className="  sm:invisible sm:h-0 sm:w-0 ">
-                    <Link
-                      href={machine.image_url}
-                      rel="noreferrer"
-                      target="_blank"
-                    >
-                      <Button>
-                        Image <EyeIcon fill="white" />{' '}
-                      </Button>
-                    </Link>
+                    {/* Open Image Model */}
+                    <ImageView key={machine.id} machine={machine} />
+                    {/* Open Image Model */}
                   </div>
                 </div>
               </div>

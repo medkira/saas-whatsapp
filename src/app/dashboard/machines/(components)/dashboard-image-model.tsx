@@ -33,6 +33,7 @@ export default function ImageView({ machine }: { machine: Machines }) {
                 height={250}
                 src={machine.image_url}
                 width={250}
+                quality={100}
               />
             )}
           </ModalBody>
