@@ -1,8 +1,17 @@
 'use client';
-
+import {
+  Modal,
+  ModalContent,
+  Divider,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  Button,
+  useDisclosure,
+} from '@nextui-org/react';
 import { Card } from '@nextui-org/card';
-import { Button, Divider } from '@nextui-org/react';
 import Link from 'next/link';
+import Image from 'next/legacy/image';
 
 import CreateMachineModel from './create-machine-model';
 import UpdateMachineModel from './update-machine-model';
@@ -10,6 +19,7 @@ import DeleteMachineModel from './delete-machine-model';
 
 import { Machines } from '@/domain/entities/Machines';
 import { EyeIcon } from '@/components/dashboard/icons/table/eye-icon';
+import ImageView from './dashboard-image-model';
 
 export default function DashboardMachines({
   machines,
@@ -89,15 +99,9 @@ export default function DashboardMachines({
 
                 <div className="flex w-1/3 justify-start">{machine.price}</div>
                 <div className="invisible flex  w-0 justify-center  sm:visible sm:w-1/3 ">
-                  <Link
-                    href={machine.image_url}
-                    rel="noreferrer"
-                    target="_blank"
-                  >
-                    <Button>
-                      Image <EyeIcon fill="white" />{' '}
-                    </Button>
-                  </Link>
+                  {/* Open Image Model */}
+                  <ImageView key={machine.id} machine={machine} />
+                  {/* Open Image Model */}
                 </div>
                 <div className="  flex w-3/6 flex-col items-end  justify-end gap-2 lg:flex-row  ">
                   <UpdateMachineModel machine={machine} />

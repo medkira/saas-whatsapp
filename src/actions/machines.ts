@@ -55,7 +55,7 @@ export async function updateMachine(id:number,prevState: any, formData:FormData)
 
    
    const image  = formData.get("file") as File;
-   let imageUrl;
+   let imageUrl= "";
 
    if(image.size != 0){
       // ? this should be another useCase
@@ -87,14 +87,13 @@ export async function updateMachine(id:number,prevState: any, formData:FormData)
       name: formData.get("name") as any
    }
 
-   console.log("imageUrl",imageUrl ? {image_url:imageUrl} : {})
+   // console.log("imageUrl",imageUrl ? {image_url:imageUrl} : {})
 
    // this need to be changed supabse 
    //update need to know the entitie
    const { error } = await supabase
-  .from('machines')
-  .update({...machine,...(imageUrl ? {image_url:imageUrl} : {}),
-  })
+  .from('')
+  .update({...machine,image_url:imageUrl})
   .eq('id', id)
 
   revalidatePath('/dashboard/machines');
@@ -106,7 +105,7 @@ export async function createMachine(prevState: any,formData:FormData){
    // console.log("formData",formData.get("file"));
 
    const image:any = formData.get("file");
-   let imageUrl = " ";
+   let imageUrl ="";
 
    if(image.size != 0){
     imageUrl = await uploadFile(image);
@@ -133,7 +132,7 @@ export async function createMachine(prevState: any,formData:FormData){
 
    const { error } = await supabase
   .from('machines')
-  .insert({...machine,...(imageUrl ? {image_url:imageUrl} : '') });
+  .insert({...machine,image_url:imageUrl});
 
 //   console.log(formData)
 
