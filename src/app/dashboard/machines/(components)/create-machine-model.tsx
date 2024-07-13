@@ -145,7 +145,7 @@ export default function CreateMachineModel() {
                   {/* custom checkbox */}
 
                   {/* imae upload  */}
-                  <FileUploader
+                  {/* <FileUploader
                     className="relative rounded-lg bg-background p-2"
                     dropzoneOptions={dropZoneConfig}
                     value={files}
@@ -161,12 +161,12 @@ export default function CreateMachineModel() {
                         files.length > 0 &&
                         files.map((file, i) => (
                           <FileUploaderItem key={i} index={i}>
-                            {/* <Paperclip className="h-4 w-4 stroke-current" /> */}
                             <span>{file.name}</span>
                           </FileUploaderItem>
                         ))}
                     </FileUploaderContent>
-                  </FileUploader>
+                  </FileUploader> */}
+                  <input type="file" id="file" name="file" />
                   {/* imae upload  */}
                 </ModalBody>
                 <ModalFooter>
