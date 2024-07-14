@@ -1,19 +1,15 @@
 import { Button } from '@nextui-org/button';
 import Image from 'next/legacy/image';
 import { notFound } from 'next/navigation';
+import { Checkbox } from '@nextui-org/react';
 
 import { createClient } from '@/utils/supabase/server';
 import IconTelephoneFill from '@/components/icons';
 import { subtitle, title } from '@/components/primitives';
 import CommandeForm from '@/components/machines/commande-form';
 import { Machines } from '@/domain/entities/Machines';
-import { Checkbox } from '@nextui-org/react';
 
-export default async function PricingPage({
-  params,
-}: {
-  params: { id: string };
-}) {
+export default async function Page({ params }: { params: { id: string } }) {
   // console.log(params.id);
 
   const supabase = createClient();
@@ -30,16 +26,11 @@ export default async function PricingPage({
   // ? need type(entitie) for the machine
   const machine: Machines = data[0];
 
-  // const imgUrl =
-  //   'https://fouoflrwnuelvlfgsats.supabase.co/storage/v1/object/public/MMC%20machines/machines/JR1903B_4_50om.webp';
-  // const imgUrl =
-  // 'https://res.cloudinary.com/dpbb1gfnc/image/upload/v1716108851/axontt9ml5l9xdgegqfo.jpg';
-
   return (
-    <div className="h-[100vh]">
-      <div className="flex flex-col items-center justify-center pt-6">
+    <div className="h-[115vh]">
+      <div className="flex flex-col items-center justify-center">
         <h1 className="-mb-2 text-xl font-bold text-green-500">
-          commande par téléphone
+          Commande Par Téléphone
         </h1>
         <Button
           className="my-4 flex w-11/12 items-center justify-center gap-2   "
@@ -51,7 +42,7 @@ export default async function PricingPage({
         </Button>
       </div>
 
-      <div className="flex  cursor-pointer flex-col items-center  justify-center gap-1 rounded-md bg-white p-5 sm:flex-row">
+      <div className="flex   flex-col items-center  justify-center gap-1 rounded-md bg-white p-5 sm:flex-row">
         <div className="flex flex-col  items-center justify-center   ">
           <h1
             className={title({
@@ -91,7 +82,7 @@ export default async function PricingPage({
           <section className="min-w-[40vw]">
             <div className="flex flex-col gap-5  p-5">
               <h1 className="text-2xl font-bold text-green-500">
-                Ou commande online
+                Ou Commande Online
               </h1>
               <CommandeForm />
             </div>

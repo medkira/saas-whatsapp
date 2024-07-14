@@ -1,25 +1,23 @@
-import { Button } from '@nextui-org/button';
-import { Pagination } from '@nextui-org/react';
-import Image from 'next/legacy/image';
 import { notFound } from 'next/navigation';
+import Image from 'next/legacy/image';
 import Link from 'next/link';
+import { Button } from '@nextui-org/button';
 
+import { Machines } from '@/domain/entities/Machines';
 import { subtitle, title } from '@/components/primitives';
 import { getMachine } from '@/actions/machines';
-import { Machines } from '@/domain/entities/Machines';
 
-export default async function ProductsPage() {
+export default async function LandingMachines() {
   const data = await getMachine();
   // console.log(data);
 
   if (!data || data.length === 0) {
     notFound();
   }
-
   const machines: Machines[] = data;
 
   return (
-    <div className=" flex w-full   flex-col items-center justify-start  gap-1  pt-[5rem]  text-center   sm:gap-9   ">
+    <div className=" flex w-full   flex-col items-center justify-start  gap-1 overflow-hidden pt-[5rem]  text-center   sm:gap-9   ">
       <section className="flex flex-col items-center justify-start">
         <div className="   pb-2 sm:w-full">
           <h1 className={title({ size: 'md', class: 'mb-3  mr-2' })}>
@@ -36,14 +34,15 @@ export default async function ProductsPage() {
           </span>
         </div>
       </section>
-      <section className="flex flex-wrap items-center justify-center gap-x-5 gap-y-14 p-6 ">
+
+      <section className="flex flex-wrap items-center justify-center gap-x-16 gap-y-14 p-6 ">
         {machines.map((machine, index) => (
           <Link
             key={index}
             className="flex cursor-pointer  flex-col  items-center
-            justify-center gap-1 rounded-xl
-            bg-white p-5 shadow-md
-            sm:max-h-[75vh] sm:min-h-[70vh] sm:w-1/3 lg:w-1/4"
+              justify-center gap-1 rounded-xl
+              bg-white p-5 shadow-md
+              sm:max-h-[75vh] sm:min-h-[70vh] sm:w-1/3 lg:w-1/4"
             href={`/machines/${machine.id}`}
           >
             {machine.image_url.length != 0 && (
@@ -94,21 +93,17 @@ export default async function ProductsPage() {
           </Link>
         ))}
 
-        {/* <Button
+        <Button
+          as={Link}
           className="rounded-3xl p-3 px-5 text-xl font-semibold"
           color="primary"
+          href="/products"
           size="lg"
         >
           Explorer toutes les machines
-        </Button> */}
-        <Pagination
-          isCompact
-          showControls
-          disableAnimation={false}
-          initialPage={1}
-          total={10}
-        />
+        </Button>
       </section>
+
       {/* <h1 className={title({ color: 'blue' })}>&nbsp;Should You Care?</h1> */}
     </div>
   );

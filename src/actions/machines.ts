@@ -3,7 +3,6 @@ import { revalidatePath } from 'next/cache';
 
 import { Machines } from '@/domain/entities/Machines';
 import { createClient } from '@/utils/supabase/server';
-import { error } from 'console';
 
  export  async function  getMachine ()  {
     const supabase = createClient();

@@ -11,10 +11,7 @@ export default async function BlogLayout({
   // console.log(data);
 
   return (
-    <section
-      className="flex 
-      flex-col items-center justify-center py-9 text-center"
-    >
+    <section className="flex flex-col items-center justify-start text-center">
       {children}
     </section>
   );
