@@ -101,14 +101,15 @@ export default async function ProductsPage() {
         >
           Explorer toutes les machines
         </Button> */}
-        <Pagination
-          isCompact
-          showControls
-          disableAnimation={false}
-          initialPage={1}
-          total={10}
-        />
       </section>
+      <Pagination
+        isCompact
+        showControls
+        disableAnimation={false}
+        initialPage={1}
+        total={10}
+      />
+
       {/* <h1 className={title({ color: 'blue' })}>&nbsp;Should You Care?</h1> */}
     </div>
   );
