@@ -46,19 +46,21 @@ export default async function LandingMachines() {
             href={`/machines/${machine.id}`}
           >
             {machine.image_url.length != 0 && (
-              <Image
-                priority
-                alt="Background Image"
-                className="transform transition-transform duration-300 hover:scale-110"
-                height={250}
-                //   layout="fixed"
-                //   sizes="(max-width: 900px) 100vw,
-                // (max-width: 70px) 500vw,
-                // 330vw"
-                quality={100}
-                src={machine.image_url}
-                width={250}
-              />
+              <div className="transform transition-transform duration-300 hover:scale-110">
+                <Image
+                  priority
+                  alt="Background Image"
+                  className=""
+                  height={250}
+                  //   layout="fixed"
+                  //   sizes="(max-width: 900px) 100vw,
+                  // (max-width: 70px) 500vw,
+                  // 330vw"
+                  quality={100}
+                  src={machine.image_url}
+                  width={250}
+                />
+              </div>
             )}
 
             <h1
@@ -92,18 +94,16 @@ export default async function LandingMachines() {
             </div>
           </Link>
         ))}
-
-        <Button
-          as={Link}
-          className="rounded-3xl p-3 px-5 text-xl font-semibold"
-          color="primary"
-          href="/products"
-          size="lg"
-        >
-          Explorer toutes les machines
-        </Button>
       </section>
-
+      <Button
+        as={Link}
+        className="rounded-3xl p-3 px-5 text-xl font-semibold"
+        color="primary"
+        href="/products"
+        size="lg"
+      >
+        Explorer toutes les machines
+      </Button>
       {/* <h1 className={title({ color: 'blue' })}>&nbsp;Should You Care?</h1> */}
     </div>
   );

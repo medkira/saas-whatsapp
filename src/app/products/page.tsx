@@ -40,26 +40,29 @@ export default async function ProductsPage() {
         {machines.map((machine, index) => (
           <Link
             key={index}
-            className="flex cursor-pointer  flex-col  items-center
+            className="flex cursor-pointer  flex-col
+            items-center
             justify-center gap-1 rounded-xl
             bg-white p-5 shadow-md
             sm:max-h-[75vh] sm:min-h-[70vh] sm:w-1/3 lg:w-1/4"
             href={`/machines/${machine.id}`}
           >
             {machine.image_url.length != 0 && (
-              <Image
-                priority
-                alt="Background Image"
-                className="transform transition-transform duration-300 hover:scale-110"
-                height={250}
-                //   layout="fixed"
-                //   sizes="(max-width: 900px) 100vw,
-                // (max-width: 70px) 500vw,
-                // 330vw"
-                quality={100}
-                src={machine.image_url}
-                width={250}
-              />
+              <div className="transform transition-transform duration-300 hover:scale-110">
+                <Image
+                  priority
+                  alt="Background Image"
+                  className=" overflow-visible   "
+                  height={250}
+                  //   layout="fixed"
+                  //   sizes="(max-width: 900px) 100vw,
+                  // (max-width: 70px) 500vw,
+                  // 330vw"
+                  quality={100}
+                  src={machine.image_url}
+                  width={250}
+                />
+              </div>
             )}
 
             <h1
