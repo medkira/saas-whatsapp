@@ -2,7 +2,7 @@
 import { revalidatePath } from 'next/cache';
 
 import { Machines } from '@/domain/entities/Machines';
-import { createClient } from '@/utils/supabase/server';
+import { createClient,createClientB } from '@/utils/supabase/server';
 
  export  async function  getMachine ():Promise<Machines[]> {
     const supabase = createClient();
@@ -17,6 +17,22 @@ import { createClient } from '@/utils/supabase/server';
 
    return data
 }
+
+export  async function  getMachineNo ():Promise<Machines[]> {
+   const supabase = createClientB();
+   const { data } = await supabase.from('machines')
+   .select('*')
+   .order('created_at', { ascending: false });
+
+  //  if (!data || data.length === 0) {
+  //     return data
+  //    }
+  if(!data) return []
+
+  return data
+}
+
+
 
 
 

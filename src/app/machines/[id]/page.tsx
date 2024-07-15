@@ -3,27 +3,35 @@ import Image from 'next/legacy/image';
 import { notFound } from 'next/navigation';
 import { Checkbox } from '@nextui-org/react';
 
-import { createClient } from '@/utils/supabase/server';
+import { createClient, createClientB } from '@/utils/supabase/server';
 import IconTelephoneFill from '@/components/icons';
 import { subtitle, title } from '@/components/primitives';
 import CommandeForm from '@/components/machines/commande-form';
 import { Machines } from '@/domain/entities/Machines';
-import { getMachine } from '@/actions/machines';
+import { getMachine, getMachineNo } from '@/actions/machines';
 
 // ? SSG
 export const generateStaticParams = async () => {
-  // const blogs = getBlogtMetadata('src/Blogs/');
-  // const data: Machines[] = await getMachine();
-  // return data.map((machine) => ({
-  //   id: machine.id.toString(),
-  // }));
-  return [{ id: '93' }];
+  const data: Machines[] = await getMachineNo();
+
+  return data.map((machine) => ({
+    id: machine.id.toString(),
+  }));
+  // return [{ id: '93' }];
 };
 
 export default async function Page({ params }: { params: { id: string } }) {
   // console.log(params.id);
 
-  const supabase = createClient();
+  // getMachine().then((machines) => {
+  //   const res = machines.map((machine) => ({
+  //     id: machine.id.toString(),
+  //   }));
+
+  //   console.log(res);
+  // });
+
+  const supabase = createClientB();
   let { data } = await supabase
     .from('machines')
     .select('*')
