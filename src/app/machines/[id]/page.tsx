@@ -8,6 +8,15 @@ import IconTelephoneFill from '@/components/icons';
 import { subtitle, title } from '@/components/primitives';
 import CommandeForm from '@/components/machines/commande-form';
 import { Machines } from '@/domain/entities/Machines';
+import { getMachine } from '@/actions/machines';
+
+// ? SSG
+export const generateStaticParams = async () => {
+  // const blogs = getBlogtMetadata('src/Blogs/');
+  // const data: Machines[] = await getMachine();
+
+  return [{ params: { id: '93' } }];
+};
 
 export default async function Page({ params }: { params: { id: string } }) {
   // console.log(params.id);

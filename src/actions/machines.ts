@@ -4,7 +4,7 @@ import { revalidatePath } from 'next/cache';
 import { Machines } from '@/domain/entities/Machines';
 import { createClient } from '@/utils/supabase/server';
 
- export  async function  getMachine ()  {
+ export  async function  getMachine ():Promise<Machines[]> {
     const supabase = createClient();
     const { data } = await supabase.from('machines')
     .select('*')
@@ -13,8 +13,9 @@ import { createClient } from '@/utils/supabase/server';
    //  if (!data || data.length === 0) {
    //     return data
    //    }
+   if(!data) return []
 
-      return data
+   return data
 }
 
 
