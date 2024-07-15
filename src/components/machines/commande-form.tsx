@@ -50,7 +50,8 @@ export default function CommandeForm() {
           className="w-full rounded-2xl p-3 px-5 text-xl font-semibold"
           color="primary"
           size="lg"
-          type="submit"
+          // type="submit"
+          onClick={() => console.log('hi')}
         >
           Commander
         </Button>
