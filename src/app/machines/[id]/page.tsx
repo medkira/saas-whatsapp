@@ -14,8 +14,10 @@ import { getMachine } from '@/actions/machines';
 export const generateStaticParams = async () => {
   // const blogs = getBlogtMetadata('src/Blogs/');
   // const data: Machines[] = await getMachine();
-
-  return [{ params: { id: '93' } }];
+  // return data.map((machine) => ({
+  //   id: machine.id.toString(),
+  // }));
+  return [{ id: '93' }];
 };
 
 export default async function Page({ params }: { params: { id: string } }) {
