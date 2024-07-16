@@ -6,10 +6,14 @@ import { Button } from '@nextui-org/button';
 import { Machines } from '@/domain/entities/Machines';
 import { subtitle, title } from '@/components/primitives';
 import { getMachine } from '@/actions/machines';
+import { createClientB } from '@/utils/supabase/server';
 
 export default async function LandingMachines() {
-  const data = await getMachine();
-  // console.log(data);
+  // const data = await getMachine();
+  // // console.log(data);
+
+  const supabase = createClientB();
+  let { data } = await supabase.from('machines').select('*');
 
   if (!data || data.length === 0) {
     notFound();
