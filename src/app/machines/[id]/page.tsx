@@ -11,6 +11,9 @@ import { Machines } from '@/domain/entities/Machines';
 import { getMachine, getMachineNo } from '@/actions/machines';
 
 // ? SSG
+
+export const revalidate = 6000;
+
 export const generateStaticParams = async () => {
   const data: Machines[] = await getMachine();
 
