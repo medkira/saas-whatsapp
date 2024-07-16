@@ -62,7 +62,10 @@ export async function deleteMachine(id: number,prevState: any, formData:FormData
    await deleteFile(imageBacketPath);
    // await new Promise((resolve)=> setTimeout(resolve,2000));
   
+  
    revalidatePath('/dashboard/machines');
+   revalidatePath('/');
+   revalidatePath('/products');
 }
 
 
@@ -112,8 +115,10 @@ export async function updateMachine(id:number,prevState: any, formData:FormData)
   .update({...machine,image_url:imageUrl})
   .eq('id', id)
 
-  revalidatePath('/dashboard/machines');
 
+  revalidatePath('/dashboard/machines');
+  revalidatePath('/');
+  revalidatePath('/products');
 }
 
 
@@ -158,7 +163,7 @@ export async function createMachine(prevState: any,formData:FormData){
 
   revalidatePath('/dashboard/machines');
   revalidatePath('/');
-  revalidatePath('/products')
+  revalidatePath('/products');
 
 }
 
