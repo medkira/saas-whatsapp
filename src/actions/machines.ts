@@ -4,6 +4,19 @@ import { revalidatePath } from 'next/cache';
 import { Machines } from '@/domain/entities/Machines';
 import { createClient,createClientB } from '@/utils/supabase/server';
 
+
+export async function searchMachines():Promise<Machines[]>{
+   const supabase = createClient(true);
+
+   const { data, error } = await supabase.from('books').select().textSearch('title', `'Harry'`)
+
+
+   if(!data) return [];
+   
+   return data
+}
+
+
  export  async function  getMachine ():Promise<Machines[]> {
     const supabase = createClient(true);
     const { data } = await supabase.from('machines')
