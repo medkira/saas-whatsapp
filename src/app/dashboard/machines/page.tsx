@@ -5,15 +5,15 @@ import { notFound } from 'next/navigation';
 import { createClient } from '@/utils/supabase/server';
 import { Machines } from '@/domain/entities/Machines';
 import { useState } from 'react';
-import { getMachine } from '../../../actions/machines';
 import DashboardMachines from '@/app/dashboard/machines/(components)/dahboard-machines';
+import { getMachineNo } from '@/actions/machines';
 
 export default async function Page() {
   // const test = useState();
 
   const supabase = createClient();
   // const { data } = await supabase.from('machines').select('*');
-  const data = await getMachine();
+  const data = await getMachineNo();
   // console.log(data);
 
   if (!data || data.length === 0) {

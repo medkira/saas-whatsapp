@@ -29,11 +29,10 @@ export default function ImageView({ machine }: { machine: Machines }) {
               <Image
                 priority
                 alt="Background Image"
-                className="transform transition-transform duration-300 hover:scale-110"
-                height={250}
+                height={350}
                 src={machine.image_url}
-                width={250}
-                quality={100}
+                width={350}
+                // quality={100}
               />
             )}
           </ModalBody>
