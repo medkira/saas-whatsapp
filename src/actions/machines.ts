@@ -19,7 +19,7 @@ import { createClient,createClientB } from '@/utils/supabase/server';
 }
 
 export  async function  getMachineNo ():Promise<Machines[]> {
-   const supabase = createClientB();
+   const supabase = createClient(true);
    const { data } = await supabase.from('machines')
    .select('*')
    .order('created_at', { ascending: false });
