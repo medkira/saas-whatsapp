@@ -1,19 +1,25 @@
 import { createBrowserClient, createServerClient} from '@supabase/ssr'
 import { cookies } from 'next/headers'
 
-export function createClient() {
-    const cookieStore = cookies()
+export function createClient(noCookie = false) {
+    // const cookieStore = cookies()
 
     return createServerClient(
         process.env.NEXT_PUBLIC_SUPABASE_URL!,
         process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
         {
             cookies: {
+            
                 getAll() {
-                    return cookieStore.getAll()
+
+                    if (noCookie) return null;
+
+                    return cookies().getAll()
                 },
                 setAll(cookiesToSet) {
-                    cookiesToSet.forEach(({ name, value, options }) => cookieStore.set(name, value, options))
+                    if (noCookie) return;
+
+                    cookiesToSet.forEach(({ name, value, options }) => cookies().set(name, value, options))
                 },
             },
         }

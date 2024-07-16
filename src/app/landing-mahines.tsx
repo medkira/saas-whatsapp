@@ -12,7 +12,7 @@ export default async function LandingMachines() {
   // const data = await getMachine();
   // // console.log(data);
 
-  const supabase = createClientB();
+  const supabase = createClient(true);
   let { data } = await supabase.from('machines').select('*');
 
   if (!data || data.length === 0) {
