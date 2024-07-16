@@ -5,7 +5,7 @@ import { Machines } from '@/domain/entities/Machines';
 import { createClient,createClientB } from '@/utils/supabase/server';
 
  export  async function  getMachine ():Promise<Machines[]> {
-    const supabase = createClient();
+    const supabase = createClient(true);
     const { data } = await supabase.from('machines')
     .select('*')
     .order('created_at', { ascending: false });

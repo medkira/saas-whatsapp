@@ -12,7 +12,7 @@ import { getMachine, getMachineNo } from '@/actions/machines';
 
 // ? SSG
 export const generateStaticParams = async () => {
-  const data: Machines[] = await getMachineNo();
+  const data: Machines[] = await getMachine();
 
   return data.map((machine) => ({
     id: machine.id.toString(),
@@ -31,7 +31,7 @@ export default async function Page({ params }: { params: { id: string } }) {
   //   console.log(res);
   // });
 
-  const supabase = createClientB();
+  const supabase = createClient(true);
   let { data } = await supabase
     .from('machines')
     .select('*')
