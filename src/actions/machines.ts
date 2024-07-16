@@ -108,7 +108,7 @@ export async function updateMachine(id:number,prevState: any, formData:FormData)
    // this need to be changed supabse 
    //update need to know the entitie
    const { error } = await supabase
-  .from('')
+  .from('machines')
   .update({...machine,image_url:imageUrl})
   .eq('id', id)
 
@@ -152,10 +152,14 @@ export async function createMachine(prevState: any,formData:FormData){
 
 //   console.log(formData)
 
-if(error){
-   console.log(error)
-}
+// if(error){
+//    console.log(error)
+// }
+
   revalidatePath('/dashboard/machines');
+  revalidatePath('/');
+  revalidatePath('/products')
+
 }
 
 
@@ -185,7 +189,6 @@ async function uploadFile(file:File):Promise<string>{
       // console.log(data)
    }
 
-   return ''
  }
 
 
