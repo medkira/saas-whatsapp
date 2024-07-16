@@ -10,7 +10,7 @@ import CommandeForm from '@/components/machines/commande-form';
 import { Machines } from '@/domain/entities/Machines';
 import { getMachine, getMachineNo } from '@/actions/machines';
 
-// // ? SSG
+// ? SSG
 export const generateStaticParams = async () => {
   const data: Machines[] = await getMachineNo();
 
@@ -31,7 +31,7 @@ export default async function Page({ params }: { params: { id: string } }) {
   //   console.log(res);
   // });
 
-  const supabase = createClient(true);
+  const supabase = createClientB();
   let { data } = await supabase
     .from('machines')
     .select('*')

@@ -1,8 +1,8 @@
 import { createBrowserClient, createServerClient, type CookieOptions } from '@supabase/ssr'
 import { cookies } from 'next/headers'
 
-export function createClient(useCookie = false) {
-    // const cookieStore = cookies()
+export function createClient() {
+    const cookieStore = cookies()
 
     return createServerClient(
         process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -10,14 +10,10 @@ export function createClient(useCookie = false) {
         {
             cookies: {
                 getAll() {
-                    // return null
-                 return null;
-
-                    // return cookies().getAll()
+                    return cookieStore.getAll()
                 },
                 setAll(cookiesToSet) {
-                    if(useCookie) return;
-                    // cookiesToSet.forEach(({ name, value, options }) => cookies().set(name, value, options))
+                    cookiesToSet.forEach(({ name, value, options }) => cookieStore.set(name, value, options))
                 },
             },
         }

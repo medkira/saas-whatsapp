@@ -5,11 +5,11 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 
 import { subtitle, title } from '@/components/primitives';
-import { getMachine } from '@/actions/machines';
+import { getMachine, getMachineNo } from '@/actions/machines';
 import { Machines } from '@/domain/entities/Machines';
 
 export default async function ProductsPage() {
-  const data = await getMachine();
+  const data = await getMachineNo();
   // console.log(data);
 
   if (!data || data.length === 0) {
