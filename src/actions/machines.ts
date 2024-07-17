@@ -3,16 +3,35 @@ import { revalidatePath } from 'next/cache';
 
 import { Machines } from '@/domain/entities/Machines';
 import { createClient,createClientB } from '@/utils/supabase/server';
+import { Search } from 'lucide-react';
 
 
-export async function searchMachines():Promise<Machines[]>{
+export async function searchMachines(search:string):Promise<Machines[]>{
    const supabase = createClient(true);
 
-   const { data, error } = await supabase.from('books').select().textSearch('title', `'Harry'`)
-
-
-   if(!data) return [];
+   // const { data, error } = await supabase.from('machines').select().textSearch('name', `${search}:*`)
+   // .order('similarity(title, $1) DESC', { foreignParam: search }).limit(3)
    
+   // searchResult = data!
+
+   // if(searchResult?.length==0){
+   //    const { data, error } = await supabase
+   //    .from('machines').select()
+   //    .textSearch('category',`${search}:*`, {type:'websearch', config: 'english'}).limit(3)
+      
+   //    searchResult = data!
+   // } 
+   // if(searchResult?.length==0) {
+   //    const { data, error } = await supabase.from('machines').select().textSearch('reference', `${search}:*`).limit(3)
+      
+   //    searchResult = data!
+
+   // }
+   const { data, error } = await supabase
+   .rpc('search_machines', { machine_term: search })
+   
+   if(!data) return [];
+
    return data
 }
 
@@ -20,7 +39,7 @@ export async function searchMachines():Promise<Machines[]>{
  export  async function  getMachine ():Promise<Machines[]> {
     const supabase = createClient(true);
     const { data } = await supabase.from('machines')
-    .select('*')
+    .select()
     .order('created_at', { ascending: false });
 
    //  if (!data || data.length === 0) {
@@ -34,7 +53,7 @@ export async function searchMachines():Promise<Machines[]>{
 export  async function  getMachineNo ():Promise<Machines[]> {
    const supabase = createClientB();
    const { data } = await supabase.from('machines')
-   .select('*')
+   .select()
    .order('created_at', { ascending: false });
 
   //  if (!data || data.length === 0) {
@@ -54,7 +73,7 @@ export async function deleteMachine(id: number,prevState: any, formData:FormData
    const supabase = createClient();
 
    // ? this should be another useCase
-   const { data } = await supabase.from('machines').select('*').eq('id',id);
+   const { data } = await supabase.from('machines').select().eq('id',id);
 
    const machine:Machines = data![0] //! data could be null
 
@@ -91,7 +110,7 @@ export async function updateMachine(id:number,prevState: any, formData:FormData)
 
    if(image.size != 0){
       // ? this should be another useCase
-      const { data } = await supabase.from('machines').select('*').eq('id',id);
+      const { data } = await supabase.from('machines').select().eq('id',id);
 
       const machine:Machines = data![0] //! data could be null
 

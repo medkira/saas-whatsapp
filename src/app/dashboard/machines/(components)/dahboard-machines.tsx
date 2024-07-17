@@ -1,27 +1,15 @@
-'use client';
-import {
-  Modal,
-  ModalContent,
-  Divider,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
-  Button,
-  useDisclosure,
-} from '@nextui-org/react';
+import { Divider } from '@nextui-org/react';
 import { Card } from '@nextui-org/card';
-import Link from 'next/link';
-import Image from 'next/legacy/image';
 
 import CreateMachineModel from './create-machine-model';
 import UpdateMachineModel from './update-machine-model';
 import DeleteMachineModel from './delete-machine-model';
+import ImageView from './dashboard-image-model';
+import SearchMachine from './search-machine';
 
 import { Machines } from '@/domain/entities/Machines';
-import { EyeIcon } from '@/components/dashboard/icons/table/eye-icon';
-import ImageView from './dashboard-image-model';
 
-export default function DashboardMachines({
+export default async function DashboardMachines({
   machines,
 }: {
   machines: Machines[];
@@ -52,7 +40,8 @@ export default function DashboardMachines({
 
   return (
     <div className="  w-[95vw] sm:w-[97%]">
-      <div className="flex   items-end  justify-end gap-5 p-3  ">
+      <div className="flex   items-end  justify-between gap-5 p-3  ">
+        <SearchMachine />
         <CreateMachineModel />
       </div>
       <Card className="h-[82vh] overflow-y-auto p-5  sm:h-[80vh]">
