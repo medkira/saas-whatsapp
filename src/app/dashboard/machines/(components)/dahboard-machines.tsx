@@ -17,7 +17,7 @@ export default async function DashboardMachines({
   const columns = [
     {
       key: 'category',
-      label: 'NOM',
+      label: 'CATEGORY',
     },
     {
       key: 'ref',
@@ -70,8 +70,7 @@ export default async function DashboardMachines({
         {machines.map((machine) => (
           <div
             key={machine.id}
-            className="
-               rounded-md dark:hover:bg-gray-700/25 "
+            className="rounded-md dark:hover:bg-gray-700/25 "
           >
             <div
               className="flex cursor-pointer flex-row

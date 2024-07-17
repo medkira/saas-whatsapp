@@ -8,6 +8,8 @@ import {
   Button,
   useDisclosure,
   Input,
+  Autocomplete,
+  AutocompleteItem,
 } from '@nextui-org/react';
 import { useFormState, useFormStatus } from 'react-dom';
 import { useState } from 'react';
@@ -25,8 +27,8 @@ import { FileSvgDraw } from '@/components/file-upoad/file-upload-icon';
 export default function CreateMachineModel() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const initialState: Omit<Machines, 'id' | 'image_url'> = {
-    category: 'tessst',
-    reference: 'tesst',
+    category: '',
+    reference: '',
     price: 0,
   };
   //   const [formData, setFormData] = useState<Omit<Machines, 'id' | 'image_url'>>({
@@ -42,13 +44,19 @@ export default function CreateMachineModel() {
     multiple: true,
   };
 
-  // useEffect(() => {
-  //   console.log(files);
-  // }, [files]);
-
-  // const createMachineWithImage = createMachine.bind(null, files!);
   const [errorMessage, dispatch] = useFormState(createMachine, initialState);
   const status = useFormStatus();
+
+  const categories = [
+    'Piqueuse',
+    'Surjet ',
+    'Recouvrement',
+    'Ciseau',
+    'Pose',
+    'Bordeuse',
+    'Boutonnière',
+    'Pilier',
+  ];
 
   return (
     <div className="flex flex-col gap-2">
@@ -68,14 +76,28 @@ export default function CreateMachineModel() {
                 className="flex max-h-[90vh] flex-col gap-6 overflow-y-auto"
               >
                 <ModalBody>
-                  <Input
+                  {/* <Input
                     label="Category"
                     name="category"
                     placeholder="Category"
                     type="text"
                     variant="bordered"
-                  />
-
+                  /> */}
+                  *
+                  <Autocomplete
+                    defaultFilter={() => true}
+                    label="Categories"
+                    name="category"
+                    placeholder="Category"
+                    type="text"
+                    variant="bordered"
+                  >
+                    {categories.map((category) => (
+                      <AutocompleteItem key={category}>
+                        {category}
+                      </AutocompleteItem>
+                    ))}
+                  </Autocomplete>
                   <Input
                     label="Reference"
                     name="reference"
@@ -95,7 +117,6 @@ export default function CreateMachineModel() {
                       e.target.value = e.target.value.replace(/[^0-9]/g, '');
                     }}
                   />
-
                   <Input
                     label="Name"
                     name="name"
@@ -103,7 +124,6 @@ export default function CreateMachineModel() {
                     type="text"
                     variant="bordered"
                   />
-
                   <Input
                     label="Description"
                     name="description"
@@ -111,7 +131,6 @@ export default function CreateMachineModel() {
                     type="text"
                     variant="bordered"
                   />
-
                   <Input
                     label="Mark"
                     name="mark"
@@ -119,7 +138,6 @@ export default function CreateMachineModel() {
                     type="text"
                     variant="bordered"
                   />
-
                   <Input
                     label="Applicable"
                     name="applicable"
@@ -127,7 +145,6 @@ export default function CreateMachineModel() {
                     type="text"
                     variant="bordered"
                   />
-
                   {/* custom checkbox */}
                   <label className="flex cursor-pointer items-center justify-between p-1 text-slate-400">
                     Available:{' '}
@@ -141,7 +158,6 @@ export default function CreateMachineModel() {
                     </div>
                   </label>
                   {/* custom checkbox */}
-
                   {/* imae upload  */}
                   <FileUploader
                     className="relative rounded-lg bg-background p-2"

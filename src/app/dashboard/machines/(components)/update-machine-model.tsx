@@ -9,6 +9,8 @@ import {
   useDisclosure,
   Input,
   Checkbox,
+  Autocomplete,
+  AutocompleteItem,
 } from '@nextui-org/react';
 import { useFormState, useFormStatus } from 'react-dom';
 
@@ -47,6 +49,20 @@ export default function UpdateMachineModel({
     multiple: true,
   };
 
+  const categories = [
+    'Piqueuse',
+    'Surjet',
+    'Recouvrement',
+    'Ciseau',
+    'Pose',
+    'Bordeuse',
+    'Boutonnière',
+    'Pilier',
+    'Ciseau Cerculaire',
+    'Ciseaux Vertical',
+    'Ciseaux',
+  ];
+
   return (
     <div className="flex flex-col gap-2">
       <Button className="max-w-fit" color="warning" onPress={onOpen}>
@@ -66,14 +82,30 @@ export default function UpdateMachineModel({
                 className="flex max-h-[90vh] flex-col gap-6 overflow-y-auto"
               >
                 <ModalBody>
-                  <Input
+                  {/* <Input
                     defaultValue={machine.category}
                     label="Category"
                     name="category"
                     placeholder="Category"
                     type="text"
                     variant="bordered"
-                  />
+                  /> */}
+
+                  <Autocomplete
+                    defaultFilter={() => true}
+                    defaultSelectedKey={machine.category}
+                    label="Categories"
+                    name="category"
+                    placeholder="Category"
+                    type="text"
+                    variant="bordered"
+                  >
+                    {categories.map((category) => (
+                      <AutocompleteItem key={category}>
+                        {category}
+                      </AutocompleteItem>
+                    ))}
+                  </Autocomplete>
 
                   <Input
                     defaultValue={machine.reference}
