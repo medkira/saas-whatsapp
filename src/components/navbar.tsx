@@ -33,7 +33,7 @@ export const Navbar = () => {
   const searchButtonRef = useRef<HTMLDivElement>(null);
   const searchButtonRef1 = useRef<HTMLDivElement>(null);
 
-  const searchContainerRef = useRef<HTMLDivElement>(null);
+  // const searchContainerRef = useRef<HTMLDivElement>(null);
 
   const handleSearchClick = () => {
     setSearchVisible(!isSearchVisible);
