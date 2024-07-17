@@ -1,5 +1,3 @@
-import { notFound } from 'next/navigation';
-
 import { Machines } from '@/domain/entities/Machines';
 import DashboardMachines from '@/app/dashboard/machines/(components)/dahboard-machines';
 import { getMachine, searchMachines } from '@/actions/machines';

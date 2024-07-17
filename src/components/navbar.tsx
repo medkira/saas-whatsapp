@@ -8,25 +8,31 @@ import {
   NavbarItem,
   NavbarMenuItem,
 } from '@nextui-org/navbar';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { Button } from '@nextui-org/button';
-import { Link } from '@nextui-org/link';
-import { Input } from '@nextui-org/input';
 import NextLink from 'next/link';
 import clsx from 'clsx';
 import { motion } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
+import {
+  Autocomplete,
+  AutocompleteItem,
+  input,
+  Input,
+} from '@nextui-org/react';
 
 import { siteConfig } from '@/config/site';
 import { ThemeSwitch } from '@/components/theme-switch';
 import { SearchIcon, Logo } from '@/components/icons';
 import { roboto } from '@/config/fonts';
+import { searchMachines } from '@/actions/machines';
+import { Machines } from '@/domain/entities/Machines';
 
 export const Navbar = () => {
-  const pathname = usePathname();
-
   const [isSearchVisible, setSearchVisible] = useState(false);
   const searchButtonRef = useRef<HTMLDivElement>(null);
+  const searchButtonRef1 = useRef<HTMLDivElement>(null);
+
   const searchContainerRef = useRef<HTMLDivElement>(null);
 
   const handleSearchClick = () => {
@@ -34,16 +40,20 @@ export const Navbar = () => {
   };
 
   const handleClickOutside = (event: any) => {
+    // setSearchVisible(false);
     if (
       searchButtonRef.current &&
-      !searchButtonRef.current.contains(event.target)
+      !searchButtonRef.current.contains(event.target) &&
+      searchButtonRef1.current &&
+      !searchButtonRef1.current.contains(event.target)
     ) {
-      if (
-        searchContainerRef.current &&
-        !searchContainerRef.current.contains(event.target)
-      ) {
-        setSearchVisible(false);
-      }
+      setSearchVisible(false);
+      // if (
+      //   searchContainerRef.current &&
+      //   !searchContainerRef.current.contains(event.target)
+      // ) {
+      //   setSearchVisible(false);
+      // }
     }
   };
 
@@ -55,31 +65,61 @@ export const Navbar = () => {
     };
   }, []);
 
+  const [machines, setMachines] = useState<Machines[]>([]);
+
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
+  const { replace } = useRouter();
+
+  const [value, setValue] = useState<string>();
+
+  const handleSearch = async (value: string) => {
+    setValue(value);
+    setMachines([]);
+    // console.log(value);
+    const res = await searchMachines(value);
+    // const res = await searchMachines('piks');
+
+    setMachines(res);
+  };
+
+  const pressSearchEnter = () => {
+    const params = new URLSearchParams(searchParams);
+
+    if (value) {
+      params.set('query', value);
+    } else {
+      params.delete('query');
+    }
+    replace(`${pathname}?${params.toString()}`);
+  };
+
   const searchInput = (
     <div
-      // ref={searchContainerRef as any}
-      className={` shadow-lgsm:w-[60vw] w-[90vw] rounded-xl `}
+      className={`  flex w-[90vw] max-w-2xl items-center justify-center rounded-xl shadow-lg`}
     >
-      <Input
-        ref={searchButtonRef as any}
-        aria-label="Search"
-        // className="bg-black "
-        classNames={{
-          inputWrapper: 'bg-default-100 ',
-          input: 'text-xl',
+      <Autocomplete
+        // ref={searchButtonRef as any}
+        className="max-w-2xl"
+        defaultFilter={() => true}
+        // label="Search Machine"
+        menuTrigger="input"
+        placeholder="Type a machine name"
+        value={value}
+        onInputChange={handleSearch}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter') {
+            pressSearchEnter();
+            // pressSearchEnter(e.);
+          }
         }}
-        // endContent={
-        //   <Kbd className="hidden lg:inline-block" keys={['command']}>
-        //     K
-        //   </Kbd>
-        // }
-        // labelPlacement="outside"
-        placeholder="Recherche..."
-        startContent={
-          <SearchIcon className="pointer-events-none flex-shrink-0 text-base text-default-400" />
-        }
-        type="search"
-      />
+      >
+        {machines.map((machine) => (
+          <AutocompleteItem key={machine.id} className={`${roboto.className} `}>
+            {machine.name}
+          </AutocompleteItem>
+        ))}
+      </Autocomplete>
     </div>
   );
 
@@ -100,7 +140,7 @@ export const Navbar = () => {
         </NextLink>
       </NavbarBrand>
 
-      <NavbarContent className="hidden gap-4 sm:flex" justify="center">
+      <NavbarContent className="hidden  gap-4 sm:flex" justify="center">
         <ul className=" hidden justify-start gap-6 sm:flex">
           {siteConfig.navItems.map((item) => (
             <NavbarItem key={item.href}>
@@ -124,7 +164,7 @@ export const Navbar = () => {
         </ul>
         {isSearchVisible && (
           <motion.div
-            // ref={searchButtonRef as any}
+            ref={searchButtonRef1 as any}
             animate={{ opacity: 1, y: 50 }}
             className="search-input-container  absolute"
             exit={{ opacity: 1, y: -20 }}
@@ -178,7 +218,7 @@ export const Navbar = () => {
         </Button>
         {isSearchVisible && (
           <motion.div
-            // ref={searchButtonRef as any}
+            ref={searchButtonRef as any}
             animate={{ opacity: 1, y: 50 }}
             className="search-input-container  absolute"
             exit={{ opacity: 1, y: -20 }}

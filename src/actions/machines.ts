@@ -9,27 +9,9 @@ import { Search } from 'lucide-react';
 export async function searchMachines(search:string):Promise<Machines[]>{
    const supabase = createClient(true);
 
-   // const { data, error } = await supabase.from('machines').select().textSearch('name', `${search}:*`)
-   // .order('similarity(title, $1) DESC', { foreignParam: search }).limit(3)
-   
-   // searchResult = data!
-
-   // if(searchResult?.length==0){
-   //    const { data, error } = await supabase
-   //    .from('machines').select()
-   //    .textSearch('category',`${search}:*`, {type:'websearch', config: 'english'}).limit(3)
-      
-   //    searchResult = data!
-   // } 
-   // if(searchResult?.length==0) {
-   //    const { data, error } = await supabase.from('machines').select().textSearch('reference', `${search}:*`).limit(3)
-      
-   //    searchResult = data!
-
-   // }
    const { data, error } = await supabase
    .rpc('search_machines', { machine_term: search })
-   
+
    if(!data) return [];
 
    return data

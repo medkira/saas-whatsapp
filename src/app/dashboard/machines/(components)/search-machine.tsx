@@ -40,7 +40,7 @@ export default function SearchMachine() {
   );
 }
 
-// 'use client';
+// // 'use client';
 // import { useState } from 'react';
 // import { Autocomplete, AutocompleteItem } from '@nextui-org/react';
 

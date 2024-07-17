@@ -5,12 +5,26 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 
 import { subtitle, title } from '@/components/primitives';
-import { getMachine, getMachineNo } from '@/actions/machines';
+import { getMachine, getMachineNo, searchMachines } from '@/actions/machines';
 import { Machines } from '@/domain/entities/Machines';
 
-export default async function ProductsPage() {
-  const data = await getMachineNo();
+export default async function ProductsPage({
+  searchParams,
+}: {
+  searchParams?: { query?: string; page?: string };
+}) {
+  // const data = await getMachineNo();
   // console.log(data);
+  let data: Machines[] = [];
+  const query = searchParams?.query || '';
+
+  if (query.length === 0) {
+    data = await getMachine();
+  } else if (query.length !== 0) {
+    data = await searchMachines(query);
+  } else if (data.length === 0) {
+    data = [];
+  }
 
   if (!data || data.length === 0) {
     notFound();
@@ -44,7 +58,7 @@ export default async function ProductsPage() {
             items-center
             justify-center gap-1 rounded-xl
             bg-white p-5 shadow-md
-            sm:max-h-[75vh] sm:min-h-[70vh] sm:w-1/3 lg:w-1/4"
+            sm:max-h-[75vh] sm:min-h-[70vh] sm:w-1/2  lg:w-1/4"
             href={`/machines/${machine.id}`}
           >
             {machine.image_url.length != 0 && (
