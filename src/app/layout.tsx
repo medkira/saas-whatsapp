@@ -9,6 +9,7 @@ import { Providers } from './providers';
 import { Toaster } from '@/components/ui/toaster';
 import { siteConfig } from '@/config/site';
 import { roboto } from '@/config/fonts';
+import { Suspense } from 'react';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://totaltechtn.com/'),
@@ -69,7 +70,9 @@ export default function RootLayout({
         <Providers themeProps={{ attribute: 'class', defaultTheme: 'light' }}>
           <div className={`${roboto.className} `}>
             {/* <div className="fixed left-0 right-0 top-0 z-20  sm:backdrop-blur-none"> */}
-            <Navbar />
+            <Suspense>
+              <Navbar />
+            </Suspense>
             {/* </div> */}
 
             {/* container z-10 mx-auto max-w-7xl flex-grow bg-transparent px-6 */}
