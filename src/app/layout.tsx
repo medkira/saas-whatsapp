@@ -67,7 +67,13 @@ export default function RootLayout({
           // fontSans.variable,
         )}
       >
-        <Providers themeProps={{ attribute: 'class', defaultTheme: 'light' }}>
+        <Providers
+          themeProps={{
+            attribute: 'class',
+            defaultTheme: 'light',
+            themes: ['light', 'dark'],
+          }}
+        >
           <div className={`${roboto.className} `}>
             {/* <div className="fixed left-0 right-0 top-0 z-20  sm:backdrop-blur-none"> */}
             <Suspense>
@@ -76,7 +82,7 @@ export default function RootLayout({
             {/* </div> */}
 
             {/* container z-10 mx-auto max-w-7xl flex-grow bg-transparent px-6 */}
-            <main className="">{children}</main>
+            <main>{children}</main>
           </div>
         </Providers>
         <Toaster />

@@ -56,20 +56,20 @@ module.exports = {
           },
           // ... rest of the colors
         },
-        // dark: {
-        //   colors: {
-        //     background: 'transparent',
-        //     // background: '#042749',
+        dark: {
+          colors: {
+            background: 'transparent',
+            // background: '#042749',
 
-        //     foreground: '#ECEDEE',
-        //     primary: {
-        //       //... 50 to 900
-        //       foreground: '#FFFFFF',
-        //       DEFAULT: '#006FEE',
-        //     },
-        //   },
-        //   // ... rest of the colors
-        // },
+            foreground: '#ECEDEE',
+            primary: {
+              //... 50 to 900
+              foreground: '#FFFFFF',
+              DEFAULT: '#006FEE',
+            },
+          },
+          // ... rest of the colors
+        },
       },
     }),
   ],

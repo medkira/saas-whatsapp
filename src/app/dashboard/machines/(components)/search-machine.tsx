@@ -41,8 +41,8 @@ export default function SearchMachine() {
           innerWrapper: 'bg-transparent',
           inputWrapper: [
             'shadow-xl',
-            'bg-default-200/50',
-            'dark:bg-default/60',
+            // 'bg-white',
+            'bg-default-50',
             'backdrop-blur-xl',
             'backdrop-saturate-200',
             'hover:bg-default-200/70',
