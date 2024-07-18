@@ -14,6 +14,14 @@ export default async function Page({
     data = await getMachine();
   } else if (query.length !== 0) {
     data = await searchMachines(query);
+
+    const ref = data.find(
+      (machine) => machine.reference === query.toUpperCase(),
+    );
+
+    if (ref) {
+      data = [ref];
+    }
   } else if (data.length === 0) {
     data = [];
   }
