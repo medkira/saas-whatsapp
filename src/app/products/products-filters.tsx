@@ -30,7 +30,7 @@ export default function ProductsFilters() {
     'Piqueuse',
     'Surjet',
     'Recouvrement',
-    'Ciseau',
+    'Ciseaux',
     'Pose',
     'Bordeuse',
     'Boutonnière',
@@ -69,7 +69,7 @@ export default function ProductsFilters() {
     }
     params.delete('query');
     replace(`/products?${params.toString()}`);
-
+    toggleNavbar();
     // replace(`${pathname}?${params.toString()}`);
   };
 
@@ -77,7 +77,7 @@ export default function ProductsFilters() {
     <>
       <div className="p-5">
         <button
-          className="group fixed top-[9vh] flex items-center justify-center gap-2"
+          className="group fixed top-[9vh] z-10 flex items-center justify-center gap-2"
           onClick={toggleNavbar}
         >
           <div className="relative flex h-[50px] w-[50px] transform items-center justify-center overflow-hidden rounded-full bg-slate-700 shadow-md ring-0 ring-gray-300 ring-opacity-30 transition-all duration-200 hover:ring-8 group-focus:ring-4">

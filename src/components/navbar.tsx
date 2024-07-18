@@ -256,6 +256,8 @@ export const Navbar = () => {
             {searchInput}
           </motion.div>
         )}
+        <ThemeSwitch />
+
         <NavbarMenuToggle />
       </NavbarContent>
 

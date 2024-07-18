@@ -95,7 +95,7 @@ export default async function ProductsPage({
                 <Image
                   priority
                   alt="Background Image"
-                  className=" overflow-visible   "
+                  className=" overflow-visible "
                   height={250}
                   //   layout="fixed"
                   //   sizes="(max-width: 900px) 100vw,
