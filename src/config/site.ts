@@ -5,7 +5,7 @@ export const siteConfig = {
   description: 'Agent tunisien des machines à coudre JAKI',
   navItems: [
     {
-      label: 'Home',
+      label: 'Accueil',
       href: '/',
     },
     // {
@@ -20,10 +20,10 @@ export const siteConfig = {
       label: 'Nos Service',
       href: '/service',
     },
-    {
-      label: 'About',
-      href: '/about',
-    },
+    // {
+    //   label: 'About',
+    //   href: '/about',
+    // },
   ],
   navMenuItems: [
     {

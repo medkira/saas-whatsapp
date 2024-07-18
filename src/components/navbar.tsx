@@ -96,7 +96,9 @@ export const Navbar = () => {
     } else {
       params.delete('query');
     }
-    replace(`${pathname}?${params.toString()}`);
+    replace(`/products?${params.toString()}`);
+
+    // replace(`${pathname}?${params.toString()}`);
   };
 
   const router = useRouter();

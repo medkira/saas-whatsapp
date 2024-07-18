@@ -59,9 +59,9 @@ export default function ProductsFilters() {
     const params = new URLSearchParams(searchParams);
 
     if (selectedCategories || selectedMarks) {
-      params.set('query', `${selectedCategories} ${selectedMarks}`);
+      params.set('filter', `${selectedCategories} ${selectedMarks}`);
     } else {
-      params.delete('query');
+      params.delete('filter');
     }
     replace(`${pathname}?${params.toString()}`);
   };
