@@ -8,7 +8,12 @@ import {
   NavbarItem,
   NavbarMenuItem,
 } from '@nextui-org/navbar';
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import {
+  redirect,
+  usePathname,
+  useRouter,
+  useSearchParams,
+} from 'next/navigation';
 import { Button } from '@nextui-org/button';
 import NextLink from 'next/link';
 import clsx from 'clsx';
@@ -94,6 +99,8 @@ export const Navbar = () => {
     replace(`${pathname}?${params.toString()}`);
   };
 
+  const router = useRouter();
+
   const searchInput = (
     <div
       className={`  flex w-[90vw] max-w-2xl items-center justify-center rounded-xl shadow-lg`}
@@ -112,6 +119,10 @@ export const Navbar = () => {
             pressSearchEnter();
             // pressSearchEnter(e.);
           }
+        }}
+        onSelectionChange={(key) => {
+          router.push(`/machines/${key}`);
+          setSearchVisible(false);
         }}
       >
         {machines.map((machine) => (
