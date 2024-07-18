@@ -25,6 +25,7 @@ import {
   input,
   Input,
 } from '@nextui-org/react';
+import { useDebouncedCallback } from 'use-debounce';
 
 import { siteConfig } from '@/config/site';
 import { ThemeSwitch } from '@/components/theme-switch';
@@ -78,7 +79,7 @@ export const Navbar = () => {
 
   const [value, setValue] = useState<string>();
 
-  const handleSearch = async (value: string) => {
+  const handleSearch = useDebouncedCallback(async (value: string) => {
     setValue(value);
     setMachines([]);
     // console.log(value);
@@ -86,7 +87,7 @@ export const Navbar = () => {
     // const res = await searchMachines('piks');
 
     setMachines(res);
-  };
+  }, 300);
 
   const pressSearchEnter = () => {
     const params = new URLSearchParams(searchParams);
