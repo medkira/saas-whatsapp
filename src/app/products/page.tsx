@@ -62,7 +62,7 @@ export default async function ProductsPage({
   const machines: Machines[] = data;
 
   return (
-    <div className=" flex w-full   flex-col items-center justify-start  gap-1  pt-[5rem]  text-center   sm:gap-9   ">
+    <div className=" flex w-full   flex-col items-center justify-start  gap-1  pt-[1rem]  text-center   sm:gap-9   ">
       <section className="flex flex-col items-center justify-start">
         <div className="   pb-2 sm:w-full">
           <h1 className={title({ size: 'md', class: 'mb-3  mr-2' })}>
@@ -83,11 +83,11 @@ export default async function ProductsPage({
         {machines.map((machine, index) => (
           <Link
             key={index}
-            className="flex cursor-pointer  flex-col
-            items-center
-            justify-center gap-1 rounded-xl
-            bg-white p-5 shadow-md
-            sm:max-h-[75vh] sm:min-h-[70vh] sm:w-1/2  lg:w-1/4"
+            className="flex max-w-[85vw]  cursor-pointer
+            flex-col
+            items-center justify-center gap-1
+            rounded-xl bg-white p-5
+            shadow-md sm:max-h-[75vh]  sm:min-h-[70vh] sm:w-1/2  sm:min-w-[20vw]  lg:w-[19.5rem]"
             href={`/machines/${machine.id}`}
           >
             {machine.image_url.length != 0 && (
