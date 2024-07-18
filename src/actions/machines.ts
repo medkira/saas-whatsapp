@@ -35,7 +35,6 @@ export async function searchMachines(search:string):Promise<Machines[]>{
     const { data } = await supabase.from('machines')
     .select()
     .order('created_at', { ascending: false });
-
    //  if (!data || data.length === 0) {
    //     return data
    //    }
