@@ -5,18 +5,30 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 
 import { subtitle, title } from '@/components/primitives';
-import { getMachine, getMachineNo, searchMachines } from '@/actions/machines';
+import {
+  filterMachines,
+  getMachine,
+  getMachineNo,
+  searchMachines,
+} from '@/actions/machines';
 import { Machines } from '@/domain/entities/Machines';
 
 export default async function ProductsPage({
   searchParams,
 }: {
-  searchParams?: { query?: string; page?: string };
+  searchParams?: {
+    query?: string;
+    page?: string;
+    categories?: any;
+    marks?: any;
+  };
 }) {
   // const data = await getMachineNo();
   // console.log(data);
   let data: Machines[] = [];
   const query = searchParams?.query || '';
+  const categories = searchParams?.categories || '';
+  const marks = searchParams?.marks || '';
 
   if (query.length === 0) {
     data = await getMachine();
@@ -24,6 +36,23 @@ export default async function ProductsPage({
     data = await searchMachines(query);
   } else if (data.length === 0) {
     data = [];
+  }
+
+  function stringToArray(str: string) {
+    const stringArray = str.split(',');
+
+    const trimmedArray = stringArray.map((element) => element.trim());
+
+    return trimmedArray;
+  }
+
+  if (marks.length !== 0 || categories.length !== 0) {
+    // console.log('marks', stringToArray(marks));
+    // console.log('categories', stringToArray(categories));
+    data = await filterMachines({
+      categories: stringToArray(categories),
+      marks: stringToArray(marks),
+    });
   }
 
   if (!data || data.length === 0) {

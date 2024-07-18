@@ -3,7 +3,19 @@ import { revalidatePath } from 'next/cache';
 
 import { Machines } from '@/domain/entities/Machines';
 import { createClient,createClientB } from '@/utils/supabase/server';
-import { Search } from 'lucide-react';
+
+
+
+export async function filterMachines({categories, marks}:{categories: string[], marks:string[]}):Promise<Machines[]>{
+   const supabase = createClient(true);
+   // console.log(categories[0])
+   const {data, error} = 
+   await supabase.rpc("get_machins_filter", {categories: categories, marks: marks})
+  
+
+   return data
+}
+
 
 
 export async function searchMachines(search:string):Promise<Machines[]>{

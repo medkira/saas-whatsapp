@@ -27,7 +27,7 @@ export default function ProductsFilters() {
 
   const categories = [
     'Piqueuse',
-    'Surjet ',
+    'Surjet',
     'Recouvrement',
     'Ciseau',
     'Pose',
@@ -59,11 +59,17 @@ export default function ProductsFilters() {
     const params = new URLSearchParams(searchParams);
 
     if (selectedCategories || selectedMarks) {
-      params.set('filter', `${selectedCategories} ${selectedMarks}`);
+      // params.set('filter', `${selectedCategories} ${selectedMarks}`);
+      // params.set('filter', `${selectedCategories} ${selectedMarks}`);
+      params.set('categories', `${selectedCategories}`);
+      params.set('marks', `${selectedMarks}`);
     } else {
       params.delete('filter');
     }
-    replace(`${pathname}?${params.toString()}`);
+    params.delete('query');
+    replace(`/products?${params.toString()}`);
+
+    // replace(`${pathname}?${params.toString()}`);
   };
 
   return (

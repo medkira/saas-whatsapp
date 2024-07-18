@@ -96,6 +96,11 @@ export const Navbar = () => {
     } else {
       params.delete('query');
     }
+
+    // params.delete('filter');
+    params.delete('marks');
+    params.delete('categories');
+
     replace(`/products?${params.toString()}`);
 
     // replace(`${pathname}?${params.toString()}`);
