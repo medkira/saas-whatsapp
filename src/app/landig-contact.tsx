@@ -54,7 +54,10 @@ export default function LandingContact() {
 
   return (
     <>
-      <div className="relative flex h-[100vh]  w-full flex-col items-center   justify-items-start  gap-5 overflow-hidden pt-[5rem]  sm:gap-6  md:gap-9 md:pt-[10vh]">
+      <div
+        className="relative flex h-[100vh]  
+      w-full flex-col items-center  justify-items-start  gap-5 overflow-hidden pt-[5rem]  sm:gap-6  md:gap-9 md:pt-[10vh]"
+      >
         <section className="flex flex-col items-center justify-start">
           <div className=" flex  w-48  justify-center sm:w-full">
             <h1 className={title({ size: 'md', class: '' })}>Contactez</h1>
@@ -65,7 +68,7 @@ export default function LandingContact() {
         </section>
 
         <footer className="flex w-full flex-wrap items-center justify-center gap-10 ">
-          <Card className="sm:w-3xl flex w-9/12 max-w-2xl">
+          <Card className="sm:w-3xl flex  w-9/12 max-w-2xl">
             <CardBody>
               <Button
                 className="my-4 flex items-center justify-center gap-2"

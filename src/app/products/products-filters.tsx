@@ -2,6 +2,7 @@ import {
   Accordion,
   AccordionItem,
   Button,
+  Card,
   Checkbox,
   CheckboxGroup,
 } from '@nextui-org/react';
@@ -91,12 +92,13 @@ export default function ProductsFilters() {
       </div>
       {/* </Button> */}
       <motion.div
-        animate={{ x: isOpen ? '0%' : '-150%' }}
-        className="fixed left-0 top-0 z-30 m-5 min-h-[50vh] w-64 rounded-lg bg-[#fafafa] p-5 text-white"
+        animate={{ x: isOpen ? '-2%' : '-150%' }}
+        className="h-fill fixed left-0 top-0 z-40 
+         m-5 w-64 rounded-lg bg-default-50  p-5 text-white"
         initial={{ x: '-100%' }}
         // transition={{ type: 'spring', stiffness: 100 }}
       >
-        <div className="pt-[4vh]">
+        <div className=" pt-[4vh]">
           <div className="flex flex-row items-center gap-5">
             <Button
               className="  ml-2 h-10 w-5 rounded-full bg-red-500 text-2xl text-white"

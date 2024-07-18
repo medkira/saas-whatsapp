@@ -86,7 +86,7 @@ export default async function ProductsPage({
             className="flex max-w-[85vw]  cursor-pointer
             flex-col
             items-center justify-center gap-1
-            rounded-xl bg-white p-5
+            rounded-xl bg-default-50  p-5
             shadow-md sm:max-h-[75vh]  sm:min-h-[70vh] sm:w-1/2  sm:min-w-[20vw]  lg:w-[19.5rem]"
             href={`/machines/${machine.id}`}
           >

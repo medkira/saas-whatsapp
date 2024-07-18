@@ -1,7 +1,7 @@
 import { Button } from '@nextui-org/button';
 import Image from 'next/legacy/image';
 import { notFound } from 'next/navigation';
-import { Checkbox } from '@nextui-org/react';
+import { Card, Checkbox } from '@nextui-org/react';
 
 import { createClient, createClientB } from '@/utils/supabase/server';
 import IconTelephoneFill from '@/components/icons';
@@ -63,7 +63,7 @@ export default async function Page({ params }: { params: { id: string } }) {
         </Button>
       </div>
 
-      <div className="flex   flex-col items-center  justify-center gap-1 rounded-md bg-white p-5 sm:flex-row">
+      <div className="flex   flex-col items-center  justify-center gap-1 rounded-md bg-default-50  p-5 sm:flex-row">
         <div className="flex flex-col  items-center justify-center   ">
           <h1
             className={title({
@@ -108,8 +108,8 @@ export default async function Page({ params }: { params: { id: string } }) {
               <CommandeForm />
             </div>
           </section>
-          <section className="min-w-[40vw] rounded-md bg-gray-50 p-4 shadow-md">
-            <h1 className="mb-4 text-3xl font-bold text-gray-700">
+          <Card className="min-w-[40vw] rounded-xl bg-default-100/50  p-4 shadow-md">
+            <h1 className="mb-4 text-3xl font-bold text-default-700">
               D É T A I L S
             </h1>
             <div className="text-start text-lg leading-10">
@@ -135,23 +135,27 @@ export default async function Page({ params }: { params: { id: string } }) {
               )}
               {typeof machine.available !== 'undefined' && (
                 <div className="flex">
-                  <p className="pr-5">
-                    <strong>Disponible :</strong>{' '}
-                    {machine.available ? 'Oui' : 'Non'}
-                  </p>
-
-                  <Checkbox
-                    color="success"
-                    isSelected={machine.available}
-                    // defaultSelected={machine.available}
-                  />
+                  <strong className="pr-2">Disponible :</strong>{' '}
+                  {machine.available ? (
+                    'Oui'
+                  ) : (
+                    <p className="text-red-500">Sur Commande</p>
+                  )}
+                  {machine.available && (
+                    <Checkbox
+                      className="pl-5"
+                      color="success"
+                      isSelected={machine.available}
+                      // defaultSelected={machine.available}
+                    />
+                  )}
                 </div>
               )}
               <p>
-                <strong>Prix :</strong> {machine.price} DNT
+                <strong>Prix :</strong> {machine.price} TND
               </p>
             </div>
-          </section>
+          </Card>
         </div>
       </div>
     </div>

@@ -83,7 +83,7 @@ export default function CreateMachineModel() {
                     type="text"
                     variant="bordered"
                   /> */}
-                  *
+
                   <Autocomplete
                     defaultFilter={() => true}
                     label="Categories"

@@ -46,7 +46,7 @@ export default async function LandingMachines() {
             key={index}
             className="flex cursor-pointer  flex-col  items-center
               justify-center gap-1 rounded-xl
-              bg-white p-5 shadow-md
+               bg-default-50 p-5 shadow-md
               sm:max-h-[75vh] sm:min-h-[70vh] sm:w-1/3 lg:w-1/4"
             href={`/machines/${machine.id}`}
           >
