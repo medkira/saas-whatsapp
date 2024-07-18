@@ -87,6 +87,13 @@ export const Navbar = () => {
     // const res = await searchMachines('piks');
 
     setMachines(res);
+    const ref = machines.find(
+      (machine) => machine.reference === value.toUpperCase(),
+    );
+
+    if (ref) {
+      setMachines([ref]);
+    }
   }, 300);
 
   const pressSearchEnter = () => {
@@ -135,7 +142,10 @@ export const Navbar = () => {
       >
         {machines.map((machine) => (
           <AutocompleteItem key={machine.id} className={`${roboto.className} `}>
-            {machine.name}
+            <p>
+              {' '}
+              {machine.name}&nbsp;&nbsp;Ref:{machine.reference}
+            </p>
           </AutocompleteItem>
         ))}
       </Autocomplete>
