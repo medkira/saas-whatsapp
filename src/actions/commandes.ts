@@ -1,4 +1,6 @@
 'use server'
+import { revalidatePath } from "next/cache";
+
 import { Commandes } from "@/domain/entities/Commandes";
 import { createClient } from "@/utils/supabase/server";
 
@@ -25,5 +27,32 @@ export async function createCommande(machine_id: number,prevState: any,formData:
   }
   
   return true;
+}
 
+
+export  async function  getCommandes ():Promise<Commandes[]> {
+  const supabase = createClient(true);
+  const { data } = await supabase.from('commandes')
+  .select()
+  .order('created_at', { ascending: false });
+ //  if (!data || data.length === 0) {
+ //     return data
+ //    }
+
+ if(!data) return []
+
+ return data
+}
+
+
+export async function deleteCommande(id: number,prevState: any, formData:FormData){
+  const supabase = createClient();
+
+  const {data,error} = await supabase
+  .from('commandes')
+  .delete()
+  .eq('id', id)
+
+  revalidatePath('/dashboard/commandes');
+ 
 }
