@@ -105,11 +105,11 @@ const HeroSection = () => {
           </div>
         </div>
         <div className="flex  items-center justify-center ">
-          <div className="m-3 max-w-6xl rounded-md bg-white p-3 text-center ">
+          <div className="m-3 max-w-6xl rounded-md bg-default-50 p-3 text-center ">
             <h1
               className={title({
                 size: 'md',
-                class: '  text-gray-600',
+                // class: '  text-gray-600',
               })}
             >
               Livraison Partout{' '}
