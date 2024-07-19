@@ -203,7 +203,6 @@ export async function createMachine(prevState: any,formData:FormData){
   revalidatePath('/products');
 
   return true
-
 }
 
 
