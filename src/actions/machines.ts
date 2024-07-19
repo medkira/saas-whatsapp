@@ -176,9 +176,16 @@ export async function createMachine(prevState: any,formData:FormData){
 
    // console.log("imageUrl",imageUrl ? {image_url:imageUrl} : {})
 
-   const { error } = await supabase
-  .from('machines')
-  .insert({...machine,image_url:imageUrl});
+   if(image.size != 0) {
+      const { error } = await supabase
+      .from('machines')
+      .insert({...machine,image_url:imageUrl});
+   } else {
+      const { error } = await supabase
+      .from('machines')
+      .insert({...machine});
+   }
+
 
 //   console.log(formData)
 
