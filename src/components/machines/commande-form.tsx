@@ -2,21 +2,24 @@
 
 import { Button } from '@nextui-org/button';
 import { Input } from '@nextui-org/input';
+import { useFormState, useFormStatus } from 'react-dom';
 
-import { useContactUsFormStore } from '@/app/lib/store';
+import { createCommande } from '@/actions/commandes';
 
-export default function CommandeForm() {
-  const { contactUsFormData, setContactsUsForm } = useContactUsFormStore();
-  const handleChange = (event: any) => {
-    const { name, value } = event.target;
+export default function CommandeForm({ machine_id }: { machine_id: number }) {
+  const initialState = {};
 
-    setContactsUsForm({ ...contactUsFormData, [name]: value });
-  };
+  const createCommandeWithMachineId = createCommande.bind(null, machine_id);
+
+  const [errorMessage, dispatch] = useFormState(
+    createCommandeWithMachineId,
+    initialState,
+  );
 
   return (
     <form
+      action={dispatch}
       className="md:max-h-auto flex w-full flex-col flex-wrap gap-4 md:flex-nowrap"
-      // onSubmit={sendEmail}
     >
       <Input
         required
@@ -25,37 +28,42 @@ export default function CommandeForm() {
         label="Nom"
         name="name"
         type="name"
-        onChange={handleChange}
       />
       <Input
         className="h-12 md:h-auto md:max-h-12"
-        id="business"
+        id="entreprise"
         label="Entreprise"
-        name="business"
-        type="business"
-        onChange={handleChange}
+        name="entreprise"
+        type="text"
       />
 
       <Input
         className="h-12 md:h-auto md:max-h-12"
-        id="phoneNumber"
+        id="phone_number"
         label="Numéro de téléphone"
-        name="phoneNumber"
+        name="phone_number"
         type="phone number"
-        onChange={handleChange}
       />
 
       <div className="flex justify-end pr-2 pt-3">
-        <Button
-          className="w-full rounded-2xl p-3 px-5 text-xl font-semibold"
-          color="primary"
-          size="lg"
-          // type="submit"
-          onClick={() => console.log('hi')}
-        >
-          Commander
-        </Button>
+        <CommandeButton />
       </div>
     </form>
+  );
+}
+
+function CommandeButton() {
+  const status = useFormStatus();
+
+  return (
+    <Button
+      className="w-full rounded-2xl p-3 px-5 text-xl font-semibold"
+      color="primary"
+      isLoading={status.pending}
+      size="lg"
+      type="submit"
+    >
+      Commander
+    </Button>
   );
 }
