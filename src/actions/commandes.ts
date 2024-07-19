@@ -12,9 +12,18 @@ export async function createCommande(machine_id: number,prevState: any,formData:
     phone_number: formData.get('phone_number') as string,
     // machine_id: formData.get('machine_id') as string,
   }
-  console.log({...commandes,machine_id:machine_id })
+  // console.log({...commandes,machine_id:machine_id })
+  //  await new Promise((resolve)=> setTimeout(resolve,2000));
+  // console.log("prevState",prevState)
 
   const { error } = await supabase
   .from('commandes')
   .insert({...commandes, machine_id:machine_id})
+
+  if(error){
+    return error 
+  }
+  
+  return true;
+
 }

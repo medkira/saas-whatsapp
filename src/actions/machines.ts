@@ -35,6 +35,7 @@ export async function searchMachines(search:string):Promise<Machines[]>{
     const { data } = await supabase.from('machines')
     .select()
     .order('created_at', { ascending: false });
+
    //  if (!data || data.length === 0) {
    //     return data
    //    }
@@ -70,13 +71,17 @@ export async function deleteMachine(id: number,prevState: any, formData:FormData
 
    const machine:Machines = data![0] //! data could be null
 
-   const url = machine.image_url 
+   const url = machine.image_url
+ 
+   if(url){
 
-   // extract the path of imaage from the image url
-   const secondLastSlashIndex = url.lastIndexOf("/", url.lastIndexOf("/") - 1);
-   const imageBacketPath = url.slice(secondLastSlashIndex + 1);
+      // extract the path of imaage from the image url
+      const secondLastSlashIndex = url.lastIndexOf("/", url.lastIndexOf("/") - 1);
+      const imageBacketPath = url.slice(secondLastSlashIndex + 1);
 
-   
+      await deleteFile(imageBacketPath);
+      
+   }
    
    
    const response = await supabase
@@ -84,7 +89,7 @@ export async function deleteMachine(id: number,prevState: any, formData:FormData
    .delete()
    .eq('id', id)
    
-   await deleteFile(imageBacketPath);
+  
    // await new Promise((resolve)=> setTimeout(resolve,2000));
   
   
@@ -190,12 +195,14 @@ export async function createMachine(prevState: any,formData:FormData){
 //   console.log(formData)
 
 // if(error){
-//    console.log(error)
+//   return e
 // }
 
   revalidatePath('/dashboard/machines');
   revalidatePath('/');
   revalidatePath('/products');
+
+  return true
 
 }
 

@@ -3,7 +3,7 @@
 import { Button } from '@nextui-org/button';
 import { Input } from '@nextui-org/input';
 import { useFormState, useFormStatus } from 'react-dom';
-
+import toast from 'react-hot-toast';
 import { createCommande } from '@/actions/commandes';
 
 export default function CommandeForm({ machine_id }: { machine_id: number }) {
@@ -11,10 +11,18 @@ export default function CommandeForm({ machine_id }: { machine_id: number }) {
 
   const createCommandeWithMachineId = createCommande.bind(null, machine_id);
 
-  const [errorMessage, dispatch] = useFormState(
+  const [state, dispatch] = useFormState(
     createCommandeWithMachineId,
     initialState,
   );
+
+  // console.log('errorMessage', state);
+
+  if (state === true) {
+    toast.success('Commande Create');
+  } else if (state instanceof Error) {
+    toast.error(`${state.message}`);
+  }
 
   return (
     <form
@@ -55,6 +63,9 @@ export default function CommandeForm({ machine_id }: { machine_id: number }) {
 function CommandeButton() {
   const status = useFormStatus();
 
+  // useEffect(() => {
+  // }, [status.pending]);
+
   return (
     <Button
       className="w-full rounded-2xl p-3 px-5 text-xl font-semibold"
@@ -62,6 +73,7 @@ function CommandeButton() {
       isLoading={status.pending}
       size="lg"
       type="submit"
+      // onClick={notify}
     >
       Commander
     </Button>
