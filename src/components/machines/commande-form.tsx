@@ -4,12 +4,13 @@ import { Button } from '@nextui-org/button';
 import { Input } from '@nextui-org/input';
 import { useFormState, useFormStatus } from 'react-dom';
 import toast from 'react-hot-toast';
+
 import { createCommande } from '@/actions/commandes';
 
-export default function CommandeForm({ machine_id }: { machine_id: number }) {
+export default function CommandeForm({ machine_ref }: { machine_ref: string }) {
   const initialState = {};
 
-  const createCommandeWithMachineId = createCommande.bind(null, machine_id);
+  const createCommandeWithMachineId = createCommande.bind(null, machine_ref);
 
   const [state, dispatch] = useFormState(
     createCommandeWithMachineId,

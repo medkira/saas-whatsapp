@@ -24,7 +24,7 @@ export default function ImageView({ machine }: { machine: Machines }) {
       </Button>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalContent>
-          <ModalHeader className="flex flex-col gap-1">Modal Title</ModalHeader>
+          {/* <ModalHeader className="flex flex-col gap-1"></ModalHeader> */}
           <ModalBody>
             {machine.image_url && (
               <Image
@@ -41,9 +41,9 @@ export default function ImageView({ machine }: { machine: Machines }) {
             <Button color="danger" variant="light" onClick={onClose}>
               Close
             </Button>
-            <Button color="primary" onClick={onClose}>
+            {/* <Button color="primary" onClick={onClose}>
               Action
-            </Button>
+            </Button> */}
           </ModalFooter>
         </ModalContent>
       </Modal>

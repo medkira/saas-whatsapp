@@ -1,22 +1,34 @@
-import { Divider } from '@nextui-org/react';
+'use client';
+import {
+  Button,
+  Divider,
+  Modal,
+  ModalBody,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  useDisclosure,
+} from '@nextui-org/react';
 import { Card } from '@nextui-org/card';
 
-import { Commandes } from '@/domain/entities/Commandes';
 import DeletecommandeModel from './delete-commande-model';
 
-export default async function DashboardCommandes({
+import { Commandes } from '@/domain/entities/Commandes';
+import DetailsView from './dashboard-details-model';
+
+export default function DashboardCommandes({
   commandes,
 }: {
   commandes: Commandes[];
 }) {
   const columns = [
-    {
-      key: 'ref',
-      label: 'Ref',
-    },
+    // {
+    //   key: 'ref',
+    //   label: 'No',
+    // },
     {
       key: 'nom',
-      label: 'NOM',
+      label: 'Nom',
     },
     // {
     //   key: 'entreprise',
@@ -24,7 +36,7 @@ export default async function DashboardCommandes({
     // },
     {
       key: 'telephone',
-      label: 'TLEPHONE',
+      label: 'Tél',
     },
   ];
 
@@ -38,22 +50,27 @@ export default async function DashboardCommandes({
       </div>
       <Card className="h-[82vh] overflow-y-auto p-5  sm:h-[80vh]">
         <div className="mb-4 flex flex-row ">
+          <div className="invisible flex w-0 justify-start  font-semibold sm:visible sm:w-[30%]">
+            N° Commande
+          </div>
           {columns.map((column) => (
             <div
               key={column.key}
-              className="bg-red flex w-[60%] justify-start  font-semibold "
+              className="flex w-[30%] justify-start  font-semibold "
             >
               {column.label}
             </div>
           ))}
-          {/* <div className="invisible flex w-[60%] justify-start pr-3 font-semibold sm:visible">
-            ENTREPRISE
-          </div> */}
-          <div className="flex w-[60%] justify-end pr-3 font-semibold">
+          <div className="flex w-[30%] justify-start pr-3 font-semibold">
+            Ref
+          </div>
+
+          <div className="flex w-[30%] justify-end pr-3 font-semibold">
             Actions
           </div>
         </div>
         <Divider />
+        {/* <DetaillsModel isOpen={isOpen} onOpenChange={onOpenChange} /> */}
 
         {commandes.map((commande) => (
           <div
@@ -61,21 +78,27 @@ export default async function DashboardCommandes({
             className="ounded-md dark:hover:bg-gray-700/25 "
           >
             <div
-              className="flex cursor-pointer flex-row
-                items-center  border-b
+              className="flex w-[100%]
+                cursor-pointer flex-row  items-center border-b
                  border-gray-700 py-3 "
             >
-              <div className="flex w-[60%] justify-start">{commande.id}</div>
-              <div className="flex w-[60%] justify-start ">{commande.name}</div>
+              <div className=" invisible flex w-0 justify-start sm:visible sm:w-[30%]">
+                {commande.id}
+              </div>
+              <div className="flex w-[30%] justify-start ">{commande.name}</div>
               {/* 
-              <div className="invisible flex w-[60%] justify-start sm:visible">
+              <div className="invisible flex w-[30%] justify-start sm:visible">
                 {commande.entreprise}
               </div> */}
-              <div className="flex w-[60%] justify-start ">
+              <div className="flex w-[30%] justify-start ">
                 {commande.phone_number}
               </div>
+              <div className="flex w-[30%] justify-start">
+                {commande.machine_ref}
+              </div>
 
-              <div className="  flex w-[60%] flex-col items-end  justify-end gap-2 lg:flex-row  ">
+              <div className="  flex w-[30%]  flex-col items-end justify-end  gap-2   ">
+                <DetailsView commande={commande} />
                 <DeletecommandeModel commande={commande} />
               </div>
             </div>

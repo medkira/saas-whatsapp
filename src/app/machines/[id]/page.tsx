@@ -105,7 +105,7 @@ export default async function Page({ params }: { params: { id: string } }) {
               <h1 className="text-2xl font-bold text-green-500">
                 Ou Commande Online
               </h1>
-              <CommandeForm machine_id={machine.id} />
+              <CommandeForm machine_ref={machine.reference} />
             </div>
           </section>
           <Card className="min-w-[40vw] rounded-xl bg-default-100/50  p-4 shadow-md">
