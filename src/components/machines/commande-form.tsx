@@ -6,6 +6,7 @@ import { useFormState, useFormStatus } from 'react-dom';
 import toast from 'react-hot-toast';
 
 import { createCommande } from '@/actions/commandes';
+import { useRef } from 'react';
 
 export default function CommandeForm({ machine_ref }: { machine_ref: string }) {
   const initialState = {};
@@ -18,16 +19,26 @@ export default function CommandeForm({ machine_ref }: { machine_ref: string }) {
   );
 
   // console.log('errorMessage', state);
-
   if (state === true) {
-    toast.success('Commande Create');
+    toast.success(
+      `Votre commande de ${machine_ref} a été créée avec succès. Merci pour votre achat!`,
+      { duration: 5000 },
+    );
   } else if (state instanceof Error) {
     toast.error(`${state.message}`);
   }
 
+  const ref = useRef<HTMLFormElement>(null);
+
   return (
     <form
-      action={dispatch}
+      ref={ref}
+      action={async (formData) => {
+        dispatch(formData);
+        if (state) {
+          ref.current?.reset();
+        }
+      }}
       className="md:max-h-auto flex w-full flex-col flex-wrap gap-4 md:flex-nowrap"
     >
       <Input
