@@ -19,13 +19,13 @@ export async function createCommande(machine_ref: string,prevState: any,formData
   //  await new Promise((resolve)=> setTimeout(resolve,2000));
   // console.log("prevState",prevState)
 
-  // const { error } = await supabase
-  // .from('commandes')
-  // .insert({...commandes, machine_ref:machine_ref})
+  const { error } = await supabase
+  .from('commandes')
+  .insert({...commandes, machine_ref:machine_ref})
 
-  // if(error){
-  //   return error 
-  // }
+  if(error){
+    return error 
+  }
   revalidatePath('/dashboard/commandes');
 
   //? send whats app message part ?//
@@ -92,6 +92,7 @@ export  async function  getCommandes ():Promise<Commandes[]> {
  //  if (!data || data.length === 0) {
  //     return data
  //    }
+ 
  if(!data) return []
 
  return data

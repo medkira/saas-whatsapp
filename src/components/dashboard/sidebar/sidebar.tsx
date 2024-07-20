@@ -21,6 +21,7 @@ import { SidebarItem } from './sidebar-item';
 import { SidebarMenu } from './sidebar-menu';
 import { CompaniesDropdown } from './companies-dropdown';
 import { Sidebar } from './sidebar.styles';
+import WhatsappIcon from '../icons/sidebar/whatsapp-icon';
 
 export const SidebarWrapper = () => {
   const pathname = usePathname();
@@ -38,7 +39,7 @@ export const SidebarWrapper = () => {
         })}
       >
         <div className={Sidebar.Header()}>{/* <CompaniesDropdown /> */}</div>
-        <div className="flex h-full flex-col justify-between">
+        <div className="flex h-full flex-col  justify-between">
           <div className={Sidebar.Body()}>
             <SidebarItem
               href="/dashboard"
@@ -84,10 +85,17 @@ export const SidebarWrapper = () => {
 
             <SidebarMenu title="General">
               <SidebarItem
+                href="/dashboard/whatsapp"
+                icon={<WhatsappIcon />}
+                isActive={pathname === '/dashboard/whatsapp'}
+                title="Whats App"
+              />
+              <SidebarItem
                 icon={<DevIcon />}
                 isActive={pathname === '/developers'}
                 title="Developers"
               />
+
               {/* <SidebarItem
                 icon={<ViewIcon />}
                 isActive={pathname === '/view'}
