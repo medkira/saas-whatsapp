@@ -17,6 +17,7 @@ import { title } from '@/components/primitives';
 import { DeleteIcon } from '@/components/dashboard/icons/table/delete-icon';
 import { Whatsapp } from '@/domain/entities/Whatsapp';
 import { activeWhatsapp, desactiveWhatsapp } from '@/actions/whatsapp';
+import ActiveIcon from '@/components/dashboard/icons/table/active-icon';
 // import DeleteButton from './delete-button';
 
 export default function ActiveWhatsapp({ whatsapp }: { whatsapp: Whatsapp }) {
@@ -35,7 +36,7 @@ export default function ActiveWhatsapp({ whatsapp }: { whatsapp: Whatsapp }) {
     <div className="flex flex-col gap-2">
       <Button className="max-w-fit text-white" color="success" onPress={onOpen}>
         Active
-        <DeleteIcon fill="white" />
+        <ActiveIcon fill="white" />
       </Button>
       <Modal isOpen={isOpen} placement={'auto'} onOpenChange={onOpenChange}>
         <ModalContent>

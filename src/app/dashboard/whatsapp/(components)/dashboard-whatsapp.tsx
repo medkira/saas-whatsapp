@@ -36,10 +36,10 @@ export default function DashboardWhatsApp({
     //   key: 'entreprise',
     //   label: 'ENTREPRISE',
     // },
-    {
-      key: 'id',
-      label: 'Id',
-    },
+    // {
+    //   key: 'id',
+    //   label: 'Id',
+    // },
     {
       key: 'telephone',
       label: 'Tél',
@@ -60,9 +60,9 @@ export default function DashboardWhatsApp({
       </div>
       <Card className="h-[82vh] overflow-y-auto p-5  sm:h-[80vh]">
         <div className="mb-4 flex flex-row ">
-          {/* <div className="invisible flex w-0 justify-start  font-semibold sm:visible sm:w-[30%]">
-            N° Commande
-          </div> */}
+          <div className="invisible flex w-0 justify-start  font-semibold sm:visible sm:w-[30%]">
+            Id
+          </div>
           {columns.map((column) => (
             <div
               key={column.key}
@@ -85,17 +85,17 @@ export default function DashboardWhatsApp({
         {whatsapps.map((whatsapp) => (
           <div
             key={whatsapp.id}
-            className="ounded-md dark:hover:bg-gray-700/25 "
+            className="rounded-md dark:hover:bg-gray-700/25  "
           >
             <div
               className="flex w-[100%]
-                cursor-pointer flex-row  items-center border-b
+                cursor-pointer flex-row  items-center justify-between gap-3 border-b
                  border-gray-700 py-3 "
             >
               {/* <div className=" invisible flex w-0 justify-start sm:visible sm:w-[30%]">
                 {whatsapp.id}
               </div> */}
-              <div className="  flex w-[30%] justify-start sm:visible">
+              <div className="invisible flex w-0  justify-start sm:visible sm:w-[30%]">
                 {whatsapp.id}
               </div>
 
@@ -104,11 +104,11 @@ export default function DashboardWhatsApp({
               <div className="invisible flex w-[30%] justify-start sm:visible">
                 {whatsapp.entreprise}
               </div> */}
-              <div className="flex w-[30%] flex-row justify-start gap-2">
-                <p> {`${whatsapp.phone_number.slice(0, 3)} `}</p>
+              <div className="-ml-3 flex w-[35%] flex-row justify-start gap-2">
+                {/* <p> {`${whatsapp.phone_number.slice(0, 3)} `}</p> */}
                 <p> {`${whatsapp.phone_number.slice(3)}`}</p>{' '}
               </div>
-              <div className="flex w-[30%] justify-start">
+              <div className="-pl-5 flex w-[40%] justify-start">
                 {whatsapp.is_active ? (
                   <Chip color="success" size="lg">
                     Active
