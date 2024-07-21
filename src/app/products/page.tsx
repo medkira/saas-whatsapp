@@ -1,14 +1,15 @@
 import { Button } from '@nextui-org/button';
-import { Pagination } from '@nextui-org/react';
 import Image from 'next/legacy/image';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
+
+import PaginationProducts from './pagination';
 
 import { subtitle, title } from '@/components/primitives';
 import {
   filterMachines,
   getMachine,
-  getMachineNo,
+  getMachinesPages,
   searchMachines,
 } from '@/actions/machines';
 import { Machines } from '@/domain/entities/Machines';
@@ -29,10 +30,13 @@ export default async function ProductsPage({
   const query = searchParams?.query || '';
   const categories = searchParams?.categories || '';
   const marks = searchParams?.marks || '';
+  const page = searchParams?.page || '1';
 
+  // ? for getting all the maching
   if (query.length === 0) {
-    data = await getMachine();
+    data = await getMachine(page);
   } else if (query.length !== 0) {
+    // ? for search
     data = await searchMachines(query);
   } else if (data.length === 0) {
     data = [];
@@ -46,6 +50,7 @@ export default async function ProductsPage({
     return trimmedArray;
   }
 
+  // ? for filtering
   if (marks.length !== 0 || categories.length !== 0) {
     // console.log('marks', stringToArray(marks));
     // console.log('categories', stringToArray(categories));
@@ -60,6 +65,12 @@ export default async function ProductsPage({
   }
 
   const machines: Machines[] = data;
+
+  let totalPages = await getMachinesPages();
+
+  if (marks.length !== 0 || categories.length !== 0 || query.length !== 0) {
+    totalPages = 1;
+  }
 
   return (
     <div className=" flex w-full   flex-col items-center justify-start  gap-1  pt-[1rem]  text-center   sm:gap-9   ">
@@ -148,13 +159,7 @@ export default async function ProductsPage({
           Explorer toutes les machines
         </Button> */}
       </section>
-      <Pagination
-        isCompact
-        showControls
-        disableAnimation={false}
-        initialPage={1}
-        total={10}
-      />
+      <PaginationProducts totalPages={totalPages} />
 
       {/* <h1 className={title({ color: 'blue' })}>&nbsp;Should You Care?</h1> */}
     </div>

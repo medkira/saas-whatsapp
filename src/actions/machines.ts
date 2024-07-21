@@ -29,20 +29,44 @@ export async function searchMachines(search:string):Promise<Machines[]>{
    return data
 }
 
+//? pagination 
 
- export  async function  getMachine ():Promise<Machines[]> {
+const ITEMS_PER_PAGE = 6;
+
+   // ? this  pagination
+ export  async function  getMachine (page:string ='1'):Promise<Machines[]> {
     const supabase = createClient(true);
+
+    const pageNumber = Number(page)
     const { data } = await supabase.from('machines')
     .select()
+    .range(ITEMS_PER_PAGE*pageNumber - ITEMS_PER_PAGE,(ITEMS_PER_PAGE -1)*pageNumber)
     .order('created_at', { ascending: false });
 
-   //  if (!data || data.length === 0) {
-   //     return data
-   //    }
    if(!data) return []
 
    return data
 }
+
+//? returns total pages
+export async function getMachinesPages():Promise<number>{
+   const supabase = createClient(true);
+
+   const {data, count } = await supabase
+   .from('machines')
+   .select('*', {count: 'exact', head:true})
+ 
+   if(!count){return 0}
+
+   const totalPage = Math.ceil(count / ITEMS_PER_PAGE);
+
+   return totalPage;
+}
+
+
+
+
+
 
 export  async function  getMachineNo ():Promise<Machines[]> {
    const supabase = createClientB();
@@ -245,6 +269,10 @@ async function deleteFile(filePath:string){
    .from('MMC machines')
    .remove([filePath])
  }
+
+
+
+
 
 
 
