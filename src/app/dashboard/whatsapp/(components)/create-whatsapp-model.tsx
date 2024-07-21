@@ -153,6 +153,7 @@ function Form({ onClose }: { onClose: any }) {
           variant="bordered"
         /> */}
         <Input
+          required
           label="Phone number"
           name="phone_number"
           placeholder="Enter Phone number"
