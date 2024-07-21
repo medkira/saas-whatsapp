@@ -6,14 +6,19 @@ import { Button } from '@nextui-org/button';
 import { Machines } from '@/domain/entities/Machines';
 import { subtitle, title } from '@/components/primitives';
 import { getMachine } from '@/actions/machines';
-import { createClient, createClientB } from '@/utils/supabase/server';
+
+// //? SSG
+// export const revalidate = 60;
+// export const generateStaticParams = async () => {
+//   const data: Machines[] = await getMachine();
+
+//   // return data.map((machine) => ({
+//   //   id: machine.id.toString(),
+//   // }));
+//   // return [{ id: '93' }];0
+// };
 
 export default async function LandingMachines() {
-  // const data = await getMachine();
-  // // console.log(data);
-
-  // const supabase = createClient(true);
-  // let { data } = await supabase.from('machines').select('*');
   const data = await getMachine();
 
   if (!data || data.length === 0) {
