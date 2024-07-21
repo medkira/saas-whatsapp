@@ -48,6 +48,20 @@ const ITEMS_PER_PAGE = 6;
    return data
 }
 
+export  async function  getAllMachines ():Promise<Machines[]> {
+   const supabase = createClient(true);
+
+   const { data } = await supabase.from('machines')
+   .select()
+   .order('created_at', { ascending: false });
+
+  if(!data) return []
+
+  return data
+}
+
+
+
 //? returns total pages
 export async function getMachinesPages():Promise<number>{
    const supabase = createClient(true);

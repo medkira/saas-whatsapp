@@ -8,7 +8,7 @@ import ImageView from './dashboard-image-model';
 import SearchMachine from './search-machine';
 
 import { Machines } from '@/domain/entities/Machines';
-import { getMachine } from '@/actions/machines';
+import { getAllMachines, getMachine } from '@/actions/machines';
 
 export default async function DashboardMachines({
   machines,
@@ -39,7 +39,7 @@ export default async function DashboardMachines({
     // },
   ];
 
-  const normalMachiesList = await getMachine();
+  const normalMachiesList = await getAllMachines();
 
   return (
     <div className="  w-[95vw] sm:w-[97%]">

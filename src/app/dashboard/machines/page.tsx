@@ -1,6 +1,6 @@
 import { Machines } from '@/domain/entities/Machines';
 import DashboardMachines from '@/app/dashboard/machines/(components)/dahboard-machines';
-import { getMachine, searchMachines } from '@/actions/machines';
+import { getAllMachines, getMachine, searchMachines } from '@/actions/machines';
 
 export default async function Page({
   searchParams,
@@ -11,7 +11,7 @@ export default async function Page({
   const query = searchParams?.query || '';
 
   if (query.length === 0) {
-    data = await getMachine();
+    data = await getAllMachines();
   } else if (query.length !== 0) {
     data = await searchMachines(query);
 
