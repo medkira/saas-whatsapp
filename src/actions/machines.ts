@@ -37,10 +37,15 @@ const ITEMS_PER_PAGE = 6;
  export  async function  getMachine (page:string ='1'):Promise<Machines[]> {
     const supabase = createClient(true);
 
+
     const pageNumber = Number(page)
+   
+    const start = ITEMS_PER_PAGE * (pageNumber - 1);
+    const end = start + ITEMS_PER_PAGE - 1;
+
     const { data } = await supabase.from('machines')
     .select()
-    .range(ITEMS_PER_PAGE*pageNumber - ITEMS_PER_PAGE,(ITEMS_PER_PAGE -1)*pageNumber)
+    .range(start,end)
     .order('created_at', { ascending: false });
 
    if(!data) return []
