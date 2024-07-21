@@ -16,10 +16,10 @@ export const siteConfig = {
       label: 'Machine a coudre',
       href: '/products',
     },
-    {
-      label: 'Nos Service',
-      href: '/service',
-    },
+    // {
+    //   label: 'Nos Service',
+    //   href: '/service',
+    // },
     // {
     //   label: 'About',
     //   href: '/about',
