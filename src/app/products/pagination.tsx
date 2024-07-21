@@ -26,6 +26,7 @@ export default function PaginationProducts({
       disableAnimation={false}
       initialPage={1}
       total={totalPages}
+      page={currentPage}
       onChange={(page) => createPageUrl(page)}
     />
   );
