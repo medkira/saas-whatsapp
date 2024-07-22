@@ -14,18 +14,18 @@ import {
 } from '@/actions/machines';
 import { Machines } from '@/domain/entities/Machines';
 
-// ? SSG
-export const revalidate = 10;
+// // ? SSG
+// export const revalidate = 10;
 
-export const generateStaticParams = async () => {
-  let totalPages = await getMachinesPages();
+// export const generateStaticParams = async () => {
+//   let totalPages = await getMachinesPages();
 
-  function createArrayPages(n: number) {
-    return Array.from({ length: n }, (_, i) => ({ page: i + 1 }));
-  }
+//   function createArrayPages(n: number) {
+//     return Array.from({ length: n }, (_, i) => ({ page: i + 1 }));
+//   }
 
-  return createArrayPages(totalPages);
-};
+//   return createArrayPages(totalPages);
+// };
 
 export default async function ProductsPage({
   searchParams,
