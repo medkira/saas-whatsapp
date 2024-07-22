@@ -11,7 +11,6 @@ export async function filterMachines({categories, marks}:{categories: string[], 
    // console.log(categories[0])
    const {data, error} = 
    await supabase.rpc("get_machins_filter", {categories: categories, marks: marks})
-  
 
    return data
 }

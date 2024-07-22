@@ -38,10 +38,10 @@ export default function ProductsFilters() {
   ];
 
   const sewingMachineMarks = [
-    'Juki',
-    'Jaki',
-    'Brother',
-    'Singer',
+    'JUKI',
+    'JAKI',
+    'BROTHER',
+    'SINGER',
     // 'Janome',
     // 'Babylock',
     // 'Bernina',

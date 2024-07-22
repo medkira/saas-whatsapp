@@ -46,13 +46,13 @@ export default async function ProductsPage({
   //   data = [];
   // }
 
-  function stringToArray(str: string) {
-    const stringArray = str.split(',');
+  // function stringToArray(str: string) {
+  //   const stringArray = str.split(',');
 
-    const trimmedArray = stringArray.map((element) => element.trim());
+  //   const trimmedArray = stringArray.map((element) => element.trim());
 
-    return trimmedArray;
-  }
+  //   return trimmedArray;
+  // }
 
   // ? for filtering
   // if (marks.length !== 0 || categories.length !== 0) {
@@ -63,7 +63,6 @@ export default async function ProductsPage({
   //     marks: stringToArray(marks),
   //   });
   // }
-
   if (!data || data.length === 0) {
     notFound();
   }

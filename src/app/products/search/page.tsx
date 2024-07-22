@@ -6,6 +6,7 @@ import GridMachines from '../(components)/grid-machines';
 import { title } from '@/components/primitives';
 import { filterMachines, searchMachines } from '@/actions/machines';
 import { Machines } from '@/domain/entities/Machines';
+import NoData from '../(components)/no-data';
 
 // // ? SSG
 // export const revalidate = 10;
@@ -65,9 +66,9 @@ export default async function ProductsPage({
     redirect('/products/1'); //???
   }
 
-  if (!data || data.length === 0) {
-    notFound();
-  }
+  // if (!data || data.length === 0) {
+  //   notFound();
+  // }
 
   const machines: Machines[] = data;
 
@@ -95,8 +96,14 @@ export default async function ProductsPage({
           </span>
         </div>
       </section>
-      <GridMachines machines={machines} />
-      <PaginationProducts totalPages={totalPages} />
+      {data.length != 0 ? (
+        <>
+          <GridMachines machines={machines} />
+          <PaginationProducts totalPages={totalPages} />
+        </>
+      ) : (
+        <NoData />
+      )}
 
       {/* <h1 className={title({ color: 'blue' })}>&nbsp;Should You Care?</h1> */}
     </div>
