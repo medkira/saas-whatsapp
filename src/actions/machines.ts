@@ -242,7 +242,7 @@ export async function createMachine(prevState: any,formData:FormData){
 
   revalidatePath('/dashboard/machines');
   revalidatePath('/');
-  revalidatePath('/products');
+  revalidatePath('/products/1');
 
   return true
 }
