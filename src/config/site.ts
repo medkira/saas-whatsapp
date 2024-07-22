@@ -14,7 +14,7 @@ export const siteConfig = {
     // },
     {
       label: 'Machine a coudre',
-      href: '/products/1',
+      href: '/products',
     },
     // {
     //   label: 'Nos Service',
