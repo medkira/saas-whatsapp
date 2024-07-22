@@ -1,9 +1,9 @@
 import { Button } from '@nextui-org/button';
 import Image from 'next/legacy/image';
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import Link from 'next/link';
 
-import PaginationProducts from './pagination';
+import PaginationProducts from '../(components)/pagination';
 
 import { subtitle, title } from '@/components/primitives';
 import {
@@ -32,7 +32,7 @@ export default async function ProductsPage({
 }: {
   searchParams?: {
     query?: string;
-    page?: string;
+    // page?: string;
     categories?: any;
     marks?: any;
   };
@@ -43,12 +43,9 @@ export default async function ProductsPage({
   const query = searchParams?.query || '';
   const categories = searchParams?.categories || '';
   const marks = searchParams?.marks || '';
-  const page = searchParams?.page || '1';
+  // const page = searchParams?.page || '1';
 
-  // ? for getting all the maching
-  if (query.length === 0) {
-    data = await getMachine(page);
-  } else if (query.length !== 0) {
+  if (query.length !== 0) {
     // ? for search
     data = await searchMachines(query);
   } else if (data.length === 0) {
@@ -71,6 +68,8 @@ export default async function ProductsPage({
       categories: stringToArray(categories),
       marks: stringToArray(marks),
     });
+  } else {
+    redirect('/products/1'); //???
   }
 
   if (!data || data.length === 0) {
@@ -79,11 +78,11 @@ export default async function ProductsPage({
 
   const machines: Machines[] = data;
 
-  let totalPages = await getMachinesPages();
+  // let totalPages = await getMachinesPages();
 
-  if (marks.length !== 0 || categories.length !== 0 || query.length !== 0) {
-    totalPages = 1;
-  }
+  // if (marks.length !== 0 || categories.length !== 0 || query.length !== 0) {
+  const totalPages = 1;
+  // }
 
   return (
     <div className=" flex w-full   flex-col items-center justify-start  gap-1  pt-[1rem]  text-center   sm:gap-9   ">

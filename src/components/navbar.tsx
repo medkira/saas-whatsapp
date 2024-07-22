@@ -109,7 +109,7 @@ export const Navbar = () => {
     params.delete('marks');
     params.delete('categories');
 
-    replace(`/products?${params.toString()}`);
+    replace(`/products/search?${params.toString()}`);
 
     // replace(`${pathname}?${params.toString()}`);
   };

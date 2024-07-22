@@ -8,18 +8,18 @@ import IconTelephoneFill from '@/components/icons';
 import { subtitle, title } from '@/components/primitives';
 import CommandeForm from '@/components/machines/commande-form';
 import { Machines } from '@/domain/entities/Machines';
-import { getMachine, getMachineNo } from '@/actions/machines';
+import { getAllMachines } from '@/actions/machines';
 
 // ? SSG
 export const revalidate = 10;
 
 export const generateStaticParams = async () => {
-  const data: Machines[] = await getMachine();
+  const data: Machines[] = await getAllMachines();
 
   return data.map((machine) => ({
     id: machine.id.toString(),
   }));
-  // return [{ id: '93' }];0
+  // return [{ id: '173' }];
 };
 
 export default async function Page({ params }: { params: { id: string } }) {

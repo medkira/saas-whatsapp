@@ -53,7 +53,7 @@ export default function ProductsFilters() {
   const [selectedMarks, setSelectedMarks] = useState(['']);
 
   const searchParams = useSearchParams();
-  const pathname = usePathname();
+  // const pathname = usePathname();
   const { replace } = useRouter();
 
   const pressFilter = () => {
@@ -68,7 +68,7 @@ export default function ProductsFilters() {
       params.delete('filter');
     }
     params.delete('query');
-    replace(`/products?${params.toString()}`);
+    replace(`/products/search?${params.toString()}`);
     toggleNavbar();
     // replace(`${pathname}?${params.toString()}`);
   };
