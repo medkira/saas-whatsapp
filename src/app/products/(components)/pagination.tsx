@@ -1,4 +1,5 @@
 'use client';
+
 import { Pagination } from '@nextui-org/react';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
@@ -8,15 +9,15 @@ export default function PaginationProducts({
   totalPages: number;
 }) {
   const pathname = usePathname();
-  const searchParams = useSearchParams();
-  const currentPage = Number(searchParams.get('page')) || 1;
-  const { replace } = useRouter();
+  const pathSegments = pathname.split('/').filter((segment) => segment);
+  // const searchParams = useSearchParams();
+  const currentPage = Number(pathSegments[1]) || 1;
+  const router = useRouter();
 
   const createPageUrl = (page: number) => {
-    const params = new URLSearchParams(searchParams);
-
-    params.set('page', page.toString());
-    replace(`${pathname}?${params.toString()}`);
+    // const params = new URLSearchParams(searchParams);
+    //  pathSegments[0] = products
+    router.replace(`/${pathSegments[0]}/${page}`);
   };
 
   return (
@@ -25,8 +26,8 @@ export default function PaginationProducts({
       showControls
       disableAnimation={false}
       initialPage={1}
-      total={totalPages}
       page={currentPage}
+      total={totalPages}
       onChange={(page) => createPageUrl(page)}
     />
   );

@@ -35,6 +35,7 @@ export default async function ProductsPage({
   // const categories = searchParams?.categories || '';
   // const marks = searchParams?.marks || '';
   const page = params?.page || '1';
+  // console.log('page', page);
 
   data = await getMachine(page);
   // ? for getting all the maching
