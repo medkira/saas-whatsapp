@@ -16,7 +16,7 @@ export default function PaginationProducts({
 
   const createPageUrl = (page: number) => {
     // const params = new URLSearchParams(searchParams);
-    //  pathSegments[0] = products
+    //  pathSegments[0] => products
     router.replace(`/${pathSegments[0]}/${page}`);
   };
 
