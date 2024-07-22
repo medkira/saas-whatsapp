@@ -182,11 +182,19 @@ export async function updateMachine(id:number,prevState: any, formData:FormData)
 
    // this need to be changed supabse 
    //update need to know the entitie
-   const { error } = await supabase
-  .from('machines')
-  .update({...machine,image_url:imageUrl})
-  .eq('id', id)
 
+   if(image.size != 0){
+      const { error } = await supabase
+      .from('machines')
+      .update({...machine,image_url:imageUrl})
+      .eq('id', id)
+       }else{
+      const { error } = await supabase
+      .from('machines')
+      .update({...machine})
+      .eq('id', id)
+   }
+  
 
   revalidatePath('/dashboard/machines');
   revalidatePath('/');
