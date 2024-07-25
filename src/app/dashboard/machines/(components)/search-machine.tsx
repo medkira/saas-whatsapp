@@ -1,8 +1,7 @@
 'use client';
-import { getMachine } from '@/actions/machines';
-import { Autocomplete, AutocompleteItem, Input } from '@nextui-org/react';
+import { Autocomplete, AutocompleteItem } from '@nextui-org/react';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
+
 import { Machines } from '@/domain/entities/Machines';
 
 export default function SearchMachine({ machines }: { machines: Machines[] }) {
@@ -13,7 +12,6 @@ export default function SearchMachine({ machines }: { machines: Machines[] }) {
   const handleSearch = (value: string) => {
     const params = new URLSearchParams(searchParams);
 
-    // params.set('page', '1');
     if (value) {
       params.set('query', value);
     } else {

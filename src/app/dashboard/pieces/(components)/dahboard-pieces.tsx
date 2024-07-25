@@ -5,6 +5,7 @@ import CreatePieceModel from './create-piece-model';
 import ImageView from './dashboard-image-model';
 import UpdatePiecesModel from './update-piece-model';
 import DeletePieceModel from './delete-piece-model';
+import SearchPieces from './search-pieces';
 
 import { getAllPieces } from '@/actions/pieces';
 import { Pieces } from '@/domain/entities/Pieces';
@@ -43,7 +44,7 @@ export default async function DashboardPieces({
   return (
     <div className="  w-[95vw] sm:w-[97%]">
       <div className="flex   items-end  justify-between gap-5 p-3  ">
-        {/* <SearchPieces Pieces={normalMachiesList} /> */}
+        <SearchPieces pieces={normalMachiesList} />
         <CreatePieceModel />
       </div>
       <Card className="h-[82vh] overflow-y-auto p-5  sm:h-[80vh]">

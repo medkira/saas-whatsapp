@@ -1,9 +1,7 @@
-import { Machines } from '@/domain/entities/Machines';
-import DashboardMachines from '@/app/dashboard/machines/(components)/dahboard-machines';
-import { getAllMachines, getMachine, searchMachines } from '@/actions/machines';
-import { getAllPieces } from '@/actions/pieces';
-import { Pieces } from '@/domain/entities/Pieces';
 import DashboardPieces from './(components)/dahboard-pieces';
+
+import { getAllPieces, searchPieces } from '@/actions/pieces';
+import { Pieces } from '@/domain/entities/Pieces';
 
 export default async function Page({
   searchParams,
@@ -16,11 +14,9 @@ export default async function Page({
   if (query.length === 0) {
     data = await getAllPieces();
   } else if (query.length !== 0) {
-    data = await searchMachines(query); //! chnage !
+    data = await searchPieces(query);
 
-    const ref = data.find(
-      (machine) => machine.reference === query.toUpperCase(),
-    );
+    const ref = data.find((piece) => piece.reference === query.toUpperCase());
 
     if (ref) {
       data = [ref];

@@ -1,19 +1,17 @@
 'use client';
-import { getMachine } from '@/actions/machines';
-import { Autocomplete, AutocompleteItem, Input } from '@nextui-org/react';
+import { Autocomplete, AutocompleteItem } from '@nextui-org/react';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
-import { Machines } from '@/domain/entities/Machines';
 
-export default function SearchMachine({ machines }: { machines: Machines[] }) {
+import { Pieces } from '@/domain/entities/Pieces';
+
+export default function SearchPieces({ pieces }: { pieces: Pieces[] }) {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
 
   const handleSearch = (value: string) => {
     const params = new URLSearchParams(searchParams);
-
-    // params.set('page', '1');
+    console.log(pathname);
     if (value) {
       params.set('query', value);
     } else {
@@ -26,14 +24,12 @@ export default function SearchMachine({ machines }: { machines: Machines[] }) {
     <Autocomplete
       className="max-w-xs"
       // defaultFilter={() => true}
-      label="Search Machine"
-      placeholder="Type a machine name"
+      label="Search Piece"
+      placeholder="Type a Piece name"
       onInputChange={handleSearch}
     >
-      {machines!.map((machine) => (
-        <AutocompleteItem key={machine.id}>
-          {machine.reference}
-        </AutocompleteItem>
+      {pieces!.map((piece) => (
+        <AutocompleteItem key={piece.id}>{piece.reference}</AutocompleteItem>
       ))}
     </Autocomplete>
 

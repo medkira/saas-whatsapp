@@ -21,7 +21,7 @@ export async function searchPieces(search:string):Promise<Pieces[]>{
    const supabase = createClient(true);
 
    const { data, error } = await supabase
-   .rpc('search_Pieces', { machine_term: search })
+   .rpc('search_pieces', { piece_term: search })
 
    if(!data) return [];
 
