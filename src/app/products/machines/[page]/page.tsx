@@ -1,8 +1,8 @@
 import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
 
-import PaginationProducts from '../(components)/pagination';
-import GridMachines from '../(components)/grid-machines';
+import PaginationProducts from '../../(components)/pagination';
+import GridMachines from '../../(components)/grid-machines';
 
 import { title } from '@/components/primitives';
 import { getMachine, getMachinesPages } from '@/actions/machines';
@@ -96,7 +96,7 @@ export default async function ProductsPage({
       </section>
       <GridMachines machines={machines} />
       <Suspense>
-        <PaginationProducts totalPages={totalPages} />
+        <PaginationProducts basePath="machines" totalPages={totalPages} />
       </Suspense>
 
       {/* <h1 className={title({ color: 'blue' })}>&nbsp;Should You Care?</h1> */}

@@ -1,12 +1,12 @@
 import { notFound, redirect } from 'next/navigation';
 
-import PaginationProducts from '../(components)/pagination';
-import GridMachines from '../(components)/grid-machines';
+import PaginationProducts from '../../(components)/pagination';
+import GridMachines from '../../(components)/grid-machines';
 
 import { title } from '@/components/primitives';
 import { filterMachines, searchMachines } from '@/actions/machines';
 import { Machines } from '@/domain/entities/Machines';
-import NoData from '../(components)/no-data';
+import NoData from '../../(components)/no-data';
 
 // // ? SSG
 // export const revalidate = 10;
@@ -62,8 +62,8 @@ export default async function ProductsPage({
       categories: stringToArray(categories),
       marks: stringToArray(marks),
     });
-  } else {
-    redirect('/products/1'); //???
+  } else if (data.length === 0) {
+    redirect('/products/machines/1'); //???
   }
 
   // if (!data || data.length === 0) {
@@ -96,10 +96,10 @@ export default async function ProductsPage({
           </span>
         </div>
       </section>
-      {data.length != 0 ? (
+      {data.length !== 0 ? (
         <>
           <GridMachines machines={machines} />
-          <PaginationProducts totalPages={totalPages} />
+          <PaginationProducts basePath="machines" totalPages={totalPages} />
         </>
       ) : (
         <NoData />

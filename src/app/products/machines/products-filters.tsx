@@ -68,7 +68,7 @@ export default function ProductsFilters() {
       params.delete('filter');
     }
     params.delete('query');
-    replace(`/products/search?${params.toString()}`);
+    replace(`/products/machines/search?${params.toString()}`);
     toggleNavbar();
     // replace(`${pathname}?${params.toString()}`);
   };

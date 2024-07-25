@@ -109,7 +109,7 @@ export const Navbar = () => {
     params.delete('marks');
     params.delete('categories');
 
-    replace(`/products/search?${params.toString()}`);
+    replace(`/products/machines/search?${params.toString()}`);
 
     // replace(`${pathname}?${params.toString()}`);
   };
@@ -118,7 +118,8 @@ export const Navbar = () => {
 
   const searchInput = (
     <div
-      className={`  flex w-[90vw] max-w-2xl items-center justify-center rounded-xl shadow-lg`}
+      className={`flex w-[90vw] max-w-2xl items-center
+         justify-center rounded-xl shadow-lg`}
     >
       <Autocomplete
         // ref={searchButtonRef as any}
