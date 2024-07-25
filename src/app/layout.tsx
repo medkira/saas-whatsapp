@@ -1,15 +1,15 @@
 import '@/styles/globals.css';
 import { Metadata, Viewport } from 'next';
 import clsx from 'clsx';
+import { Suspense } from 'react';
 
 import { Navbar } from '../components/navbar';
 
-import { Providers } from './providers';
+import { Providers } from './(landing)/providers';
 
 import { Toaster } from '@/components/ui/toaster';
 import { siteConfig } from '@/config/site';
 import { roboto } from '@/config/fonts';
-import { Suspense } from 'react';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://totaltechtn.com/'),

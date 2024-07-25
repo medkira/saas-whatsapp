@@ -5,7 +5,7 @@ import { Input, Textarea } from '@nextui-org/input';
 import emailjs from '@emailjs/browser';
 import { Button } from '@nextui-org/button';
 
-import { useContactUsFormStore } from './lib/store';
+import { useContactUsFormStore } from '../lib/store';
 
 import { toast } from '@/components/ui/use-toast';
 import IconTelephoneFill from '@/components/icons';
