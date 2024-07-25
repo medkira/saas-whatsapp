@@ -12,12 +12,23 @@ import { siteConfig } from '@/config/site';
 import { roboto } from '@/config/fonts';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://totaltechtn.com/'),
+  metadataBase: new URL('https://mmc-cyan.vercel.app'),
+  keywords: [
+    'machine a coudre ',
+    'machine a coudre jaki',
+    'jaki',
+    'coudre tunisie',
+    'machine a coudre tunisie',
+  ],
   title: {
     default: siteConfig.name,
-    template: `%s - ${siteConfig.name}`,
+    template: `%s | ${siteConfig.name}`,
   },
-  description: siteConfig.description,
+
+  openGraph: {
+    description: siteConfig.description,
+    images: ['/images/logo.png'],
+  },
   icons: {
     icon: '/images/logo.png',
   },

@@ -9,4 +9,5 @@ export type Pieces = {
     mark?: string;
     // applicable?: string;
     available?: boolean;
+    created_at?:string;
 }

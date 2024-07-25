@@ -3,12 +3,32 @@ import Image from 'next/legacy/image';
 import { notFound } from 'next/navigation';
 import { Card, Checkbox } from '@nextui-org/react';
 
-import { createClient, createClientB } from '@/utils/supabase/server';
 import IconTelephoneFill from '@/components/icons';
 import { subtitle, title } from '@/components/primitives';
 import CommandeForm from '@/components/machines/commande-form';
 import { Machines } from '@/domain/entities/Machines';
-import { getAllMachines } from '@/actions/machines';
+import { getAllMachines, getMachineById } from '@/actions/machines';
+
+// ? Meta Data
+
+export async function generateMetadata({ params }: { params: { id: string } }) {
+  const response = await getMachineById(params.id);
+
+  if (!response) {
+    return {
+      title: 'Not Found',
+      description: 'The page you are looking for does not exist',
+    };
+  }
+
+  return {
+    openGraph: {
+      title: response.name,
+      description: response.description,
+      images: response.image_url,
+    },
+  };
+}
 
 // ? SSG
 export const revalidate = 10;
@@ -19,33 +39,17 @@ export const generateStaticParams = async () => {
   return data.map((machine) => ({
     id: machine.id.toString(),
   }));
-  // return [{ id: '173' }];
 };
 
 export default async function Page({ params }: { params: { id: string } }) {
-  // console.log(params.id);
+  let data = await getMachineById(params.id);
 
-  // getMachine().then((machines) => {
-  //   const res = machines.map((machine) => ({
-  //     id: machine.id.toString(),
-  //   }));
-
-  //   console.log(res);
-  // });
-
-  const supabase = createClient(true);
-  let { data } = await supabase
-    .from('machines')
-    .select('*')
-    .eq('id', params.id);
-  // console.log(error);
-
-  if (!data || data.length === 0) {
+  if (!data) {
     notFound();
   }
 
   // ? need type(entitie) for the machine
-  const machine: Machines = data[0];
+  const machine: Machines = data;
 
   return (
     <div className="h-[115vh]">

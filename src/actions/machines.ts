@@ -86,18 +86,16 @@ export async function getMachinesPages():Promise<number>{
 
 
 
-export  async function  getMachineNo ():Promise<Machines[]> {
-   const supabase = createClientB();
-   const { data } = await supabase.from('machines')
-   .select()
-   .order('created_at', { ascending: false });
+export  async function  getMachineById(id:string):Promise<Machines> {
+   const supabase = createClient(true);
+   let { data } = await supabase
+    .from('machines')
+    .select('*')
+    .eq('id', id);
 
-  //  if (!data || data.length === 0) {
-  //     return data
-  //    }
-  if(!data) return []
+   if(!data|| data.length === 0) return {} as Machines /// ! this bad !!!
 
-  return data
+  return data[0]
 }
 
 
