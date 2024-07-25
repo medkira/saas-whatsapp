@@ -247,8 +247,9 @@ export async function createPiece(prevState: any,formData:FormData){
 async function uploadFile(file:File):Promise<string>{
    // const supabase = createClientComponentClient();
    const supabase = createClient();
+   console.log(file)
    const { data, error } = await supabase.
-   storage.from('MMC pieces').upload(`pieces/${file.name}`, file, {
+   storage.from('MMC machines').upload(`pieces/${file.name}`, file, {
       cacheControl: '3600',
       upsert: true
     })
@@ -262,7 +263,7 @@ async function uploadFile(file:File):Promise<string>{
    } else {
       const  {data} =  supabase
       .storage
-      .from('MMC pieces')
+      .from('MMC machines')
       .getPublicUrl(`pieces/${file.name}`);
 
       // console.log(data.publicUrl)
@@ -280,7 +281,7 @@ async function deleteFile(filePath:string){
 
    const { data, error } = await supabase
    .storage
-   .from('MMC pieces')
+   .from('MMC machines')
    .remove([filePath])
  }
 

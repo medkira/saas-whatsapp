@@ -16,10 +16,10 @@ export default async function DashboardPieces({
   Pieces: Pieces[];
 }) {
   const columns = [
-    {
-      key: 'category',
-      label: 'CATEGORY',
-    },
+    // {
+    //   key: 'category',
+    //   label: 'CATEGORY',
+    // },
     {
       key: 'ref',
       label: 'REF',
