@@ -109,7 +109,7 @@ export default async function LandingMachines() {
         as={Link}
         className="rounded-3xl p-3 px-5 text-xl font-semibold"
         color="primary"
-        href="/products/1"
+        href="/products/machines/1"
         size="lg"
       >
         Explorer toutes les machines

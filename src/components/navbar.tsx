@@ -136,6 +136,7 @@ export const Navbar = () => {
             // pressSearchEnter(e.);
           }
         }}
+        // ? searchParams.get('query') || '' : ''
         onSelectionChange={(key) => {
           router.push(`/machines/${key}`);
           setSearchVisible(false);

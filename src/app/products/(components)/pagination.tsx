@@ -10,7 +10,6 @@ export default function PaginationProducts({
   totalPages: number;
   basePath: string;
 }) {
-  console.log(basePath);
   const pathname = usePathname();
   const pathSegments = pathname.split('/').filter((segment) => segment);
   // const searchParams = useSearchParams();

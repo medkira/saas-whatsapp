@@ -51,7 +51,7 @@ export async function createCommande(machine_ref: string,prevState: any,formData
     // preview_url: false,
     type: 'text',
     text:{
-      body: `Bonjour,\nUne nouvelle commande a été passée pour la machine à coudre ${machine_ref}.\nVoici les détails :\n
+      body: `Bonjour,\nUne nouvelle commande a été passée pour la machine à coudre ou piece ${machine_ref}.\nVoici les détails :\n
               Nom du client : ${commandes.name}\n
               Entreprise : ${commandes.entreprise}\n
               Numéro de téléphone : ${commandes.phone_number}`

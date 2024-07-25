@@ -14,9 +14,12 @@ export const siteConfig = {
     // },
     {
       label: 'Machine a coudre',
-      href: '/products/1',
+      href: '/products/machines/1',
     },
-    // {
+    {
+      label: 'Pièce machine a coudre',
+      href: '/products/pieces/1',
+    },    // {
     //   label: 'Nos Service',
     //   href: '/service',
     // },

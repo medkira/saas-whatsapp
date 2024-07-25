@@ -3,21 +3,20 @@ import Image from 'next/legacy/image';
 import { notFound } from 'next/navigation';
 import { Card, Checkbox } from '@nextui-org/react';
 
-import { createClient, createClientB } from '@/utils/supabase/server';
 import IconTelephoneFill from '@/components/icons';
 import { subtitle, title } from '@/components/primitives';
+import { getAllPieces } from '@/actions/pieces';
+import { Pieces } from '@/domain/entities/Pieces';
 import CommandeForm from '@/components/machines/commande-form';
-import { Machines } from '@/domain/entities/Machines';
-import { getAllMachines } from '@/actions/machines';
 
 // ? SSG
 export const revalidate = 10;
 
 export const generateStaticParams = async () => {
-  const data: Machines[] = await getAllMachines();
+  const data: Pieces[] = await getAllPieces();
 
-  return data.map((machine) => ({
-    id: machine.id.toString(),
+  return data.map((piece) => ({
+    id: piece.id.toString(),
   }));
   // return [{ id: '173' }];
 };
@@ -25,27 +24,24 @@ export const generateStaticParams = async () => {
 export default async function Page({ params }: { params: { id: string } }) {
   // console.log(params.id);
 
-  // getMachine().then((machines) => {
-  //   const res = machines.map((machine) => ({
-  //     id: machine.id.toString(),
+  // getpiece().then((pieces) => {
+  //   const res = pieces.map((piece) => ({
+  //     id: piece.id.toString(),
   //   }));
 
   //   console.log(res);
   // });
 
-  const supabase = createClient(true);
-  let { data } = await supabase
-    .from('machines')
-    .select('*')
-    .eq('id', params.id);
-  // console.log(error);
+  // const supabase = createClient(true);
+  // let { data } = await supabase.from('pieces').select('*').eq('id', params.id);
+  const data: Pieces[] = await getAllPieces();
 
   if (!data || data.length === 0) {
     notFound();
   }
 
-  // ? need type(entitie) for the machine
-  const machine: Machines = data[0];
+  // ? need type(entitie) for the piece
+  const piece: Pieces = data[0];
 
   return (
     <div className="h-[115vh]">
@@ -72,7 +68,7 @@ export default async function Page({ params }: { params: { id: string } }) {
               className: 'mb-1 bg-black sm:text-start',
             })}
           >
-            {machine.category}
+            {piece.name}
           </h1>
 
           <h2
@@ -81,7 +77,7 @@ export default async function Page({ params }: { params: { id: string } }) {
               className: ' font-bold',
             })}
           >
-            Ref:{machine.reference}
+            Ref:{piece.reference}
           </h2>
           <div className="w-[85vw] overflow-hidden sm:h-[60vh] sm:w-[45vw]">
             <Image
@@ -93,7 +89,7 @@ export default async function Page({ params }: { params: { id: string } }) {
               // (max-width: 70px) 500vw,
               // 330vw"
               // className="scale-80 "
-              src={machine.image_url}
+              src={piece.image_url}
               width={400}
             />
           </div>
@@ -105,7 +101,7 @@ export default async function Page({ params }: { params: { id: string } }) {
               <h1 className="text-2xl font-bold text-green-500">
                 Ou Commande Online
               </h1>
-              <CommandeForm machine_ref={machine.reference} />
+              <CommandeForm machine_ref={piece.reference} />
             </div>
           </section>
           <Card className="min-w-[40vw] rounded-xl bg-default-100/50  p-4 shadow-md">
@@ -113,46 +109,46 @@ export default async function Page({ params }: { params: { id: string } }) {
               D É T A I L S
             </h1>
             <div className="text-start text-lg leading-10">
-              {machine.name && (
+              {piece.name && (
                 <p>
-                  <strong>Nom :</strong> {machine.name}
+                  <strong>Nom :</strong> {piece.name}
                 </p>
               )}
-              {machine.description && (
+              {piece.description && (
                 <p>
-                  <strong>Description :</strong> {machine.description}
+                  <strong>Description :</strong> {piece.description}
                 </p>
               )}
-              {machine.mark && (
+              {piece.mark && (
                 <p>
-                  <strong>Marque :</strong> {machine.mark}
+                  <strong>Marque :</strong> {piece.mark}
                 </p>
               )}
-              {machine.applicable && (
+              {/* {piece.applicable && (
                 <p>
-                  <strong>Applicable :</strong> {machine.applicable}
+                  <strong>Applicable :</strong> {piece.applicable}
                 </p>
-              )}
-              {typeof machine.available !== 'undefined' && (
+              )} */}
+              {typeof piece.available !== 'undefined' && (
                 <div className="flex">
                   <strong className="pr-2">Disponible :</strong>{' '}
-                  {machine.available ? (
+                  {piece.available ? (
                     'Oui'
                   ) : (
                     <p className="text-red-500">Sur Commande</p>
                   )}
-                  {machine.available && (
+                  {piece.available && (
                     <Checkbox
                       className="pl-5"
                       color="success"
-                      isSelected={machine.available}
-                      // defaultSelected={machine.available}
+                      isSelected={piece.available}
+                      // defaultSelected={piece.available}
                     />
                   )}
                 </div>
               )}
               <p>
-                <strong>Prix :</strong> {machine.price} TND
+                <strong>Prix :</strong> {piece.price} TND
               </p>
             </div>
           </Card>
