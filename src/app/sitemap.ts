@@ -4,7 +4,9 @@ import { getAllPieces } from "@/actions/pieces";
 
 
 export default async function sitemap(){
-const baseUrl = "https://mmc-cyan.vercel.app/";
+// const baseUrl = "https://mmc-cyan.vercel.app/";
+const baseUrl = "https://www.mmcmoknine.com/";
+
 
     const responseMachines = await getAllMachines();
     const responsePieces = await getAllPieces();

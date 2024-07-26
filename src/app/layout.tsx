@@ -12,7 +12,7 @@ import { siteConfig } from '@/config/site';
 import { roboto } from '@/config/fonts';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://mmc-cyan.vercel.app'),
+  metadataBase: new URL('https://www.mmcmoknine.com'),
   keywords: [
     'machine a coudre ',
     'machine a coudre jaki',

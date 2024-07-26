@@ -1,6 +1,9 @@
 import { MetadataRoute } from "next";
 
-const baseUrl = "https://mmc-cyan.vercel.app";
+// const baseUrl = "https://mmc-cyan.vercel.app";
+
+ const baseUrl = "https://www.mmcmoknine.com";
+
 
 export default function robots(): MetadataRoute.Robots {
 
