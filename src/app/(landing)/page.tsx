@@ -82,12 +82,12 @@ const HeroSection = () => {
       <div
         className="relative flex h-[50hv]
         w-full flex-col items-center justify-center
-         gap-1 overflow-hidden bg-transparent  pt-[13vh] 
+         gap-1 overflow-hidden bg-transparent  pt-[8vh] 
           sm:gap-6  md:pt-24"
       >
         {/* <h1 className="text-default-500">hi</h1> */}
         <div className=" flex w-full flex-col justify-center text-center">
-          <div className="-mb-3 sm:mb-1 ">
+          <div className="-mb-3 sm:mb-1 lg:mb-4">
             <h1 className={title()}>Agent&nbsp;</h1>
             <h1 className={title()}>tunisien&nbsp;</h1>
             <h1 className={title()}>de&nbsp;</h1>
@@ -98,7 +98,7 @@ const HeroSection = () => {
           </div>
           <div>
             {/* <h1 className={title()}>achete&nbsp;</h1> */}
-            <h1 className={title({ color: 'blue' })}>
+            <h1 className={title({ color: 'blue', className: 'leading-none' })}>
               {' '}
               machines à coudre Jaki
             </h1>
