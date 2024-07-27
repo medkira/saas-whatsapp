@@ -20,6 +20,10 @@ export const metadata: Metadata = {
     'coudre tunisie',
     'machine a coudre tunisie',
   ],
+
+  alternates: {
+    canonical: '/',
+  },
   title: {
     default: siteConfig.name,
     template: `%s | ${siteConfig.name}`,
