@@ -55,7 +55,7 @@ export default function LandingContact() {
   return (
     <>
       <div
-        className="relative flex h-[100vh]  
+        className="relative flex h-[110vh]  
       w-full flex-col items-center  justify-items-start  gap-5 overflow-hidden pt-[5rem]  sm:gap-6  md:gap-9 md:pt-[10vh]"
       >
         <section className="flex flex-col items-center justify-start">

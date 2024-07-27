@@ -156,8 +156,8 @@ export const Navbar = () => {
 
   return (
     <NextUINavbar
-      // className="bg-transparent"
-      isBlurred={true}
+      className="bg-transparent backdrop-blur-sm "
+      isBlurred={false}
       maxWidth="xl"
       position="sticky"
     >

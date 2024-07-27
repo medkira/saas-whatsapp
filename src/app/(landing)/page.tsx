@@ -12,6 +12,7 @@ import fabrication from '/public/images/icons/fabrication.png';
 
 import LandingMachines from './landing-mahines';
 import LandingContact from './landig-contact';
+import FullPageFooter from './full-page-footer';
 
 import Ripple from '@/components/magicui/ripple';
 import { title, subtitle } from '@/components/primitives';
@@ -37,6 +38,7 @@ export default function Home() {
         <LandingMachines />
 
         <LandingContact />
+        <FullPageFooter />
       </section>
     </SmoothScroll>
   );
