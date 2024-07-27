@@ -33,7 +33,7 @@ export default function Home() {
   return (
     // <div className=" flex h-[100%] flex-col content-center justify-end bg-black">
     <SmoothScroll>
-      <section className={`${roboto.className}  `}>
+      <section className={`${roboto.className} `}>
         <HeroSection />
         <LandingMachines />
 

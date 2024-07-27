@@ -4,7 +4,7 @@ export default function FullPageFooter() {
   return (
     <footer
       className="flex min-h-[100vh] flex-col items-center  justify-between bg-gradient-to-br 
-         from-gray-900 to-gray-800 px-4 py-8 pt-24 text-gray-100
+         from-gray-900 to-gray-800 px-4 py-8 pt-28 text-gray-100
           sm:pt-36"
     >
       <div className="container mx-auto max-w-4xl">
