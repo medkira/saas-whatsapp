@@ -2,16 +2,21 @@ import { Button } from '@nextui-org/button';
 import Image from 'next/legacy/image';
 import { notFound } from 'next/navigation';
 import { Card, Checkbox } from '@nextui-org/react';
+import { Metadata } from 'next';
 
 import IconTelephoneFill from '@/components/icons';
 import { subtitle, title } from '@/components/primitives';
 import CommandeForm from '@/components/machines/commande-form';
 import { Machines } from '@/domain/entities/Machines';
 import { getAllMachines, getMachineById } from '@/actions/machines';
+import { generateProductJsonLd } from '@/utils/jsonLd/generateJsonLd';
 
 // ? Meta Data
-
-export async function generateMetadata({ params }: { params: { id: string } }) {
+export async function generateMetadata({
+  params,
+}: {
+  params: { id: string };
+}): Promise<Metadata> {
   const response = await getMachineById(params.id);
 
   if (!response) {
@@ -44,15 +49,37 @@ export const generateStaticParams = async () => {
 export default async function Page({ params }: { params: { id: string } }) {
   let data = await getMachineById(params.id);
 
+  // ? need type(entitie) for the machine
+
+  const machine: Machines = data;
+
+  //? json-ld
+  const jsonLd = generateProductJsonLd({
+    name: machine.name!,
+    description: machine.description || '',
+    imageUrl: machine.image_url,
+    category: machine.category,
+    reference: machine.reference,
+    mark: machine.mark!,
+    applicable: machine.applicable || '',
+    available: machine.available || true,
+    price: machine.price,
+  });
+
   if (!data) {
     notFound();
   }
 
-  // ? need type(entitie) for the machine
-  const machine: Machines = data;
-
   return (
     <div className="h-[115vh]">
+      {/* for structured Data */}
+      <section>
+        <script
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          type="application/ld+json"
+        />
+      </section>
+
       <div className="flex flex-col items-center justify-center">
         <h1 className="-mb-2 text-xl font-bold text-green-500">
           Commande Par Téléphone

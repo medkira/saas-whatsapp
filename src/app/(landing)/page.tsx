@@ -18,29 +18,46 @@ import Ripple from '@/components/magicui/ripple';
 import { title, subtitle } from '@/components/primitives';
 import { roboto } from '@/config/fonts';
 import SmoothScroll from '@/components/provider/smooth-scroll';
-
-// import { siteConfig } from '@/config/site';
+import { generateLandingPageJsonLd } from '@/utils/jsonLd/generateJsonLd';
 
 export default function Home() {
-  // const container = useRef<HTMLElement>(null);
-
-  // const { scrollYProgress } = useScroll({
-  //   target: container as any,
-
-  //   offset: ['start start', 'end end'],
-  // });
+  const companyInfo = {
+    name: 'MMC Moknine',
+    description: 'Agent tunisien de machines à coudre Jaki',
+    url: 'https://www.mmcmoknine.com',
+    logo: 'https://www.mmcmoknine.com/logo.png',
+    telephone: '216 98 403 153',
+    email: 'mmc184@yahoo.com',
+    address: {
+      streetAddress: 'AVENUE HABIB BOURGUIBA MOKNINE, Tunisia',
+      addressLocality: 'Moknine',
+      addressRegion: 'Monastir',
+      postalCode: '505',
+      addressCountry: 'TN',
+    },
+    sameAs: [
+      'https://www.facebook.com/mondialemateriel.confection1',
+      'https://www.facebook.com/p/Mmc-Moknine-100014871250605/?paipv=0&eav=Afaxsb7jbrPTdEz33Qw5neNG9qjxvjHrLDx6LobFU2l99ZFEHEqWij8xXbZDCX_hJ74&_rdr',
+    ],
+  };
+  const jsonLd = generateLandingPageJsonLd(companyInfo);
 
   return (
-    // <div className=" flex h-[100%] flex-col content-center justify-end bg-black">
-    <SmoothScroll>
-      <section className={`${roboto.className} `}>
-        <HeroSection />
-        <LandingMachines />
+    <>
+      <script
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        type="application/ld+json"
+      />
+      <SmoothScroll>
+        <section className={`${roboto.className} `}>
+          <HeroSection />
+          <LandingMachines />
 
-        <LandingContact />
-        <FullPageFooter />
-      </section>
-    </SmoothScroll>
+          <LandingContact />
+          <FullPageFooter />
+        </section>
+      </SmoothScroll>
+    </>
   );
 }
 
