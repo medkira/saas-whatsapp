@@ -3,9 +3,11 @@ import React from 'react';
 export default function FullPageFooter() {
   return (
     <footer
-      className="flex min-h-[100vh] flex-col items-center  justify-between bg-gradient-to-br 
-         from-gray-900 to-gray-800 px-4 py-8 pt-28 text-gray-100
-          sm:pt-36"
+      className="flex min-h-[100vh] flex-col items-center 
+          justify-between bg-gradient-to-br 
+         from-gray-900 to-gray-800 px-4
+          py-8 pt-28 text-gray-100
+          sm:pt-36 "
     >
       <div className="container mx-auto max-w-4xl">
         <h1 className="mb-4 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-3xl font-extrabold text-transparent sm:text-4xl md:text-5xl">
@@ -43,9 +45,12 @@ export default function FullPageFooter() {
           </div>
         </div>
       </div>
-      <p className=" border-t border-gray-700 pt-6 text-xs text-gray-400 sm:text-sm">
-        &copy; 2024 MMC Moknine. Tous droits réservés.
-      </p>
+      <div className=" flex w-[100%] items-center justify-center border-t  border-gray-700 pt-6 text-xs text-gray-400 sm:text-sm">
+        <p>&copy; 2024 MMC Moknine. Tous droits réservés.</p>
+        <a className="ml-1" href="https://totaltechtn.com/">
+          Powered By <strong className="text-blue-500">TotalTechTn</strong>
+        </a>
+      </div>
     </footer>
   );
 }
