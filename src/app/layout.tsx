@@ -14,6 +14,7 @@ import { roboto } from '@/config/fonts';
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.mmcmoknine.com'),
   keywords: [
+    'MMC MOKNINE | machines à coudre',
     'mmc',
     'mmc moknine',
     'machine a coudre',

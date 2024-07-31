@@ -1,7 +1,9 @@
 export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
-  name: 'JAKI machines à coudre',
+  // name: 'MMC MOKNINE JAKI machines à coudre',
+
+  name: 'MMC MOKNINE | machines à coudre',
   description: 'Agent tunisien des machines à coudre JAKI',
   navItems: [
     {
