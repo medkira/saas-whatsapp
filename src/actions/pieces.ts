@@ -85,6 +85,18 @@ export async function getPiecesPages():Promise<number>{
 
 
 
+export  async function  getPieceById(id:string):Promise<Pieces> {
+   const supabase = createClient(true);
+   let { data } = await supabase
+    .from('pieces')
+    .select('*')
+    .eq('id', id);
+
+   if(!data|| data.length === 0) return {} as Pieces /// ! this bad !!!
+
+  return data[0]
+}
+
 
 
 

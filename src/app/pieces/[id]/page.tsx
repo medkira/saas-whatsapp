@@ -5,7 +5,7 @@ import { Card, Checkbox } from '@nextui-org/react';
 
 import IconTelephoneFill from '@/components/icons';
 import { subtitle, title } from '@/components/primitives';
-import { getAllPieces } from '@/actions/pieces';
+import { getAllPieces, getPieceById, getPieces } from '@/actions/pieces';
 import { Pieces } from '@/domain/entities/Pieces';
 import CommandeForm from '@/components/machines/commande-form';
 
@@ -34,14 +34,11 @@ export default async function Page({ params }: { params: { id: string } }) {
 
   // const supabase = createClient(true);
   // let { data } = await supabase.from('pieces').select('*').eq('id', params.id);
-  const data: Pieces[] = await getAllPieces();
+  const piece: Pieces = await getPieceById(params.id);
 
-  if (!data || data.length === 0) {
+  if (!piece) {
     notFound();
   }
-
-  // ? need type(entitie) for the piece
-  const piece: Pieces = data[0];
 
   return (
     <div className="h-[115vh]">
