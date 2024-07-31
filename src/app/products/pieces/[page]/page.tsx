@@ -81,7 +81,7 @@ export default async function ProductsPage({
       <section className="flex flex-col items-center justify-start">
         <div className="   pb-2 sm:w-full">
           <h1 className={title({ size: 'md', class: 'mb-3  mr-2' })}>
-            Découvrez Nos pièce our le machine
+            Découvrez Nos pièce pour le machine
           </h1>
           <span
             className={title({
@@ -96,7 +96,7 @@ export default async function ProductsPage({
       </section>
       <GridPieces pieces={piece} />
       <Suspense>
-        <PaginationProducts basePath="machines" totalPages={totalPages} />
+        <PaginationProducts basePath="pieces" totalPages={totalPages} />
       </Suspense>
 
       {/* <h1 className={title({ color: 'blue' })}>&nbsp;Should You Care?</h1> */}

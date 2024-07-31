@@ -22,8 +22,8 @@ import { generateLandingPageJsonLd } from '@/utils/jsonLd/generateJsonLd';
 
 export default function Home() {
   const companyInfo = {
-    name: 'MMC Moknine',
-    description: 'Agent tunisien de machines à coudre Jaki',
+    name: 'mmc moknine',
+    description: 'mmc moknine Agent tunisien de machines à coudre Jaki',
     url: 'https://www.mmcmoknine.com',
     logo: 'https://www.mmcmoknine.com/logo.png',
     telephone: '216 98 403 153',

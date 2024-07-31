@@ -8,23 +8,13 @@ import {
   NavbarItem,
   NavbarMenuItem,
 } from '@nextui-org/navbar';
-import {
-  redirect,
-  usePathname,
-  useRouter,
-  useSearchParams,
-} from 'next/navigation';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { Button } from '@nextui-org/button';
 import NextLink from 'next/link';
 import clsx from 'clsx';
 import { motion } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
-import {
-  Autocomplete,
-  AutocompleteItem,
-  input,
-  Input,
-} from '@nextui-org/react';
+import { Autocomplete, AutocompleteItem } from '@nextui-org/react';
 import { useDebouncedCallback } from 'use-debounce';
 
 import { siteConfig } from '@/config/site';
@@ -153,13 +143,16 @@ export const Navbar = () => {
       </Autocomplete>
     </div>
   );
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <NextUINavbar
       className="bg-transparent backdrop-blur-sm "
       isBlurred={false}
+      isMenuOpen={isMenuOpen}
       maxWidth="xl"
       position="sticky"
+      onMenuOpenChange={setIsMenuOpen}
     >
       <NavbarBrand as="li">
         <NextLink
@@ -273,14 +266,16 @@ export const Navbar = () => {
                   // NextLinkStyles({ color: 'foreground' }),
                   `bg-transparent ${roboto.className} flex items-center justify-center pt-10 text-4xl leading-10`,
                   {
-                    'text-[1rem] font-medium text-white':
+                    'text-center text-[2rem] font-medium text-white':
                       pathname !== item.href,
-                    'text-[1rem] font-extrabold text-blue-600 ':
+                    'text-center text-[2rem]  font-extrabold text-blue-600 ':
                       pathname === item.href,
                   },
                 )}
                 href={item.href}
-                // size="lg"
+                onClick={() => {
+                  setIsMenuOpen((prev) => !prev);
+                }}
               >
                 {item.label}
               </NextLink>
