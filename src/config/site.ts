@@ -1,10 +1,8 @@
 export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
-  // name: 'MMC MOKNINE JAKI machines à coudre',
-
-  name: 'MMC MOKNINE | machines à coudre',
-  description: 'Agent tunisien des machines à coudre JAKI',
+ name: 'Doctor Appointment System | WhatsApp',
+  description: 'A SaaS that provides doctors with the capability to schedule appointments for their patients and remind them about the appointments through WhatsApp.',
   navItems: [
     {
       label: 'Accueil',

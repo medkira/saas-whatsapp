@@ -6,7 +6,6 @@ import { HomeIcon } from '../icons/sidebar/home-icon';
 import { PaymentsIcon } from '../icons/sidebar/payments-icon';
 import { BalanceIcon } from '../icons/sidebar/balance-icon';
 import { AccountsIcon } from '../icons/sidebar/accounts-icon';
-import { CustomersIcon } from '../icons/sidebar/customers-icon';
 import { ProductsIcon } from '../icons/sidebar/products-icon';
 import { ReportsIcon } from '../icons/sidebar/reports-icon';
 import { DevIcon } from '../icons/sidebar/dev-icon';
@@ -22,6 +21,10 @@ import { SidebarMenu } from './sidebar-menu';
 import { CompaniesDropdown } from './companies-dropdown';
 import { Sidebar } from './sidebar.styles';
 import WhatsappIcon from '../icons/sidebar/whatsapp-icon';
+import AppointmentsIcon from '../icons/sidebar/appointment-icon';
+import { UserIcon } from 'lucide-react';
+import UsersIcon from '../icons/sidebar/user-icon';
+import IconBxsMessageAltDetail from '../icons/sidebar/messages-icon';
 
 export const SidebarWrapper = () => {
   const pathname = usePathname();
@@ -64,12 +67,24 @@ export const SidebarWrapper = () => {
                 items={['Banks Accounts', 'Credit Cards', 'Loans']}
                 title="Balances"
               />
+             */}
               <SidebarItem
-                icon={<CustomersIcon />}
-                isActive={pathname === '/customers'}
-                title="Customers"
-              /> */}
+                href="/dashboard/machines"
+                icon={<AppointmentsIcon />}
+                isActive={pathname === '/dashboard/appointments'}
+                title="Appointments"
+              />
               <SidebarItem
+                icon={<UsersIcon />}
+                isActive={pathname === 'dashboard/patients'}
+                title="Patients"
+              />
+              <SidebarItem
+                icon={<IconBxsMessageAltDetail />}
+                isActive={pathname === 'dashboard/messages'}
+                title="Messages"
+              />
+              {/* <SidebarItem
                 href="/dashboard/machines"
                 icon={<ProductsIcon />}
                 isActive={pathname === '/dashboard/machines'}
@@ -86,7 +101,7 @@ export const SidebarWrapper = () => {
                 icon={<ReportsIcon />}
                 isActive={pathname === '/dashboard/commandes'}
                 title="Commandes"
-              />
+              /> */}
             </SidebarMenu>
 
             <SidebarMenu title="General">
