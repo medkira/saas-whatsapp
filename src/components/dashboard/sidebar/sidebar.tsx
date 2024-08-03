@@ -69,19 +69,21 @@ export const SidebarWrapper = () => {
               />
              */}
               <SidebarItem
-                href="/dashboard/machines"
+                href="/dashboard/appointments"
                 icon={<AppointmentsIcon />}
                 isActive={pathname === '/dashboard/appointments'}
                 title="Appointments"
               />
               <SidebarItem
+                href="/dashboard/patients"
                 icon={<UsersIcon />}
                 isActive={pathname === 'dashboard/patients'}
                 title="Patients"
               />
               <SidebarItem
+                href="/dashboard/messages"
                 icon={<IconBxsMessageAltDetail />}
-                isActive={pathname === 'dashboard/messages'}
+                isActive={pathname === '/dashboard/messages'}
                 title="Messages"
               />
               {/* <SidebarItem
