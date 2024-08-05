@@ -41,12 +41,13 @@ module.exports = {
 
   plugins: [
     nextui({
+     
       themes: {
         light: {
           colors: {
-            // background: 'transparent',545454
+            background: '#134e4a',
 
-            foreground: '#545454',
+            // foreground: '#545454',
             primary: {
               //... 50 to 900
               foreground: '#FFFFFF',
@@ -58,7 +59,7 @@ module.exports = {
         dark: {
           colors: {
             // background: 'transparent',
-            // background: '#042749',
+            background: '#042749',
 
             foreground: '#ECEDEE',
             primary: {

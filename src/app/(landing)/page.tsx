@@ -51,7 +51,7 @@ export default function Landing() {
   return (
     <main className="flex min-h-screen flex-col  bg-gray-50">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-teal-900 text-white">
+      <section className="relative overflow-hidden bg-background text-white">
         {/* <div className="absolute inset-0">
           <Image
             alt="Hero Background"
@@ -61,6 +61,7 @@ export default function Landing() {
             src="/hero-background.jpg"
           />
         </div> */}
+
         <div className="container relative z-10 mx-auto   py-16 text-center md:py-32">
           <h1 className="mb-6 pl-5 text-start text-5xl font-extrabold leading-tight text-transparent text-white sm:text-center md:text-7xl">
             Effortlessly Manage <br />{' '}
@@ -231,13 +232,13 @@ export default function Landing() {
                     <li key={index}>
                       <svg
                         className="mr-2 inline h-4 w-4 text-gray-400"
-                        viewBox="0 0 20 20"
                         fill="currentColor"
+                        viewBox="0 0 20 20"
                       >
                         <path
-                          fillRule="evenodd"
-                          d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.74-5.74a.75.75 0 00-1.06-1.06l-1.25 1.25a.75.75 0 101.06 1.06zM8 14a1 1 0 100-2 1 1 0 000 2z"
                           clipRule="evenodd"
+                          d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.74-5.74a.75.75 0 00-1.06-1.06l-1.25 1.25a.75.75 0 101.06 1.06zM8 14a1 1 0 100-2 1 1 0 000 2z"
+                          fillRule="evenodd"
                         />
                       </svg>
                       {feature}
@@ -246,7 +247,7 @@ export default function Landing() {
                 </ul>
               </div>
               <Button
-                className={`m-5 rounded bg-${plan.color}  px-4 py-2 font-bold text-white hover:bg-${plan.hoverColor} transition-colors`}
+                className={`m-5 rounded bg-green-500  px-4 py-2 font-bold text-white hover:bg-${plan.hoverColor} transition-colors`}
               >
                 Choose {plan.name.split(' ')[0]}
               </Button>
@@ -261,8 +262,8 @@ export default function Landing() {
           Ready to transform your appointment management?
         </p>
         <Button
-          size="lg"
           className="rounded-lg bg-teal-500 py-3  font-bold text-gray-900 shadow-lg transition duration-300 hover:bg-teal-600"
+          size="lg"
         >
           Get Started
         </Button>

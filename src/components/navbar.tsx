@@ -32,7 +32,7 @@ export const Navbar = () => {
       <NavbarBrand>
         <NextLink className="flex items-center gap-2" href="/">
           {/* <Logo /> */}
-          <span className="text-lg font-bold text-teal-600">DocuManage</span>
+          <span className="text-lg font-bold text-teal-500">DocuManage</span>
         </NextLink>
       </NavbarBrand>
 
@@ -44,8 +44,8 @@ export const Navbar = () => {
                 className={clsx(
                   'text-md font-medium transition-colors',
                   pathname === item.href
-                    ? 'text-teal-600'
-                    : 'text-gray-800 hover:text-teal-600',
+                    ? 'text-teal-500'
+                    : 'text-gray-200 hover:text-teal-600',
                 )}
                 href={item.href}
               >
@@ -78,7 +78,7 @@ export const Navbar = () => {
             <NavbarMenuItem key={item.href}>
               <NextLink
                 className={clsx(
-                  'text-lg font-medium transition-colors',
+                  'text-lg font-medium  transition-colors',
                   pathname === item.href
                     ? 'text-teal-600'
                     : 'text-gray-800 hover:text-teal-600',
