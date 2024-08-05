@@ -3,4 +3,5 @@ export type Appointments = {
     patient_id: number;
     appointment_date: string;
     reminder_sent: boolean;
+    phone_number: string
 }

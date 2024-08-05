@@ -5,7 +5,7 @@ export const siteConfig = {
   description: 'A SaaS that provides doctors with the capability to schedule appointments for their patients and remind them about the appointments through WhatsApp.',
   navItems: [
     {
-      label: 'Accueil',
+      label: 'Home',
       href: '/',
     },
     // {
@@ -13,20 +13,22 @@ export const siteConfig = {
     //   href: '/docs',
     // },
     {
-      label: 'Machine a coudre',
+      label: 'Features',
       href: '/products/machines/1',
     },
     {
-      label: 'Pièce machine a coudre',
+      label: 'Pricing',
       href: '/products/pieces/1',
-    },    // {
-    //   label: 'Nos Service',
-    //   href: '/service',
-    // },
-    // {
-    //   label: 'About',
-    //   href: '/about',
-    // },
+    },  
+    {
+      label: 'Demo',
+      href: '/products/pieces/1',
+    }, 
+     {
+      label: 'About Us ',
+      href: '/products/pieces/1',
+    }, 
+    
   ],
   navMenuItems: [
     {

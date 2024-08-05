@@ -1,13 +1,14 @@
+// app/components/ThemeSwitch.tsx
+
 'use client';
 
 import { FC } from 'react';
 import { VisuallyHidden } from '@react-aria/visually-hidden';
-import { SwitchProps, useSwitch } from '@nextui-org/switch';
+import { Switch, SwitchProps, useSwitch } from '@nextui-org/switch';
 import { useTheme } from 'next-themes';
 import { useIsSSR } from '@react-aria/ssr';
 import clsx from 'clsx';
-
-import { SunFilledIcon, MoonFilledIcon } from '@/components/icons';
+import { SunIcon, MoonIcon } from 'lucide-react'; // Importing icons from 'lucide-react'
 
 export interface ThemeSwitchProps {
   className?: string;
@@ -22,7 +23,7 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
   const isSSR = useIsSSR();
 
   const onChange = () => {
-    theme === 'light' ? setTheme('dark') : setTheme('light');
+    setTheme(theme === 'light' ? 'dark' : 'light');
   };
 
   const {
@@ -33,8 +34,8 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
     getInputProps,
     getWrapperProps,
   } = useSwitch({
-    isSelected: theme === 'light' || isSSR,
-    'aria-label': `Switch to ${theme === 'light' || isSSR ? 'dark' : 'light'} mode`,
+    isSelected: theme === 'dark' || isSSR,
+    'aria-label': `Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`,
     onChange,
   });
 
@@ -42,7 +43,7 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
     <Component
       {...getBaseProps({
         className: clsx(
-          'px-px transition-opacity hover:opacity-80 cursor-pointer',
+          'transition-opacity hover:opacity-80 cursor-pointer',
           className,
           classNames?.base,
         ),
@@ -53,28 +54,23 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
       </VisuallyHidden>
       <div
         {...getWrapperProps()}
-        className={slots.wrapper({
-          class: clsx(
-            [
-              'h-auto w-auto',
-              'bg-transparent',
-              'rounded-lg',
-              'flex items-center justify-center',
-              'group-data-[selected=true]:bg-transparent',
-              '!text-default-500',
-              'pt-px',
-              'px-0',
-              'mx-0',
-            ],
-            classNames?.wrapper,
-          ),
-        })}
-      >
-        {!isSelected || isSSR ? (
-          <SunFilledIcon size={22} />
-        ) : (
-          <MoonFilledIcon size={22} />
+        className={clsx(
+          'flex items-center justify-center rounded-full ',
+          // 'bg-gray-200 dark:bg-gray-800',
+          'transition-colors',
+          classNames?.wrapper,
         )}
+      >
+        <Switch
+          color="success"
+          defaultSelected={theme === 'dark'}
+          endContent={<MoonIcon className="text-gray-500 dark:text-gray-300" />}
+          size="lg"
+          startContent={
+            <SunIcon className="text-yellow-500 dark:text-yellow-300" />
+          }
+          onChange={onChange}
+        />
       </div>
     </Component>
   );

@@ -45,7 +45,6 @@ module.exports = {
         light: {
           colors: {
             // background: 'transparent',545454
-            background: '#f2f2f2',
 
             foreground: '#545454',
             primary: {
