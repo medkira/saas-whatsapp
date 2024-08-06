@@ -16,6 +16,7 @@ import { useState } from 'react';
 import { siteConfig } from '@/config/site';
 import { ThemeSwitch } from '@/components/theme-switch';
 import { Button } from '@nextui-org/button';
+import Link from 'next/link';
 
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -23,8 +24,7 @@ export const Navbar = () => {
 
   return (
     <NextUINavbar
-      // className="bg-white shadow-md"
-      isBlurred={true}
+      className="fixed "
       isMenuOpen={isMenuOpen}
       maxWidth="xl"
       onMenuOpenChange={setIsMenuOpen}
@@ -59,7 +59,13 @@ export const Navbar = () => {
       {/* desktop */}
       <NavbarContent className="hidden md:flex" justify="end">
         <NavbarItem className="flex gap-8">
-          <Button variant="flat" color="success" className="font-bold">
+          <Button
+            as={Link}
+            variant="flat"
+            href="/login"
+            color="success"
+            className="font-bold"
+          >
             Login
           </Button>
           <ThemeSwitch />
@@ -72,7 +78,7 @@ export const Navbar = () => {
         {/* <ThemeSwitch /> */}
       </NavbarContent>
 
-      <NavbarMenu className="bg-white shadow-lg">
+      <NavbarMenu className="shadow-lg">
         <div className="mx-4 mt-2 flex flex-col gap-2">
           {siteConfig.navItems.map((item) => (
             <NavbarMenuItem key={item.href}>
@@ -80,8 +86,8 @@ export const Navbar = () => {
                 className={clsx(
                   'text-lg font-medium  transition-colors',
                   pathname === item.href
-                    ? 'text-teal-600'
-                    : 'text-gray-800 hover:text-teal-600',
+                    ? 'text-teal-500'
+                    : 'text-gray-200 hover:text-teal-600',
                 )}
                 href={item.href}
                 onClick={() => setIsMenuOpen(false)}

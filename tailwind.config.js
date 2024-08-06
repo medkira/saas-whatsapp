@@ -59,7 +59,7 @@ module.exports = {
         dark: {
           colors: {
             // background: 'transparent',
-            background: '#042749',
+            // background: '#042749',
 
             foreground: '#ECEDEE',
             primary: {

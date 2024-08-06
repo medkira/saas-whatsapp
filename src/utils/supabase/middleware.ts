@@ -33,28 +33,28 @@ export async function updateSession(request: NextRequest) {
 
     // ? no auth for now for tasting
 
-//     if (error) {
-//         console.error('Error fetching user:', error);
-//         // Handle error appropriately here
-//     }
+    if (error) {
+        console.error('Error fetching user:', error);
+        // Handle error appropriately here
+    }
 
-//     const url = request.nextUrl.clone();
+    const url = request.nextUrl.clone();
 
-//     if (!user 
-//          && request.nextUrl.pathname.startsWith('/dashboard')) {
+    if (!user 
+         && request.nextUrl.pathname.startsWith('/dashboard')) {
 
-//         url.pathname = '/login'
+        url.pathname = '/login'
         
-//         return NextResponse.redirect(url)
-//     }
+        return NextResponse.redirect(url)
+    }
 
-//     if (user 
-//         && request.nextUrl.pathname.startsWith('/login')) {
+    if (user 
+        && request.nextUrl.pathname.startsWith('/login')) {
 
-//        url.pathname = '/dashboard'
+       url.pathname = '/dashboard'
        
-//        return NextResponse.redirect(url)
-//    }
+       return NextResponse.redirect(url)
+   }
 
 
 

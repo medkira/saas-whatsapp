@@ -4,5 +4,5 @@
 //   SidebarWrapper,
 // } from '@/components/dashboard/sidebar/sidebar.styles';
 export default function Page() {
-  return <div></div>;
+  return <></>;
 }
