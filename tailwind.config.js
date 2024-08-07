@@ -50,7 +50,7 @@ module.exports = {
             // foreground: '#545454',
             primary: {
               //... 50 to 900
-              foreground: '#FFFFFF',
+              foreground: '#006FEE',
               DEFAULT: '#006FEE',
             },
           },

@@ -11,7 +11,7 @@ import { useRouter } from 'next/navigation';
 
 import { DarkModeSwitch } from './darkmodeswitch';
 
-import { signOut } from '@/app/login/actions';
+import { signOut } from '@/actions/auth';
 // import { deleteAuthCookie } from "@/actions/auth.action";
 
 export const UserDropdown = () => {

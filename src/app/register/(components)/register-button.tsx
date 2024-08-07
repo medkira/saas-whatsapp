@@ -1,7 +1,7 @@
 import { Button } from '@nextui-org/button';
 import { useFormStatus } from 'react-dom';
 
-export default function LoginButton() {
+export default function RegisterButton() {
   const state = useFormStatus();
 
   return (
@@ -10,7 +10,7 @@ export default function LoginButton() {
       isLoading={state.pending}
       type="submit"
     >
-      Sign in
+      Sign up
     </Button>
   );
 }
