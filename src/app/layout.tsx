@@ -13,16 +13,7 @@ import { roboto } from '@/config/fonts';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.mmcmoknine.com'),
-  keywords: [
-    'MMC MOKNINE | machines à coudre',
-    'mmc',
-    'mmc moknine',
-    'machine a coudre',
-    'machine a coudre jaki',
-    'jaki',
-    'coudre tunisie',
-    'machine a coudre tunisie',
-  ],
+  keywords: [],
 
   alternates: {
     canonical: 'https://www.mmcmoknine.com',
@@ -39,23 +30,6 @@ export const metadata: Metadata = {
   icons: {
     icon: '/images/logo.png',
   },
-  // openGraph: {
-  //   description: siteConfig.description,
-  // images: {
-  //   type: 'image/png',
-  //   url: 'https://totaltechtn.com/images/opengraph.png',
-  //   width: 800,
-  //   height: 700,
-  // },
-  // images: [
-  //   {
-  //     type: 'image/png',
-  //     url: '/images/opengraph.png',
-  //     width: 800,
-  //     height: 700,
-  //   },
-  // ],
-  // },
 };
 
 export const viewport: Viewport = {
@@ -72,13 +46,6 @@ export default function RootLayout({
 }) {
   return (
     <html suppressHydrationWarning lang="en">
-      {/* <head>
-        <meta
-          content={metadata.openGraph!.description}
-          property="og:description"
-        />
-   
-      </head> */}
       <body
         className={clsx(
           'white min-h-screen  font-sans antialiased',

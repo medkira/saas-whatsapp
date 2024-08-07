@@ -2,6 +2,7 @@
 import { Button } from '@nextui-org/button';
 import { Card } from '@nextui-org/card';
 import Image from 'next/legacy/image';
+import PricingSectionCards from './(components)/plan-features';
 
 export default function Landing() {
   const plans = [
@@ -255,6 +256,9 @@ export default function Landing() {
           ))}
         </div>
       </section>
+      {/* <section className="flex  justify-center  py-16">
+        <PricingSectionCards />
+      </section> */}
 
       {/* Footer Section */}
       <footer className="bg-teal-900 py-8 text-center text-white">

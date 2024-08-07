@@ -12,11 +12,11 @@ import { usePathname } from 'next/navigation';
 import NextLink from 'next/link';
 import clsx from 'clsx';
 import { useState } from 'react';
+import { Button } from '@nextui-org/button';
+import Link from 'next/link';
 
 import { siteConfig } from '@/config/site';
 import { ThemeSwitch } from '@/components/theme-switch';
-import { Button } from '@nextui-org/button';
-import Link from 'next/link';
 
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -61,10 +61,10 @@ export const Navbar = () => {
         <NavbarItem className="flex gap-8">
           <Button
             as={Link}
-            variant="flat"
-            href="/login"
-            color="success"
             className="font-bold"
+            color="success"
+            href="/login"
+            variant="flat"
           >
             Login
           </Button>
