@@ -137,26 +137,35 @@ class SupabaseService {
     
 
 
-    async createItem<T>(prevState: any, formData: FormData){
+    async createItem<T>(prevState: any, formData: FormData, props:string[]){
     
-        const image: any = formData.get("file");
+        // const image: any = formData.get("file");
         let imageUrl = "";
 
-        if (image.size != 0) {
-            imageUrl = await this.uploadFile(image);
-        }
+        // if (image.size != 0) {
+        //     imageUrl = await this.uploadFile(image);
+        // }
 
-        const item: Omit<Pieces, 'id' | 'image_url'> = {
-            price: formData.get("price") as any,
-            reference: formData.get("reference") as any,
-            available: formData.get("available") as any == "on",
-            description: formData.get("description") as any,
-            mark: formData.get("mark") as any,
-            name: formData.get("name") as any
-        };
+        // const item: Omit<Pieces, 'id' | 'image_url'> = {
+        //     price: formData.get("price") as any,
+        //     reference: formData.get("reference") as any,
+        //     available: formData.get("available") as any == "on",
+        //     description: formData.get("description") as any,
+        //     mark: formData.get("mark") as any,
+        //     name: formData.get("name") as any
+        // };
 
+        const item: Partial<Record<string, any>> = {};
 
-        await this.supabase.from(this.tableName).insert({ ...item, image_url: imageUrl });
+        props.forEach((prop: string) => {
+            item[prop] = formData.get(prop) as any;
+        });
+    
+        console.log("patients", item)
+    
+      const {data, error} = await this.supabase.from(this.tableName).insert(item);
+
+    //   console.log(error)
 
         revalidatePath(`/dashboard/${this.tableName}`);
         revalidatePath('/');

@@ -9,6 +9,7 @@ import DeletePieceModel from './delete-patient-model';
 import SearchPieces from './search-patients';
 import UpdatePiecesModel from './update-patient-model';
 import { Patients } from '@/domain/entities/Patients';
+import CreatePatientModel from './create-patient-model';
 
 export default async function DashboardPatients({
   Patients,
@@ -42,10 +43,10 @@ export default async function DashboardPatients({
   const normalMachiesList = await getAllPieces();
 
   return (
-    <div className="  w-[95vw] sm:w-[97%]">
+    <div className="  w-[95vw] pt-20 sm:w-[97%]">
       <div className="flex   items-end  justify-between gap-5 p-3  ">
         <SearchPieces pieces={normalMachiesList} />
-        <CreatePieceModel />
+        <CreatePatientModel />
       </div>
       <Card className="h-[82vh] overflow-y-auto p-5  sm:h-[80vh]">
         <div

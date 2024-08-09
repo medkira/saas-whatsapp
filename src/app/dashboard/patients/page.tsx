@@ -20,11 +20,6 @@ export default async function Page({
   //   data = [];
   // }
 
-  console.log('hi');
-  type FieldMapping<T> = {
-    [K in keyof T]: string;
-  };
-
   const data: Patients[] =
     query.length > 0 ? await searchPatients(query) : await getAllPatients();
 

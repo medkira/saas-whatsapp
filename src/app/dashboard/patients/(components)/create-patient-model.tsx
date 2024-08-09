@@ -20,19 +20,10 @@ import {
   FileUploaderItem,
 } from '@/components/file-upoad/file-uploader';
 import { FileSvgDraw } from '@/components/file-upoad/file-upload-icon';
+import { createPatient } from '@/actions/patients';
 
-export default function CreatePieceModel() {
+export default function CreatePatientModel() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
-  // const initialState: Omit<Pieces, 'id' | 'image_url'> = {
-  //   category: '',
-  //   reference: '',
-  //   price: 0,
-  // };
-  //   const [formData, setFormData] = useState<Omit<Pieces, 'id' | 'image_url'>>({
-  //     category: '',
-  //     reference: '',
-  //     price: 0,
-  //   });
 
   return (
     <div className="flex flex-col gap-2">
@@ -65,23 +56,8 @@ function Form({ onClose }: { onClose: any }) {
     multiple: true,
   };
 
-  const [state, dispatch] = useFormState(createPiece, initialState);
+  const [state, dispatch] = useFormState(createPatient, initialState);
 
-  // const categories = [
-  //   'Piqueuse',
-  //   'Surjet ',
-  //   'Recouvrement',
-  //   'Ciseau',
-  //   'Pose',
-  //   'Bordeuse',
-  //   'Boutonnière',
-  //   'Pilier',
-  // ];
-  // console.log('state', state);
-
-  // if (state === true) {
-  //   toast.success('Piece Created');
-  // }
 
   return (
     <form
@@ -110,54 +86,36 @@ function Form({ onClose }: { onClose: any }) {
           ))}
         </Autocomplete> */}
         <Input
-          label="Reference"
-          name="reference"
-          placeholder="Enter Reference"
-          type="text"
-          variant="bordered"
-        />
-        <Input
-          defaultValue="0"
-          label="Price"
-          name="price"
-          placeholder="Enter Price"
-          type="number"
-          variant="bordered"
-          onInput={(e: any) => {
-            // Remove any non-numeric characters
-            e.target.value = e.target.value.replace(/[^0-9]/g, '');
-          }}
-        />
-        <Input
-          label="Name"
+          label="name"
           name="name"
-          placeholder="Enter Name"
+          placeholder="Enter name"
           type="text"
           variant="bordered"
         />
         <Input
+          label="phone number"
+          name="phone_number"
+          placeholder="Enter phone number"
+          type="text"
+          variant="bordered"
+        />
+        {/* <Input
           label="Description"
           name="description"
           placeholder="Enter Description"
           type="text"
           variant="bordered"
-        />
-        <Input
+        /> */}
+        {/* <Input
           label="Mark"
           name="mark"
           placeholder="Enter Mark"
           type="text"
           variant="bordered"
-        />
-        {/* <Input
-          label="Applicable"
-          name="applicable"
-          placeholder="Enter Applicable Information"
-          type="text"
-          variant="bordered"
         /> */}
+    
         {/* custom checkbox */}
-        <label className="flex cursor-pointer items-center justify-between p-1 text-slate-400">
+        {/* <label className="flex cursor-pointer items-center justify-between p-1 text-slate-400">
           Available:{' '}
           <div className="relative inline-block">
             <input
@@ -167,11 +125,11 @@ function Form({ onClose }: { onClose: any }) {
             />
             <span className="pointer-events-none absolute left-1 top-1 block h-4 w-4 rounded-full bg-slate-600 transition-all duration-200 peer-checked:left-7 peer-checked:bg-green-300" />
           </div>
-        </label>
+        </label> */}
         {/* custom checkbox */}
 
         {/* imae upload  */}
-        <FileUploader
+        {/* <FileUploader
           className="relative rounded-lg bg-background p-2"
           dropzoneOptions={dropZoneConfig}
           value={files}
@@ -191,7 +149,7 @@ function Form({ onClose }: { onClose: any }) {
                 </FileUploaderItem>
               ))}
           </FileUploaderContent>
-        </FileUploader>
+        </FileUploader> */}
         {/* imae upload  */}
       </ModalBody>
       <ModalFooter>
