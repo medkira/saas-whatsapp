@@ -4,14 +4,14 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
 import { Pieces } from '@/domain/entities/Pieces';
 
-export default function SearchPieces({ pieces }: { pieces: Pieces[] }) {
+export default function Search({ pieces }: { pieces: Pieces[] }) {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
 
   const handleSearch = (value: string) => {
     const params = new URLSearchParams(searchParams);
-    console.log(pathname);
+    // console.log(pathname);
     if (value) {
       params.set('query', value);
     } else {
@@ -24,8 +24,8 @@ export default function SearchPieces({ pieces }: { pieces: Pieces[] }) {
     <Autocomplete
       className="max-w-xs"
       // defaultFilter={() => true}
-      label="Search Piece"
-      placeholder="Type a Piece name"
+      label="Search Patient"
+      placeholder="Type a Patient Name"
       onInputChange={handleSearch}
     >
       {pieces!.map((piece) => (

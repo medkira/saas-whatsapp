@@ -27,19 +27,20 @@ import { Label } from '@radix-ui/react-label';
 import { EditIcon } from '@/components/dashboard/icons/table/edit-icon';
 import { Pieces } from '@/domain/entities/Pieces';
 import { updatePiece } from '@/actions/pieces';
+import { Patients } from '@/domain/entities/Patients';
 
 export default function UpdatePiecesModel({
-  piece,
+  patient,
 }: {
-  piece: Omit<Pieces, 'image_url'>;
+  patient: Omit<Patients, 'image_url'>;
 }) {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
-  const initialState: Omit<Pieces, 'id' | 'image_url'> = {
-    // category: '',
-    reference: '',
-    price: 0,
+  const initialState: Omit<Patients, 'id' | 'image_url'> = {
+    phone_number: '',
+    name: '',
+    doctor_id: ''
   };
-  const updatePieceeWithId = updatePiece.bind(null, piece.id);
+  const updatePieceeWithId = updatePiece.bind(null, patient.id);
   const [state, dispatch] = useFormState(updatePieceeWithId, initialState);
   const status = useFormStatus();
   // for file upload
@@ -108,15 +109,15 @@ export default function UpdatePiecesModel({
                     ))}
                   </Autocomplete> */}
 
-                  <Input
+                  {/* <Input
                     defaultValue={piece.reference}
                     label="Reference"
                     name="reference"
                     placeholder="Enter Reference"
                     type="text"
                     variant="bordered"
-                  />
-                  <Input
+                  /> */}
+                  {/* <Input
                     defaultValue={`${piece.price}`}
                     label="Price"
                     name="price"
@@ -127,17 +128,17 @@ export default function UpdatePiecesModel({
                       // Remove any non-numeric characters
                       e.target.value = e.target.value.replace(/[^0-9]/g, '');
                     }}
-                  />
+                  /> */}
 
                   <Input
-                    defaultValue={piece.name}
+                    defaultValue={patient.name}
                     label="Name"
                     name="name"
                     placeholder="Enter Name"
                     type="text"
                     variant="bordered"
                   />
-
+                  {/* 
                   <Input
                     defaultValue={piece.description}
                     label="Description"
@@ -145,16 +146,16 @@ export default function UpdatePiecesModel({
                     placeholder="Enter Description"
                     type="text"
                     variant="bordered"
-                  />
+                  /> */}
 
-                  <Input
+                  {/* <Input
                     defaultValue={piece.mark}
                     label="Mark"
                     name="mark"
                     placeholder="Enter Mark"
                     type="text"
                     variant="bordered"
-                  />
+                  /> */}
 
                   {/* <Input
                     defaultValue={machine.applicable}
@@ -168,7 +169,7 @@ export default function UpdatePiecesModel({
                   {/* custom checkbox */}
                   <label className="flex cursor-pointer items-center justify-between p-1 text-slate-400">
                     Available:{' '}
-                    <div className="relative inline-block">
+                    {/* <div className="relative inline-block">
                       <input
                         className="bg-gary-400 peer h-6 w-12 cursor-pointer appearance-none rounded-full border border-gray-300 checked:border-green-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2"
                         defaultChecked={piece.available}
@@ -176,7 +177,7 @@ export default function UpdatePiecesModel({
                         type="checkbox"
                       />
                       <span className="pointer-events-none absolute left-1 top-1 block h-4 w-4 rounded-full bg-slate-600 transition-all duration-200 peer-checked:left-7 peer-checked:bg-green-300" />
-                    </div>
+                    </div> */}
                   </label>
                   {/* custom checkbox */}
 

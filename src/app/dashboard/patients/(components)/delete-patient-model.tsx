@@ -15,27 +15,29 @@ import { title } from '@/components/primitives';
 import { DeleteIcon } from '@/components/dashboard/icons/table/delete-icon';
 import { Pieces } from '@/domain/entities/Pieces';
 import { deletePieces } from '@/actions/pieces';
+import { Patients } from '@/domain/entities/Patients';
+import { deletePatient } from '@/actions/patients';
 // import DeleteButton from './delete-button';
 
 export default function DeletePieceModel({
-  piece,
+  patient,
 }: {
-  piece: Omit<Pieces, 'image_url'>;
+  patient: Omit<Patients, 'image_url'>;
 }) {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
-  const initialState: Omit<Pieces, 'id' | 'image_url'> = {
-    // category: 'tessst',
-    reference: 'tesst',
-    price: 0,
-  };
-  //   const [formData, setFormData] = useState<Omit<pieces, 'id' | 'image_url'>>({
+  // const initialState: Omit<Patients, 'id' | 'image_url'> = {
+  //   phone_number: '',
+  //   name: '',
+  //   doctor_id: ''
+  // };
+  //   const [formData, setFormData] = useState<Omit<patients, 'id' | 'image_url'>>({
   //     category: '',
   //     reference: '',
   //     price: 0,
   //   });
-  const deletepieceWithId = deletePieces.bind(null, piece.id);
+  const deletePatientWithId = deletePatient.bind(null, patient?.id);
 
-  const [state, dispatch] = useFormState(deletepieceWithId, initialState);
+  const [state, dispatch] = useFormState(deletePatientWithId, {});
 
   return (
     <div className="flex flex-col gap-2">

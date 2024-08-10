@@ -16,8 +16,8 @@ class SupabaseService {
     }
 
 
-     // ? Done
-     async getAllItems<T>(): Promise<T[]> {
+    // ? Done
+    async getAllItems<T>(): Promise<T[]> {
         const { data } = await this.supabase.from(this.tableName).select().order('created_at', { ascending: false });
 
         if (!data) return [];
@@ -55,7 +55,7 @@ class SupabaseService {
         return data;
     }
 
-   
+
 
     async getItemsPages(): Promise<number> {
         const { data, count } = await this.supabase.from(this.tableName).select('*', { count: 'exact', head: true });
@@ -75,23 +75,23 @@ class SupabaseService {
     }
 
     async deleteItem(id: number, prevState: any, formData: FormData) {
-        const { data } = await this.supabase.from(this.tableName).select().eq('id', id);
-        const item: Pieces = data![0]; // Data could be null
+        // const { data } = await this.supabase.from(this.tableName).select().eq('id', id);
+        // const item: Pieces = data![0]; // Data could be null
 
-        const url = item.image_url;
+        // const url = item.image_url;
 
-        if (url) {
-            const secondLastSlashIndex = url.lastIndexOf("/", url.lastIndexOf("/") - 1);
-            const imageBacketPath = url.slice(secondLastSlashIndex + 1);
+        // if (url) {
+        //     const secondLastSlashIndex = url.lastIndexOf("/", url.lastIndexOf("/") - 1);
+        //     const imageBacketPath = url.slice(secondLastSlashIndex + 1);
 
-            await this.deleteFile(imageBacketPath);
-        }
+        //     await this.deleteFile(imageBacketPath);
+        // }
 
         await this.supabase.from(this.tableName).delete().eq('id', id);
 
         revalidatePath(`/dashboard/${this.tableName}`);
         revalidatePath('/');
-        revalidatePath('/products');
+        // revalidatePath('/products');
     }
 
     async updateItem(id: number, prevState: any, formData: FormData) {
@@ -133,12 +133,12 @@ class SupabaseService {
 
 
 
-   
-    
 
 
-    async createItem<T>(prevState: any, formData: FormData, props:string[]){
-    
+
+
+    async createItem<T>(prevState: any, formData: FormData, props: string[]) {
+
         // const image: any = formData.get("file");
         let imageUrl = "";
 
@@ -160,12 +160,12 @@ class SupabaseService {
         props.forEach((prop: string) => {
             item[prop] = formData.get(prop) as any;
         });
-    
-        console.log("patients", item)
-    
-      const {data, error} = await this.supabase.from(this.tableName).insert(item);
 
-    //   console.log(error)
+        console.log("patients", item)
+
+        const { data, error } = await this.supabase.from(this.tableName).insert(item);
+
+        //   console.log(error)
 
         revalidatePath(`/dashboard/${this.tableName}`);
         revalidatePath('/');

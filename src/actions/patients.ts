@@ -12,7 +12,7 @@ export const getAllPatients = async () => {
     return await patientCrud.getAllItems<Patients>();
 };
 
-export const searchPatients = async (search:string) => {
+export const searchPatients = async (search: string) => {
     return await patientCrud.searchItems<Patients>(search);
 }
 
@@ -22,11 +22,17 @@ const props = [
     "name",
     // "doctor_id",
     // "email"
-    ]
+]
 
-    
 
-export const createPatient = 
+
+export const createPatient =
     async (prevState: any, formData: FormData) => {
-    await patientCrud.createItem<Patients>(prevState, formData, props)
-}
+        await patientCrud.createItem<Patients>(prevState, formData, props)
+    }
+
+export const deletePatient =
+    async (id: number, prevState: any, formData: FormData) => {
+        await patientCrud.deleteItem(id, prevState, formData,)
+    }
+

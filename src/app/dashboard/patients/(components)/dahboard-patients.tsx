@@ -1,13 +1,12 @@
 import { Divider } from '@nextui-org/react';
 import { Card } from '@nextui-org/card';
 
-import { getAllPieces } from '@/actions/pieces';
-import { Pieces } from '@/domain/entities/Pieces';
+// import { getAllpatient } from '@/actions/patient';
 import CreatePieceModel from './create-patient-model';
 import ImageView from './dashboard-image-model';
 import DeletePieceModel from './delete-patient-model';
-import SearchPieces from './search-patients';
-import UpdatePiecesModel from './update-patient-model';
+import Search from './search-patients';
+import UpdatepatientModel from './update-patient-model';
 import { Patients } from '@/domain/entities/Patients';
 import CreatePatientModel from './create-patient-model';
 
@@ -22,16 +21,16 @@ export default async function DashboardPatients({
     //   label: 'CATEGORY',
     // },
     {
-      key: 'ref',
-      label: 'REF',
+      key: 'name',
+      label: 'Name',
     },
     // {
     //   key: 'status',
     //   label: 'STATUS',
     // },
     {
-      key: 'prix',
-      label: 'PRIX',
+      key: 'phone number',
+      label: 'Phone',
     },
 
     // {
@@ -40,12 +39,12 @@ export default async function DashboardPatients({
     // },
   ];
 
-  const normalMachiesList = await getAllPieces();
+  // const normalMachiesList = await getAllpatient();
 
   return (
     <div className="  w-[95vw] pt-20 sm:w-[97%]">
       <div className="flex   items-end  justify-between gap-5 p-3  ">
-        <SearchPieces pieces={normalMachiesList} />
+        {/* <Search patient={normalMachiesList} /> */}
         <CreatePatientModel />
       </div>
       <Card className="h-[82vh] overflow-y-auto p-5  sm:h-[80vh]">
@@ -62,18 +61,18 @@ export default async function DashboardPatients({
             </div>
           ))}
 
-          <div className="invisible flex w-0 justify-center font-semibold sm:visible sm:w-1/3 ">
+          {/* <div className="invisible flex w-0 justify-center font-semibold sm:visible sm:w-1/3 ">
             IMAGE
-          </div>
+          </div> */}
           <div className="flex w-1/2 justify-end pr-3 font-semibold">
             Actions
           </div>
         </div>
         <Divider />
 
-        {Patients.map((pieces) => (
+        {Patients.map((patient) => (
           <div
-            key={pieces.id}
+            key={patient.id}
             className="rounded-md dark:hover:bg-gray-700/25 "
           >
             <div
@@ -82,24 +81,43 @@ export default async function DashboardPatients({
                  border-gray-700 py-3 "
             >
               <div className="flex w-1/3 justify-start ">
-                {/* {pieces.reference} */}
+                {patient.name}
+              </div>
+              <div className="flex w-1/3 justify-start ">
+                {patient.phone_number}
               </div>
 
-              {/* <div className="flex w-1/3 justify-start">{pieces.price}</div> */}
-              <div className="invisible flex  w-0 justify-center  sm:visible sm:w-1/3 ">
-                {/* Open Image Model */}
-                {/* <ImageView key={pieces.id} pieces={pieces} /> */}
-                {/* Open Image Model */}
-              </div>
+              {/* <div className="flex w-1/3 justify-start">{patient.price}</div> */}
+              {/* <div className="invisible flex  w-0 justify-center  sm:visible sm:w-1/3 "> */}
+              {/* Open Image Model */}
+              {/* <ImageView key={patient.id} patient={patient} /> */}
+              {/* Open Image Model */}
+              {/* </div> */}
+
+
+
+              {/* Actions */}
               <div className="  flex w-3/6 flex-col items-end  justify-end gap-2 lg:flex-row  ">
-                {/* <UpdatePiecesModel piece={pieces} />
-                <DeletePieceModel piece={pieces} /> */}
-                <div className="  sm:invisible sm:h-0 sm:w-0 ">
-                  {/* Open Image Model */}
-                  {/* <ImageView key={pieces.id} pieces={pieces} /> */}
-                  {/* Open Image Model */}
-                </div>
+                <UpdatepatientModel patient={patient} />
+                <DeletePieceModel patient={patient} />
+                {/* <div className="  sm:invisible sm:h-0 sm:w-0 ">
+                  Open Image Model
+                  <ImageView key={patient.id} patient={patient} />
+                  Open Image Model
+                </div> */}
               </div>
+
+
+              {/* Actions */}
+              {/* <div className="  flex w-3/6 flex-col items-end  justify-end gap-2 lg:flex-row  "> */}
+              {/* <UpdatepatientModel piece={patient} />
+                <DeletePieceModel piece={patient} /> */}
+              {/* <div className="  sm:invisible sm:h-0 sm:w-0 ">
+                  Open Image Model
+                  <ImageView key={patient.id} patient={patient} />
+                  Open Image Model
+                </div> */}
+              {/* </div> */}
             </div>
           </div>
         ))}
