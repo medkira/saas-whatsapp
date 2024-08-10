@@ -94,7 +94,7 @@ class SupabaseService {
         // revalidatePath('/products');
     }
 
-    async updateItem(id: number, prevState: any, formData: FormData) {
+    async updateItem(id: number, prevState: any, formData: FormData, props: string[]) {
         const image = formData.get("file") as File;
         let imageUrl = "";
 
@@ -111,14 +111,19 @@ class SupabaseService {
             imageUrl = await this.uploadFile(image);
         }
 
-        const item: Omit<Pieces, 'id' | 'image_url'> = {
-            price: formData.get("price") as any,
-            reference: formData.get("reference") as any,
-            available: formData.get("available") as any,
-            description: formData.get("description") as any,
-            mark: formData.get("mark") as any,
-            name: formData.get("name") as any
-        };
+
+        const item: Record<string, any> = {};
+
+        props.forEach((prop: string) => {
+            const value = formData.get(prop);
+            if (value && (
+                (typeof value === 'string' && value.length !== 0) ||
+                (value instanceof File && value.size !== 0)
+            )) {
+                item[prop] = value as any;
+            }
+        });
+
 
         if (image.size != 0) {
             await this.supabase.from(this.tableName).update({ ...item, image_url: imageUrl }).eq('id', id);
@@ -128,7 +133,6 @@ class SupabaseService {
 
         revalidatePath(`/dashboard/${this.tableName}`);
         revalidatePath('/');
-        revalidatePath('/products');
     }
 
 
@@ -155,13 +159,13 @@ class SupabaseService {
         //     name: formData.get("name") as any
         // };
 
-        const item: Partial<Record<string, any>> = {};
+        const item: Record<string, any> = {};
 
         props.forEach((prop: string) => {
             item[prop] = formData.get(prop) as any;
         });
 
-        console.log("patients", item)
+        // console.log("patients", item)
 
         const { data, error } = await this.supabase.from(this.tableName).insert(item);
 

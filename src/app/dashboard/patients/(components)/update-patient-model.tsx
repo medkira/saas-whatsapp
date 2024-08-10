@@ -28,6 +28,7 @@ import { EditIcon } from '@/components/dashboard/icons/table/edit-icon';
 import { Pieces } from '@/domain/entities/Pieces';
 import { updatePiece } from '@/actions/pieces';
 import { Patients } from '@/domain/entities/Patients';
+import { updatePatient } from '@/actions/patients';
 
 export default function UpdatePiecesModel({
   patient,
@@ -40,8 +41,8 @@ export default function UpdatePiecesModel({
     name: '',
     doctor_id: ''
   };
-  const updatePieceeWithId = updatePiece.bind(null, patient.id);
-  const [state, dispatch] = useFormState(updatePieceeWithId, initialState);
+  const updatePatientWithId = updatePatient.bind(null, patient.id);
+  const [state, dispatch] = useFormState(updatePatientWithId, initialState);
   const status = useFormStatus();
   // for file upload
   const [files, setFiles] = useState<File[] | null>([]);
@@ -138,15 +139,15 @@ export default function UpdatePiecesModel({
                     type="text"
                     variant="bordered"
                   />
-                  {/* 
+
                   <Input
-                    defaultValue={piece.description}
-                    label="Description"
-                    name="description"
-                    placeholder="Enter Description"
+                    defaultValue={patient.phone_number}
+                    label="Phone Number"
+                    name="phone_number"
+                    placeholder="Enter phone number"
                     type="text"
                     variant="bordered"
-                  /> */}
+                  />
 
                   {/* <Input
                     defaultValue={piece.mark}
@@ -167,9 +168,9 @@ export default function UpdatePiecesModel({
                   /> */}
 
                   {/* custom checkbox */}
-                  <label className="flex cursor-pointer items-center justify-between p-1 text-slate-400">
-                    Available:{' '}
-                    {/* <div className="relative inline-block">
+                  {/* <label className="flex cursor-pointer items-center justify-between p-1 text-slate-400">
+                    Available:{' '} */}
+                  {/* <div className="relative inline-block">
                       <input
                         className="bg-gary-400 peer h-6 w-12 cursor-pointer appearance-none rounded-full border border-gray-300 checked:border-green-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2"
                         defaultChecked={piece.available}
@@ -178,7 +179,7 @@ export default function UpdatePiecesModel({
                       />
                       <span className="pointer-events-none absolute left-1 top-1 block h-4 w-4 rounded-full bg-slate-600 transition-all duration-200 peer-checked:left-7 peer-checked:bg-green-300" />
                     </div> */}
-                  </label>
+                  {/* </label> */}
                   {/* custom checkbox */}
 
                   {/* imae upload  */}

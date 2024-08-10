@@ -36,3 +36,9 @@ export const deletePatient =
         await patientCrud.deleteItem(id, prevState, formData,)
     }
 
+export const updatePatient =
+    async (id: number, prevState: any, formData: FormData) => {
+        await patientCrud.updateItem(id, prevState, formData, props)
+
+    }
+
