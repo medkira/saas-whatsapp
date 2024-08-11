@@ -55,7 +55,7 @@ export default async function DashboardPatients({
           {columns.map((column) => (
             <div
               key={column.key}
-              className="flex w-1/3 justify-start font-semibold "
+              className="flex text-gray-500 w-1/3 justify-start font-semibold "
             >
               {column.label}
             </div>
@@ -64,7 +64,7 @@ export default async function DashboardPatients({
           {/* <div className="invisible flex w-0 justify-center font-semibold sm:visible sm:w-1/3 ">
             IMAGE
           </div> */}
-          <div className="flex w-1/2 justify-end pr-3 font-semibold">
+          <div className="flex w-1/2 text-gray-500 justify-end pr-3 font-semibold">
             Actions
           </div>
         </div>

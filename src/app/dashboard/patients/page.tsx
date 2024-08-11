@@ -1,6 +1,6 @@
 import { getAllPieces, searchPieces } from '@/actions/pieces';
 import { Pieces } from '@/domain/entities/Pieces';
-import DashboardPatients from './(components)/dahboard-patients';
+import DashboardPatients from './(components)/dashboard-patients';
 import { Patients } from '@/domain/entities/Patients';
 import { getAllPatients, searchPatients } from '@/actions/patients';
 
