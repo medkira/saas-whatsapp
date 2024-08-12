@@ -1,0 +1,135 @@
+.rbc-off-range-bg {
+    /* background-color: rgb(227, 143, 143); */
+    background-color: rgb(245, 235, 235, 0.2);
+}
+
+.rbc-day-bg {
+    /* border-radius: 0px; */
+}
+
+.rbc-month-view {
+    border-radius: 10px;
+}
+
+.rbc-time-view {
+    border-radius: 10px;
+}
+
+/*
+.rbc-events-container {
+    background-color: rgb(245, 235, 235, 0.2);
+
+} */
+
+/* .rbc-timeslot-group {
+    background-color: rgb(245, 235, 235, 0.2);
+
+} */
+
+
+/* .rbc-row {
+    background-color: rgb(245, 235, 235, 0.2);
+
+} */
+
+/* .rbc-day-slot .rbc-time-column .rbc-now .rbc-today { */
+
+/* .rbc-time-header {
+    background-color: transparent
+} */
+
+.rbc-day-slot {
+    background-color: transparent
+}
+
+/* .rbc-time-column  {
+    background-color: transparent
+} */
+
+/* .rbc-now {
+    background-color: transparent
+} */
+
+.rbc-today {
+    background-color: rgba(66, 134, 180, 0.2);
+
+
+
+}
+
+.rbc-button-link {
+    padding-top: 5%;
+    // background-color: aquamarine;
+    padding-bottom: 50%;
+    // padding-left: 70%;
+    padding-right: 70%;
+    border-radius: 5px;
+
+    // background-color: rgba(250, 251, 251, 0.2);
+
+
+}
+
+
+
+/* .rbc-timeslot-group {
+    background-color: transparent
+}
+
+.rbc-events-container {
+    background-color: transparent
+} */
+
+/* .rbc-header {
+    background: #79b8e4;
+    color: white;
+    padding: 10px;
+    font-size: 12px;
+} */
+/*
+.rbc-event {
+    padding: 0px !important;
+    border-radius: 0px !important;
+    border: none !important;
+    background-color: transparent !important;
+} */
+
+.rbc-background-event {
+    padding: 0px !important;
+    border-radius: 0px !important;
+    border: none !important;
+    background-color: transparent !important;
+}
+
+/* .rbc-time-slot {
+    background-color: #eaf3fa;
+    color: #74a4c3;
+    border-color: aqua !important;
+} */
+
+.rbc-event-label {
+    display: none !important;
+}
+
+.rbc-events-container {
+    width: 100% !important;
+}
+
+.rbc-timeslot-group {
+    min-height: 120px !important;
+}
+
+
+// .rbc-month-view .rbc-date-cell {
+//     pointer-events: none;
+//     /* Disable events on the default date cell */
+// }
+
+// .rbc-month-view .rbc-date-cell>* {
+//     pointer-events: all;
+//     /* Enable events on all children */
+// }
+
+// .rbc-month-view .rbc-day-bg {
+//     cursor: pointer;
+// }

@@ -154,7 +154,7 @@ export default function Landing() {
               // height={400}
               layout={'fill'}
               src="/dashboard-mockup.png"
-              // width={600}
+            // width={600}
             />
           </div>
           <div className="mt-8 md:ml-8 md:mt-0 md:w-1/2">
