@@ -3,9 +3,9 @@
     background-color: rgb(245, 235, 235, 0.2);
 }
 
-.rbc-day-bg {
-    /* border-radius: 0px; */
-}
+// .rbc-day-bg {
+//     /* border-radius: 0px; */
+// }
 
 .rbc-month-view {
     border-radius: 10px;
@@ -14,6 +14,7 @@
 .rbc-time-view {
     border-radius: 10px;
 }
+
 
 /*
 .rbc-events-container {
@@ -58,12 +59,12 @@
 }
 
 .rbc-button-link {
-    padding-top: 5%;
-    // background-color: aquamarine;
-    padding-bottom: 50%;
-    // padding-left: 70%;
-    padding-right: 70%;
-    border-radius: 5px;
+    // padding-top: 5%;
+    // // background-color: aquamarine;
+    // padding-bottom: 50%;
+    // // padding-left: 70%;
+    // padding-right: 70%;
+    // border-radius: 5px;
 
     // background-color: rgba(250, 251, 251, 0.2);
 
@@ -117,6 +118,12 @@
 
 .rbc-timeslot-group {
     min-height: 120px !important;
+    // cursor: pointer;
+
+}
+
+.rbc-events-container {
+    cursor: pointer;
 }
 
 

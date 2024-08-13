@@ -36,7 +36,7 @@ export default function CreatePatientModel() {
           {(onClose) => (
             <>
               <ModalHeader className="flex flex-col gap-1">
-                Create Piece
+                Add Patient
               </ModalHeader>
               {isOpen && <Form onClose={onClose} />}
             </>
@@ -113,7 +113,7 @@ function Form({ onClose }: { onClose: any }) {
           type="text"
           variant="bordered"
         /> */}
-    
+
         {/* custom checkbox */}
         {/* <label className="flex cursor-pointer items-center justify-between p-1 text-slate-400">
           Available:{' '}
@@ -171,7 +171,7 @@ function CreateButton({ close }: { close: any }) {
       isLoading={status.pending}
       type="submit"
       onPress={() => setTimeout(close, 3000)}
-      // onPress={close(false)}
+    // onPress={close(false)}
     >
       Create
     </Button>
