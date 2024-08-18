@@ -43,6 +43,23 @@ class SupabaseService {
 
 
 
+    async getItemsByConditions<T>(conditions: { [key: string]: string | number }): Promise<T[]> {
+        // console.log(Object.entries(conditions))
+        let query = this.supabase.from(this.tableName).select();
+
+        for (const [key, value] of Object.entries(conditions)) {
+            query = query.eq(key, value);
+        }
+
+        const { data } = await query.order('created_at', { ascending: false });
+
+        if (!data) return [];
+
+        return data;
+    }
+
+    // ********************************************************************** //
+
     async getItems(page: string = '1'): Promise<Pieces[]> {
         const pageNumber = Number(page);
         const start = ITEMS_PER_PAGE * (pageNumber - 1);
@@ -164,6 +181,8 @@ class SupabaseService {
         props.forEach((prop: string) => {
             item[prop] = formData.get(prop) as any;
         });
+
+        // console.log("props", props)
 
         // console.log("patients", item)
 

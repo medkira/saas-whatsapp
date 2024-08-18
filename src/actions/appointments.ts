@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import { Appointments } from "@/domain/entities/Appointments";
 import { createClient } from "@/utils/supabase/server";
 import SupabaseService from "./abstarct/crud-entitie-supabse";
+import { Patients } from "@/domain/entities/Patients";
 
 
 const supabseTableName = 'appointments'
@@ -12,13 +13,15 @@ const appointmentCrud = new SupabaseService(supabseTableName);
 
 
 
-export async function createAappointment(appointment_time: string, appointment_date: any, prevState: any, formData: FormData) {
+export async function createAappointment(appointment_time: string, appointment_date: any, patient: Patients, prevState: any, formData: FormData) {
     const supabase = createClient();
 
     // Get the appointment date from the form data
     // const appointmentDate = formData.get("appointment_date") as string;
 
     console.log(appointment_date)
+
+    console.log(patient)
     // Combine date and time into a single ISO 8601 datetime string
     const appointmentDateTime = new Date(`${appointment_date}T${appointment_time}`).toISOString();
 
