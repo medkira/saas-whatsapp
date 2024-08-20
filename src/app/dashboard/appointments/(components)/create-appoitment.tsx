@@ -43,13 +43,14 @@ export default function CreateAppointment({
     const selectedPatient = patients!.find(obj => obj.id === userId)
 
     const dateTimecreateAappointment = createAppointment.bind(null, selectedTime, date.toString(), selectedPatient!)
-    const [state, dispatch] = useFormState(dateTimecreateAappointment, {});
+    const [state, dispatch] = useFormState(dateTimecreateAappointment, null);
 
     useEffect(() => {
-        toast.success(
-            `Appointment created successfully for ${selectedPatient?.name}`,
-            { duration: 5000 },
-        );
+        if (state != null)
+            toast.success(
+                `Appointment created successfully for ${selectedPatient?.name}`,
+                { duration: 5000 },
+            );
 
     }, [state])
 
