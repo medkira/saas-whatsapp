@@ -3,10 +3,13 @@ import { createClient } from "@/utils/supabase/server";
 import SupabaseService from "./abstarct/crud-entitie-supabse";
 
 import { Patients } from "@/domain/entities/Patients";
+import { getCurrentDoctorId } from "./doctor";
 
 const supabseTableName = 'patients'
 
 const patientCrud = new SupabaseService(supabseTableName);
+
+
 
 
 // export const getAllPatientsByDoctorId = async (doctor_id: string): Promise<Patients[]> => {
@@ -14,9 +17,9 @@ const patientCrud = new SupabaseService(supabseTableName);
 // }
 
 export const getAllPatients = async (): Promise<Patients[]> => {
-    const supabase = createClient();
-    const { data: { user } } = await supabase.auth.getUser();
-    return await patientCrud.getItemsByConditions<Patients>({ 'doctor_id': user!.id });
+    const doctorId = await getCurrentDoctorId();
+
+    return await patientCrud.getItemsByConditions<Patients>({ 'doctor_id': doctorId });
 };
 
 export const searchPatients = async (search: string) => {
@@ -53,4 +56,3 @@ export const updatePatient =
         await patientCrud.updateItem(id, prevState, formData, props)
 
     }
-

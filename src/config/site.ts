@@ -1,7 +1,7 @@
 export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
- name: 'Doctor Appointment System | WhatsApp',
+  name: 'Doctor Appointment System | WhatsApp',
   description: 'A SaaS that provides doctors with the capability to schedule appointments for their patients and remind them about the appointments through WhatsApp.',
   navItems: [
     {
@@ -14,21 +14,21 @@ export const siteConfig = {
     // },
     {
       label: 'Features',
-      href: '/products/machines/1',
+      href: '/features',
     },
     {
       label: 'Pricing',
-      href: '/products/pieces/1',
-    },  
+      href: '/pricing',
+    },
     {
       label: 'Demo',
-      href: '/products/pieces/1',
-    }, 
-     {
+      href: '/demo',
+    },
+    {
       label: 'About Us ',
-      href: '/products/pieces/1',
-    }, 
-    
+      href: 'about',
+    },
+
   ],
   navMenuItems: [
     {

@@ -5,55 +5,101 @@ import { Appointments } from "@/domain/entities/Appointments";
 import { createClient } from "@/utils/supabase/server";
 import SupabaseService from "./abstarct/crud-entitie-supabse";
 import { Patients } from "@/domain/entities/Patients";
+import { getCurrentDoctorId } from "./doctor";
+import { createAppointmentSchema } from "./server-validation/schema";
 
 
 const supabseTableName = 'appointments'
 
 const appointmentCrud = new SupabaseService(supabseTableName);
 
+const props = [
 
+]
+// The main function to create an appointment
+export async function createAppointment(
+    appointment_time: string,
+    appointment_date: string,
+    patient: Patients | null,
+    prevState: any,
+    formData: FormData
+) {
 
-export async function createAappointment(appointment_time: string, appointment_date: any, patient: Patients, prevState: any, formData: FormData) {
     const supabase = createClient();
 
-    // Get the appointment date from the form data
-    // const appointmentDate = formData.get("appointment_date") as string;
+    const doctorId = await getCurrentDoctorId();
+    // Validate the fields including the entire patient object
+    const validationResult = createAppointmentSchema.safeParse({
+        appointment_date,
+        appointment_time,
+        patient,
+        reminder_sent: formData.get("reminder_sent") === "true",
+        doctor_id: doctorId,
+    });
 
-    console.log(appointment_date)
+    if (!validationResult.success) {
+        return validationResult.error.flatten().fieldErrors;
 
-    console.log(patient)
-    // Combine date and time into a single ISO 8601 datetime string
+    }
+
+    // Safely construct the appointmentDateTime now that we know the date and time are valid
     const appointmentDateTime = new Date(`${appointment_date}T${appointment_time}`).toISOString();
 
-    // Log the combined datetime
-    console.log(appointmentDateTime);
-
-    const appointment: Omit<Appointments, 'id' | 'phone_number' | 'patient_name'> = {
+    const appointment = {
         appointment_date: appointmentDateTime,
-        patient_id: formData.get("patient_id") as any,
-        reminder_sent: formData.get("reminder_sent") as any,
+        patient_id: patient!.id,
+        reminder_sent: formData.get("reminder_sent") === "true",
+        phone_number: patient!.phone_number,
+        doctor_id: doctorId,
     };
 
     // Insert the appointment into the database
-    const { error } = await supabase
+    const { error, data } = await supabase
         .from('appointments')
         .insert({
             appointment_date: appointment.appointment_date,
             patient_id: appointment.patient_id,
-            reminder_sent: appointment.reminder_sent
-        });
+            reminder_sent: appointment.reminder_sent,
+            phone_number: appointment.phone_number,
+            doctor_id: appointment.doctor_id
+        }).select();
 
-    if (error) {
-        console.error("Error inserting appointment:", error);
-    } else {
-        console.log("Appointment inserted successfully");
-    }
+    // if (error) {
+    //    "Error inserting appointment: " + error.message;
+    // }
+
+    // Revalidate the path to update the appointments page
+    revalidatePath('/dashboard/appointments');
+
+
+    // Return null if there are no errors
+    return data as any;
 }
 
-// const dateWithoutTimeZone = (appointment.appointment_date).split('[')[0];
+// export async function createAappointment(appointment_time: string, appointment_date: any, patient: Patients, prevState: any, formData: FormData) {
+
+
+// }
+
+
+
+
+
+
+
 export const getAppointments = async () => {
-    return await appointmentCrud.getAllItems<Appointments>();
+    const doctorId = await getCurrentDoctorId();
+    return await appointmentCrud.getItemsByConditions<Appointments>({ 'doctor_id': doctorId });
 }
+
+
+
+
+
+
+
+
+
 
 
 // export async function getAppointments() {
@@ -70,3 +116,5 @@ export const getAppointments = async () => {
 // return data
 
 // }
+
+// const dateWithoutTimeZone = (appointment.appointment_date).split('[')[0];

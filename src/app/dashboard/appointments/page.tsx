@@ -4,42 +4,21 @@ import { getAllMachines, getMachine, searchMachines } from '@/actions/machines';
 import CreateAppointment from './(components)/create-appoitment';
 import { getAllPatients } from '@/actions/patients';
 import { createClient } from '@/utils/supabase/server';
+import { getAppointments } from '@/actions/appointments';
 
 export default async function Page() {
-  // let data: Machines[] = [];
-  // const query = searchParams?.query || '';
-
-  // if (query.length === 0) {
-  //   data = await getAllMachines();
-  // } else if (query.length !== 0) {
-  //   data = await searchMachines(query);
-
-  //   const ref = data.find(
-  //     (machine) => machine.reference === query.toUpperCase(),
-  //   );
-
-  //   if (ref) {
-  //     data = [ref];
-  //   }
-  // } else if (data.length === 0) {
-  //   data = [];
-  // }
-
-  // fetch doctor id 
-
-
-  // console.log(user?.id)
-
-  // pass doctor doctor id to ge t the doctor patients
+  // pass doctor doctor id to get the doctor patients
+  // update by default the id is passed
   const patients = await getAllPatients();
 
+  const appointments = await getAppointments();
 
 
 
 
   return (
     <div className="flex flex-col items-center justify-center text-white">
-      <CreateAppointment patients={patients} />
+      <CreateAppointment patients={patients} appointments={appointments} />
     </div>
   );
 }

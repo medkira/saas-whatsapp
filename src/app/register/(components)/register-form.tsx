@@ -5,6 +5,7 @@ import RegisterButton from './register-button';
 
 import { signup } from '@/actions/auth';
 import ErrorMessage from '@/components/validation/error-message';
+import { useEffect } from 'react';
 
 export default function RegisterForm() {
   const [errorMessage, dispatch] = useFormState(signup, undefined);
