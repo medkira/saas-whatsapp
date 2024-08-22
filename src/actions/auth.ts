@@ -61,7 +61,10 @@ export async function signup(userLocalTimeZone: string, countryCode: string, pho
         // };
     }
 
-    // console.log("user", user);
+    const cronJobExist = await isCronJobExist(user.local_time_zone);
+    if (!cronJobExist) {
+        await createCronJob(user.local_time_zone);
+    }
 
     const { data, error } = await supabase.auth.signUp({ email: user.email, password: user.password });
 
@@ -81,10 +84,7 @@ export async function signup(userLocalTimeZone: string, countryCode: string, pho
     // obj : cronjob = {localtimezon, timeOfscheduledCronJob }
     // => post req to cron-job.org to save the cron job
 
-    const cronJobExist = await isCronJobExist(user.local_time_zone);
-    if (!cronJobExist) {
-        await createCronJob(user.local_time_zone);
-    }
+
 
 
     revalidatePath('/', 'layout')

@@ -21,6 +21,7 @@ export const createCronJob = async (localTimeZone: string) => {
     // make the post req to cron-job.org 
     // to save schedule the cron job
 
+    console.log("error supabse", error);
 
     const schedule = {
         timezone: localTimeZone,
@@ -41,20 +42,25 @@ export const createCronJob = async (localTimeZone: string) => {
             'Authorization': `Bearer ${process.env.CRON_JOB_API_KEY}`,
         },
         body: JSON.stringify({
-            url: url + '/reminders?day=today',
-            schedule,
-            enabled: true,
-            httpMethod: 'GET',
+            job: {
+                enabled: true,
+                saveResponses: true,
+                url: url + '/reminders?day=today',
+                schedule,
+                // httpMethod: 'GET',
+            }
         }),
     });
 
+    console.log("error cron job ", response);
 
-    if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(`Failed to create cron job: ${response.statusText} - ${errorData.message}`);
-    }
 
-    const res = await response.json();
+    // if (!response.ok) {
+    //     const errorData = await response.json();
+    //     throw new Error(`Failed to create cron job: ${response.statusText} - ${errorData.message}`);
+    // }
+
+    // const res = await response.json();
 
 }
 
