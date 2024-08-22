@@ -10,6 +10,7 @@ const cronJobsCrud = new SupabaseService(supabseTableName);
 
 export const createCronJob = async (localTimeZone: string) => {
 
+    // if the cron job get 
     // create the local timz zon of 
     // the current user
     const supabase = createClient();
@@ -23,7 +24,7 @@ export const createCronJob = async (localTimeZone: string) => {
 
     console.log("error supabse", error);
 
-    const schedule = {
+    const schedule_today = {
         timezone: localTimeZone,
         hour: '07',
         minute: '00',
@@ -34,8 +35,8 @@ export const createCronJob = async (localTimeZone: string) => {
 
     const url = process.env.BASE_URL;
 
-
-    const response = await fetch('https://api.cron-job.org/jobs', {
+    // create a cron job in 7 AM
+    const res_1 = await fetch('https://api.cron-job.org/jobs', {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
@@ -46,13 +47,47 @@ export const createCronJob = async (localTimeZone: string) => {
                 enabled: true,
                 saveResponses: true,
                 url: url + '/reminders?day=today',
-                schedule,
+                schedule_today,
                 // httpMethod: 'GET',
             }
         }),
     });
 
-    console.log("error cron job ", response);
+
+
+    const schedule_tomorrow = {
+        timezone: localTimeZone,
+        hour: '19',
+        minute: '00',
+        dayOfMonth: '*',
+        month: '*',
+        dayOfWeek: '*',
+    };
+
+    // create a cron job in 7 PM
+
+    const res_2 = await fetch('https://api.cron-job.org/jobs', {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${process.env.CRON_JOB_API_KEY}`,
+        },
+        body: JSON.stringify({
+            job: {
+                enabled: true,
+                saveResponses: true,
+                url: url + '/reminders?day=tomorrow',
+                schedule_tomorrow,
+                // httpMethod: 'GET',
+            }
+        }),
+    });
+
+    // console.log("error cron job ", response);
+
+
+
+
 
 
     // if (!response.ok) {

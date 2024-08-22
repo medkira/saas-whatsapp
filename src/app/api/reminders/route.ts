@@ -5,7 +5,6 @@ import { NextResponse } from 'next/server';
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const day = searchParams.get('day'); // 'today' or 'tomorrow'
-
   let reminders;
   if (day === 'tomorrow') {
     reminders = await getUnsentRemindersForTomorrow();
@@ -16,7 +15,6 @@ export async function GET(request: Request) {
 
   } else if (day == 'today') {
     reminders = await getUnsentRemindersOfToday();
-    console.log("reminders", reminders)
     for (const reminder of reminders) {
       await sendReminder(reminder);
     }
@@ -27,7 +25,6 @@ export async function GET(request: Request) {
 
 
 // the Reminders
-
 async function getUnsentRemindersOfToday() {
   const supabase = createClient();
 
