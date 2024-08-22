@@ -1,3 +1,4 @@
+// eslint-disable
 import { CheckIcon, ChevronsUpDown } from "lucide-react";
 
 import * as React from "react";
@@ -52,6 +53,7 @@ const PhoneInput: React.ForwardRefExoticComponent<PhoneInputProps> =
                      *
                      * @param {E164Number | undefined} value - The entered value
                      */
+                    // @ts-ignore
                     onChange={(value) => onChange?.(value || "")}
                     {...props}
                 />

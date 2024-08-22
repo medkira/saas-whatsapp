@@ -7,6 +7,7 @@ import { registerSchema } from './server-validation/schema'
 
 import { createClient } from '@/utils/supabase/server'
 import { createDoctor } from './doctors'
+import { createCronJob, isCronJobExist } from './cronJobs'
 
 export async function login(prevState: any, formData: FormData) {
     const supabase = createClient()
@@ -80,6 +81,10 @@ export async function signup(userLocalTimeZone: string, countryCode: string, pho
     // obj : cronjob = {localtimezon, timeOfscheduledCronJob }
     // => post req to cron-job.org to save the cron job
 
+    const cronJobExist = await isCronJobExist(user.local_time_zone);
+    if (!cronJobExist) {
+        await createCronJob(user.local_time_zone);
+    }
 
 
     revalidatePath('/', 'layout')

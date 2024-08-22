@@ -130,7 +130,6 @@ class SupabaseService {
 
 
         const item: Record<string, any> = {};
-
         props.forEach((prop: string) => {
             const value = formData.get(prop);
             if (value && (

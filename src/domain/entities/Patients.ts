@@ -3,7 +3,7 @@ export type Patients = {
     name: string;
     doctor_id: string;
     email?: string;
-    localTimeZone: string;
+    local_time_zone: string;
 
     country_code: string;
     phone_number: string;

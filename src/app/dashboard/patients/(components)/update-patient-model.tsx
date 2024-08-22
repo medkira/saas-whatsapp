@@ -36,7 +36,7 @@ export default function UpdatePiecesModel({
   patient: Omit<Patients, 'image_url'>;
 }) {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
-  const initialState: Omit<Patients, 'id' | 'image_url'> = {
+  const initialState: Omit<Patients, 'id' | 'image_url' | 'country_code' | 'local_time_zone'> = {
     phone_number: '',
     name: '',
     doctor_id: ''

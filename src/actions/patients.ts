@@ -5,7 +5,7 @@ import SupabaseService from "./abstarct/crud-entitie-supabse";
 import { Patients } from "@/domain/entities/Patients";
 import { getCurrentDoctorId } from "./doctors";
 
-const supabseTableName = 'patients'
+const supabseTableName = 'patients';
 
 const patientCrud = new SupabaseService(supabseTableName);
 
