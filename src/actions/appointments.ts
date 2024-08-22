@@ -5,7 +5,7 @@ import { Appointments } from "@/domain/entities/Appointments";
 import { createClient } from "@/utils/supabase/server";
 import SupabaseService from "./abstarct/crud-entitie-supabse";
 import { Patients } from "@/domain/entities/Patients";
-import { getCurrentDoctorId } from "./doctor";
+import { getCurrentDoctorId } from "./doctors";
 import { createAppointmentSchema } from "./server-validation/schema";
 
 
@@ -13,10 +13,10 @@ const supabseTableName = 'appointments'
 
 const appointmentCrud = new SupabaseService(supabseTableName);
 
-const props = [
 
-]
 // The main function to create an appointment
+// need to be refectored to follow the abstract crud
+// need to be refectored in type returned for state:error & success
 export async function createAppointment(
     appointment_time: string,
     appointment_date: string,
@@ -73,16 +73,8 @@ export async function createAppointment(
 
 
     // Return null if there are no errors
-    return data as any;
+    return data as any; // this need  to be refactored
 }
-
-// export async function createAappointment(appointment_time: string, appointment_date: any, patient: Patients, prevState: any, formData: FormData) {
-
-
-// }
-
-
-
 
 
 
@@ -91,7 +83,6 @@ export const getAppointments = async () => {
     const doctorId = await getCurrentDoctorId();
     return await appointmentCrud.getItemsByConditions<Appointments>({ 'doctor_id': doctorId });
 }
-
 
 
 

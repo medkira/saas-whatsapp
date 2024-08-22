@@ -3,7 +3,7 @@ import { createClient } from "@/utils/supabase/server";
 import SupabaseService from "./abstarct/crud-entitie-supabse";
 
 import { Patients } from "@/domain/entities/Patients";
-import { getCurrentDoctorId } from "./doctor";
+import { getCurrentDoctorId } from "./doctors";
 
 const supabseTableName = 'patients'
 
@@ -41,7 +41,10 @@ export const createPatient =
         const supabase = createClient();
         const { data: { user } } = await supabase.auth.getUser();
 
-        formData.append('doctor_id', user?.id as string)
+        formData.append('doctor_id', user?.id as string);
+        const phonenumber = formData.get('phone_number')
+        formData.delete('phone_number');
+        formData.append('phone_number', `216${phonenumber}`)
         await patientCrud.createItem<Patients>(prevState, formData, props)
     }
 

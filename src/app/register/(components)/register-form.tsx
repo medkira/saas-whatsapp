@@ -1,20 +1,48 @@
 'use client';
 import { useFormState } from 'react-dom';
 
-import RegisterButton from './register-button';
-
+import Input, { formatPhoneNumberIntl, parsePhoneNumber, getCountries, getCountryCallingCode } from 'react-phone-number-input/input'
 import { signup } from '@/actions/auth';
 import ErrorMessage from '@/components/validation/error-message';
-import { useEffect } from 'react';
+import { PhoneInput } from '@/components/ui/phone-input';
+import { useEffect, useState } from 'react';
+import RegisterButton from './register-button';
 
 export default function RegisterForm() {
-  const [errorMessage, dispatch] = useFormState(signup, undefined);
+  const userLocalTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone
+
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [countryCode, setCountryCode] = useState("") as any;
+
+
+  const signupWithLoacalTimeZone = signup.bind(null, userLocalTimeZone, countryCode && getCountryCallingCode(countryCode), phoneNumber && formatPhoneNumberIntl(phoneNumber))
+  const [errorMessage, dispatch] = useFormState(signupWithLoacalTimeZone, undefined);
+
+
+
+  // const handlePhoneChange = (value) => {
+  //   setPhoneNumber(value);
+
+  //   // If the value is not empty, extract the country code
+  //   if (value) {
+  //     const country = getCountryCallingCode(value);
+  //     setCountryCode(country);
+  //   } else {
+  //     setCountryCode("");
+  //   }
+  // };
+
+  useEffect(() => {
+    countryCode && console.log(getCountryCallingCode(countryCode));
+    // console.log("phoneNumber:", phoneNumber)
+  }, [phoneNumber])
+
 
   return (
     <form action={dispatch} className="space-y-6">
       <div>
         <label
-          className="block text-sm font-medium text-gray-700"
+          className="block text-sm font-medium "
           htmlFor="name"
         >
           Full Name
@@ -29,7 +57,7 @@ export default function RegisterForm() {
       </div>
       <div>
         <label
-          className="block text-sm font-medium text-gray-700"
+          className="block text-sm font-medium "
           htmlFor="email"
         >
           Email address
@@ -44,7 +72,7 @@ export default function RegisterForm() {
       </div>
       <div>
         <label
-          className="block text-sm font-medium text-gray-700"
+          className="block text-sm font-medium "
           htmlFor="password"
         >
           Password
@@ -59,7 +87,7 @@ export default function RegisterForm() {
       </div>
       <div>
         <label
-          className="block text-sm font-medium text-gray-700"
+          className="block text-sm font-medium "
           htmlFor="confirm-password"
         >
           Confirm Password
@@ -71,6 +99,26 @@ export default function RegisterForm() {
           type="password"
         />
         <ErrorMessage message={errorMessage?.confirmPassword} />
+      </div>
+
+      <div>
+        <label
+          className="block text-sm font-medium "
+          htmlFor="confirm-password"
+        >
+          Phone Number
+        </label>
+        <div className='mt-1'>
+          <PhoneInput
+            value={phoneNumber}
+            onChange={setPhoneNumber}
+            onCountryChange={setCountryCode}
+            placeholder="Enter a phone number"
+          />
+        </div>
+        <ErrorMessage message={errorMessage?.phoneNumber} />
+        <ErrorMessage message={errorMessage?.countryCode} />
+
       </div>
       <RegisterButton />
     </form>

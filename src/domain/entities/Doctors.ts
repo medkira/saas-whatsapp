@@ -3,6 +3,9 @@ export type Doctors = {
     name: string;
     email?: string;
     password: string;
-    phone_number: string;
     specialty: string;
+    local_time_zone: string;
+
+    phone_number: string;
+    country_code: string;
 }

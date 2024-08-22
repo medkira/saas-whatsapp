@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 
 import RegisterForm from './(components)/register-form';
+import { Card } from '@nextui-org/card';
 
 export const metadata: Metadata = {
   title: 'Register - SaaSwhats',
@@ -11,8 +12,8 @@ export const metadata: Metadata = {
 
 export default function Register() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-100">
-      <div className="w-full max-w-md rounded-lg bg-white p-8 shadow-md">
+    <Card className="flex min-h-screen items-center justify-center bg-background">
+      <Card className="w-full max-w-md rounded-lg p-8 shadow-md">
         <h2 className="mb-6 text-center text-2xl font-bold">
           Register for SaaSwhats
         </h2>
@@ -26,7 +27,7 @@ export default function Register() {
             Login
           </Link>
         </p>
-      </div>
-    </div>
+      </Card>
+    </Card>
   );
 }
