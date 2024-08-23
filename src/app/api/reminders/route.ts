@@ -1,9 +1,9 @@
 import SupabaseService from '@/actions/abstarct/crud-entitie-supabse';
-import { getDoctorById } from '@/actions/doctors';
 import { Appointments } from '@/domain/entities/Appointments';
 import { Doctors } from '@/domain/entities/Doctors';
 import { createClient } from '@/utils/supabase/server';
 import { NextResponse } from 'next/server';
+import { DateTime } from "luxon"
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
@@ -60,12 +60,12 @@ async function getUnsentRemindersForTomorrow() {
   const startOfDay = new Date();
   startOfDay.setDate(startOfDay.getDate() + 1); // Move to tomorrow
   startOfDay.setHours(0, 0, 0, 0); // Set to start of the day (00:00:00)
-  console.log("startOfDay", startOfDay)
+  // console.log("startOfDay", startOfDay)
 
   const endOfDay = new Date();
   endOfDay.setDate(endOfDay.getDate() + 1); // Move to tomorrow
   endOfDay.setHours(23, 59, 59, 999); // Set to end of the day (23:59:59)
-  console.log("endOfDay", endOfDay)
+  // console.log("endOfDay", endOfDay)
 
   const supabase = createClient();
 
@@ -102,12 +102,21 @@ async function sendReminder(appointment: Appointments) {
   const doctorCrud = new SupabaseService(supabseTableName);
 
   const doctor = await doctorCrud.getItemsByConditions<Doctors>({ user_id: appointment.doctor_id! });
-  console.log(appointment)
+
+  // Convert the saved supabase UTC time to the user's local time zone
+  const localDateTime = DateTime.fromISO(appointment.appointment_date, { zone: 'UTC' }).setZone(doctor[0].local_time_zone);
+
+  // console.log("localDateTime: ", localDateTime);
+
+
+  // Extract the local date and time
+  const localDate = localDateTime.toFormat('dd-MM-yyyy');
+  const localTime = localDateTime.toFormat('HH:mm'); // HH:MM format
 
   await sendRemindMessage({
     toPhoneNumber: phoneNumber,
-    appointmentDate: appointment.appointment_date,
-    appointmentTime: appointment.appointment_date,
+    appointmentDate: localDate || '',
+    appointmentTime: localTime || '',
     doctorName: doctor[0].name,
     patientName: appointment.patient_name,
   });
@@ -198,7 +207,7 @@ async function sendRemindMessage({
       body: JSON.stringify(payload),
     },
   );
-  console.log(response);
+  // console.log(response);
 
   if (!response.ok) {
     const error = await response.json();

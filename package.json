@@ -63,6 +63,7 @@
 		"intl-messageformat": "^10.5.0",
 		"lenis": "^1.1.1",
 		"lucide-react": "^0.383.0",
+		"luxon": "^3.5.0",
 		"next": "14.2.3",
 		"next-auth": "^4.24.7",
 		"next-themes": "^0.2.1",
@@ -89,6 +90,7 @@
 	},
 	"devDependencies": {
 		"@types/bcrypt": "^5.0.1",
+		"@types/luxon": "^3.4.2",
 		"@types/react": "^18.3.3",
 		"@types/react-big-calendar": "^1.8.9",
 		"@types/react-dom": "18.2.14",
