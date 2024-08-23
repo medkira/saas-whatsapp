@@ -32,7 +32,7 @@ export const Navbar = () => {
       <NavbarBrand>
         <NextLink className="flex items-center gap-2" href="/">
           {/* <Logo /> */}
-          <span className="text-lg font-bold text-teal-500">DocuManage</span>
+          <span className="text-lg font-bold text-teal-500">WhatsApp Reminder</span>
         </NextLink>
       </NavbarBrand>
 

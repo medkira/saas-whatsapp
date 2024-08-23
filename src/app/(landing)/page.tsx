@@ -3,6 +3,7 @@ import { Button } from '@nextui-org/button';
 import { Card } from '@nextui-org/card';
 import Image from 'next/legacy/image';
 import PricingSectionCards from './(components)/plan-features';
+import Link from 'next/link';
 
 export default function Landing() {
   const plans = [
@@ -76,6 +77,8 @@ export default function Landing() {
           </p>
           <div className="ml-5  flex sm:block">
             <Button
+              as={Link}
+              href='/register'
               className=" rounded-lg bg-teal-500  py-4 text-lg font-semibold text-gray-900 shadow-lg transition duration-300 hover:bg-teal-600"
               size="lg"
             >

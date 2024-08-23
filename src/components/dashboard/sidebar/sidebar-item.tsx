@@ -32,7 +32,7 @@ export const SidebarItem = ({ icon, title, isActive, href = '' }: Props) => {
         onClick={handleClick}
       >
         {icon}
-        <span className="text-slate-300">{title}</span>
+        <span className="text-slate-300 text-start pl-1 leading-[1.2rem]">{title}</span>
       </button>
     </Link>
   );

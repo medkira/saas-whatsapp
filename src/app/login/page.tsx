@@ -12,10 +12,10 @@ export const metadata: Metadata = {
 
 export default function Login() {
   return (
-    <Card className="flex h-screen items-center justify-center bg-background">
+    <Card className="flex h-screen items-center justify-center bg-background p-3">
       <Card className=" w-full max-w-md rounded-lg  p-8 shadow-md">
         <h2 className="mb-6 text-center text-2xl font-bold">
-          Login to SaaSwhats
+          Login to WhatsApp Reminder
         </h2>
         <LoginForm />
         <p className="mt-6 text-center text-sm ">

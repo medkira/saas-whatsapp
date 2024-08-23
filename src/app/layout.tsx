@@ -12,11 +12,11 @@ import { siteConfig } from '@/config/site';
 import { roboto } from '@/config/fonts';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://www.mmcmoknine.com'),
+  // metadataBase: new URL('https://www.mmcmoknine.com'),
   keywords: [],
 
   alternates: {
-    canonical: 'https://www.mmcmoknine.com',
+    // canonical: 'https://www.mmcmoknine.com',
   },
   title: {
     default: siteConfig.name,

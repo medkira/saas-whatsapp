@@ -76,9 +76,9 @@ export const SidebarWrapper = () => {
               />
               <SidebarItem
                 href="/dashboard/appointments"
-                icon={<AppointmentsIcon />}
+                icon={<ReportsIcon />}
                 isActive={pathname === '/dashboard/appointments'}
-                title="Appointments"
+                title="Create Appointments"
               />
               <SidebarItem
                 href="/dashboard/patients"
