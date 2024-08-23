@@ -101,18 +101,19 @@ export default function CreateAppointment({
 
 
     return (
-        <div className="flex flex-col items-center justify-center gap-12 pt-24 p-5 text-white">
+        <div className="flex flex-col items-center  justify-center gap-12 pt-24 p-5 ">
             <form
                 action={dispatch}
-                className="flex max-h-[90vh] flex-col gap-6 overflow-y-auto"
+                className="flex flex-col gap-6 overflow-y-auto"
             >
-                <Card className='p-4 bg-zinc-900' >
+                <Card className='p-4 bg-zinc-900 overflow-y-auto' >
 
                     <div className="flex w-full flex-row gap-4">
 
                         {timeZone ? (
                             <div className='flex flex-wrap justify-center items-center gap-6'>
                                 <Calendar
+                                    color='success'
                                     aria-label="Date (Controlled)"
                                     value={date}
                                     defaultValue={today(getLocalTimeZone())}
