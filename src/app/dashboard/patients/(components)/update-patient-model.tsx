@@ -78,7 +78,7 @@ export default function UpdatePiecesModel({
           {(onClose) => (
             <>
               <ModalHeader className="flex flex-col gap-1">
-                Update Piece
+                Update Patient
               </ModalHeader>
               <form
                 action={dispatch}
@@ -183,7 +183,7 @@ export default function UpdatePiecesModel({
                   {/* custom checkbox */}
 
                   {/* imae upload  */}
-                  <FileUploader
+                  {/* <FileUploader
                     className="relative rounded-lg bg-background p-2"
                     dropzoneOptions={dropZoneConfig}
                     value={files}
@@ -199,13 +199,11 @@ export default function UpdatePiecesModel({
                         files.length > 0 &&
                         files.map((file, i) => (
                           <FileUploaderItem key={i} index={i}>
-                            {/* <Paperclip className="h-4 w-4 stroke-current" /> */}
                             <span>{file.name}</span>
                           </FileUploaderItem>
                         ))}
                     </FileUploaderContent>
-                  </FileUploader>
-                  {/* imae upload  */}
+                  </FileUploader> */}
                 </ModalBody>
                 <ModalFooter>
                   <Button color="danger" variant="light" onPress={onClose}>

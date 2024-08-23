@@ -69,16 +69,16 @@ export const SidebarWrapper = () => {
               />
              */}
               <SidebarItem
-                href="/dashboard/calendar"
-                icon={<AppointmentsIcon />}
-                isActive={pathname === '/dashboard/calendar'}
-                title="Calendar"
-              />
-              <SidebarItem
                 href="/dashboard/appointments"
                 icon={<ReportsIcon />}
                 isActive={pathname === '/dashboard/appointments'}
                 title="Create Appointments"
+              />
+              <SidebarItem
+                href="/dashboard/calendar"
+                icon={<AppointmentsIcon />}
+                isActive={pathname === '/dashboard/calendar'}
+                title="Calendar"
               />
               <SidebarItem
                 href="/dashboard/patients"

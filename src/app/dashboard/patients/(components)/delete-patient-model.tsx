@@ -61,7 +61,7 @@ export default function DeletePieceModel({
                       className: 'mb-1',
                     })}
                   >
-                    Are you sure u want delete the Piece!?
+                    Are you sure u want delete the Patient!?
                   </h1>{' '}
                 </ModalBody>
                 <ModalFooter>
