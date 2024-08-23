@@ -1,9 +1,11 @@
-// app/page.tsx
+'use client'
 import { Button } from '@nextui-org/button';
 import { Card } from '@nextui-org/card';
 import Image from 'next/legacy/image';
 import PricingSectionCards from './(components)/plan-features';
 import Link from 'next/link';
+import { useEffect } from 'react';
+import Lenis from 'lenis';
 
 export default function Landing() {
   const plans = [
@@ -49,6 +51,16 @@ export default function Landing() {
       ],
     },
   ];
+  useEffect(() => {
+    const lenis = new Lenis();
+
+    function raf(time: any) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+  }, []);
 
   return (
     <main className="flex min-h-screen flex-col  bg-gray-50">
