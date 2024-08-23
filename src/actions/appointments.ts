@@ -5,8 +5,9 @@ import { Appointments } from "@/domain/entities/Appointments";
 import { createClient } from "@/utils/supabase/server";
 import SupabaseService from "./abstarct/crud-entitie-supabse";
 import { Patients } from "@/domain/entities/Patients";
-import { getCurrentDoctorId } from "./doctors";
+import { getCurrentDoctorId, getDoctorById } from "./doctors";
 import { createAppointmentSchema } from "./server-validation/schema";
+import { Doctors } from "@/domain/entities/Doctors";
 
 
 const supabseTableName = 'appointments'
@@ -42,6 +43,20 @@ export async function createAppointment(
 
     }
 
+    // Check  user Plan
+    const isPlanReachedLimit = await IsPlanReachedLimit(doctorId);
+    if (isPlanReachedLimit) {
+        return
+    }
+    // Check  user Plan
+    // @ else
+    const doctorCrud = new SupabaseService(supabseTableName);
+    const doctors = await doctorCrud.getItemsByConditions<Doctors>({ user_id: doctorId });
+    const doctor = doctors[0]
+    await updateRemindersUsed(doctorId, doctor.reminders_used)
+    // ! i need to clean the code!
+
+
     // Safely construct the appointmentDateTime now that we know the date and time are valid
     const appointmentDateTime = new Date(`${appointment_date}T${appointment_time}`).toISOString();
 
@@ -54,7 +69,7 @@ export async function createAppointment(
         patient_name: patient?.name,
     };
 
-    console.log(appointment)
+    // console.log(appointment)
     // Insert the appointment into the database
     const { error, data } = await supabase
         .from('appointments')
@@ -87,6 +102,42 @@ export const getAppointments = async () => {
     const doctorId = await getCurrentDoctorId();
     return await appointmentCrud.getItemsByConditions<Appointments>({ 'doctor_id': doctorId });
 }
+
+async function updateRemindersUsed(doctorId: string, currentRemindersUsed: number) {
+    const supabase = createClient();
+
+    const { data, error } = await supabase
+        .from('doctors')
+        .update({ reminders_used: currentRemindersUsed + 1 })
+        .eq('user_id', doctorId);
+
+    if (error) {
+        throw new Error('Error updating reminder count');
+    }
+
+    return data;
+}
+
+async function IsPlanReachedLimit(doctorId: string) {
+    const supabseTableName = 'doctors'
+
+    const doctorCrud = new SupabaseService(supabseTableName);
+
+    const doctors = await doctorCrud.getItemsByConditions<Doctors>({ user_id: doctorId });
+    const doctor = doctors[0]
+    if (doctor.reminders_used < doctor.reminder_limit) {
+        // Allow creation of the reminder
+
+        return true;
+    } else {
+        // Notify the user they've reached their limit
+        // throw new Error("You have reached your reminder limit.");
+
+        return false;
+    }
+}
+
+
 
 
 

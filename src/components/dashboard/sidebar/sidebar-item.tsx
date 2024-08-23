@@ -21,7 +21,7 @@ export const SidebarItem = ({ icon, title, isActive, href = '' }: Props) => {
   };
 
   return (
-    <Link className="max-w-full text-default-900 active:bg-none" href={href}>
+    <Link className="max-w-full text-default-900 active:bg-none font-semibold" href={href}>
       <button
         className={clsx(
           isActive
@@ -32,7 +32,11 @@ export const SidebarItem = ({ icon, title, isActive, href = '' }: Props) => {
         onClick={handleClick}
       >
         {icon}
-        <span className="text-slate-300 text-start pl-1 leading-[1.2rem]">{title}</span>
+        <span className={clsx(
+          isActive
+            ? "text-slate text-start pl-1 leading-[1.2rem]"
+            : "text-slate-300 text-start pl-1 leading-[1.2rem]"
+        )}>{title}</span>
       </button>
     </Link>
   );

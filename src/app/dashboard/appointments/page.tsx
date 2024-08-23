@@ -5,6 +5,8 @@ import CreateAppointment from './(components)/create-appoitment';
 import { getAllPatients } from '@/actions/patients';
 import { createClient } from '@/utils/supabase/server';
 import { getAppointments } from '@/actions/appointments';
+import { IsPlanReachedLimit } from '@/actions/plan';
+import { UsageLimitWrapper } from './(components)/usage-limit-wrapper';
 
 export default async function Page() {
   // pass doctor doctor id to get the doctor patients
@@ -13,12 +15,14 @@ export default async function Page() {
 
   const appointments = await getAppointments();
 
-
+  const isWithinLimit = await IsPlanReachedLimit();
 
 
   return (
-    <div className="flex flex-col items-center justify-center text-white">
-      <CreateAppointment patients={patients} appointments={appointments} />
+    <div className="flex flex-col items-center justify-center pt-24 p-3 text-white">
+      <UsageLimitWrapper>
+        <CreateAppointment isPlanReachedLimit={isWithinLimit} patients={patients} appointments={appointments} />
+      </UsageLimitWrapper>
     </div>
   );
 }
