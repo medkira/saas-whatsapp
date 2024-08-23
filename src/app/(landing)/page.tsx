@@ -64,7 +64,7 @@ export default function Landing() {
           />
         </div> */}
 
-        <div className="container relative z-10 mx-auto   py-16 text-center md:py-32">
+        <div className="container relative z-10 mx-auto py-16 text-center md:py-32">
           <h1 className="mb-6 pl-5 text-start text-5xl font-extrabold leading-tight text-transparent text-white sm:text-center md:text-7xl">
             Effortlessly Manage <br />{' '}
             <span className="bg-gradient-to-r from-teal-400 to-teal-600 bg-clip-text text-transparent">
@@ -89,7 +89,7 @@ export default function Landing() {
       </section>
 
       {/* Features Section */}
-      <section className="px-3 py-16 light:bg-default">
+      <section className="md:px-36 px-5 py-16 light:bg-default">
         <div className="container mx-auto ">
           <h2 className="mb-8 text-center text-4xl font-semibold text-gray-800">
             How It Works
@@ -148,7 +148,7 @@ export default function Landing() {
       </section>
 
       {/* Visuals Section */}
-      <section className="bg-teal-50 px-10 py-16">
+      <section className="bg-teal-50 px-10 py-16 ">
         <div className="container mx-auto flex flex-col items-center justify-center  md:flex-row">
           <div className="md:w-1/2">
             <Image
@@ -183,7 +183,7 @@ export default function Landing() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="bg-white px-3 py-16">
+      <section className="bg-white md:px-36 px-5  py-16">
         <div className="container mx-auto ">
           <h2 className="mb-8 text-center text-4xl font-semibold text-gray-800">
             What Our Users Say

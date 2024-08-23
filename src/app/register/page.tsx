@@ -12,8 +12,8 @@ export const metadata: Metadata = {
 
 export default function Register() {
   return (
-    <Card className="flex min-h-screen items-center justify-center bg-background p-3">
-      <Card className="w-full max-w-md rounded-lg p-8 shadow-md">
+    <Card className="flex min-h-screen items-center justify-center bg-background mt-[2rem] sm:mt-[0rem]  p-3">
+      <Card className="w-full max-w-md rounded-lg p-8 shadow-md ">
         <h2 className="mb-6 text-center text-2xl font-bold">
           Register for WhatsApp Reminder
         </h2>
