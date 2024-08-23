@@ -269,14 +269,16 @@ export default function Landing() {
           Ready to transform your appointment management?
         </p>
         <Button
+          as={Link}
+          href='/login'
           className="rounded-lg bg-teal-500 py-3  font-bold text-gray-900 shadow-lg transition duration-300 hover:bg-teal-600"
           size="lg"
         >
           Get Started
         </Button>
-        <p className="mt-4 text-gray-400">
-          © 2024 totaltechtn. All rights reserved.
-        </p>
+        <div className="mt-4 text-gray-400">
+          © 2024 <a className='hover:text-green-600' href='https://totaltechtn.com/'>totaltechtn</a>. All rights reserved.
+        </div>
       </footer>
     </main>
   );
