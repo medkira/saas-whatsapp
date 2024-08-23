@@ -2,6 +2,14 @@
 import { Doctors } from "@/domain/entities/Doctors";
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from 'next/navigation'
+import SupabaseService from "./abstarct/crud-entitie-supabse";
+
+
+
+
+const supabseTableName = 'doctors'
+
+const doctorCrud = new SupabaseService(supabseTableName);
 
 
 // Utility function to get the current user ID
@@ -32,7 +40,8 @@ export const getCurrentDoctorId = async (): Promise<string> => {
 
 
 
-export async function createDoctor(doctor: Pick<Doctors, 'email' | 'name' | 'local_time_zone' | 'country_code' | 'phone_number'>) {
+
+export async function createDoctor(doctor: Pick<Doctors, 'user_id' | 'email' | 'name' | 'local_time_zone' | 'country_code' | 'phone_number'>) {
     const supabase = createClient();
 
     const { error } = await supabase
@@ -45,4 +54,11 @@ export async function createDoctor(doctor: Pick<Doctors, 'email' | 'name' | 'loc
     }
 
     return true;
+}
+
+
+export async function getDoctorById(id: string) {
+    const doctor = await doctorCrud.getItemsByConditions<Doctors>({ id: id });
+
+    return doctor[0];
 }

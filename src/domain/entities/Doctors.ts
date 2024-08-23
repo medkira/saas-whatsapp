@@ -8,4 +8,5 @@ export type Doctors = {
 
     phone_number: string;
     country_code: string;
+    user_id: string;
 }

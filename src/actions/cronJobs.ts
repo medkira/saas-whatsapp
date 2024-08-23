@@ -22,7 +22,7 @@ export const createCronJob = async (localTimeZone: string) => {
     // make the post req to cron-job.org 
     // to save schedule the cron job
 
-    console.log("error supabse", error);
+    // console.log("error supabse", error);
 
     const schedule_today = {
         timezone: localTimeZone,

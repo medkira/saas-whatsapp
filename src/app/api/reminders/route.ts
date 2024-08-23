@@ -1,4 +1,7 @@
+import SupabaseService from '@/actions/abstarct/crud-entitie-supabse';
+import { getDoctorById } from '@/actions/doctors';
 import { Appointments } from '@/domain/entities/Appointments';
+import { Doctors } from '@/domain/entities/Doctors';
 import { createClient } from '@/utils/supabase/server';
 import { NextResponse } from 'next/server';
 
@@ -93,12 +96,20 @@ async function sendReminder(appointment: Appointments) {
   const phoneNumber = appointment.phone_number;
   // get data from doctor
   // await this.whatsappService.sendRemindMessage({
+
+  const supabseTableName = 'doctors'
+
+  const doctorCrud = new SupabaseService(supabseTableName);
+
+  const doctor = await doctorCrud.getItemsByConditions<Doctors>({ user_id: appointment.doctor_id! });
+  console.log(appointment)
+
   await sendRemindMessage({
     toPhoneNumber: phoneNumber,
-    appointmentDate: 'azhha',
-    appointmentTime: 'ajha',
-    doctorName: 'mohamed',
-    patientName: 'ahehaiu',
+    appointmentDate: appointment.appointment_date,
+    appointmentTime: appointment.appointment_date,
+    doctorName: doctor[0].name,
+    patientName: appointment.patient_name,
   });
 
   const supabase = createClient();

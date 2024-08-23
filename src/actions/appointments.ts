@@ -50,9 +50,11 @@ export async function createAppointment(
         patient_id: patient!.id,
         reminder_sent: formData.get("reminder_sent") === "true",
         phone_number: patient!.phone_number,
-        doctor_id: doctorId,
+        doctor_id: doctorId, // user => doctor , so this not doctor id 
+        patient_name: patient?.name,
     };
 
+    console.log(appointment)
     // Insert the appointment into the database
     const { error, data } = await supabase
         .from('appointments')
@@ -61,7 +63,9 @@ export async function createAppointment(
             patient_id: appointment.patient_id,
             reminder_sent: appointment.reminder_sent,
             phone_number: appointment.phone_number,
-            doctor_id: appointment.doctor_id
+            doctor_id: appointment.doctor_id,
+            patient_name: appointment.patient_name,
+
         }).select();
 
     // if (error) {

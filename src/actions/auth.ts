@@ -67,8 +67,7 @@ export async function signup(userLocalTimeZone: string, countryCode: string, pho
     }
 
     const { data, error } = await supabase.auth.signUp({ email: user.email, password: user.password });
-
-    // console.log(error)
+    // console.log(data.user)
     if (error) {
         redirect('/error')
     }
@@ -77,7 +76,12 @@ export async function signup(userLocalTimeZone: string, countryCode: string, pho
     // if this account time zone exist in the saved crons job
     // if not i need to create that time zone and save it 
     // else just contenui sign up
-    await createDoctor({ email: user.email, name: user.name, local_time_zone: user.local_time_zone, country_code: user.countryCode, phone_number: user.phoneNumber });
+    await createDoctor({
+        email: user.email, name: user.name,
+        local_time_zone: user.local_time_zone,
+        country_code: user.countryCode, phone_number: user.phoneNumber,
+        user_id: data.user?.id!,
+    });
 
     // create a scheduled cron job in 8 am for the current  doctor local time zone
     // if the cron job exist continue
@@ -88,7 +92,7 @@ export async function signup(userLocalTimeZone: string, countryCode: string, pho
 
 
     revalidatePath('/', 'layout')
-    redirect('/')
+    redirect('/dashboard')
 }
 
 export async function signOut() {

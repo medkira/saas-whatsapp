@@ -3,7 +3,8 @@ import { createClient } from "@/utils/supabase/server";
 import SupabaseService from "./abstarct/crud-entitie-supabse";
 
 import { Patients } from "@/domain/entities/Patients";
-import { getCurrentDoctorId } from "./doctors";
+import { getCurrentDoctorId, getDoctorById } from "./doctors";
+import { Doctors } from "@/domain/entities/Doctors";
 
 const supabseTableName = 'patients';
 
@@ -44,7 +45,19 @@ export const createPatient =
         formData.append('doctor_id', user?.id as string);
         const phonenumber = formData.get('phone_number')
         formData.delete('phone_number');
-        formData.append('phone_number', `216${phonenumber}`)
+
+        // this the curent user xD , the current user => doctor
+        // sp this is get current user Id, bcs user cold be doctor , patient etc....
+        const id = await getCurrentDoctorId();
+
+
+        const supabseTableName = 'doctors'
+
+        const doctorCrud = new SupabaseService(supabseTableName);
+
+        const doctor = await doctorCrud.getItemsByConditions<Doctors>({ user_id: id });
+        console.log(doctor);
+        formData.append('phone_number', `${doctor[0].country_code}${phonenumber}`)
         await patientCrud.createItem<Patients>(prevState, formData, props)
     }
 
