@@ -104,6 +104,19 @@ export async function createAppointment(
     return data as any; // this need  to be refactored
 }
 
+// // Combine date and time into a single string
+// const appointmentDateTimeString = `${appointment_date}T${appointment_time}:00.000Z`;
+
+// // Create a Date object
+// const appointmentDateTime = new Date(appointmentDateTimeString);
+
+// // Get the appointment date and time in the doctor's local timezone
+// const appointmentDateInLocalTime = appointmentDateTime.toLocaleDateString('en-GB', { timeZone: doctor.local_time_zone });
+// const appointmentTimeInLocalTime = appointmentDateTime.toLocaleTimeString('en-GB', { timeZone: doctor.local_time_zone, hour: '2-digit', minute: '2-digit' });
+
+// console.log("Appointment Date =>", appointmentDateInLocalTime); // Format: DD/MM/YYYY
+// console.log("Appointment Time =>", appointmentTimeInLocalTime); // Format: HH:MM
+
 
 
 

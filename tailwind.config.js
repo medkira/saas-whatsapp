@@ -41,7 +41,7 @@ module.exports = {
 
   plugins: [
     nextui({
-     
+
       themes: {
         light: {
           colors: {
