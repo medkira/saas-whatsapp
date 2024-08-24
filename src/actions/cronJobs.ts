@@ -26,11 +26,11 @@ export const createCronJob = async (localTimeZone: string) => {
 
     const schedule_today = {
         timezone: localTimeZone,
-        hour: '07',
-        minute: '00',
-        dayOfMonth: '*',
-        month: '*',
-        dayOfWeek: '*',
+        hours: [7],
+        minutes: [0],
+        mdays: [-1],
+        months: [-1],
+        wdays: [-1],
     };
 
     const url = process.env.BASE_URL;
@@ -47,23 +47,22 @@ export const createCronJob = async (localTimeZone: string) => {
                 enabled: true,
                 saveResponses: true,
                 url: url + '/reminders?day=today',
-                schedule_today,
+                schedule: schedule_today,
                 // httpMethod: 'GET',
             }
         }),
     });
 
-
+    // console.log('cron job res', res_1);
 
     const schedule_tomorrow = {
         timezone: localTimeZone,
-        hour: '19',
-        minute: '00',
-        dayOfMonth: '*',
-        month: '*',
-        dayOfWeek: '*',
+        hours: [19],
+        minutes: [0],
+        mdays: [-1],
+        months: [-1],
+        wdays: [-1],
     };
-
     // create a cron job in 7 PM
 
     const res_2 = await fetch('https://api.cron-job.org/jobs', {
@@ -77,11 +76,13 @@ export const createCronJob = async (localTimeZone: string) => {
                 enabled: true,
                 saveResponses: true,
                 url: url + '/reminders?day=tomorrow',
-                schedule_tomorrow,
+                schedule: schedule_tomorrow,
                 // httpMethod: 'GET',
             }
         }),
     });
+
+    // console.log("cron job res_2 =>", res_2)
 
     // console.log("error cron job ", response);
 
