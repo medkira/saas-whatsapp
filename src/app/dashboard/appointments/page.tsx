@@ -28,6 +28,7 @@ export default async function Page() {
   const doctor = await doctorCrud.getItemsByConditions<Doctors>({ user_id: doctorId || '' });
   const isPromoUserOrNot = doctor[0].is_promo_user
 
+  // console.log("appointments => ", appointments);
 
 
 

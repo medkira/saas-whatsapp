@@ -6,7 +6,7 @@ import { ReactNode } from "react";
 export async function UsageLimitWrapper({ children }: { children: ReactNode }) {
     const isWithinLimit = await IsPlanReachedLimit();
 
-    if (isWithinLimit) {
+    if (!isWithinLimit) {
         return <>{children}</>;
     } else {
         return (

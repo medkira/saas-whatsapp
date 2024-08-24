@@ -149,7 +149,7 @@ export default function CreateAppointment({
                     </div>
                     <Divider className='my-5' />
 
-                    {!isPlanReachedLimit ?
+                    {isPlanReachedLimit ?
                         <div className="w-full max-w-md mx-auto p-6 bg-yellow-50 border border-yellow-200 rounded-lg shadow-md">
                             <div className="flex items-center mb-4">
                                 <svg className="w-6 h-6 text-yellow-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
