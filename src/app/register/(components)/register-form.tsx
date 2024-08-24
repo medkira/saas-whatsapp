@@ -69,6 +69,8 @@ export default function RegisterForm() {
           type="email"
         />
         <ErrorMessage message={errorMessage?.email} />
+        <ErrorMessage message={errorMessage?.AuthError} />
+
       </div>
       <div>
         <label
@@ -120,6 +122,7 @@ export default function RegisterForm() {
         <ErrorMessage message={errorMessage?.countryCode} />
 
       </div>
+
       <RegisterButton />
     </form>
   );

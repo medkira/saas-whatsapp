@@ -41,7 +41,7 @@ export const getCurrentDoctorId = async (): Promise<string> => {
 
 
 
-export async function createDoctor(doctor: Pick<Doctors, 'user_id' | 'email' | 'name' | 'local_time_zone' | 'country_code' | 'phone_number'>) {
+export async function createDoctor(doctor: Pick<Doctors, 'user_id' | 'email' | 'name' | 'local_time_zone' | 'country_code' | 'phone_number' | 'is_promo_user'>) {
     const supabase = createClient();
 
     const { error } = await supabase

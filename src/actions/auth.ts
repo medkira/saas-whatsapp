@@ -8,6 +8,7 @@ import { registerSchema } from './server-validation/schema'
 import { createClient } from '@/utils/supabase/server'
 import { createDoctor } from './doctors'
 import { createCronJob, isCronJobExist } from './cronJobs'
+import { isPromoUser } from './plan'
 
 export async function login(prevState: any, formData: FormData) {
     const supabase = createClient()
@@ -53,12 +54,12 @@ export async function signup(userLocalTimeZone: string, countryCode: string, pho
         // flatten method is provided by Zod 
         // It transforms the error structure into a simpler format.
         // console.log("from auth",validatedFields.error.flatten().fieldErrors.confirmPassword);
+        console.log(validatedFields.error.flatten().fieldErrors)
+        // const zodErrors = validatedFields.error.flatten().fieldErrors;
+
 
         return validatedFields.error.flatten().fieldErrors
-        // return {
-        //     errors: validatedFields.error.flatten().fieldErrors,
-        //     message: 'Missing Fields. Failed to Create Invoice.',
-        // };
+
     }
 
     const cronJobExist = await isCronJobExist(user.local_time_zone);
@@ -67,10 +68,21 @@ export async function signup(userLocalTimeZone: string, countryCode: string, pho
     }
 
     const { data, error } = await supabase.auth.signUp({ email: user.email, password: user.password });
-    // console.log(data.user)
+
+    // need to fix this in proper error handling.
+    // the current code sucks
+    // refactor check if the email is exist should be in hight priority
     if (error) {
-        redirect('/error')
+        return { AuthError: [error.code] } as any
     }
+
+
+
+
+
+
+    // Check if User Can Have Promo Plan
+    const isPromoeUserOrNot = await isPromoUser();
 
     // When create new account i need to check
     // if this account time zone exist in the saved crons job
@@ -81,6 +93,7 @@ export async function signup(userLocalTimeZone: string, countryCode: string, pho
         local_time_zone: user.local_time_zone,
         country_code: user.countryCode, phone_number: user.phoneNumber,
         user_id: data.user?.id!,
+        is_promo_user: isPromoeUserOrNot,
     });
 
     // create a scheduled cron job in 8 am for the current  doctor local time zone
