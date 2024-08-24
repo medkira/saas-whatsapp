@@ -9,6 +9,7 @@ import { getCurrentDoctorId, getDoctorById } from "./doctors";
 import { createAppointmentSchema } from "./server-validation/schema";
 import { Doctors } from "@/domain/entities/Doctors";
 import { IsPlanReachedLimit } from "./plan";
+import { DateTime } from "luxon";
 
 
 const supabseTableName = 'appointments'
@@ -26,6 +27,7 @@ export async function createAppointment(
     prevState: any,
     formData: FormData
 ) {
+    console.log("appointment_time => ", appointment_time);
 
     const supabase = createClient();
 
@@ -60,16 +62,21 @@ export async function createAppointment(
 
 
     // Safely construct the appointmentDateTime now that we know the date and time are valid
-    const appointmentDateTime = new Date(`${appointment_date}T${appointment_time}`).toISOString();
+    const appointmentDateTime = `${appointment_date}T${appointment_time}`;
+    const appointmentDateTimeInUserLocalTime = DateTime.fromISO(appointmentDateTime);
 
+    // console.log("appointmentDateTime =>", appointmentDateTime);
+    // console.log("appointmentDateTimeInUserLocalTime =>", appointmentDateTimeInUserLocalTime.toString());
     const appointment = {
-        appointment_date: appointmentDateTime,
+        appointment_date: appointmentDateTimeInUserLocalTime.toString(),
         patient_id: patient!.id,
         reminder_sent: formData.get("reminder_sent") === "true",
         phone_number: patient!.phone_number,
         doctor_id: doctorId, // user => doctor , so this not doctor id 
         patient_name: patient?.name,
     };
+
+    // console.log("appointment => ", appointment)
 
     // console.log("appointment created =>", appointment)
     // Insert the appointment into the database
