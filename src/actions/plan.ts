@@ -29,7 +29,7 @@ export async function isPromoUser(): Promise<boolean> {
     }
 
     // Check if the number of doctors is less than 100
-    if (data.length < 100) {
+    if (data.length < 25) {
         return true;
     } else {
         return false;

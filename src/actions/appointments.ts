@@ -10,6 +10,7 @@ import { createAppointmentSchema } from "./server-validation/schema";
 import { Doctors } from "@/domain/entities/Doctors";
 import { IsPlanReachedLimit } from "./plan";
 import { DateTime } from "luxon";
+import { WhatsAppService } from "./service/whatsapp-service";
 
 
 const supabseTableName = 'appointments'
@@ -27,7 +28,7 @@ export async function createAppointment(
     prevState: any,
     formData: FormData
 ) {
-    console.log("appointment_time => ", appointment_time);
+    // console.log("appointment_time => ", appointment_time);
 
     const supabase = createClient();
 
@@ -51,8 +52,8 @@ export async function createAppointment(
     if (isPlanReachedLimit) {
         return
     }
-
     // Check  user Plan
+
     // @ else
     const doctorCrud = new SupabaseService('doctors');
     const doctors = await doctorCrud.getItemsByConditions<Doctors>({ user_id: doctorId });
@@ -80,17 +81,26 @@ export async function createAppointment(
 
     // console.log("appointment created =>", appointment)
     // Insert the appointment into the database
-    const { error, data } = await supabase
-        .from('appointments')
-        .insert({
-            appointment_date: appointment.appointment_date,
-            patient_id: appointment.patient_id,
-            reminder_sent: appointment.reminder_sent,
-            phone_number: appointment.phone_number,
-            doctor_id: appointment.doctor_id,
-            patient_name: appointment.patient_name,
+    // const { error, data } = await supabase
+    //     .from('appointments')
+    //     .insert({
+    //         appointment_date: appointment.appointment_date,
+    //         patient_id: appointment.patient_id,
+    //         reminder_sent: appointment.reminder_sent,
+    //         phone_number: appointment.phone_number,
+    //         doctor_id: appointment.doctor_id,
+    //         patient_name: appointment.patient_name,
 
-        }).select();
+    //     }).select();
+
+
+    await WhatsAppService.sendAppointmentCreatedSuccessfully({
+        toPhoneNumber: patient!.phone_number,
+        patientName: patient!.name,
+        doctorName: `Dr.${doctor.name}`,
+        appointmentDate: appointment_date,
+        appointmentTime: appointment_time,
+    });
 
     // if (error) {
     //    "Error inserting appointment: " + error.message;
@@ -101,7 +111,7 @@ export async function createAppointment(
 
 
     // Return null if there are no errors
-    return data as any; // this need  to be refactored
+    // return data as any; // this need  to be refactored
 }
 
 // // Combine date and time into a single string
