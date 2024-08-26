@@ -11,28 +11,28 @@ export default function DemoPage() {
   const [appointments, setAppointments] = useState([]);
   const [notification, setNotification] = useState(null);
 
-  const handleAddAppointment = () => {
-    if (patientName && appointmentDate) {
-      const newAppointment = { patientName, appointmentDate };
-      setAppointments([...appointments, newAppointment]);
-      setPatientName('');
-      setAppointmentDate('');
-      showNotification('Appointment added successfully!');
-    }
-  };
+  // const handleAddAppointment = () => {
+  //   if (patientName && appointmentDate) {
+  //     const newAppointment = { patientName, appointmentDate };
+  //     setAppointments([...appointments, newAppointment]);
+  //     setPatientName('');
+  //     setAppointmentDate('');
+  //     showNotification('Appointment added successfully!');
+  //   }
+  // };
 
-  const showNotification = (message) => {
-    setNotification(message);
-    setTimeout(() => setNotification(null), 3000);
-  };
+  // const showNotification = (message) => {
+  //   setNotification(message);
+  //   setTimeout(() => setNotification(null), 3000);
+  // };
 
-  const sendReminder = (index) => {
-    showNotification(`Reminder sent to ${appointments[index].patientName}`);
-  };
+  // const sendReminder = (index) => {
+  //   showNotification(`Reminder sent to ${appointments[index].patientName}`);
+  // };
 
   return (
     <div className="min-h-screen bg-gray-100 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-3xl mx-auto">
+      {/* <div className="max-w-3xl mx-auto">
         <h1 className="text-3xl font-extrabold text-center text-gray-900 mb-8">
           WhatsApp Appointment Manager Demo
         </h1>
@@ -88,7 +88,7 @@ export default function DemoPage() {
             {notification}
           </div>
         )}
-      </div>
+      </div> */}
     </div>
   );
 }
