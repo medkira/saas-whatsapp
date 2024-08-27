@@ -54,7 +54,7 @@ export async function signup(userLocalTimeZone: string, countryCode: string, pho
         // flatten method is provided by Zod 
         // It transforms the error structure into a simpler format.
         // console.log("from auth",validatedFields.error.flatten().fieldErrors.confirmPassword);
-        console.log(validatedFields.error.flatten().fieldErrors)
+        // console.log(validatedFields.error.flatten().fieldErrors)
         // const zodErrors = validatedFields.error.flatten().fieldErrors;
 
 

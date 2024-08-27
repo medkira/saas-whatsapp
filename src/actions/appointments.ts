@@ -81,17 +81,17 @@ export async function createAppointment(
 
     // console.log("appointment created =>", appointment)
     // Insert the appointment into the database
-    // const { error, data } = await supabase
-    //     .from('appointments')
-    //     .insert({
-    //         appointment_date: appointment.appointment_date,
-    //         patient_id: appointment.patient_id,
-    //         reminder_sent: appointment.reminder_sent,
-    //         phone_number: appointment.phone_number,
-    //         doctor_id: appointment.doctor_id,
-    //         patient_name: appointment.patient_name,
+    const { error, data } = await supabase
+        .from('appointments')
+        .insert({
+            appointment_date: appointment.appointment_date,
+            patient_id: appointment.patient_id,
+            reminder_sent: appointment.reminder_sent,
+            phone_number: appointment.phone_number,
+            doctor_id: appointment.doctor_id,
+            patient_name: appointment.patient_name,
 
-    //     }).select();
+        }).select();
 
 
     await WhatsAppService.sendAppointmentCreatedSuccessfully({
@@ -111,7 +111,7 @@ export async function createAppointment(
 
 
     // Return null if there are no errors
-    // return data as any; // this need  to be refactored
+    return data as any; // this need  to be refactored
 }
 
 // // Combine date and time into a single string
