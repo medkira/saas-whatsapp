@@ -16,7 +16,7 @@ export async function IsPlanReachedLimit(): Promise<boolean> {
 
 
 
-export async function isPromoUser(): Promise<boolean> {
+export async function isPromoAvailable(): Promise<boolean> {
     const supabase = createClient();
 
     const { data, error } = await supabase
@@ -35,3 +35,4 @@ export async function isPromoUser(): Promise<boolean> {
         return false;
     }
 }
+

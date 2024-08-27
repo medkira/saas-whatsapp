@@ -8,7 +8,7 @@ import { registerSchema } from './server-validation/schema'
 import { createClient } from '@/utils/supabase/server'
 import { createDoctor } from './doctors'
 import { createCronJob, isCronJobExist } from './cronJobs'
-import { isPromoUser } from './plan'
+import { isPromoAvailable, } from './plan'
 
 export async function login(prevState: any, formData: FormData) {
     const supabase = createClient()
@@ -82,7 +82,7 @@ export async function signup(userLocalTimeZone: string, countryCode: string, pho
 
 
     // Check if User Can Have Promo Plan
-    const isPromoeUserOrNot = await isPromoUser();
+    const isPromoeUserOrNot = await isPromoAvailable();
 
     // When create new account i need to check
     // if this account time zone exist in the saved crons job
