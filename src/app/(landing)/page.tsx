@@ -6,7 +6,8 @@ import Link from 'next/link';
 import { useEffect } from 'react';
 import Lenis from 'lenis';
 import create from '/public/images/demos/create.png';
-import Services from './(components)/services';
+import Testimonials from './(components)/testimonials';
+import Services from './(components)/services/services';
 
 export default function Landing() {
   const plans = [
@@ -221,7 +222,8 @@ export default function Landing() {
 
 
       {/* Testimonials Section */}
-      <section className="bg-white md:px-36 px-5  py-16">
+      <Testimonials/>
+      {/* <section className="bg-white md:px-36 px-5  py-16">
         <div className="container mx-auto ">
           <h2 className="mb-8 text-center text-4xl font-semibold text-gray-800">
             What Our Users Say
@@ -246,7 +248,7 @@ export default function Landing() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Plans Cars Section */}
 

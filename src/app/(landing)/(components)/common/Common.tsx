@@ -1,7 +1,7 @@
-import Button from "./Button";
+import Button from "../services/Button";
 
 /* eslint-disable react/prop-types */
-const Common = ({ spanText, paragraphText }: any) => {
+const   Common = ({ spanText, paragraphText }: any) => {
   return (
     <div className="flex flex-col items-start justify-center gap-5 md:items-center md:gap-8 lg:flex-row lg:justify-start">
       <Button

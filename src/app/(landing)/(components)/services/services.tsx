@@ -1,4 +1,3 @@
-import Common from './Common';
 // import imageOne from '@/public/images/services/services-01.svg';
 // import imageTwo from '@/public/images/services/services-02.svg';
 // import imageThree from '@/public/images/services/services-03.svg';
@@ -75,6 +74,7 @@ const ServicesData = [
   },
 ];
 import { MdArrowOutward } from 'react-icons/md';
+import Common from '../common/Common';
 
 const Services = () => {
   return (
