@@ -33,23 +33,22 @@ const testimonialData: Testimonial[] = [
 ];
 
 const Testimonials = () => {
-  return (
-    <section className="bg-gray-1 dark:bg-dark-2 py-20 md:py-[120px]">
-      <div className="container px-4">
-      
-         <Common
+    return (
+      <section className="bg-gray-1 my-12 md:mx-8 xl:my-24 mx-8">
+        
+        <Common
           spanText={`Testimonials`}
           paragraphText={`There are many variations of passages of Lorem Ipsum available but the majority have suffered alteration in some form.`}
         />
-
-        <div className="mt-[60px] flex flex-wrap gap-y-10 lg:mt-20">
+  
+        <div className="mt-[60px] flex flex-wrap justify-center lg:mt-20 gap-6">
           {testimonialData.map((testimonial, i) => (
             <SingleTestimonial key={i} testimonial={testimonial} />
           ))}
         </div>
-      </div>
-    </section>
-  );
-};
-
-export default Testimonials;
+      </section>
+    );
+  };
+  
+  export default Testimonials;
+  
