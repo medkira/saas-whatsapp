@@ -12,11 +12,17 @@ module.exports = {
       fontFamily: {
         sans: ['var(--font-sans)'],
         mono: ['var(--font-geist-mono)'],
+        fontPrimary: ['Space Grotesk', 'sans-serif'],
       },
       animation: {
         meteor: 'meteor 5s linear infinite',
 
-        ripple: "ripple var(--duration,2s) ease calc(var(--i, 0)*.2s) infinite",
+        ripple: 'ripple var(--duration,2s) ease calc(var(--i, 0)*.2s) infinite',
+      },
+      colors: {
+        bgPrimary: '#F3F3F3',
+        blackPrimary: '#191A23',
+        greenPrimary: '#B9FF66',
       },
       keyframes: {
         meteor: {
@@ -28,11 +34,11 @@ module.exports = {
           },
         },
         ripple: {
-          "0%, 100%": {
-            transform: "translate(-50%, -50%) scale(1)",
+          '0%, 100%': {
+            transform: 'translate(-50%, -50%) scale(1)',
           },
-          "50%": {
-            transform: "translate(-50%, -50%) scale(0.9)",
+          '50%': {
+            transform: 'translate(-50%, -50%) scale(0.9)',
           },
         },
       },
@@ -41,7 +47,6 @@ module.exports = {
 
   plugins: [
     nextui({
-
       themes: {
         light: {
           colors: {
