@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import { Button } from '@nextui-org/button';
 import { Card } from '@nextui-org/card';
 import Image from 'next/legacy/image';
@@ -8,6 +8,7 @@ import Lenis from 'lenis';
 import create from '/public/images/demos/create.png';
 import Testimonials from './(components)/testimonials';
 import Services from './(components)/services/services';
+import Hero from './(components)/hero';
 
 export default function Landing() {
   const plans = [
@@ -76,8 +77,8 @@ export default function Landing() {
           />
         </div> */}
 
-        <div className="container relative z-10 mx-auto py-16 text-center md:py-32">
-          <h1 className="mb-6 pl-5 text-start text-5xl font-extrabold leading-tight text-transparent text-white sm:text-center md:text-7xl">
+        <div className="container relative z-10 mx-auto pt-16 text-center md:pt-32">
+          <h1 className="mb- pl-5 text-start text-5xl font-extrabold leading-tight text-transparent text-white sm:text-center md:text-7xl">
             Effortlessly Manage <br />{' '}
             <span className="bg-gradient-to-r from-teal-400 to-teal-600 bg-clip-text text-transparent">
               Patient Appointments
@@ -87,16 +88,26 @@ export default function Landing() {
             Streamline your patient appointments <br /> with our intuitive
             dashboard and seamless WhatsApp API integration.
           </p>
-          <div className="ml-5  flex sm:block">
-            <Button
-              as={Link}
-              href='/register'
-              className=" rounded-lg bg-teal-500  py-4 text-lg font-semibold text-gray-900 shadow-lg transition duration-300 hover:bg-teal-600"
-              size="lg"
-            >
-              Start Free Trial
-            </Button>
-          </div>
+          <ul className="mb-10 flex flex-wrap items-center justify-center gap-5">
+            <li>
+              <Link
+                href="/register"
+                className="text-dark shadow-1 hover:bg-gray-2 inline-flex items-center  justify-center rounded-md bg-teal-500 px-7 py-[14px] text-center text-base font-medium transition duration-300 ease-in-out"
+              >
+                Start Free Trail
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/register"
+                className="flex items-center gap-4 rounded-md bg-white/[0.12] px-6 py-[14px] text-base font-medium text-white transition duration-300 ease-in-out hover:bg-white hover:text-black"
+              >
+                Sign Up Now
+              </Link>
+            </li>
+          </ul>
+
+          <Hero />
         </div>
       </section>
 
@@ -165,17 +176,71 @@ export default function Landing() {
       <section className="bg-teal-50 px-10 py-16">
         <div className="container mx-auto flex flex-col items-center justify-center md:flex-row">
           <div className="mt-8 md:ml-8 md:mt-0">
-            <h2 className="text-3xl font-semibold text-gray-800 mb-8 text-center">
+            <h2 className="mb-8 text-center text-3xl font-semibold text-gray-800">
               Why WhatsApp API?
             </h2>
-            <div className="flex flex-col md:flex-row gap-10 justify-center items-center w-full">
+            <div className="flex w-full flex-col items-center justify-center gap-10 md:flex-row">
               {/* Card 1 */}
-              <div className="bg-white rounded-lg shadow-lg p-6 max-w-sm text-center">
-                <div className="flex justify-center mb-4">
+              <div className="max-w-sm rounded-lg bg-white p-6 text-center shadow-lg">
+                <div className="mb-4 flex justify-center">
                   {/* SVG Icon for Efficient Communication */}
-                  <svg className="h-12 w-12 text-teal-800" fill="none" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" ><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>communication / 15 - communication, bubble, message, text, chat, comment, talk, speech icon</title> <g id="Free-Icons" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd" strokeLinecap="round" strokeLinejoin="round"> <g transform="translate(-1191.000000, -156.000000)" id="Group" stroke="#33d17a" strokeWidth="2"> <g transform="translate(1189.000000, 154.000000)" id="Shape"> <path d="M8.6109715,18.5930706 L4.8,21 L5.46773712,16.7827129 C3.88371393,15.3227187 3,13.2946794 3,11.0526316 C3,6.60528596 6.4771525,3 12,3 C17.5228475,3 21,6.60528596 21,11.0526316 C21,15.4999772 17.5228475,19.1052632 12,19.1052632 C10.7621927,19.1052632 9.62714465,18.9241626 8.6109715,18.5930706 L8.6109715,18.5930706 Z"> </path> <line x1="9" y1="9" x2="15" y2="9"> </line> <line x1="9" y1="13" x2="12" y2="13"> </line> </g> </g> </g> </g></svg>
+                  <svg
+                    className="h-12 w-12 text-teal-800"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    version="1.1"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+                    <g
+                      id="SVGRepo_tracerCarrier"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    ></g>
+                    <g id="SVGRepo_iconCarrier">
+                      {' '}
+                      <title>
+                        communication / 15 - communication, bubble, message,
+                        text, chat, comment, talk, speech icon
+                      </title>{' '}
+                      <g
+                        id="Free-Icons"
+                        stroke="none"
+                        strokeWidth="1"
+                        fill="none"
+                        fillRule="evenodd"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        {' '}
+                        <g
+                          transform="translate(-1191.000000, -156.000000)"
+                          id="Group"
+                          stroke="#33d17a"
+                          strokeWidth="2"
+                        >
+                          {' '}
+                          <g
+                            transform="translate(1189.000000, 154.000000)"
+                            id="Shape"
+                          >
+                            {' '}
+                            <path d="M8.6109715,18.5930706 L4.8,21 L5.46773712,16.7827129 C3.88371393,15.3227187 3,13.2946794 3,11.0526316 C3,6.60528596 6.4771525,3 12,3 C17.5228475,3 21,6.60528596 21,11.0526316 C21,15.4999772 17.5228475,19.1052632 12,19.1052632 C10.7621927,19.1052632 9.62714465,18.9241626 8.6109715,18.5930706 L8.6109715,18.5930706 Z">
+                              {' '}
+                            </path>{' '}
+                            <line x1="9" y1="9" x2="15" y2="9">
+                              {' '}
+                            </line>{' '}
+                            <line x1="9" y1="13" x2="12" y2="13">
+                              {' '}
+                            </line>{' '}
+                          </g>{' '}
+                        </g>{' '}
+                      </g>{' '}
+                    </g>
+                  </svg>
                 </div>
-                <h3 className="text-xl font-semibold mb-4 text-teal-800">
+                <h3 className="mb-4 text-xl font-semibold text-teal-800">
                   Efficient Communication
                 </h3>
                 <p className="text-gray-700">
@@ -183,29 +248,102 @@ export default function Landing() {
                 </p>
               </div>
               {/* Card 2 */}
-              <div className="bg-white rounded-lg shadow-lg p-6 max-w-sm text-center">
-                <div className="flex justify-center mb-4">
+              <div className="max-w-sm rounded-lg bg-white p-6 text-center shadow-lg">
+                <div className="mb-4 flex justify-center">
                   {/* SVG Icon for Guaranteed Delivery */}
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-teal-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" fill="#57e389"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"><path fill="#57e389" d="M512 64a448 448 0 1 1 0 896 448 448 0 0 1 0-896zm-55.808 536.384-99.52-99.584a38.4 38.4 0 1 0-54.336 54.336l126.72 126.72a38.272 38.272 0 0 0 54.336 0l262.4-262.464a38.4 38.4 0 1 0-54.272-54.336L456.192 600.384z"></path></g></svg>                  </svg>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-12 w-12 text-teal-800"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <svg
+                      viewBox="0 0 1024 1024"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="#57e389"
+                    >
+                      <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+                      <g
+                        id="SVGRepo_tracerCarrier"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      ></g>
+                      <g id="SVGRepo_iconCarrier">
+                        <path
+                          fill="#57e389"
+                          d="M512 64a448 448 0 1 1 0 896 448 448 0 0 1 0-896zm-55.808 536.384-99.52-99.584a38.4 38.4 0 1 0-54.336 54.336l126.72 126.72a38.272 38.272 0 0 0 54.336 0l262.4-262.464a38.4 38.4 0 1 0-54.272-54.336L456.192 600.384z"
+                        ></path>
+                      </g>
+                    </svg>{' '}
+                  </svg>
                 </div>
-                <h3 className="text-xl font-semibold mb-4 text-teal-800">
+                <h3 className="mb-4 text-xl font-semibold text-teal-800">
                   Guaranteed Delivery
                 </h3>
                 <p className="text-gray-700">
-                  100% delivery rate for appointment details, reminders, and updates.
+                  100% delivery rate for appointment details, reminders, and
+                  updates.
                 </p>
               </div>
               {/* Card 3 */}
-              <div className="bg-white rounded-lg shadow-lg p-6 max-w-sm text-center">
-                <div className="flex justify-center mb-4">
+              <div className="max-w-sm rounded-lg bg-white p-6 text-center shadow-lg">
+                <div className="mb-4 flex justify-center">
                   {/* SVG Icon for Enhanced Connectivity */}
-                  <svg className="h-12 w-12 text-teal-800" fill="none" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>connection_pattern [#1104]</title> <desc>Created with Sketch.</desc> <defs> </defs> <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd"> <g id="Dribbble-Light-Preview" transform="translate(-220.000000, -3319.000000)" fill="#33d17a"> <g id="icons" transform="translate(56.000000, 160.000000)"> <path d="M181.671247,3176.67125 C181.280112,3177.06238 180.644268,3177.06238 180.253134,3176.67125 C179.862,3176.28011 179.862,3175.64427 180.253134,3175.25313 C180.644268,3174.862 181.280112,3174.862 181.671247,3175.25313 C182.062381,3175.64427 182.062381,3176.28011 181.671247,3176.67125 M174.709056,3169.70906 C174.317922,3170.10019 173.682078,3170.10019 173.290944,3169.70906 C172.899809,3169.31792 172.899809,3168.68208 173.290944,3168.29094 C173.682078,3167.89981 174.317922,3167.89981 174.709056,3168.29094 C175.100191,3168.68208 175.100191,3169.31792 174.709056,3169.70906 M167.717782,3176.70033 C167.326647,3177.09147 166.690803,3177.09147 166.299669,3176.70033 C165.908535,3176.3092 165.908535,3175.67335 166.299669,3175.28222 C166.690803,3174.89108 167.326647,3174.89108 167.717782,3175.28222 C168.108916,3175.67335 168.108916,3176.3092 167.717782,3176.70033 M167.746866,3162.74687 C167.356735,3163.138 166.719888,3163.138 166.328753,3162.74687 C165.937619,3162.35573 165.937619,3161.71989 166.328753,3161.32875 C166.719888,3160.93762 167.356735,3160.93762 167.746866,3161.32875 C168.138,3161.71989 168.138,3162.35573 167.746866,3162.74687 M180.282218,3161.29967 C180.673353,3160.90853 181.309197,3160.90853 181.700331,3161.29967 C182.091465,3161.6908 182.091465,3162.32665 181.700331,3162.71778 C181.309197,3163.10892 180.673353,3163.10892 180.282218,3162.71778 C179.891084,3162.32665 179.891084,3161.6908 180.282218,3161.29967 M179.674456,3173.25534 L176.70685,3170.28773 C177.201284,3169.36506 177.093973,3168.52763 176.70685,3167.71227 L179.70354,3164.71457 C180.82078,3165.24611 182.193762,3165.06158 183.118443,3164.13589 C184.293852,3162.96149 184.293852,3161.05596 183.118443,3159.88156 C181.944038,3158.70615 180.038512,3158.70615 178.864106,3159.88156 C177.939424,3160.80624 177.753886,3162.17922 178.285428,3163.29646 L175.287734,3166.29415 C174.47237,3165.90603 173.634941,3165.79872 172.712266,3166.29415 L169.74466,3163.32655 C170.160867,3162.32364 170.090663,3160.83532 169.165981,3159.91064 C167.990573,3158.73523 166.085047,3158.73523 164.910641,3159.91064 C163.735232,3161.08605 163.735232,3162.99057 164.910641,3164.16598 C165.835322,3165.09066 167.323639,3165.16087 168.326547,3164.74466 L171.294153,3167.71227 C170.798716,3168.63494 170.906027,3169.47237 171.294153,3170.28773 L168.29646,3173.28543 C167.17922,3172.75389 165.806238,3172.93942 164.881557,3173.86411 C163.706148,3175.03851 163.706148,3176.94404 164.881557,3178.11844 C166.055962,3179.29385 167.961488,3179.29385 169.135894,3178.11844 C170.061579,3177.19376 170.246114,3175.82078 169.714572,3174.70354 L172.712266,3171.70685 C173.52763,3172.09397 174.365059,3172.20128 175.287734,3171.70685 L178.25534,3174.67446 C177.840136,3175.67636 177.909337,3177.16468 178.835022,3178.08936 C180.009427,3179.26477 181.914953,3179.26477 183.089359,3178.08936 C184.264768,3176.91495 184.264768,3175.00943 183.089359,3173.83502 C182.164678,3172.90934 180.676361,3172.83913 179.674456,3173.25534" id="connection_pattern-[#1104]"> </path> </g> </g> </g> </g></svg>                </div>
-                <h3 className="text-xl font-semibold mb-4 text-teal-800">
+                  <svg
+                    className="h-12 w-12 text-teal-800"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    version="1.1"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+                    <g
+                      id="SVGRepo_tracerCarrier"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    ></g>
+                    <g id="SVGRepo_iconCarrier">
+                      {' '}
+                      <title>connection_pattern [#1104]</title>{' '}
+                      <desc>Created with Sketch.</desc> <defs> </defs>{' '}
+                      <g
+                        id="Page-1"
+                        stroke="none"
+                        strokeWidth="1"
+                        fill="none"
+                        fillRule="evenodd"
+                      >
+                        {' '}
+                        <g
+                          id="Dribbble-Light-Preview"
+                          transform="translate(-220.000000, -3319.000000)"
+                          fill="#33d17a"
+                        >
+                          {' '}
+                          <g
+                            id="icons"
+                            transform="translate(56.000000, 160.000000)"
+                          >
+                            {' '}
+                            <path
+                              d="M181.671247,3176.67125 C181.280112,3177.06238 180.644268,3177.06238 180.253134,3176.67125 C179.862,3176.28011 179.862,3175.64427 180.253134,3175.25313 C180.644268,3174.862 181.280112,3174.862 181.671247,3175.25313 C182.062381,3175.64427 182.062381,3176.28011 181.671247,3176.67125 M174.709056,3169.70906 C174.317922,3170.10019 173.682078,3170.10019 173.290944,3169.70906 C172.899809,3169.31792 172.899809,3168.68208 173.290944,3168.29094 C173.682078,3167.89981 174.317922,3167.89981 174.709056,3168.29094 C175.100191,3168.68208 175.100191,3169.31792 174.709056,3169.70906 M167.717782,3176.70033 C167.326647,3177.09147 166.690803,3177.09147 166.299669,3176.70033 C165.908535,3176.3092 165.908535,3175.67335 166.299669,3175.28222 C166.690803,3174.89108 167.326647,3174.89108 167.717782,3175.28222 C168.108916,3175.67335 168.108916,3176.3092 167.717782,3176.70033 M167.746866,3162.74687 C167.356735,3163.138 166.719888,3163.138 166.328753,3162.74687 C165.937619,3162.35573 165.937619,3161.71989 166.328753,3161.32875 C166.719888,3160.93762 167.356735,3160.93762 167.746866,3161.32875 C168.138,3161.71989 168.138,3162.35573 167.746866,3162.74687 M180.282218,3161.29967 C180.673353,3160.90853 181.309197,3160.90853 181.700331,3161.29967 C182.091465,3161.6908 182.091465,3162.32665 181.700331,3162.71778 C181.309197,3163.10892 180.673353,3163.10892 180.282218,3162.71778 C179.891084,3162.32665 179.891084,3161.6908 180.282218,3161.29967 M179.674456,3173.25534 L176.70685,3170.28773 C177.201284,3169.36506 177.093973,3168.52763 176.70685,3167.71227 L179.70354,3164.71457 C180.82078,3165.24611 182.193762,3165.06158 183.118443,3164.13589 C184.293852,3162.96149 184.293852,3161.05596 183.118443,3159.88156 C181.944038,3158.70615 180.038512,3158.70615 178.864106,3159.88156 C177.939424,3160.80624 177.753886,3162.17922 178.285428,3163.29646 L175.287734,3166.29415 C174.47237,3165.90603 173.634941,3165.79872 172.712266,3166.29415 L169.74466,3163.32655 C170.160867,3162.32364 170.090663,3160.83532 169.165981,3159.91064 C167.990573,3158.73523 166.085047,3158.73523 164.910641,3159.91064 C163.735232,3161.08605 163.735232,3162.99057 164.910641,3164.16598 C165.835322,3165.09066 167.323639,3165.16087 168.326547,3164.74466 L171.294153,3167.71227 C170.798716,3168.63494 170.906027,3169.47237 171.294153,3170.28773 L168.29646,3173.28543 C167.17922,3172.75389 165.806238,3172.93942 164.881557,3173.86411 C163.706148,3175.03851 163.706148,3176.94404 164.881557,3178.11844 C166.055962,3179.29385 167.961488,3179.29385 169.135894,3178.11844 C170.061579,3177.19376 170.246114,3175.82078 169.714572,3174.70354 L172.712266,3171.70685 C173.52763,3172.09397 174.365059,3172.20128 175.287734,3171.70685 L178.25534,3174.67446 C177.840136,3175.67636 177.909337,3177.16468 178.835022,3178.08936 C180.009427,3179.26477 181.914953,3179.26477 183.089359,3178.08936 C184.264768,3176.91495 184.264768,3175.00943 183.089359,3173.83502 C182.164678,3172.90934 180.676361,3172.83913 179.674456,3173.25534"
+                              id="connection_pattern-[#1104]"
+                            >
+                              {' '}
+                            </path>{' '}
+                          </g>{' '}
+                        </g>{' '}
+                      </g>{' '}
+                    </g>
+                  </svg>{' '}
+                </div>
+                <h3 className="mb-4 text-xl font-semibold text-teal-800">
                   Enhanced Connectivity
                 </h3>
                 <p className="text-gray-700">
-                  Improve patient satisfaction and engagement through seamless communication.
+                  Improve patient satisfaction and engagement through seamless
+                  communication.
                 </p>
               </div>
             </div>
@@ -219,7 +357,6 @@ export default function Landing() {
           </div>
         </div>
       </section>
-
 
       {/* Testimonials Section */}
       <Testimonials />
@@ -252,8 +389,8 @@ export default function Landing() {
 
       {/* Plans Cars Section */}
 
-      <section className="py-20 bg-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-5">
+      <section className="bg-gray-100 py-20">
+        <div className="mx-auto max-w-7xl px-4 pt-5 sm:px-6 lg:px-8">
           <div className="text-center">
             <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
               Choose the Perfect Plan for Your Practice
@@ -263,22 +400,26 @@ export default function Landing() {
             </p>
           </div>
 
-          <div className="mt-16 space-y-12 lg:space-y-0 lg:grid lg:grid-cols-3 lg:gap-x-8">
+          <div className="mt-16 space-y-12 lg:grid lg:grid-cols-3 lg:gap-x-8 lg:space-y-0">
             {plans.map((plan) => (
               <div
                 key={plan.name}
-                className={`relative ${plan.recommended ? 'bg-white shadow-2xl scale-105 z-10' : 'bg-white shadow-lg'
-                  } rounded-2xl`}
+                className={`relative ${
+                  plan.recommended
+                    ? 'z-10 scale-105 bg-white shadow-2xl'
+                    : 'bg-white shadow-lg'
+                } rounded-2xl`}
               >
                 <div className="p-8">
                   <h3
-                    className={`text-2xl font-semibold text-gray-900 ${plan.recommended ? 'text-center' : ''
-                      }`}
+                    className={`text-2xl font-semibold text-gray-900 ${
+                      plan.recommended ? 'text-center' : ''
+                    }`}
                   >
                     {plan.name}
                   </h3>
                   {plan.recommended && (
-                    <p className="absolute top-0 py-1.5 px-4 bg-teal-500 text-white text-sm rounded-full transform -translate-y-1/2">
+                    <p className="absolute top-0 -translate-y-1/2 transform rounded-full bg-teal-500 px-4 py-1.5 text-sm text-white">
                       Most Popular
                     </p>
                   )}
@@ -286,13 +427,15 @@ export default function Landing() {
                     <span className="text-5xl font-extrabold tracking-tight">
                       {plan.price}
                     </span>
-                    <span className="ml-1 text-xl font-semibold">{plan.period}</span>
+                    <span className="ml-1 text-xl font-semibold">
+                      {plan.period}
+                    </span>
                   </p>
                   <ul className="mt-6 space-y-6">
                     {plan.features.map((feature) => (
                       <li key={feature} className="flex">
                         <svg
-                          className="flex-shrink-0 w-6 h-6 text-teal-500"
+                          className="h-6 w-6 flex-shrink-0 text-teal-500"
                           xmlns="http://www.w3.org/2000/svg"
                           fill="none"
                           viewBox="0 0 24 24"
@@ -311,9 +454,9 @@ export default function Landing() {
                     ))}
                   </ul>
                 </div>
-                <div className="pb-8 px-6">
+                <div className="px-6 pb-8">
                   <Button
-                    className={`w-full py-3 px-6 rounded-md text-white bg-gradient-to-r ${plan.color} hover:opacity-90 transition duration-300`}
+                    className={`w-full rounded-md bg-gradient-to-r px-6 py-3 text-white ${plan.color} transition duration-300 hover:opacity-90`}
                   >
                     Choose {plan.name}
                   </Button>
@@ -331,14 +474,18 @@ export default function Landing() {
         </p>
         <Button
           as={Link}
-          href='/login'
+          href="/login"
           className="rounded-lg bg-teal-500 py-3  font-bold text-gray-900 shadow-lg transition duration-300 hover:bg-teal-600"
           size="lg"
         >
           Get Started
         </Button>
         <div className="mt-4 text-gray-400">
-          © 2024 <a className='hover:text-green-600' href='https://totaltechtn.com/'>totaltechtn</a>. All rights reserved.
+          © 2024{' '}
+          <a className="hover:text-green-600" href="https://totaltechtn.com/">
+            totaltechtn
+          </a>
+          . All rights reserved.
         </div>
       </footer>
     </main>
